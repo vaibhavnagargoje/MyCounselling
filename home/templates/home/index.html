@@ -1,0 +1,934 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}EduCoach - Bharat's Trusted Education Platform | Best Coaching Institute{% endblock title %}
+
+{% block head %}
+    <meta name="description" content="India's leading coaching platform for NEET, IIT JEE, UPSC, and competitive exams. Expert faculty, proven results, affordable fees.">
+    <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-graduation-cap text-white text-lg"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">EduCoach</h1>
+                    </div>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-6">
+                            <a href="#home" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300 relative group">
+                                Home
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#courses" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300 relative group">
+                                Courses
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#test-series" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300 relative group">
+                                Test Series
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#about" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300 relative group">
+                                About
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                            <a href="#contact" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300 relative group">
+                                Contact
+                                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-4">
+                        <button class="text-primary hover:text-blue-700 px-4 py-2 rounded-md text-sm font-medium transition duration-300 border border-primary hover:bg-primary">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
+                        </button>
+                        <button class="bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-user-plus mr-2"></i>Register
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary transition duration-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-16 left-0 w-full h-screen bg-white z-40">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Home</a>
+                <a href="#courses" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Courses</a>
+                <a href="#test-series" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Test Series</a>
+                <a href="#about" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">About</a>
+                <a href="#contact" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Contact</a>
+                <div class="pt-4 space-y-2">
+                    <button class="w-full text-primary border border-primary px-4 py-2 rounded-md text-sm font-medium transition duration-300">Login</button>
+                    <button class="w-full bg-primary text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Offer Banner with Enhanced Animation -->
+    <div class="bg-gradient-to-r from-secondary via-orange-500 to-red-500 text-white py-3 mt-16 overflow-hidden relative">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="animate-slide whitespace-nowrap relative z-10">
+            <span class="mx-8 font-semibold">🎉 MEGA OFFER: Get 60% OFF on all courses + FREE Mock Tests! Limited time offer!</span>
+            <span class="mx-8 font-semibold">📚 New NEET & JEE batch starting 15th Jan - Early bird discount available!</span>
+            <span class="mx-8 font-semibold">🏆 Join 15,000+ successful students who cracked their dream exams!</span>
+            <span class="mx-8 font-semibold">💯 100% Money Back Guarantee if not satisfied!</span>
+        </div>
+    </div>
+
+    <!-- Hero Section with Image Slideshow -->
+    <section id="home" class="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-20 overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
+            <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 right-1/3 w-16 h-16 bg-yellow-200 rounded-full opacity-20 floating" style="animation-delay: 3s;"></div>
+            
+            <!-- Rotating Elements -->
+            <div class="absolute top-32 right-10 w-20 h-20 border-4 border-primary opacity-10 animate-rotate"></div>
+            <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Enhanced Branding Text -->
+                <div class="animate-fade-in-left">
+                    <div class="mb-6">
+                        <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-pulse-slow">
+                            🏆 #1 Coaching Platform in India
+                        </span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                        Bharat's <span class="text-primary text-shadow">Trusted</span> & 
+                        <span class="text-secondary text-shadow">Affordable</span> 
+                        <span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Education Platform</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                        Unlock your potential with India's most comprehensive coaching platform. 
+                        <span class="font-semibold text-primary">Expert faculty</span>, 
+                        <span class="font-semibold text-accent">proven results</span>, and 
+                        <span class="font-semibold text-secondary">affordable fees</span>.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-video text-green-600"></i>
+                            </div>
+                            <span class="text-gray-700 font-medium">Live Classes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-users text-blue-600"></i>
+                            </div>
+                            <span class="text-gray-700 font-medium">Expert Faculty</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-file-alt text-purple-600"></i>
+                            </div>
+                            <span class="text-gray-700 font-medium">Mock Tests</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-headset text-orange-600"></i>
+                            </div>
+                            <span class="text-gray-700 font-medium">24/7 Support</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center">
+                            <i class="fas fa-play mr-2"></i>
+                            Start Learning Today
+                        </button>
+                        <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-video mr-2"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex items-center space-x-6 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <div class="flex -space-x-2 mr-2">
+                                <img src="/placeholder.svg?height=32&width=32" alt="Student" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="/placeholder.svg?height=32&width=32" alt="Student" class="w-8 h-8 rounded-full border-2 border-white">
+                                <img src="/placeholder.svg?height=32&width=32" alt="Student" class="w-8 h-8 rounded-full border-2 border-white">
+                            </div>
+                            <span>1M+ Students</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>``
+                            </div>
+                            <span>4.9/5 Rating</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Enhanced Image Slideshow -->
+                <div class="animate-fade-in-right relative">
+                    <div class="slideshow-container relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                        <!-- Slide 1 -->
+                        <div class="slide active">
+                            <img src="/placeholder.svg?height=500&width=400" alt="Expert Teacher Teaching" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 text-white">
+                                <h3 class="text-xl font-bold mb-2">Expert Faculty</h3>
+                                <p class="text-sm opacity-90">Learn from IIT & Medical graduates</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="slide">
+                            <img src="/placeholder.svg?height=500&width=400" alt="Students in Classroom" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 text-white">
+                                <h3 class="text-xl font-bold mb-2">Interactive Classes</h3>
+                                <p class="text-sm opacity-90">Engaging live sessions with doubt clearing</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="slide">
+                            <img src="/placeholder.svg?height=500&width=400" alt="Student Success Celebration" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 text-white">
+                                <h3 class="text-xl font-bold mb-2">Success Stories</h3>
+                                <p class="text-sm opacity-90">Join thousands of successful students</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="slide">
+                            <img src="/placeholder.svg?height=500&width=400" alt="Online Learning Setup" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 text-white">
+                                <h3 class="text-xl font-bold mb-2">Digital Learning</h3>
+                                <p class="text-sm opacity-90">Study anytime, anywhere with our app</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slideshow Indicators -->
+                        <div class="absolute bottom-4 right-4 flex space-x-2">
+                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="0"></button>
+                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="1"></button>
+                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="2"></button>
+                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="3"></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Achievement Cards -->
+                    <div class="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg floating glass-effect">
+                        <div class="flex items-center">
+                            <i class="fas fa-trophy text-yellow-500 text-2xl mr-2"></i>
+                            <div>
+                                <div class="text-sm font-bold text-gray-800">98% Success Rate</div>
+                                <div class="text-xs text-gray-600">NEET 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg floating glass-effect" style="animation-delay: 1s;">
+                        <div class="flex items-center">
+                            <i class="fas fa-medal text-blue-500 text-2xl mr-2"></i>
+                            <div>
+                                <div class="text-sm font-bold text-gray-800">AIR 1-100</div>
+                                <div class="text-xs text-gray-600">JEE Advanced</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute top-1/2 -right-8 bg-white p-3 rounded-full shadow-lg floating" style="animation-delay: 2s;">
+                        <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+ <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Why Choose EduCoach?</h2>
+                <p class="mt-4 text-xl text-gray-600">We offer comprehensive learning solutions tailored to your needs</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-primary">
+                        <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Expert Faculty</h3>
+                    <p class="text-gray-600">Learn from India's top educators with years of experience in preparing students for competitive exams.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-green-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-600">
+                        <i class="fas fa-book-open text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Comprehensive Study Material</h3>
+                    <p class="text-gray-600">Access to well-researched, up-to-date study materials designed by subject matter experts.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-purple-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 text-purple-600">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Interactive Learning</h3>
+                    <p class="text-gray-600">Engaging digital content, interactive quizzes, and personalized feedback to enhance learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Exam Categories Section -->
+    <section id="courses" class="py-20 bg-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                    🎯 Choose Your Path
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Comprehensive <span class="text-primary">Exam Categories</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From medical to engineering, civil services to school boards - we've got you covered with expert guidance and proven methodologies
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- NEET Card -->
+                <div class="card-hover bg-gradient-to-br from-green-400 to-green-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-stethoscope text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">NEET</h3>
+                    <p class="text-green-100 mb-4 relative z-10">Medical Entrance Exam</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-green-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Physics</span>
+                        <span class="bg-white text-green-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Chemistry</span>
+                        <span class="bg-white text-green-600 text-xs font-semibold px-2 py-1 rounded-full">Biology</span>
+                    </div>
+                    <button class="bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-green-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=NEET" alt="NEET" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- IIT JEE Card -->
+                <div class="card-hover bg-gradient-to-br from-blue-400 to-blue-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-cogs text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">IIT JEE</h3>
+                    <p class="text-blue-100 mb-4 relative z-10">Engineering Entrance</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-blue-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Physics</span>
+                        <span class="bg-white text-blue-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Chemistry</span>
+                        <span class="bg-white text-blue-600 text-xs font-semibold px-2 py-1 rounded-full">Maths</span>
+                    </div>
+                    <button class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=IIT" alt="IIT JEE" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- UPSC Card -->
+                <div class="card-hover bg-gradient-to-br from-purple-400 to-purple-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-landmark text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">UPSC</h3>
+                    <p class="text-purple-100 mb-4 relative z-10">Civil Services Exam</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-purple-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">GS</span>
+                        <span class="bg-white text-purple-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">CSAT</span>
+                        <span class="bg-white text-purple-600 text-xs font-semibold px-2 py-1 rounded-full">Optional</span>
+                    </div>
+                    <button class="bg-white text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-purple-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=UPSC" alt="UPSC" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- School Card -->
+                <div class="card-hover bg-gradient-to-br from-orange-400 to-orange-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-school text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">School</h3>
+                    <p class="text-orange-100 mb-4 relative z-10">Class 6-12 Boards</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-orange-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">CBSE</span>
+                        <span class="bg-white text-orange-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">ICSE</span>
+                        <span class="bg-white text-orange-600 text-xs font-semibold px-2 py-1 rounded-full">State</span>
+                    </div>
+                    <button class="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=School" alt="School" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- Government Exam Card -->
+                <div class="card-hover bg-gradient-to-br from-red-400 to-red-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-building text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">Govt Exam</h3>
+                    <p class="text-red-100 mb-4 relative z-10">SSC, Banking & More</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-red-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">SSC</span>
+                        <span class="bg-white text-red-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Banking</span>
+                        <span class="bg-white text-red-600 text-xs font-semibold px-2 py-1 rounded-full">UPSC</span>
+                    </div>
+                    <button class="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=Govt" alt="Government Exams" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- Defence Card -->
+                <div class="card-hover bg-gradient-to-br from-indigo-400 to-indigo-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-shield-alt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">Defence</h3>
+                    <p class="text-indigo-100 mb-4 relative z-10">NDA, CDS & More</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-indigo-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">NDA</span>
+                        <span class="bg-white text-indigo-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">CDS</span>
+                        <span class="bg-white text-indigo-600 text-xs font-semibold px-2 py-1 rounded-full">AFCAT</span>
+                    </div>
+                    <button class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=Defence" alt="Defence Exams" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- Railway Card -->
+                <div class="card-hover bg-gradient-to-br from-teal-400 to-teal-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-train text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">Railway</h3>
+                    <p class="text-teal-100 mb-4 relative z-10">RRB & Railway Jobs</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-teal-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">NTPC</span>
+                        <span class="bg-white text-teal-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">Group D</span>
+                        <span class="bg-white text-teal-600 text-xs font-semibold px-2 py-1 rounded-full">ALP</span>
+                    </div>
+                    <button class="bg-white text-teal-600 px-4 py-2 rounded-lg font-semibold hover:bg-teal-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>Explore</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=Railway" alt="Railway Exams" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+
+                <!-- More Categories Card -->
+                <div class="card-hover bg-gradient-to-br from-gray-400 to-gray-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="bg-white p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center relative z-10">
+                        <i class="fas fa-plus text-gray-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 relative z-10">More</h3>
+                    <p class="text-gray-100 mb-4 relative z-10">Explore All Categories</p>
+                    <div class="mb-4 relative z-10">
+                        <span class="bg-white text-gray-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">GATE</span>
+                        <span class="bg-white text-gray-600 text-xs font-semibold px-2 py-1 rounded-full mr-2">CAT</span>
+                        <span class="bg-white text-gray-600 text-xs font-semibold px-2 py-1 rounded-full">CLAT</span>
+                    </div>
+                    <button class="bg-white text-gray-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-50 transition duration-300 relative z-10 flex items-center mx-auto">
+                        <span>View All</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                    <img src="/placeholder.svg?height=80&width=80&text=More" alt="More Categories" class="absolute bottom-0 right-0 w-20 h-20 opacity-20">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                    ✨ Why Choose Us
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    What Makes Us <span class="text-primary">Different</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the difference with our innovative teaching methods and comprehensive support system
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Live Interactive Classes</h3>
+                    <p class="text-gray-600 mb-4">Real-time doubt clearing with expert faculty in small batch sizes for personalized attention</p>
+                    <div class="text-sm text-primary font-semibold">Available 24/7</div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">AI-Powered Learning</h3>
+                    <p class="text-gray-600 mb-4">Personalized study plans and adaptive learning paths based on your performance</p>
+                    <div class="text-sm text-primary font-semibold">Smart Analytics</div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Learning App</h3>
+                    <p class="text-gray-600 mb-4">Study on-the-go with our feature-rich mobile app with offline content</p>
+                    <div class="text-sm text-primary font-semibold">iOS & Android</div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Performance Analytics</h3>
+                    <p class="text-gray-600 mb-4">Detailed performance reports and progress tracking with improvement suggestions</p>
+                    <div class="text-sm text-primary font-semibold">Real-time Updates</div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Peer Learning</h3>
+                    <p class="text-gray-600 mb-4">Connect with fellow aspirants, join study groups, and participate in discussions</p>
+                    <div class="text-sm text-primary font-semibold">Community Support</div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-medal text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Success Guarantee</h3>
+                    <p class="text-gray-600 mb-4">100% money-back guarantee if you don't see improvement in your scores</p>
+                    <div class="text-sm text-primary font-semibold">Risk-free Learning</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Platform Statistics -->
+    <section class="py-20 bg-gradient-to-r from-primary via-blue-600 to-purple-600 text-white relative overflow-hidden">
+        Animated Background
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white opacity-5 rounded-full floating"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-white opacity-5 rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-16 h-16 bg-white opacity-5 rounded-full floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                    🏆 Trusted Excellence
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Trusted by Students Nationwide</h2>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    Join millions of students who trust our platform for their success. Our numbers speak for our commitment to excellence.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center animate-fade-in-up group">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-users text-4xl mb-4"></i>
+                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="15000">0</div>
+                        <div class="text-lg text-blue-100">Students Enrolled</div>
+                        <div class="text-sm text-blue-200 mt-2">Across India</div>
+                    </div>
+                </div>
+                
+                <div class="text-center animate-fade-in-up group" style="animation-delay: 0.2s;">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-clipboard-check text-4xl mb-4"></i>
+                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="7500">0</div>
+                        <div class="text-lg text-blue-100">Mock Tests</div>
+                        <div class="text-sm text-blue-200 mt-2">Conducted Daily</div>
+                    </div>
+                </div>
+                
+                <div class="text-center animate-fade-in-up group" style="animation-delay: 0.4s;">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-play-circle text-4xl mb-4"></i>
+                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="500">0</div>
+                        <div class="text-lg text-blue-100">Video Lectures</div>
+                        <div class="text-sm text-blue-200 mt-2">HD Quality Content</div>
+                    </div>
+                </div>
+                
+                <div class="text-center animate-fade-in-up group" style="animation-delay: 0.6s;">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-file-alt text-4xl mb-4"></i>
+                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="10000">0</div>
+                        <div class="text-lg text-blue-100">Practice Papers</div>
+                        <div class="text-sm text-blue-200 mt-2">Previous Year Questions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Rate Section -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold mb-2">98%</div>
+                        <div class="text-blue-100">NEET Success Rate</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold mb-2">95%</div>
+                        <div class="text-blue-100">JEE Success Rate</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                        <div class="text-3xl font-bold mb-2">92%</div>
+                        <div class="text-blue-100">UPSC Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+                    💬 Success Stories
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    What Our <span class="text-primary">Students Say</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Real stories from real students who achieved their dreams with our guidance
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Priya Sharma</h4>
+                            <p class="text-sm text-gray-600">NEET AIR 45</p>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "EduCoach's personalized approach and expert faculty helped me crack NEET with AIR 45. The mock tests were exactly like the real exam!"
+                    </p>
+                    <div class="text-sm text-primary font-semibold">AIIMS Delhi - MBBS</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Rahul Kumar</h4>
+                            <p class="text-sm text-gray-600">JEE Advanced AIR 127</p>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "The structured curriculum and doubt clearing sessions were game-changers. I improved from 60% to 95% in just 6 months!"
+                    </p>
+                    <div class="text-sm text-primary font-semibold">IIT Bombay - Computer Science</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="/placeholder.svg?height=60&width=60" alt="Student" class="w-15 h-15 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Anjali Patel</h4>
+                            <p class="text-sm text-gray-600">UPSC CSE Rank 89</p>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "The comprehensive study material and current affairs updates helped me clear UPSC in my second attempt. Highly recommended!"
+                    </p>
+                    <div class="text-sm text-primary font-semibold">IAS - Home Ministry</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Get Started Section -->
+    <section class="py-20 bg-gray-50 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="/placeholder.svg?height=600&width=1200" alt="Students studying" class="w-full h-full object-cover opacity-10">
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="animate-fade-in-up">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
+                    🚀 Start Your Journey
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Ready to <span class="text-primary">Transform</span> Your Future?
+                </h2>
+                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Join thousands of successful students and achieve your dreams with our expert guidance, comprehensive study materials, and personalized mentorship.
+                </p>
+                
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-rocket text-primary text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Quick Start</h3>
+                        <p class="text-sm text-gray-600">Begin learning in just 2 minutes</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-headset text-primary text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">24/7 Support</h3>
+                        <p class="text-sm text-gray-600">Get help whenever you need it</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <i class="fas fa-certificate text-primary text-2xl mb-3"></i>
+                        <h3 class="font-semibold text-gray-800 mb-2">Guaranteed Results</h3>
+                        <p class="text-sm text-gray-600">Money back if not satisfied</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-12 py-4 rounded-xl text-xl font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center">
+                        <i class="fas fa-play mr-3"></i>
+                        Get Started Now
+                        <i class="fas fa-arrow-right ml-3"></i>
+                    </button>
+                    <button class="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Us: +91-9876543210
+                    </button>
+                </div>
+                
+                <!-- Trust Badges -->
+                <div class="mt-10 flex flex-wrap justify-center items-center gap-8 opacity-60">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                        <span class="text-sm">SSL Secured</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-award text-yellow-500 mr-2"></i>
+                        <span class="text-sm">ISO Certified</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-users text-blue-500 mr-2"></i>
+                        <span class="text-sm">15M+ Students</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        <span class="text-sm">4.9/5 Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900 text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-10 right-10 w-32 h-32 bg-primary opacity-5 rounded-full"></div>
+            <div class="absolute bottom-20 left-20 w-24 h-24 bg-secondary opacity-5 rounded-full"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Logo and Description -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">EduCoach</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Empowering students across India with quality education and expert guidance for competitive exams. 
+                        Your success is our mission, and we're committed to helping you achieve your dreams.
+                    </p>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-phone mr-2 text-primary"></i>
+                            +91-9876543210
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            info@educoach.com
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-primary">About</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Our Mission</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Expert Faculty</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Success Stories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Press & Media</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Exams -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-secondary">Popular Exams</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>NEET Preparation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>IIT JEE Main & Advanced</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>UPSC Civil Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>SSC CGL & CHSL</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Banking Exams</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Defence Exams</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-accent">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Our Centers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Help & Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Download App</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Newsletter Subscription -->
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-2">Stay Updated</h4>
+                        <p class="text-gray-400">Subscribe to our newsletter for latest updates and exam notifications</p>
+                    </div>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-primary text-white">
+                        <button class="bg-primary hover:bg-blue-700 px-6 py-3 rounded-r-lg text-white font-semibold transition duration-300">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 EduCoach. All rights reserved. Made with ❤️ for students of India.</p>
+            </div>
+        </div>
+
+
+    </footer>
+   
+   <script src="{% static 'home/js/script.js' %}"></script>
+{% endblock content %}
+
+
+
+
+
