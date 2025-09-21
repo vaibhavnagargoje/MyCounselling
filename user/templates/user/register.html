@@ -22,61 +22,65 @@ Register - EduCounsel
     <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
 </div>
 
+<!-- Centered Split Screen Layout -->
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-lg w-full space-y-8">
-        <!-- Logo and Branding -->
-        <div class="text-center animate-fade-in-up">
-            <div class="flex justify-center mb-4">
-                <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+    <div class="max-w-6xl w-full bg-white/10 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+        <div class="flex min-h-[700px]">
+            <!-- Left Side - Form Area -->
+            <div class="flex-1 flex items-center justify-center px-8 py-12">
+                <div class="max-w-lg w-full space-y-8">
+            <!-- Logo and Branding -->
+            <div class="text-center animate-fade-in-up">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
                 </div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">EduCounsel</h1>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h2>
             </div>
-            <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">EduCounsel</h1>
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h2>
-            <p class="text-gray-600">Join thousands of students who found their perfect college with us!</p>
-        </div>
             
-        <!-- Modern Alert Messages -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="animate-fade-in-up">
-                    {% if message.tags == 'error' or message.tags == 'danger' %}
-                        <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-exclamation-circle text-red-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-red-700 font-medium">{{ message }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% elif message.tags == 'success' %}
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-check-circle text-green-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-green-700 font-medium">{{ message }}</p>
+            <!-- Modern Alert Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="animate-fade-in-up">
+                        {% if message.tags == 'error' or message.tags == 'danger' %}
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm mb-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-exclamation-circle text-red-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-red-700 font-medium">{{ message }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% elif message.tags == 'warning' %}
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-exclamation-triangle text-yellow-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-yellow-700 font-medium">{{ message }}</p>
+                        {% elif message.tags == 'success' %}
+                            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-check-circle text-green-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-green-700 font-medium">{{ message }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        {% endif %}
+                        {% elif message.tags == 'warning' %}
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm mb-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-yellow-700 font-medium">{{ message }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
             
         <!-- Modern Registration Form -->
         <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -158,9 +162,9 @@ Register - EduCounsel
                     <div class="text-center pt-4 border-t border-gray-200">
                         <p class="text-sm text-gray-600">
                             Already have an account? 
-                            <a href="{% url 'user:login' %}" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline">
+                            <button onclick="switchToLogin()" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline cursor-pointer">
                                 Sign in here <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                            </button>
                         </p>
                     </div>
 
@@ -182,8 +186,86 @@ Register - EduCounsel
                 </div>
             </form>
         </div>
+    </div>
+    
+            <!-- Right Side - Information Panel -->
+            <div class="flex-1 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center px-8 py-12 text-white relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full animate-pulse"></div>
+                    <div class="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 1s;"></div>
+                    <div class="absolute bottom-20 left-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+                    <div class="absolute bottom-32 right-10 w-12 h-12 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 3s;"></div>
+                </div>
+        
+        <!-- Content -->
+        <div class="max-w-md w-full text-center relative z-10 animate-fade-in-up" style="animation-delay: 0.4s;" id="infoPanel">
+            <div class="mb-8">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                    <i class="fas fa-user-plus text-4xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Start Your Journey</h3>
+                <p class="text-white/90 mb-8 leading-relaxed">Join our community of successful students and get personalized guidance for your academic and career goals. Your future starts here!</p>
+            </div>
+            
+            <!-- Registration Benefits -->
+            <div class="space-y-6">
+                <div class="flex items-center text-left">
+                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Personalized Counselling</h4>
+                        <p class="text-white/80 text-sm">Get tailored advice based on your interests and goals</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center text-left">
+                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-university text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">College Recommendations</h4>
+                        <p class="text-white/80 text-sm">Discover the best colleges for your chosen field</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center text-left">
+                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <i class="fas fa-handshake text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-1">Career Support</h4>
+                        <p class="text-white/80 text-sm">Access career resources and networking opportunities</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Steps -->
+            <div class="mt-8 pt-8 border-t border-white/20">
+                <h4 class="font-semibold mb-4">Registration Steps</h4>
+                <div class="space-y-3 text-left">
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">1</div>
+                        <span class="text-white/90 text-sm">Fill out the registration form</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">2</div>
+                        <span class="text-white/90 text-sm">Verify your email address</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">3</div>
+                        <span class="text-white/90 text-sm">Complete your profile</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">4</div>
+                        <span class="text-white/90 text-sm">Start your counselling journey</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
 <script>
 function togglePassword(inputId, iconId) {
@@ -201,6 +283,12 @@ function togglePassword(inputId, iconId) {
         toggleIcon.classList.add('fa-eye');
         toggleIcon.classList.remove('text-primary');
     }
+}
+
+// Switch to login mode
+function switchToLogin() {
+    // Redirect to login page with smooth transition
+    window.location.href = "{% url 'user:login' %}";
 }
 
 // Password strength validation

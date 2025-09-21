@@ -1,0 +1,240 @@
+{% extends "core_base.html" %}
+{% load static %}
+
+{% block title %}  Study Dashboard {% endblock title %}
+{% block head %} 
+ <meta name="description" content="Study Dashboard - EduCoach"> 
+<link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+
+{% endblock head %}
+
+
+{% block content %}
+
+    
+
+    <!-- Main Container -->
+       
+
+        <!-- Main Content Area -->
+        <div class="flex-1 ml-64 p-6">
+            <!-- Dismissible Announcement Banner -->
+            <div id="announcementBanner" class="announcement-banner bg-gradient-to-r from-warning to-danger text-white p-4 rounded-lg mb-6 relative">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-bullhorn mr-3 text-xl"></i>
+                        <div>
+                            <h3 class="font-bold">🎉 New Batch Alert!</h3>
+                            <p class="text-sm opacity-90">MPSC 2025 Foundation Batch starting from 15th January. Early bird discount available!</p>
+                        </div>
+                    </div>
+                    <button id="closeBanner" class="text-white hover:text-gray-200 transition duration-300">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Current Batch & Scheduled Classes -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-6 animate-fade-in-up">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Sangram 2.0: MPSC Combined Exam 2025 Foundation Batch</h2>
+                        <p class="text-gray-600">Your current enrolled batch</p>
+                    </div>
+                    <button class="bg-secondary hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition duration-300 flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Go to Timetable
+                    </button>
+                </div>
+
+                <!-- Today's Classes -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Today's Classes</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Class Card 1 -->
+                        <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-lg border border-indigo-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Live</span>
+                                <span class="text-sm text-gray-600">10:00 AM</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">General Studies - Paper 1</h4>
+                            <p class="text-sm text-gray-600 mb-3">Indian History & Culture</p>
+                            <button class="w-full bg-primary hover:bg-indigo-700 text-white py-2 rounded-lg transition duration-300">
+                                Join Now
+                            </button>
+                        </div>
+
+                        <!-- Class Card 2 -->
+                        <div class="card-hover bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg border border-teal-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">Upcoming</span>
+                                <span class="text-sm text-gray-600">2:00 PM</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Mathematics</h4>
+                            <p class="text-sm text-gray-600 mb-3">Algebra & Geometry</p>
+                            <button class="w-full bg-accent hover:bg-teal-700 text-white py-2 rounded-lg transition duration-300">
+                                Set Reminder
+                            </button>
+                        </div>
+
+                        <!-- Class Card 3 -->
+                        <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-lg border border-indigo-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Upcoming</span>
+                                <span class="text-sm text-gray-600">4:00 PM</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">English</h4>
+                            <p class="text-sm text-gray-600 mb-3">Grammar & Comprehension</p>
+                            <button class="w-full bg-primary hover:bg-indigo-700 text-white py-2 rounded-lg transition duration-300">
+                                Set Reminder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Classes Button -->
+                <div class="text-center">
+                    <a href="course-detail.html" class="bg-gradient-to-r from-primary to-indigo-700 hover:from-indigo-700 hover:to-indigo-900 text-white px-8 py-3 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg inline-flex items-center">
+                        <i class="fas fa-list mr-2"></i>
+                        View All Classes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <!-- My Batches Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-primary animate-fade-in-left">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">My Batches</h3>
+                            <p class="text-sm text-gray-600">3 Active Batches</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">View list of the batches in which you are enrolled</p>
+                    <button class="text-primary hover:text-indigo-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- My Doubts Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-accent animate-fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-question-circle text-accent text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">My Doubts</h3>
+                            <p class="text-sm text-gray-600">5 Pending</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">View the list of your asked doubts in the lectures</p>
+                    <button class="text-accent hover:text-teal-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Dashboard Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-secondary animate-fade-in-right">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-pie text-secondary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Dashboard</h3>
+                            <p class="text-sm text-gray-600">Analytics</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">View your performance analytics and progress reports</p>
+                    <button class="text-secondary hover:text-blue-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Recent Learning Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-orange-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-clock text-orange-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Recent Learning</h3>
+                            <p class="text-sm text-gray-600">Last 7 days</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">View your past learning history and completed lessons</p>
+                    <button class="text-orange-600 hover:text-orange-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Test Performance Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-red-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Test Performance</h3>
+                            <p class="text-sm text-gray-600">85% Average</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Track your test scores and performance trends</p>
+                    <button class="text-red-600 hover:text-red-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Study Materials Card -->
+                <div class="card-hover bg-white rounded-xl shadow-lg p-6 border-l-4 border-indigo-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-book-open text-indigo-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Study Materials</h3>
+                            <p class="text-sm text-gray-600">250+ Resources</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Access notes, PDFs, and study materials for your courses</p>
+                    <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm transition duration-300">
+                        View Details <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button class="flex flex-col items-center p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-300">
+                        <i class="fas fa-play-circle text-primary text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Start Learning</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-teal-50 hover:bg-teal-100 rounded-lg transition duration-300">
+                        <i class="fas fa-clipboard-check text-accent text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Take Test</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-300">
+                        <i class="fas fa-question text-primary text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Ask Doubt</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition duration-300">
+                        <i class="fas fa-download text-secondary text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Download Notes</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {% endblock content %}
+
+    {% block script %}
+    <script src="{% static 'home/js/script.js' %}"></script>
+    {% endblock script %}
+
