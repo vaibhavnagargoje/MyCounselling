@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Login - EduCounsel
+{% endblock %}
+
+{% block head %}
+    <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+<!-- Animated Background Elements -->
+<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
+    <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
+    <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 right-1/3 w-16 h-16 bg-yellow-200 rounded-full opacity-20 floating" style="animation-delay: 3s;"></div>
+    
+    <!-- Rotating Elements -->
+    <div class="absolute top-32 right-10 w-20 h-20 border-4 border-primary opacity-10 animate-rotate"></div>
+    <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
+</div>
+
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Logo and Branding -->
+        <div class="text-center animate-fade-in-up">
+            <div class="flex justify-center mb-4">
+                <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">EduCounsel</h1>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Welcome Back!</h2>
+            <p class="text-gray-600">Sign in to continue your counselling journey</p>
+        </div>
+        <!-- Modern Alert Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="animate-fade-in-up">
+                    {% if message.tags == 'error' %}
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-circle text-red-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-red-700 font-medium">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif message.tags == 'success' %}
+                        <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-check-circle text-green-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-green-700 font-medium">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Modern Login Form -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <form id="loginForm" class="space-y-6" method="post">
+                {% csrf_token %}
+                <div class="space-y-5">
+                    <div class="group">
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>Email Address
+                        </label>
+                        <input id="email" name="email" type="email" autocomplete="email" required 
+                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                               placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="group">
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                            <i class="fas fa-lock mr-2 text-primary"></i>Password
+                        </label>
+                        <div class="relative">
+                            <input id="password" name="password" type="password" autocomplete="current-password" required 
+                                   class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                                   placeholder="Enter your password">
+                            <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center transition-colors duration-300" onclick="togglePassword()">
+                                <i id="toggle-icon" class="fas fa-eye text-gray-400 hover:text-primary cursor-pointer"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <button id="submitBtn" type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center">
+                        <span id="buttonText">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                        </span>
+                        <i id="loadingIcon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                    </button>
+
+                    <div class="text-center">
+                        <a href="{% url 'user:forgot_password' %}" 
+                           class="text-sm font-medium text-primary hover:text-purple-600 transition-colors duration-300 hover:underline">
+                            <i class="fas fa-key mr-1"></i>Forgot your password?
+                        </a>
+                    </div>
+
+                    <div class="text-center pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-600">
+                            Don't have an account? 
+                            <a href="{% url 'user:register' %}" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline">
+                                Create one now <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggle-icon');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+        toggleIcon.classList.add('text-primary');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+        toggleIcon.classList.remove('text-primary');
+    }
+}
+
+// Handle form submission with loading state
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    const submitBtn = document.getElementById('submitBtn');
+    const buttonText = document.getElementById('buttonText');
+    const loadingIcon = document.getElementById('loadingIcon');
+    
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    buttonText.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
+    loadingIcon.classList.remove('hidden');
+});
+
+// Add smooth animations on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Add entrance animations with staggered delays
+    const elements = document.querySelectorAll('.animate-fade-in-up');
+    elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+    });
+});
+</script>
+{% endblock %}
+

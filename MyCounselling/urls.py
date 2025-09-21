@@ -22,7 +22,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     # add path and namespace also
-    path('',include('home.urls',namespace='home')),
+    path('',include('landing_page.urls',namespace='landing_page')),
+    # path('home/',include('home.urls',namespace='home')),
+    path('user/',include('user.urls', namespace='user')),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
