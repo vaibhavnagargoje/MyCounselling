@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user',
     'landing_page',
     'dashboard',
+    'counsellor',
     
 
     'tailwind',
