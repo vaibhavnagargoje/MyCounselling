@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'landing_page',
     'dashboard',
     'counsellor',
+    'colleges',
     
 
     'tailwind',
@@ -151,9 +152,9 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
-print("EMAIL_BACKEND:", EMAIL_BACKEND)
-print("EMAIL_HOST:", EMAIL_HOST)
-print("EMAIL_PORT:", EMAIL_PORT)
-print("EMAIL_USE_TLS:", EMAIL_USE_TLS)
-print("EMAIL_HOST_USER:", EMAIL_HOST_USER)
-print("EMAIL_HOST_PASSWORD:", "SET" if EMAIL_HOST_PASSWORD else "NOT SET")
+# print("EMAIL_BACKEND:", EMAIL_BACKEND)
+# print("EMAIL_HOST:", EMAIL_HOST)
+# print("EMAIL_PORT:", EMAIL_PORT)
+# print("EMAIL_USE_TLS:", EMAIL_USE_TLS)
+# print("EMAIL_HOST_USER:", EMAIL_HOST_USER)
+# print("EMAIL_HOST_PASSWORD:", "SET" if EMAIL_HOST_PASSWORD else "NOT SET")

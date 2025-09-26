@@ -20,13 +20,8 @@
     <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
 </div>
 
-<!-- Centered Split Screen Layout -->
-<div class="min-h-screen flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-5xl w-full bg-white/20 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/30 animate-fade-in-up auth-container">
-        <div class="flex flex-col lg:flex-row min-h-[550px] lg:min-h-[600px]">
-            <!-- Left Side - Form Area -->
-            <div class="flex-1 flex items-center justify-center px-6 lg:px-8 py-8 lg:py-12">
-                <div class="max-w-md w-full space-y-8">
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-md w-full space-y-8">
         <!-- Logo and Header -->
         <div class="text-center animate-fade-in-up">
             <div class="flex justify-center mb-4">
@@ -77,8 +72,8 @@
             {% endfor %}
         {% endif %}
         
-            <!-- Modern OTP Verification Form -->
-            <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/30 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <!-- Modern OTP Verification Form -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
             <form id="otpForm" class="space-y-6" method="post">
                 {% csrf_token %}
                 
@@ -106,8 +101,8 @@
                 </div>
 
                 <div class="space-y-4">
-                    <button id="submitBtn" type="submit"
-                            class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center auth-button">
+                    <button id="submitBtn" type="submit" 
+                            class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center">
                         <span id="buttonText">
                             <i class="fas fa-check-circle mr-2"></i>Verify OTP
                         </span>
@@ -152,82 +147,6 @@
             </form>
         </div>
     </div>
-    </div>
-    
-            <!-- Right Side - Information Panel -->
-            <div class="hidden lg:flex flex-1 bg-gradient-to-br from-primary to-purple-600 items-center justify-center px-6 lg:px-8 py-8 lg:py-12 text-white relative overflow-hidden">
-                <!-- Background Pattern -->
-                <div class="absolute inset-0 opacity-10">
-                    <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full animate-pulse"></div>
-                    <div class="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 1s;"></div>
-                    <div class="absolute bottom-20 left-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
-                    <div class="absolute bottom-32 right-10 w-12 h-12 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 3s;"></div>
-                </div>
-        
-        <!-- Content -->
-        <div class="max-w-md w-full text-center relative z-10 animate-fade-in-up" style="animation-delay: 0.4s;" id="infoPanel">
-            <div class="mb-8">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                    <i class="fas fa-shield-check text-4xl"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4">Secure Verification</h3>
-                <p class="text-white/90 mb-8 leading-relaxed">We've sent a secure verification code to your email. This helps protect your account and ensures only you can access it.</p>
-            </div>
-            
-            <!-- Verification Steps -->
-            <div class="space-y-6">
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Check Your Email</h4>
-                        <p class="text-white/80 text-sm">Look for our verification email in your inbox</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-key text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Enter the Code</h4>
-                        <p class="text-white/80 text-sm">Type the 6-digit code in the form</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-check-circle text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Account Verified</h4>
-                        <p class="text-white/80 text-sm">Complete your registration and start exploring</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Security Tips -->
-            <div class="mt-8 pt-8 border-t border-white/20">
-                <h4 class="font-semibold mb-4">Security Tips</h4>
-                <div class="space-y-3 text-left text-sm text-white/90">
-                    <div class="flex items-center">
-                        <i class="fas fa-clock text-yellow-300 mr-2"></i>
-                        <span>Code expires in 5 minutes</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-spam text-orange-300 mr-2"></i>
-                        <span>Check spam folder if not received</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-refresh text-blue-300 mr-2"></i>
-                        <span>Request new code if needed</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 
 <script>
@@ -355,53 +274,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-
-<style>
-/* Custom container styling */
-.auth-container {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 1023px) {
-    .auth-container {
-        border-radius: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .auth-container .flex {
-        flex-direction: column;
-    }
-    
-    .auth-container .flex > div:first-child {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    
-    .auth-container .flex > div:last-child {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-}
-
-/* Enhanced form styling */
-.form-input:focus {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
-}
-
-/* Button hover effects */
-.auth-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.4);
-}
-
-/* OTP input styling */
-.otp-input:focus {
-    transform: scale(1.05);
-}
-</style>
-
 {% endblock %}

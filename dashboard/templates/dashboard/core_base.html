@@ -106,14 +106,12 @@
                         <i class="fas fa-book-open mr-3"></i>
                         <span class="font-medium">Home</span>
                     </a>
-                    {% comment %} <a href"#" class="sidebar-item {% if 'batches' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                        <i class="fas fa-users mr-3"></i>
-                        <span class="font-medium">Batches</span>
-                    </a>
-                    <a href="{% url 'dashboard:testseries:testseries' %}" class="sidebar-item {% if 'testseries' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
+
+                    <a href="{% url 'dashboard:colleges:colleges' %}" class="sidebar-item {% if 'testseries' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
                         <i class="fas fa-clipboard-list mr-3"></i>
-                        <span class="font-medium">Test Series</span>
-                    </a>
+                        <span class="font-medium">College Info</span>
+                        </a>
+                        {% comment %} 
                     <a href="{% url 'dashboard:store:store' %}" class="sidebar-item {% if 'store' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
                         <i class="fas fa-shopping-cart mr-3"></i>
                         <span class="font-medium">Store</span>
