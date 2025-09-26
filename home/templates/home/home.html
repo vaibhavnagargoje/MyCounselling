@@ -1,0 +1,302 @@
+{% extends "dashboard/core_base.html" %}
+{% load static %}
+
+{% block title %}Dashboard | EduCounsel{% endblock title %}
+{% block head %} 
+ <meta name="description" content="Your Personal Counselling Dashboard - EduCounsel"> 
+<link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+
+{% endblock head %}
+
+
+{% block content %}
+
+    
+
+    <!-- Main Container -->
+       
+
+        <!-- Main Content Area -->
+        <div class="flex-1 ml-64 p-6">
+            <!-- Banner Slider -->
+            <div class="mb-6">
+                <div class="relative overflow-hidden rounded-xl shadow-lg" id="bannerSlider">
+                    <!-- Slide 1 -->
+                    <div class="banner-slide active bg-gradient-to-r from-blue-600 to-indigo-600 text-white relative">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80" 
+                                 alt="College Campus" 
+                                 class="w-full h-full object-cover opacity-20">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-indigo-600/80"></div>
+                        </div>
+                        <div class="relative z-10 p-8">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-3xl font-bold mb-2">Find Your Perfect College</h2>
+                                    <p class="text-lg opacity-90">Expert guidance for your academic future</p>
+                                </div>
+                                <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                                    Start Your Journey
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="banner-slide bg-gradient-to-r from-green-600 to-teal-600 text-white relative">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80" 
+                                 alt="Counselling Session" 
+                                 class="w-full h-full object-cover opacity-20">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-600/80 to-teal-600/80"></div>
+                        </div>
+                        <div class="relative z-10 p-8">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-3xl font-bold mb-2">One-on-One Counselling</h2>
+                                    <p class="text-lg opacity-90">Personalized sessions with expert counsellors</p>
+                                </div>
+                                <button class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                                    Book Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="banner-slide bg-gradient-to-r from-purple-600 to-pink-600 text-white relative">
+                        <div class="absolute inset-0">
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80" 
+                                 alt="Graduation Success" 
+                                 class="w-full h-full object-cover opacity-20">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-600/80 to-pink-600/80"></div>
+                        </div>
+                        <div class="relative z-10 p-8">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h2 class="text-3xl font-bold mb-2">Top College Placements</h2>
+                                    <p class="text-lg opacity-90">Explore success stories and placement statistics</p>
+                                </div>
+                                <button class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                                    View Stats
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation Dots -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                        <button class="banner-dot active w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100" data-slide="0"></button>
+                        <button class="banner-dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100" data-slide="1"></button>
+                        <button class="banner-dot w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100" data-slide="2"></button>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Counselling Progress & Upcoming Sessions -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-6 animate-fade-in-up">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Counselling Journey</h2>
+                        <p class="text-gray-600">Track your progress towards finding the perfect college</p>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-download mr-2"></i>
+                            College List
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Schedule Session
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!-- Upcoming Sessions -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Upcoming Counselling Sessions</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Session Card 1 -->
+                        <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Confirmed</span>
+                                <span class="text-sm text-gray-600">Tomorrow 2:00 PM</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Career Guidance Session</h4>
+                            <p class="text-sm text-gray-600 mb-3">with Dr. Priya Sharma</p>
+                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-300">
+                                Join Session
+                            </button>
+                        </div>
+
+                        <!-- Session Card 2 -->
+                        <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">Scheduled</span>
+                                <span class="text-sm text-gray-600">Friday 10:00 AM</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">College Selection Review</h4>
+                            <p class="text-sm text-gray-600 mb-3">with Prof. Rajesh Kumar</p>
+                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+
+                        <!-- Session Card 3 -->
+                        <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">Pending</span>
+                                <span class="text-sm text-gray-600">To be scheduled</span>
+                            </div>
+                            <h4 class="font-semibold text-gray-900 mb-2">Application Strategy</h4>
+                            <p class="text-sm text-gray-600 mb-3">with Ms. Anita Desai</p>
+                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-300">
+                                Schedule Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Dashboard Cards -->
+           
+            <!-- College & Placement Tools -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">College & Placement Tools</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button class="flex flex-col items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition duration-300">
+                        <i class="fas fa-university text-blue-600 text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Search College</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition duration-300">
+                        <i class="fas fa-download text-blue-600 text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Download College List</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition duration-300">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">College Placement History</span>
+                    </button>
+                    <button class="flex flex-col items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition duration-300">
+                        <i class="fas fa-user-tie text-blue-600 text-2xl mb-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Book One on One Session</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Performing Colleges -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mt-6 animate-fade-in-up">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Top Performing Colleges (2024-25)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-university text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">IIT Bombay</h4>
+                                <p class="text-sm text-gray-600">Computer Science</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600">98%</p>
+                            <p class="text-sm text-gray-600">Placement Rate</p>
+                            <p class="text-sm text-gray-500 mt-1">Avg Package: ₹25 LPA</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-university text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">AIIMS Delhi</h4>
+                                <p class="text-sm text-gray-600">Medical Sciences</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600">100%</p>
+                            <p class="text-sm text-gray-600">Placement Rate</p>
+                            <p class="text-sm text-gray-500 mt-1">Starting: ₹15 LPA</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-university text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">ISB Hyderabad</h4>
+                                <p class="text-sm text-gray-600">Management</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-2xl font-bold text-blue-600">95%</p>
+                            <p class="text-sm text-gray-600">Placement Rate</p>
+                            <p class="text-sm text-gray-500 mt-1">Avg Package: ₹30 LPA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {% endblock content %}
+
+    {% block script %}
+    <script src="{% static 'home/js/script.js' %}"></script>
+    <script>
+        // Banner Slider Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.banner-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (n + totalSlides) % totalSlides;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        // CSS for banner slides
+        const style = document.createElement('style');
+        style.textContent = `
+            .banner-slide {
+                display: none;
+                width: 100%;
+            }
+            .banner-slide.active {
+                display: block;
+            }
+            .banner-dot.active {
+                opacity: 1 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    {% endblock script %}
+

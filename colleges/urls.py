@@ -7,4 +7,4 @@ app_name = 'colleges'
 urlpatterns = [
     # Define your URL patterns here
     path('', views.colleges, name='colleges'),
-]
+   ]
