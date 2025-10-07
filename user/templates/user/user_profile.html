@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Profile - {{ user.first_name|default:user.username }} | EduCounsel
+{{ user.first_name|default:user.username }}'s Profile | EduCounsel
 {% endblock %}
 
 {% block head %}
@@ -10,362 +10,458 @@ Profile - {{ user.first_name|default:user.username }} | EduCounsel
 {% endblock head %}
 
 {% block content %}
-<!-- Animated Background Elements -->
-<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden -z-10">
-    <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 floating"></div>
-    <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
-</div>
+<!-- Background -->
+<div class="fixed inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 -z-10"></div>
 
-<!-- Modern Breadcrumbs -->
-<div class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="flex items-center justify-between">
-      <nav class="flex items-center space-x-2 text-sm">
-        <a href="{% url 'home:index' %}" class="text-gray-600 hover:text-primary transition-colors duration-300 flex items-center">
-          <i class="fas fa-home mr-1"></i>Home
-        </a>
-        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
-        <span class="text-primary font-semibold">Profile</span>
-      </nav>
-      
-      <!-- Logo -->
-      <div class="flex items-center">
-        <div class="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-2">
-          <i class="fas fa-graduation-cap text-white text-sm"></i>
-        </div>
-        <span class="text-lg font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">EduCounsel</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Main Content with Modern Design -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Modern Alert Messages -->
-    {% if messages %}
-        {% for message in messages %}
-            <div class="mb-6 animate-fade-in-up">
-                {% if message.tags == 'error' %}
-                    <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-exclamation-circle text-red-400"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm text-red-700 font-medium">{{ message }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% elif message.tags == 'success' %}
-                    <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-check-circle text-green-400"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm text-green-700 font-medium">{{ message }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
+<!-- Top Navigation Bar -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                    <i class="fas fa-graduation-cap text-white text-lg"></i>
+                </div>
+                <span class="text-xl font-bold text-dark">EduCounsel</span>
             </div>
-        {% endfor %}
-    {% endif %}
-
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <!-- Modern Sidebar -->
-        <div class="lg:col-span-1">
-            <!-- Mobile menu button -->
-            <div class="lg:hidden mb-4">
-                <button onclick="toggleMobileSidebar()" class="w-full bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center justify-center transition-all duration-300 hover:shadow-xl">
-                    <i id="mobile-menu-icon" class="fas fa-bars mr-2"></i>
-                    <span class="font-semibold">Profile Menu</span>
+            
+            <!-- Right Menu -->
+            <div class="flex items-center space-x-4">
+                <button class="p-2 text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all duration-300">
+                    <i class="fas fa-bell text-xl"></i>
+                </button>
+                <a href="{% url 'dashboard:home:home' %}" class="text-gray-700 hover:text-primary font-medium flex items-center transition-colors duration-300">
+                    <i class="fas fa-home mr-2"></i>
+                    <span class="hidden sm:inline">Dashboard</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all duration-300">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
+        </div>
+    </div>
+</nav>
 
-            <!-- Desktop Sidebar -->
-            <div class="hidden lg:block bg-white/90 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden sticky top-24 animate-fade-in-left">
-                <!-- Profile Header in Sidebar -->
-                <div class="bg-gradient-to-r from-primary to-purple-600 p-6 text-white relative overflow-hidden">
-                    <!-- Background Pattern -->
-                    <div class="absolute inset-0 opacity-10">
-                        <div class="absolute top-0 right-0 w-20 h-20 bg-white rounded-full -translate-y-10 translate-x-10"></div>
-                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-white rounded-full translate-y-8 -translate-x-8"></div>
-                    </div>
-                    
-                    <div class="relative">
-                        <div class="flex items-center space-x-4 mb-4">
-                            {% if profile.profile_picture %}
-                                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="w-16 h-16 rounded-full border-3 border-white object-cover shadow-lg">
-                            {% else %}
-                                <div class="w-16 h-16 rounded-full border-3 border-white bg-white/20 flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-user text-2xl text-white"></i>
-                                </div>
-                            {% endif %}
-                            <div>
-                                <h2 class="text-xl font-bold">{{ user.first_name }} {{ user.last_name }}</h2>
-                                <p class="text-white/80 text-sm">{{ user.email }}</p>
-                                {% if profile.is_verified %}
-                                    <span class="inline-flex items-center text-xs text-green-200 bg-green-500/20 px-2 py-1 rounded-full mt-1">
-                                        <i class="fas fa-check-circle mr-1"></i>Verified
-                                    </span>
-                                {% endif %}
-                            </div>
-                        </div>
+<!-- Messages -->
+{% if messages %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        {% for message in messages %}
+            <div class="mb-4 p-4 rounded-lg border-l-4 {% if message.tags == 'error' %}bg-red-50 border-danger text-red-800{% elif message.tags == 'success' %}bg-green-50 border-success text-green-800{% else %}bg-blue-50 border-info text-blue-800{% endif %} flex items-center animate-fade-in-up">
+                <i class="fas {% if message.tags == 'error' %}fa-exclamation-circle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %} mr-3 text-lg"></i>
+                <p class="font-medium">{{ message }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Main Container -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col lg:flex-row gap-6">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="lg:w-72 flex-shrink-0">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-20 transition-all duration-300">
+                <!-- Sidebar Header -->
+                <div class="bg-gradient-to-br from-primary via-secondary to-accent p-6 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-white opacity-10 rounded-full -translate-y-10 translate-x-10 animate-float"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-lg font-bold mb-1">Student Portal</h2>
+                        <p class="text-sm text-blue-100">Welcome back, {{ user.first_name }}!</p>
                     </div>
                 </div>
-
-                <!-- Navigation Menu -->
+                
+                <!-- Navigation -->
                 <nav class="p-4">
-                    <ul class="space-y-2">
+                    <ul class="space-y-1">
                         <li>
-                            <button onclick="showSection('profile')" class="nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-user text-gray-500"></i>
-                                <span>Profile Information</span>
+                            <button onclick="showSection('overview')" class="sidebar-link active w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium transition-all duration-300">
+                                <i class="fas fa-th-large text-lg" style="width: 20px;"></i>
+                                <span>Overview</span>
                             </button>
                         </li>
                         <li>
-                            <button onclick="showSection('edits')" class="nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-edit text-gray-500"></i>
-                                <span>Your Edits</span>
+                            <button onclick="showSection('profile')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300">
+                                <i class="fas fa-user text-lg" style="width: 20px;"></i>
+                                <span>Profile</span>
                             </button>
                         </li>
                         <li>
-                            <button onclick="showSection('quick-links')" class="nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-link text-gray-500"></i>
-                                <span>Quick Links</span>
+                            <button onclick="showSection('academic')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300">
+                                <i class="fas fa-book text-lg" style="width: 20px;"></i>
+                                <span>Academic Info</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="showSection('purchases')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300">
+                                <i class="fas fa-shopping-bag text-lg" style="width: 20px;"></i>
+                                <span>My Purchases</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="showSection('settings')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300">
+                                <i class="fas fa-cog text-lg" style="width: 20px;"></i>
+                                <span>Settings</span>
                             </button>
                         </li>
                     </ul>
-                </nav>
-
-                <!-- Account Status in Sidebar -->
-                <div class="p-4 border-t">
-                    <h3 class="text-sm font-semibold text-gray-700 mb-3">Account Status</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-600">Status</span>
-                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
-                                <i class="fas fa-circle text-green-400 mr-1" style="font-size: 6px;"></i>Active
-                            </span>
-                        </div>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-600">Member Since</span>
-                            <span class="text-gray-800">{{ user.date_joined|date:"M Y" }}</span>
-                        </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="{% url 'user:change_password' %}" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 hover:bg-gray-100 transition-all duration-300">
+                                    <i class="fas fa-key text-lg" style="width: 20px;"></i>
+                                    <span>Change Password</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'user:custom_logout' %}" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-danger hover:bg-red-50 transition-all duration-300">
+                                    <i class="fas fa-sign-out-alt text-lg" style="width: 20px;"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </nav>
             </div>
-        </div>
+        </aside>
 
-        <!-- Mobile Sidebar Overlay -->
-        <div id="mobile-sidebar-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-            <div class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-xl overflow-y-auto">
-                <!-- Mobile Sidebar Header -->
-                <div class="bg-gradient-to-r from-[#863F3F] to-[#a04f4f] p-6 text-white">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-4">
-                            {% if profile.profile_picture %}
-                                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="w-12 h-12 rounded-full border-2 border-white object-cover">
-                            {% else %}
-                                <div class="w-12 h-12 rounded-full border-2 border-white bg-white bg-opacity-20 flex items-center justify-center">
-                                    <i class="fas fa-user text-lg text-white"></i>
-                                </div>
-                            {% endif %}
-                            <div>
-                                <h2 class="text-lg font-semibold">{{ user.first_name }} {{ user.last_name }}</h2>
-                                <p class="text-sm opacity-90">{{ user.email }}</p>
-                                {% if profile.is_verified %}
-                                    <span class="inline-flex items-center text-xs text-green-200">
-                                        <i class="fas fa-check-circle mr-1"></i>Verified
-                                    </span>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <button onclick="toggleMobileSidebar()" class="text-white hover:text-gray-200 p-2">
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300">
+            <div class="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-xl transform transition-transform duration-300">
+                <div class="bg-gradient-to-br from-primary via-secondary to-accent p-6 text-white">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-bold">Menu</h2>
+                        <button onclick="toggleMobileMenu()" class="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-300">
                             <i class="fas fa-times text-xl"></i>
                         </button>
                     </div>
                 </div>
-
-                <!-- Mobile Navigation Menu -->
                 <nav class="p-4">
-                    <ul class="space-y-2">
-                        <li>
-                            <button onclick="showSection('profile')" class="mobile-nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-user text-gray-500"></i>
-                                <span>Profile Information</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onclick="showSection('edits')" class="mobile-nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-edit text-gray-500"></i>
-                                <span>Your Edits</span>
-                            </button>
-                        </li>
-                        <li>
-                            <button onclick="showSection('quick-links')" class="mobile-nav-item w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-3">
-                                <i class="fas fa-link text-gray-500"></i>
-                                <span>Quick Links</span>
-                            </button>
-                        </li>
+                    <ul class="space-y-1">
+                        <li><button onclick="showSection('overview')" class="sidebar-link active w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium transition-all duration-300"><i class="fas fa-th-large" style="width: 20px;"></i><span>Overview</span></button></li>
+                        <li><button onclick="showSection('profile')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300"><i class="fas fa-user" style="width: 20px;"></i><span>Profile</span></button></li>
+                        <li><button onclick="showSection('academic')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300"><i class="fas fa-book" style="width: 20px;"></i><span>Academic Info</span></button></li>
+                        <li><button onclick="showSection('purchases')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300"><i class="fas fa-shopping-bag" style="width: 20px;"></i><span>My Purchases</span></button></li>
+                        <li><button onclick="showSection('settings')" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 transition-all duration-300"><i class="fas fa-cog" style="width: 20px;"></i><span>Settings</span></button></li>
                     </ul>
-                </nav>
-
-                <!-- Mobile Account Status -->
-                <div class="p-4 border-t">
-                    <h3 class="text-sm font-semibold text-gray-700 mb-3">Account Status</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-600">Status</span>
-                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
-                                <i class="fas fa-circle text-green-400 mr-1" style="font-size: 6px;"></i>Active
-                            </span>
-                        </div>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-600">Member Since</span>
-                            <span class="text-gray-800">{{ user.date_joined|date:"M Y" }}</span>
-                        </div>
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <ul class="space-y-1">
+                            <li><a href="{% url 'user:change_password' %}" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-gray-700 hover:bg-gray-100 transition-all duration-300"><i class="fas fa-key" style="width: 20px;"></i><span>Change Password</span></a></li>
+                            <li><a href="{% url 'user:custom_logout' %}" class="sidebar-link w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 font-medium text-danger hover:bg-red-50 transition-all duration-300"><i class="fas fa-sign-out-alt" style="width: 20px;"></i><span>Logout</span></a></li>
+                        </ul>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
 
-        <!-- Vertical Divider (Desktop Only) -->
-        <div class="hidden lg:block w-px bg-gray-300 flex-shrink-0 order-2"></div>
-
         <!-- Main Content -->
-        <div class="flex-grow order-3 px-0 md:px-4 lg:pl-6 mt-6 lg:mt-0">
-            <!-- Profile Information Section -->
-            <div id="profile-section" class="content-section">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-900">Profile Information</h2>
-                        <div id="view-mode-buttons" class="space-x-2">
-                            <button onclick="toggleEditMode()" class="bg-[#863F3F] text-white px-4 py-2 rounded-md hover:bg-[#732d2d] transition-colors duration-200">
+        <main class="flex-1 min-w-0">
+            <!-- Overview Section -->
+            <div id="overview-section" class="content-section">
+                <!-- Profile Header Card -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-6 animate-fade-in-up">
+                    <!-- Cover Photo -->
+                    <div class="h-48 lg:h-56 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.4\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+                        <button class="absolute top-4 right-4 bg-white bg-opacity-20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all duration-300 shadow-lg">
+                            <i class="fas fa-camera mr-2"></i>Change Cover
+                        </button>
+                    </div>
+                    
+                    <!-- Profile Info -->
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-end -mt-16 sm:-mt-20">
+                            <div class="relative">
+                                {% if profile.profile_picture %}
+                                    <img src="{{ profile.profile_picture.url }}" alt="Profile" class="w-32 h-32 rounded-2xl border-4 border-white object-cover shadow-xl">
+                                {% else %}
+                                    <div class="w-32 h-32 rounded-2xl border-4 border-white bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-xl">
+                                        <i class="fas fa-user text-white text-4xl"></i>
+                                    </div>
+                                {% endif %}
+                                <button class="absolute bottom-0 right-0 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-light hover:scale-110 transition-all duration-300">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="mt-4 sm:mt-0 sm:ml-6 flex-1">
+                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                                    <div>
+                                        <h1 class="text-3xl font-bold text-dark">{{ user.first_name }} {{ user.last_name }}</h1>
+                                        <p class="text-gray-600 mt-1">{{ user.email }}</p>
+                                        <div class="flex items-center space-x-3 mt-2 flex-wrap gap-2">
+                                            {% if profile.is_verified %}
+                                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-success/10 text-success border border-success/20">
+                                                    <i class="fas fa-check-circle mr-1"></i>Verified Student
+                                                </span>
+                                            {% endif %}
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                                                <i class="fas fa-calendar mr-1"></i>Member since {{ user.date_joined|date:"M Y" }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <button onclick="showSection('profile')" class="mt-4 sm:mt-0 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                                        <i class="fas fa-edit mr-2"></i>Edit Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-medium">Total Courses</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+                                <p class="text-sm text-success mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i>0% this month
+                                </p>
+                            </div>
+                            <div class="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fas fa-book-open text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-medium">Completed</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+                                <p class="text-sm text-gray-500 mt-1">0% completion rate</p>
+                            </div>
+                            <div class="w-14 h-14 bg-gradient-to-br from-success to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fas fa-check-double text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-medium">In Progress</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+                                <p class="text-sm text-warning mt-1">Keep learning!</p>
+                            </div>
+                            <div class="w-14 h-14 bg-gradient-to-br from-warning to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fas fa-clock text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-medium">Certificates</p>
+                                <h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+                                <p class="text-sm text-accent mt-1">Achievements</p>
+                            </div>
+                            <div class="w-14 h-14 bg-gradient-to-br from-accent to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
+                                <i class="fas fa-certificate text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 animate-fade-in-up">
+                    <h2 class="text-xl font-bold text-dark mb-6">Quick Actions</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <a href="#" class="group bg-white border-2 border-gray-200 hover:border-primary rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <i class="fas fa-search text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-dark">Browse Courses</h3>
+                                    <p class="text-sm text-gray-500">Find new courses</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="group bg-white border-2 border-gray-200 hover:border-success rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-success to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <i class="fas fa-comments text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-dark">Book Counseling</h3>
+                                    <p class="text-sm text-gray-500">Talk to experts</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="group bg-white border-2 border-gray-200 hover:border-accent rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-accent to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                    <i class="fas fa-file-alt text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-dark">Resources</h3>
+                                    <p class="text-sm text-gray-500">Study materials</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 animate-fade-in-up">
+                    <h2 class="text-xl font-bold text-dark mb-6">Recent Activity</h2>
+                    <div class="text-center py-12">
+                        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-history text-gray-400 text-3xl"></i>
+                        </div>
+                        <p class="text-gray-500 font-medium">No recent activity</p>
+                        <p class="text-sm text-gray-400 mt-2">Your learning activities will appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile-section" class="content-section hidden">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark">Profile Information</h2>
+                            <p class="text-gray-600 mt-1">Update your personal details</p>
+                        </div>
+                        <div id="view-mode-buttons">
+                            <button onclick="toggleEditMode()" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold flex items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                                 <i class="fas fa-edit mr-2"></i>Edit Profile
                             </button>
                         </div>
-                        <div id="edit-mode-buttons" class="space-x-2 hidden">
-                            <button onclick="saveProfile()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors duration-200">
+                        <div id="edit-mode-buttons" class="hidden gap-3">
+                            <button onclick="saveProfile()" class="bg-success hover:bg-success/90 text-white px-6 py-3 rounded-xl font-semibold flex items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                                 <i class="fas fa-save mr-2"></i>Save Changes
                             </button>
-                            <button onclick="cancelEdit()" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-200">
+                            <button onclick="cancelEdit()" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                                 <i class="fas fa-times mr-2"></i>Cancel
                             </button>
                         </div>
                     </div>
 
-                    <form id="profile-form" method="post" enctype="multipart/form-data">
+                    <form id="profile-form" method="post" enctype="multipart/form-data" action="{% url 'user:user_profile' %}">
                         {% csrf_token %}
                         
                         <!-- Personal Information -->
-                        <div class="space-y-6">
-                            <div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-4">Personal Information</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                        <div id="first_name_view" class="view-field p-3 bg-gray-50 rounded-md">{{ user.first_name|default:"Not provided" }}</div>
-                                        <input id="first_name_edit" name="first_name" type="text" value="{{ user.first_name }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                        <div id="last_name_view" class="view-field p-3 bg-gray-50 rounded-md">{{ user.last_name|default:"Not provided" }}</div>
-                                        <input id="last_name_edit" name="last_name" type="text" value="{{ user.last_name }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                        <div id="phone_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.phone_number|default:"Not provided" }}</div>
-                                        <input id="phone_edit" name="phone_number" type="tel" value="{{ profile.phone_number }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
-                                        <div id="dob_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.date_of_birth|date:"F d, Y"|default:"Not provided" }}</div>
-                                        <input id="dob_edit" name="date_of_birth" type="date" value="{{ profile.date_of_birth|date:'Y-m-d' }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                    </div>
-                                    
-                                    <div class="md:col-span-2">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
-                                        <div id="gender_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.get_gender_display|default:"Not specified" }}</div>
-                                        <select id="gender_edit" name="gender" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                            <option value="">Choose...</option>
-                                            {% for value, label in profile.GENDER_CHOICES %}
-                                                <option value="{{ value }}" {% if profile.gender == value %}selected{% endif %}>{{ label }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-dark mb-6 pb-3 border-b-2 border-gray-200">Personal Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                                    <div id="first_name_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ user.first_name|default:"Not provided" }}</div>
+                                    <input id="first_name_edit" name="first_name" type="text" value="{{ user.first_name }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="Enter first name">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
+                                    <div id="last_name_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ user.last_name|default:"Not provided" }}</div>
+                                    <input id="last_name_edit" name="last_name" type="text" value="{{ user.last_name }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="Enter last name">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                                    <div class="p-3 bg-light rounded-lg text-dark border-2 border-gray-200">{{ user.email }}</div>
+                                    <p class="text-xs text-gray-500 mt-1">Email cannot be changed</p>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                                    <div id="phone_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.phone_number|default:"Not provided" }}</div>
+                                    <input id="phone_edit" name="phone_number" type="tel" value="{{ profile.phone_number }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="+1 (555) 000-0000">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
+                                    <div id="dob_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.date_of_birth|date:"F d, Y"|default:"Not provided" }}</div>
+                                    <input id="dob_edit" name="date_of_birth" type="date" value="{{ profile.date_of_birth|date:'Y-m-d' }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Gender</label>
+                                    <div id="gender_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.get_gender_display|default:"Not specified" }}</div>
+                                    <select id="gender_edit" name="gender" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300">
+                                        <option value="">Select gender...</option>
+                                        {% for value, label in profile.GENDER_CHOICES %}
+                                            <option value="{{ value }}" {% if profile.gender == value %}selected{% endif %}>{{ label }}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Address Information -->
-                            <div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-4">Address Information</h3>
-                                <div class="space-y-4">
+                        <!-- Address Information -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-dark mb-6 pb-3 border-b-2 border-gray-200">Address Information</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Street Address</label>
+                                    <div id="address_view" class="view-field p-3 bg-light rounded-lg text-dark min-h-[60px]">{{ profile.address|default:"Not provided" }}</div>
+                                    <textarea id="address_edit" name="address" rows="3" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="Enter your street address">{{ profile.address }}</textarea>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
-                                        <div id="address_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.address|default:"Not provided" }}</div>
-                                        <textarea id="address_edit" name="address" rows="3" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">{{ profile.address }}</textarea>
-                                    </div>
-                                    
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">City</label>
-                                            <div id="city_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.city|default:"Not provided" }}</div>
-                                            <input id="city_edit" name="city" type="text" value="{{ profile.city }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                        </div>
-                                        
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">State</label>
-                                            <div id="state_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.state|default:"Not provided" }}</div>
-                                            <input id="state_edit" name="state" type="text" value="{{ profile.state }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                        </div>
-                                        
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">PIN Code</label>
-                                            <div id="pin_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.pin_code|default:"Not provided" }}</div>
-                                            <input id="pin_edit" name="pin_code" type="text" value="{{ profile.pin_code }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                        </div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">City</label>
+                                        <div id="city_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.city|default:"Not provided" }}</div>
+                                        <input id="city_edit" name="city" type="text" value="{{ profile.city }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="City">
                                     </div>
                                     
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Country</label>
-                                        <div id="country_view" class="view-field p-3 bg-gray-50 rounded-md">{{ profile.country|default:"Not provided" }}</div>
-                                        <input id="country_edit" name="country" type="text" value="{{ profile.country }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">State/Province</label>
+                                        <div id="state_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.state|default:"Not provided" }}</div>
+                                        <input id="state_edit" name="state" type="text" value="{{ profile.state }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="State">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-700 mb-2">ZIP/PIN Code</label>
+                                        <div id="pin_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.pin_code|default:"Not provided" }}</div>
+                                        <input id="pin_edit" name="pin_code" type="text" value="{{ profile.pin_code }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="ZIP/PIN">
                                     </div>
                                 </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Country</label>
+                                    <div id="country_view" class="view-field p-3 bg-light rounded-lg text-dark">{{ profile.country|default:"Not provided" }}</div>
+                                    <input id="country_edit" name="country" type="text" value="{{ profile.country }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="Country">
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- Additional Information -->
-                            <div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-4">Additional Information</h3>
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Bio</label>
-                                        <div id="bio_view" class="view-field p-3 bg-gray-50 rounded-md min-h-[100px]">{{ profile.bio|default:"No bio provided" }}</div>
-                                        <textarea id="bio_edit" name="bio" rows="4" maxlength="500" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]" placeholder="Tell us about yourself...">{{ profile.bio }}</textarea>
+                        <!-- Additional Information -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-dark mb-6 pb-3 border-b-2 border-gray-200">Additional Information</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Bio</label>
+                                    <div id="bio_view" class="view-field p-3 bg-light rounded-lg text-dark min-h-[100px] whitespace-pre-wrap">{{ profile.bio|default:"Tell us about yourself..." }}</div>
+                                    <textarea id="bio_edit" name="bio" rows="5" maxlength="500" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="Write a short bio about yourself...">{{ profile.bio }}</textarea>
+                                    <p class="text-xs text-gray-500 mt-1 edit-field hidden">Maximum 500 characters</p>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Website/Portfolio</label>
+                                    <div id="website_view" class="view-field p-3 bg-light rounded-lg">
+                                        {% if profile.website %}
+                                            <a href="{{ profile.website }}" target="_blank" class="text-primary hover:underline flex items-center">
+                                                {{ profile.website }}
+                                                <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                                            </a>
+                                        {% else %}
+                                            <span class="text-dark">Not provided</span>
+                                        {% endif %}
                                     </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Website</label>
-                                        <div id="website_view" class="view-field p-3 bg-gray-50 rounded-md">
-                                            {% if profile.website %}
-                                                <a href="{{ profile.website }}" target="_blank" class="text-[#863F3F] hover:underline">{{ profile.website }}</a>
-                                            {% else %}
-                                                Not provided
-                                            {% endif %}
-                                        </div>
-                                        <input id="website_edit" name="website" type="url" value="{{ profile.website }}" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]" placeholder="https://example.com">
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Profile Picture</label>
-                                        <input id="profile_picture_edit" name="profile_picture" type="file" accept="image/*" class="edit-field hidden w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#863F3F] focus:border-[#863F3F]">
-                                    </div>
+                                    <input id="website_edit" name="website" type="url" value="{{ profile.website }}" class="edit-field hidden w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300" placeholder="https://yourwebsite.com">
+                                </div>
+                                
+                                <div class="edit-field hidden">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Profile Picture</label>
+                                    <input id="profile_picture_edit" name="profile_picture" type="file" accept="image/*" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all duration-300">
+                                    <p class="text-xs text-gray-500 mt-1">Recommended: Square image, at least 400x400px</p>
                                 </div>
                             </div>
                         </div>
@@ -373,206 +469,257 @@ Profile - {{ user.first_name|default:user.username }} | EduCounsel
                 </div>
             </div>
 
-            <!-- Your Edits Section -->
-            <div id="edits-section" class="content-section hidden">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Your Edits</h2>
-                    <div class="text-center py-12">
-                        <i class="fas fa-edit text-4xl text-gray-300 mb-4"></i>
-                        <p class="text-gray-500 text-lg">No edits yet</p>
-                        <p class="text-gray-400 text-sm mt-2">Your contributions will appear here</p>
+            <!-- Academic Info Section -->
+            <div id="academic-section" class="content-section hidden">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark">Academic Information</h2>
+                            <p class="text-gray-600 mt-1">Manage your educational background</p>
+                        </div>
+                        <button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold flex items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                            <i class="fas fa-plus mr-2"></i>Add Education
+                        </button>
+                    </div>
+
+                    <div class="text-center py-16">
+                        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-graduation-cap text-primary text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-dark mb-2">No academic information added</h3>
+                        <p class="text-gray-500 mb-6">Add your educational background to complete your profile</p>
+                        <button class="bg-white hover:bg-light text-primary border-2 border-primary px-6 py-3 rounded-xl font-semibold flex items-center mx-auto shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                            <i class="fas fa-plus mr-2"></i>Add Your First Education
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Links Section -->
-            <div id="quick-links-section" class="content-section hidden">
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Quick Links</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <a href="{% url 'user:change_password' %}" class="block p-4 border border-gray-200 rounded-lg hover:border-[#863F3F] hover:shadow-md transition-all duration-200">
-                            <div class="flex items-center space-x-3">
-                                <div class="bg-[#863F3F] text-white p-2 rounded-lg">
-                                    <i class="fas fa-key"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-medium text-gray-900">Change Password</h3>
-                                    <p class="text-sm text-gray-500">Update your password</p>
-                                </div>
-                            </div>
-                        </a>
-                        
-                        <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:border-[#863F3F] hover:shadow-md transition-all duration-200">
-                            <div class="flex items-center space-x-3">
-                                <div class="bg-[#863F3F] text-white p-2 rounded-lg">
-                                    <i class="fas fa-bell"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-medium text-gray-900">Notifications</h3>
-                                    <p class="text-sm text-gray-500">Manage your preferences</p>
-                                </div>
-                            </div>
-                        </a>
+            <!-- Purchases Section -->
+            <div id="purchases-section" class="content-section hidden">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark">My Purchases</h2>
+                            <p class="text-gray-600 mt-1">View your course purchases and orders</p>
+                        </div>
+                        <button class="bg-white hover:bg-light text-primary border-2 border-primary px-6 py-3 rounded-xl font-semibold flex items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                            <i class="fas fa-filter mr-2"></i>Filter
+                        </button>
+                    </div>
 
-                        {% if user.profile.is_super_admin or user.profile.is_admin %}
-                        <a href="{% url 'admindashboard:dashboard' %}" class="block p-4 border border-gray-200 rounded-lg hover:border-[#863F3F] hover:shadow-md transition-all duration-200">
-                            <div class="flex items-center space-x-3">
-                                <div class="bg-[#863F3F] text-white p-2 rounded-lg">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-medium text-gray-900">Dashboard</h3>
-                                    <p class="text-sm text-gray-500">View your dashboard</p>
-                                </div>
-                            </div>
+                    <div class="text-center py-16">
+                        <div class="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shopping-bag text-accent text-4xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-dark mb-2">No purchases yet</h3>
+                        <p class="text-gray-500 mb-6">Start your learning journey by browsing our courses</p>
+                        <a href="#" class="inline-flex bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                            <i class="fas fa-search mr-2"></i>Browse Courses
                         </a>
-                        {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="content-section hidden">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-dark">Settings</h2>
+                        <p class="text-gray-600 mt-1">Manage your account preferences</p>
+                    </div>
+
+                    <!-- Settings Options -->
+                    <div class="space-y-6">
+                        <!-- Account Settings -->
+                        <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-semibold text-dark mb-4">Account Settings</h3>
+                            <div class="space-y-4">
+                                <a href="{% url 'user:change_password' %}" class="flex items-center justify-between p-4 hover:bg-light rounded-lg transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                                            <i class="fas fa-key text-primary group-hover:text-white transition-colors duration-300"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-dark">Change Password</h4>
+                                            <p class="text-sm text-gray-500">Update your account password</p>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                                </a>
+                                
+                                <a href="#" class="flex items-center justify-between p-4 hover:bg-light rounded-lg transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center group-hover:bg-success group-hover:scale-110 transition-all duration-300">
+                                            <i class="fas fa-shield-alt text-success group-hover:text-white transition-colors duration-300"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-dark">Privacy & Security</h4>
+                                            <p class="text-sm text-gray-500">Manage your privacy settings</p>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400 group-hover:text-success transition-colors duration-300"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                            <h3 class="text-lg font-semibold text-dark mb-4">Notification Preferences</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-semibold text-dark">Email Notifications</h4>
+                                        <p class="text-sm text-gray-500">Receive updates via email</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-semibold text-dark">Push Notifications</h4>
+                                        <p class="text-sm text-gray-500">Receive push notifications</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Danger Zone -->
+                        <div class="border-2 border-danger/30 rounded-xl p-6 bg-danger/5 hover:border-danger/50 transition-all duration-300">
+                            <h3 class="text-lg font-semibold text-danger mb-4">Danger Zone</h3>
+                            <div class="space-y-4">
+                                <button class="w-full flex items-center justify-between p-4 bg-white hover:bg-danger/10 rounded-lg transition-all duration-300 border-2 border-danger/20 hover:border-danger group">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-danger/10 rounded-lg flex items-center justify-center group-hover:bg-danger group-hover:scale-110 transition-all duration-300">
+                                            <i class="fas fa-trash-alt text-danger group-hover:text-white transition-colors duration-300"></i>
+                                        </div>
+                                        <div class="text-left">
+                                            <h4 class="font-semibold text-dark">Delete Account</h4>
+                                            <p class="text-sm text-gray-500">Permanently delete your account</p>
+                                        </div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400 group-hover:text-danger transition-colors duration-300"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
 
-<script>
-// Mobile sidebar toggle
-function toggleMobileSidebar() {
-    const overlay = document.getElementById('mobile-sidebar-overlay');
-    const icon = document.getElementById('mobile-menu-icon');
-    
-    if (overlay.classList.contains('hidden')) {
-        // Show sidebar
-        overlay.classList.remove('hidden');
-        icon.className = 'fas fa-times mr-2';
-        document.body.style.overflow = 'hidden';
-    } else {
-        // Hide sidebar
-        overlay.classList.add('hidden');
-        icon.className = 'fas fa-bars mr-2';
-        document.body.style.overflow = 'auto';
-    }
+<style>
+.sidebar-link:hover {
+    background: #f1f5f9;
+    transform: translateX(4px);
 }
 
-// Show different sections
+.sidebar-link.active {
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+.sidebar-link.active i {
+    color: white;
+}
+</style>
+
+<script>
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+    document.body.style.overflow = menu.classList.contains('hidden') ? 'auto' : 'hidden';
+}
+
+// Section navigation
 function showSection(sectionName) {
-    // Hide all sections
     document.querySelectorAll('.content-section').forEach(section => {
         section.classList.add('hidden');
     });
     
-    // Remove active state from all nav items (both desktop and mobile)
-    document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(item => {
-        item.classList.remove('bg-[#863F3F]', 'text-white');
-        item.classList.add('text-gray-700', 'hover:bg-gray-50');
-    });
-    
-    // Show selected section
     document.getElementById(sectionName + '-section').classList.remove('hidden');
     
-    // Add active state to clicked nav item (find the clicked button)
-    const clickedButton = event.target.closest('.nav-item, .mobile-nav-item');
-    if (clickedButton) {
-        clickedButton.classList.add('bg-[#863F3F]', 'text-white');
-        clickedButton.classList.remove('text-gray-700', 'hover:bg-gray-50');
-    }
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active', 'text-white');
+        link.classList.add('text-gray-700');
+    });
     
-    // Close mobile sidebar after selection
+    const activeButtons = document.querySelectorAll(`button[onclick="showSection('${sectionName}')"], a[onclick="showSection('${sectionName}')"]`);
+    activeButtons.forEach(btn => {
+        btn.classList.add('active', 'text-white');
+        btn.classList.remove('text-gray-700');
+    });
+    
     if (window.innerWidth < 1024) {
-        const overlay = document.getElementById('mobile-sidebar-overlay');
-        overlay.classList.add('hidden');
-        document.getElementById('mobile-menu-icon').className = 'fas fa-bars mr-2';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Close mobile sidebar when clicking outside
-document.addEventListener('click', function(event) {
-    const overlay = document.getElementById('mobile-sidebar-overlay');
-    const sidebar = overlay.querySelector('div');
-    const menuButton = event.target.closest('button[onclick="toggleMobileSidebar()"]');
-    
-    if (!overlay.classList.contains('hidden') && 
-        !sidebar.contains(event.target) && 
-        !menuButton) {
-        overlay.classList.add('hidden');
-        document.getElementById('mobile-menu-icon').className = 'fas fa-bars mr-2';
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Initialize - show profile section by default
-document.addEventListener('DOMContentLoaded', function() {
-    // Simulate click on profile button for both desktop and mobile
-    const profileButton = document.querySelector('button[onclick="showSection(\'profile\')"]');
-    if (profileButton) {
-        // Manually trigger the section display
-        document.getElementById('profile-section').classList.remove('hidden');
-        profileButton.classList.add('bg-[#863F3F]', 'text-white');
-        profileButton.classList.remove('text-gray-700', 'hover:bg-gray-50');
-        
-        // Also update mobile nav
-        const mobileProfileButton = document.querySelector('.mobile-nav-item[onclick="showSection(\'profile\')"]');
-        if (mobileProfileButton) {
-            mobileProfileButton.classList.add('bg-[#863F3F]', 'text-white');
-            mobileProfileButton.classList.remove('text-gray-700', 'hover:bg-gray-50');
+        const menu = document.getElementById('mobile-menu');
+        if (!menu.classList.contains('hidden')) {
+            toggleMobileMenu();
         }
     }
     
-    // Auto-resize textarea
-    const bioTextarea = document.getElementById('bio_edit');
-    if (bioTextarea) {
-        bioTextarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-        });
-    }
-});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
+// Profile edit mode
 function toggleEditMode() {
     const viewFields = document.querySelectorAll('.view-field');
     const editFields = document.querySelectorAll('.edit-field');
     const viewButtons = document.getElementById('view-mode-buttons');
     const editButtons = document.getElementById('edit-mode-buttons');
     
-    const isEditMode = !editButtons.classList.contains('hidden');
-    
-    if (isEditMode) {
-        // Switch to view mode
-        viewFields.forEach(field => field.classList.remove('hidden'));
-        editFields.forEach(field => field.classList.add('hidden'));
-        viewButtons.classList.remove('hidden');
-        editButtons.classList.add('hidden');
-    } else {
-        // Switch to edit mode
-        viewFields.forEach(field => field.classList.add('hidden'));
-        editFields.forEach(field => field.classList.remove('hidden'));
-        viewButtons.classList.add('hidden');
-        editButtons.classList.remove('hidden');
-    }
+    viewFields.forEach(field => field.classList.toggle('hidden'));
+    editFields.forEach(field => field.classList.toggle('hidden'));
+    viewButtons.classList.toggle('hidden');
+    editButtons.classList.toggle('hidden');
 }
 
 function saveProfile() {
     const form = document.getElementById('profile-form');
-    const formData = new FormData(form);
-    
-    // Add first_name and last_name to form data since they're User model fields
-    formData.append('first_name', document.getElementById('first_name_edit').value);
-    formData.append('last_name', document.getElementById('last_name_edit').value);
-    
-    // Show loading state
     const saveBtn = document.querySelector('button[onclick="saveProfile()"]');
     const originalText = saveBtn.innerHTML;
     saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Saving...';
     saveBtn.disabled = true;
     
-    // Submit the form
     form.submit();
 }
 
 function cancelEdit() {
-    // Reload the page to reset all fields
     location.reload();
 }
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('hidden')) return;
+    
+    const menuButton = event.target.closest('button[onclick="toggleMobileMenu()"]');
+    const sidebar = menu.querySelector('div');
+    
+    if (!sidebar.contains(event.target) && !menuButton) {
+        toggleMobileMenu();
+    }
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('overview-section').classList.remove('hidden');
+    
+    const firstNavButton = document.querySelector('button[onclick="showSection(\'overview\')"]');
+    if (firstNavButton) {
+        firstNavButton.classList.add('active', 'text-white');
+        firstNavButton.classList.remove('text-gray-700');
+    }
+});
 </script>
 
 {% endblock %}
