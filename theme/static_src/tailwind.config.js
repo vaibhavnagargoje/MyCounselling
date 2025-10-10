@@ -10,11 +10,10 @@ module.exports = {
                 'inter': ['Inter', 'sans-serif'],
             },
             colors: {
-                primary: '#6366F1', // Changed to indigo (purple)
-                secondary: '#2563eb', // Blue for some buttons as requested
-                accent: '#0D9488', // Teal as accent color
+                primary: '#6366F1',
+                secondary: '#2563eb',
+                accent: '#0D9488',
                 dark: '#1e293b',
-                // Theme-specific colors for consistent usage
                 success: '#10b981', 
                 warning: '#f59e0b',
                 danger: '#ef4444',
@@ -27,18 +26,9 @@ module.exports = {
                 'fade-in-right': 'fadeInRight 0.8s ease-out',
                 'bounce-slow': 'bounce 2s infinite',
                 'pulse-slow': 'pulse 3s infinite',
-                'slide': 'slide 20s infinite linear',
-                'slideshow': 'slideshow 15s infinite',
-                'zoom-in': 'zoomIn 0.6s ease-out',
-                'rotate': 'rotate 20s linear infinite',
-                'float': 'float 4s ease-in-out infinite',
-                'fade-in-up': 'fadeInUp 0.8s ease-out',
-                'fade-in-left': 'fadeInLeft 0.8s ease-out',
-                'fade-in-right': 'fadeInRight 0.8s ease-out',
-                'bounce-slow': 'bounce 2s infinite',
-                'pulse-slow': 'pulse 3s infinite',
                 'slide-down': 'slideDown 0.3s ease-out',
-                'slide-up': 'slideUp 0.3s ease-out'
+                'slide-up': 'slideUp 0.3s ease-out',
+                'float': 'float 4s ease-in-out infinite',
             },
             keyframes: {
                 fadeInUp: {
@@ -82,6 +72,9 @@ module.exports = {
                     'from': { opacity: '0', transform: 'translateY(10px)' },
                     'to': { opacity: '1', transform: 'translateY(0)' }
                 }
+            },
+            backgroundImage: {
+                'gradient-hero': 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
             }
         },
     },

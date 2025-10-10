@@ -9,10 +9,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/core_base/style.css' %}">
+
+    <style>
+        .sidebar-item {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-item:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-item.active {
+            background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .filter-tab {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-tab.active {
+            background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
+            color: white;
+        }
+
+        .course-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
 
     {% block head %}
     {% endblock head %}
@@ -28,7 +81,7 @@
                 <div class="w-10 h-10 bg-gradient-to-r from-primary to-indigo-700 rounded-lg flex items-center justify-center mr-3">
                     <i class="fas fa-graduation-cap text-white text-lg"></i>
                 </div>
-                <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-700 bg-clip-text text-transparent">EduCoach</h1>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-700 bg-clip-text text-transparent">Cw</h1>
             </div>
             
             <!-- Batch Dropdown -->
@@ -52,7 +105,6 @@
                                 <i class="fas fa-building text-primary mr-3"></i>
                                 <span>Pharmacy</span>
                             </a>
-                            
                         </div>
                     </div>
                 </div>
@@ -83,56 +135,68 @@
         <div class="w-64 bg-white shadow-lg h-screen fixed left-0 top-16 overflow-y-auto">
             <div class="p-4">
                 <nav class="space-y-2">
-                    <a href="{% url 'dashboard:home:home' %}" class="sidebar-item {% if 'home' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
+                    <a href="{% url 'dashboard:home:home' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                         <i class="fas fa-book-open mr-3"></i>
                         <span class="font-medium">Home</span>
                     </a>
-
-                    <a href="{% url 'dashboard:colleges:colleges' %}" class="sidebar-item {% if 'testseries' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
+                    <a href="{% url 'dashboard:products:products' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white {% if 'products' in request.resolver_match.url_name %}active{% endif %}">
+                        <i class="fas fa-shopping-bag mr-3"></i>
+                        <span class="font-medium">Counselling Plans</span>
+                    </a>
+                    <a href="{% url 'dashboard:colleges:colleges' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white {% if 'colleges' in request.resolver_match.url_name %}active{% endif %}">
                         <i class="fas fa-clipboard-list mr-3"></i>
                         <span class="font-medium">College Info</span>
-                        </a>
-                        <a href="#" class="sidebar-item {% if 'store' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                            <i class="fas fa-lightbulb  mr-3"></i>
-                            <span class="font-medium">College Predictor</span>
-                            </a>
-                            {% comment %} 
-                    <a href="{% url 'dashboard:performance:performance' %}" class="sidebar-item {% if 'performance' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                        <i class="fas fa-chart-line mr-3"></i>
-                        <span class="font-medium">Performance</span>
                     </a>
-                    <a href="{% url 'dashboard:doubts:doubts' %}" class="sidebar-item {% if 'doubts' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                        <i class="fas fa-question-circle mr-3"></i>
-                        <span class="font-medium">Doubts</span>
+                    <a href="#" class="sidebar-item flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
+                        <i class="fas fa-lightbulb mr-3"></i>
+                        <span class="font-medium">College Predictor</span>
                     </a>
-                    <a href="{% url 'dashboard:library:library' %}" class="sidebar-item {% if 'library' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                        <i class="fas fa-book mr-3"></i>
-                        <span class="font-medium">Library</span>
-                    </a>
-                    <a href="{% url 'dashboard:support:support' %}" class="sidebar-item {% if 'support' in request.resolver_match.url_name %}active{% endif %} flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white">
-                        <i class="fas fa-headset mr-3"></i>
-                        <span class="font-medium">Support</span>
-                    </a> {% endcomment %}
                 </nav>
             </div>
         </div>
 
-
         {% block content %}
-
         {% endblock %}
     </div>
-
-          
-    
 </main>
 
 <!-- Load JavaScript files before closing body tag -->
 <script src="{% static 'js/core_base/script.js' %}"></script>
 
+<script>
+    // Batch Dropdown Functionality
+    const batchDropdown = document.getElementById('batchDropdown');
+    const batchMenu = document.getElementById('batchMenu');
+    const dropdownIcon = document.getElementById('dropdownIcon');
+    const selectedBatch = document.getElementById('selectedBatch');
+    const batchOptions = document.querySelectorAll('.batch-option');
+
+    batchDropdown.addEventListener('click', () => {
+        batchMenu.classList.toggle('active');
+        dropdownIcon.classList.toggle('rotate-180');
+    });
+
+    batchOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.preventDefault();
+            const batchName = option.getAttribute('data-batch');
+            selectedBatch.textContent = batchName;
+            batchMenu.classList.remove('active');
+            dropdownIcon.classList.remove('rotate-180');
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!batchDropdown.contains(e.target)) {
+            batchMenu.classList.remove('active');
+            dropdownIcon.classList.remove('rotate-180');
+        }
+    });
+</script>
+
 {% block script %}
 {% endblock script %}
-
 
 </body>
 </html>
