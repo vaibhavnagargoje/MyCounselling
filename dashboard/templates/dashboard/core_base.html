@@ -81,7 +81,7 @@
                 <div class="w-10 h-10 bg-gradient-to-r from-primary to-indigo-700 rounded-lg flex items-center justify-center mr-3">
                     <i class="fas fa-graduation-cap text-white text-lg"></i>
                 </div>
-                <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-700 bg-clip-text text-transparent">Cw</h1>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-700 bg-clip-text text-transparent">EduCounsel</h1>
             </div>
             
             <!-- Batch Dropdown -->
@@ -119,13 +119,13 @@
                 </button>
                 
                 <!-- Profile -->
-                <div class="flex items-center space-x-3">
+                <a href="{% url 'user:user_profile' %}" class="flex items-center space-x-3 hover:opacity-80 transition duration-300">
                     <div class="text-right">
-                        <p class="text-sm font-medium text-gray-700">Hi, Vaibhav</p>
-                        <p class="text-xs text-gray-500">Student</p>
+                        <p class="text-sm font-medium text-gray-700">Hi, {{ request.user.get_full_name|default:request.user.username }}</p>
+                        <p class="text-xs text-gray-500">{{ request.user.user_type|default:'Student' }}</p>
                     </div>
-                    <img src="/placeholder.svg?height=40&width=40" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer hover:border-indigo-700 transition duration-300">
-                </div>
+                    <img src="{% if request.user.profile.profile_picture %}{{ request.user.profile.profile_picture.url }}{% else %}/placeholder.svg?height=40&width=40{% endif %}" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer hover:border-indigo-700 transition duration-300">
+                </a>
             </div>
         </div>
     </nav>

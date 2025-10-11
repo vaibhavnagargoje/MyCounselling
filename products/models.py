@@ -29,9 +29,9 @@ class ExamType(models.Model):
         return self.name
 
 
-class ServiceCategory(models.Model):
+class ProductCategory(models.Model):
     """
-    Categories for different types of services
+    Categories for different types of products
     E.g., Counselling, College Predictor, Mock Tests, etc.
     """
     name = models.CharField(max_length=100, unique=True)
@@ -44,21 +44,21 @@ class ServiceCategory(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
-        db_table = 'service_categories'
-        verbose_name = 'Service Category'
-        verbose_name_plural = 'Service Categories'
+        db_table = 'product_categories'
+        verbose_name = 'Product Category'
+        verbose_name_plural = 'Product Categories'
         ordering = ['display_order', 'name']
     
     def __str__(self):
         return self.name
 
 
-class Service(models.Model):
+class MyProducts(models.Model):
     """
-    Individual services that can be sold independently or bundled
+    Individual products that can be sold independently or bundled
     E.g., JEE Counselling, NEET Counselling, College Predictor, etc.
     """
-    SERVICE_TYPE_CHOICES = [
+    PRODUCT_TYPE_CHOICES = [
         ('counselling', 'Counselling'),
         ('predictor', 'College Predictor'),
         ('college_insights', 'College Insights'),
@@ -68,25 +68,25 @@ class Service(models.Model):
     
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    category = models.ForeignKey(ServiceCategory, on_delete=models.PROTECT, related_name='services')
-    service_type = models.CharField(max_length=20, choices=SERVICE_TYPE_CHOICES)
-    exam_type = models.ForeignKey(ExamType, on_delete=models.SET_NULL, null=True, blank=True, related_name='services')
+    category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='products',blank=True, null=True)
+    product_type = models.CharField(max_length=20, choices=PRODUCT_TYPE_CHOICES)
+    exam_type = models.ForeignKey(ExamType, on_delete=models.SET_NULL, null=True, blank=True, related_name='products')
     
     description = models.TextField(blank=True, null=True)
     short_description = models.CharField(max_length=300, blank=True)
     
-    # Features as JSON field or use separate model for more flexibility
-    features = models.JSONField(default=list, help_text="List of service features", blank=True, null=True)
+    # Features as JSON field
+    features = models.JSONField(default=list, help_text="List of product features", blank=True, null=True)
     
-    # Pricing (can be overridden in plans)
+    # Pricing (can be overridden in bundled plans)
     base_price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     
-    # Service validity
-    validity_days = models.IntegerField(default=365, help_text="Number of days the service is valid")
+    # Product validity
+    validity_days = models.IntegerField(default=365, help_text="Number of days the product is valid")
     
     # Media
-    image = models.ImageField(upload_to='services/', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='services/thumbnails/', blank=True, null=True)
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='products/thumbnails/', blank=True, null=True)
     
     # Status
     is_active = models.BooleanField(default=True)
@@ -98,22 +98,22 @@ class Service(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
-        db_table = 'services'
-        verbose_name = 'Service'
-        verbose_name_plural = 'Services'
+        db_table = 'my_products'
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
         ordering = ['display_order', 'name']
         indexes = [
             models.Index(fields=['slug']),
-            models.Index(fields=['service_type', 'is_active']),
+            models.Index(fields=['product_type', 'is_active']),
         ]
     
     def __str__(self):
         return self.name
 
 
-class Plan(models.Model):
+class BundledPlan(models.Model):
     """
-    Subscription plans that can bundle multiple services
+    Bundled plans that can include multiple products
     E.g., Premium Engineering Package, NEET Complete, Individual Services
     """
     PLAN_TYPE_CHOICES = [
@@ -130,8 +130,8 @@ class Plan(models.Model):
     description = models.TextField(blank=True, null=True)
     short_description = models.CharField(max_length=300, blank=True)
     
-    # Services included in this plan
-    services = models.ManyToManyField(Service, through='PlanService', related_name='plans')
+    # Products included in this bundled plan
+    products = models.ManyToManyField(MyProducts, through='PlanProduct', related_name='bundled_plans')
     
     # Pricing
     original_price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
@@ -148,8 +148,8 @@ class Plan(models.Model):
     features = models.JSONField(default=list, help_text="List of plan features", blank=True, null=True)
     
     # Media
-    image = models.ImageField(upload_to='plans/', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='plans/thumbnails/', blank=True, null=True)
+    image = models.ImageField(upload_to='bundled_plans/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='bundled_plans/thumbnails/', blank=True, null=True)
     
     # Status and visibility
     is_active = models.BooleanField(default=True)
@@ -168,9 +168,9 @@ class Plan(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
-        db_table = 'plans'
-        verbose_name = 'Plan'
-        verbose_name_plural = 'Plans'
+        db_table = 'bundled_plans'
+        verbose_name = 'Bundled Plan'
+        verbose_name_plural = 'Bundled Plans'
         ordering = ['display_order', 'name']
         indexes = [
             models.Index(fields=['slug']),
@@ -193,41 +193,42 @@ class Plan(models.Model):
         super().save(*args, **kwargs)
 
 
-class PlanService(models.Model):
+class PlanProduct(models.Model):
     """
-    Through model for Plan-Service relationship
-    Allows customization of service within a plan
+    Through model for BundledPlan-Product relationship
+    Allows customization of product within a bundled plan
     """
-    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
+    plan = models.ForeignKey(BundledPlan, on_delete=models.CASCADE)
+    product = models.ForeignKey(MyProducts, on_delete=models.CASCADE)
     
-    # Custom validity for this service in this plan (optional)
+    # Custom validity for this product in this plan (optional)
     custom_validity_days = models.IntegerField(
         null=True,
         blank=True,
-        help_text="Override service validity for this plan"
+        help_text="Override product validity for this plan"
     )
     
-    # Order in which services are displayed in the plan
+    # Order in which products are displayed in the plan
     display_order = models.IntegerField(default=0)
     
-    # Additional features specific to this service in this plan
+    # Additional features specific to this product in this plan
     additional_features = models.JSONField(default=list, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        db_table = 'plan_services'
-        verbose_name = 'Plan Service'
-        verbose_name_plural = 'Plan Services'
-        unique_together = [['plan', 'service']]
+        db_table = 'plan_products'
+        verbose_name = 'Plan Product'
+        verbose_name_plural = 'Plan Products'
+        unique_together = [['plan', 'product']]
         ordering = ['display_order']
     
     def __str__(self):
-        return f"{self.plan.name} - {self.service.name}"
+        return f"{self.plan.name} - {self.product.name}"
     
     def get_validity_days(self):
-        """Get validity days, using custom if available, otherwise service default"""
+        """Get validity days, using custom if available, otherwise product default"""
+        return self.custom_validity_days if self.custom_validity_days else self.product.validity_days
         return self.custom_validity_days if self.custom_validity_days else self.service.validity_days
 
 
@@ -244,25 +245,13 @@ class Order(models.Model):
         ('cancelled', 'Cancelled'),
     ]
     
-    PAYMENT_METHOD_CHOICES = [
-        ('razorpay', 'Razorpay'),
-        ('paytm', 'Paytm'),
-        ('phonepe', 'PhonePe'),
-        ('gpay', 'Google Pay'),
-        ('card', 'Card'),
-        ('upi', 'UPI'),
-        ('netbanking', 'Net Banking'),
-        ('wallet', 'Wallet'),
-        ('other', 'Other'),
-    ]
-    
     # Order identification
     order_id = models.CharField(max_length=100, unique=True, editable=False)
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='orders')
     
     # What was purchased
-    plan = models.ForeignKey(Plan, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
-    service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
+    bundled_plan = models.ForeignKey(BundledPlan, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
+    product = models.ForeignKey(MyProducts, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
     
     # Pricing details (store at time of purchase)
     original_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -276,11 +265,10 @@ class Order(models.Model):
     # Tax details
     tax_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     
-    # Payment details
-    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES, blank=True)
-    payment_gateway_order_id = models.CharField(max_length=200, blank=True)
-    payment_gateway_payment_id = models.CharField(max_length=200, blank=True)
-    payment_gateway_signature = models.CharField(max_length=500, blank=True)
+    # Razorpay payment details
+    razorpay_order_id = models.CharField(max_length=200, blank=True, help_text="Razorpay Order ID")
+    razorpay_payment_id = models.CharField(max_length=200, blank=True, help_text="Razorpay Payment ID")
+    razorpay_signature = models.CharField(max_length=500, blank=True, help_text="Razorpay Payment Signature")
     
     # Status
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
@@ -329,33 +317,33 @@ class Order(models.Model):
     def create_user_subscription(self):
         """Create user subscription after successful payment"""
         if self.status == 'completed':
-            if self.plan:
-                # Create subscriptions for all services in the plan
-                for plan_service in self.plan.planservice_set.all():
+            if self.bundled_plan:
+                # Create subscriptions for all products in the bundled plan
+                for plan_product in self.bundled_plan.planproduct_set.all():
                     UserSubscription.objects.create(
                         user=self.user,
                         order=self,
-                        plan=self.plan,
-                        service=plan_service.service,
-                        validity_days=plan_service.get_validity_days(),
+                        bundled_plan=self.bundled_plan,
+                        product=plan_product.product,
+                        validity_days=plan_product.get_validity_days(),
                         start_date=timezone.now(),
-                        expiry_date=timezone.now() + timezone.timedelta(days=plan_service.get_validity_days())
+                        expiry_date=timezone.now() + timezone.timedelta(days=plan_product.get_validity_days())
                     )
-            elif self.service:
-                # Create subscription for individual service
+            elif self.product:
+                # Create subscription for individual product
                 UserSubscription.objects.create(
                     user=self.user,
                     order=self,
-                    service=self.service,
-                    validity_days=self.service.validity_days,
+                    product=self.product,
+                    validity_days=self.product.validity_days,
                     start_date=timezone.now(),
-                    expiry_date=timezone.now() + timezone.timedelta(days=self.service.validity_days)
+                    expiry_date=timezone.now() + timezone.timedelta(days=self.product.validity_days)
                 )
 
 
 class UserSubscription(models.Model):
     """
-    Track user's active subscriptions and access to services
+    Track user's active subscriptions and access to products
     """
     STATUS_CHOICES = [
         ('active', 'Active'),
@@ -369,8 +357,8 @@ class UserSubscription(models.Model):
     order = models.ForeignKey(Order, on_delete=models.PROTECT, related_name='subscriptions')
     
     # What was purchased
-    plan = models.ForeignKey(Plan, on_delete=models.PROTECT, null=True, blank=True, related_name='subscriptions')
-    service = models.ForeignKey(Service, on_delete=models.PROTECT, related_name='subscriptions')
+    bundled_plan = models.ForeignKey(BundledPlan, on_delete=models.PROTECT, null=True, blank=True, related_name='subscriptions')
+    product = models.ForeignKey(MyProducts, on_delete=models.PROTECT, related_name='subscriptions', blank=True, null=True)
     
     # Validity
     validity_days = models.IntegerField()
@@ -397,11 +385,11 @@ class UserSubscription(models.Model):
         indexes = [
             models.Index(fields=['user', 'status', 'is_active']),
             models.Index(fields=['expiry_date']),
-            models.Index(fields=['service', 'status']),
+            models.Index(fields=['product', 'status']),
         ]
     
     def __str__(self):
-        return f"{self.user.username} - {self.service.name}"
+        return f"{self.user.username} - {self.product.name}"
     
     def is_valid(self):
         """Check if subscription is still valid"""
@@ -425,11 +413,11 @@ class UserSubscription(models.Model):
         self.access_count += 1
         self.save()
     
-    def days_remaining(self):
-        """Get days remaining in subscription"""
-        if self.expiry_date > timezone.now():
-            return (self.expiry_date - timezone.now()).days
-        return 0
+    # def days_remaining(self):
+    #     """Get days remaining in subscription"""
+    #     if self.expiry_date >= timezone.now():
+    #         return (self.expiry_date - timezone.now()).days
+    #     return 0
 
 
 class Coupon(models.Model):
@@ -479,8 +467,8 @@ class Coupon(models.Model):
     current_uses = models.IntegerField(default=0)
     
     # Applicable to
-    applicable_plans = models.ManyToManyField(Plan, blank=True, related_name='coupons')
-    applicable_services = models.ManyToManyField(Service, blank=True, related_name='coupons')
+    applicable_plans = models.ManyToManyField(BundledPlan, blank=True, related_name='coupons')
+    applicable_products = models.ManyToManyField(MyProducts, blank=True, related_name='coupons')
     
     # Validity
     valid_from = models.DateTimeField()

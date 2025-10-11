@@ -5,7 +5,7 @@ Helper functions to check user access, manage subscriptions, etc.
 
 from django.utils import timezone
 from django.db.models import Q
-from .models import UserSubscription, Service, Plan
+from .models import UserSubscription, MyProducts, BundledPlan
 
 
 class SubscriptionManager:
@@ -14,9 +14,9 @@ class SubscriptionManager:
     def __init__(self, user):
         self.user = user
     
-    def has_active_subscription(self, service_slug=None, service_type=None):
+    def has_active_subscription(self, product_slug=None, service_type=None):
         """
-        Check if user has active subscription for a service or service type
+        Check if user has active subscription for a product or service type
         """
         query = Q(
             user=self.user,
@@ -25,11 +25,11 @@ class SubscriptionManager:
             expiry_date__gt=timezone.now()
         )
         
-        if service_slug:
-            query &= Q(service__slug=service_slug)
+        if product_slug:
+            query &= Q(product__slug=product_slug)
         
         if service_type:
-            query &= Q(service__service_type=service_type)
+            query &= Q(product__service_type=service_type)
         
         return UserSubscription.objects.filter(query).exists()
     
@@ -40,24 +40,24 @@ class SubscriptionManager:
             status='active',
             is_active=True,
             expiry_date__gt=timezone.now()
-        ).select_related('service', 'plan', 'order')
+        ).select_related('product', 'bundled_plan', 'order')
     
-    def get_subscription_for_service(self, service_slug):
-        """Get active subscription for specific service"""
+    def get_subscription_for_product(self, product_slug):
+        """Get active subscription for specific product"""
         return UserSubscription.objects.filter(
             user=self.user,
-            service__slug=service_slug,
+            product__slug=product_slug,
             status='active',
             is_active=True,
             expiry_date__gt=timezone.now()
-        ).select_related('service', 'plan', 'order').first()
+        ).select_related('product', 'bundled_plan', 'order').first()
     
     def get_expired_subscriptions(self):
         """Get all expired subscriptions for user"""
         return UserSubscription.objects.filter(
             user=self.user,
             expiry_date__lte=timezone.now()
-        ).select_related('service', 'plan', 'order')
+        ).select_related('product', 'bundled_plan', 'order')
     
     def get_expiring_soon(self, days=7):
         """Get subscriptions expiring within specified days"""
@@ -68,17 +68,17 @@ class SubscriptionManager:
             is_active=True,
             expiry_date__lte=expiry_threshold,
             expiry_date__gt=timezone.now()
-        ).select_related('service', 'plan', 'order')
+        ).select_related('product', 'bundled_plan', 'order')
     
-    def access_service(self, service_slug):
+    def access_product(self, product_slug):
         """
-        Record service access and return subscription info
+        Record product access and return subscription info
         Returns: (has_access, subscription, message)
         """
-        subscription = self.get_subscription_for_service(service_slug)
+        subscription = self.get_subscription_for_product(product_slug)
         
         if not subscription:
-            return False, None, "You don't have an active subscription for this service."
+            return False, None, "You don't have an active subscription for this product."
         
         # Check if expired
         if not subscription.is_valid():
@@ -105,52 +105,52 @@ class SubscriptionManager:
             'total_subscriptions': active.count() + expired.count()
         }
     
-    def can_purchase_plan(self, plan):
+    def can_purchase_bundled_plan(self, bundled_plan):
         """
-        Check if user can purchase a plan
+        Check if user can purchase a bundled plan
         Returns: (can_purchase, message)
         """
-        if not plan.is_active:
+        if not bundled_plan.is_active:
             return False, "This plan is not available."
         
         # Check max purchases limit
-        if plan.max_purchases_per_user > 0:
+        if bundled_plan.max_purchases_per_user > 0:
             user_purchases = UserSubscription.objects.filter(
                 user=self.user,
-                plan=plan
+                bundled_plan=bundled_plan
             ).count()
             
-            if user_purchases >= plan.max_purchases_per_user:
+            if user_purchases >= bundled_plan.max_purchases_per_user:
                 return False, f"You have reached the maximum purchase limit for this plan."
         
         return True, "You can purchase this plan."
     
-    def get_services_with_access(self):
-        """Get list of service slugs user has access to"""
+    def get_products_with_access(self):
+        """Get list of product slugs user has access to"""
         active_subscriptions = self.get_active_subscriptions()
-        return [sub.service.slug for sub in active_subscriptions]
+        return [sub.product.slug for sub in active_subscriptions]
     
-    def has_purchased_service(self, service_slug):
-        """Check if user has ever purchased a service (active or expired)"""
+    def has_purchased_product(self, product_slug):
+        """Check if user has ever purchased a product (active or expired)"""
         return UserSubscription.objects.filter(
             user=self.user,
-            service__slug=service_slug
+            product__slug=product_slug
         ).exists()
 
 
-def check_service_access(user, service_slug):
+def check_product_access(user, product_slug):
     """
-    Decorator helper to check if user has access to a service
-    Usage: has_access, subscription, message = check_service_access(request.user, 'jee-counselling')
+    Decorator helper to check if user has access to a product
+    Usage: has_access, subscription, message = check_product_access(request.user, 'jee-counselling')
     """
     manager = SubscriptionManager(user)
-    return manager.access_service(service_slug)
+    return manager.access_product(product_slug)
 
 
-def get_user_active_services(user):
-    """Get list of all services user has active access to"""
+def get_user_active_products(user):
+    """Get list of all products user has active access to"""
     manager = SubscriptionManager(user)
-    return manager.get_services_with_access()
+    return manager.get_products_with_access()
 
 
 def update_expired_subscriptions():
@@ -186,7 +186,7 @@ def send_expiry_notifications():
         is_active=True,
         expiry_date__lte=expiry_threshold,
         expiry_date__gt=timezone.now()
-    ).select_related('user', 'service')
+    ).select_related('user', 'product')
     
     notifications_sent = 0
     for subscription in expiring_subscriptions:
@@ -197,32 +197,32 @@ def send_expiry_notifications():
     return notifications_sent
 
 
-def get_popular_plans(limit=3):
-    """Get popular plans"""
-    return Plan.objects.filter(
+def get_popular_bundled_plans(limit=3):
+    """Get popular bundled plans"""
+    return BundledPlan.objects.filter(
         is_active=True,
         is_popular=True
     ).order_by('display_order')[:limit]
 
 
-def get_featured_plans(limit=6):
-    """Get featured plans"""
-    return Plan.objects.filter(
+def get_featured_bundled_plans(limit=6):
+    """Get featured bundled plans"""
+    return BundledPlan.objects.filter(
         is_active=True,
         is_featured=True
     ).order_by('display_order')[:limit]
 
 
-def get_all_active_plans():
-    """Get all active plans"""
-    return Plan.objects.filter(
+def get_all_active_bundled_plans():
+    """Get all active bundled plans"""
+    return BundledPlan.objects.filter(
         is_active=True
-    ).prefetch_related('services').order_by('display_order', 'name')
+    ).prefetch_related('products').order_by('display_order', 'name')
 
 
-def get_services_by_category(category_slug=None):
-    """Get services optionally filtered by category"""
-    queryset = Service.objects.filter(is_active=True)
+def get_products_by_category(category_slug=None):
+    """Get products optionally filtered by category"""
+    queryset = MyProducts.objects.filter(is_active=True)
     
     if category_slug:
         queryset = queryset.filter(category__slug=category_slug)
@@ -230,17 +230,17 @@ def get_services_by_category(category_slug=None):
     return queryset.order_by('display_order', 'name')
 
 
-def get_services_by_type(service_type):
-    """Get services by type (counselling, predictor, etc.)"""
-    return Service.objects.filter(
+def get_products_by_type(service_type):
+    """Get products by type (counselling, predictor, etc.)"""
+    return MyProducts.objects.filter(
         is_active=True,
         service_type=service_type
     ).order_by('display_order', 'name')
 
 
-def get_services_by_exam(exam_type):
-    """Get services by exam type"""
-    return Service.objects.filter(
+def get_products_by_exam(exam_type):
+    """Get products by exam type"""
+    return MyProducts.objects.filter(
         is_active=True,
         exam_type=exam_type
     ).order_by('display_order', 'name')

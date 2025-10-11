@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
-    ExamType, ServiceCategory, Service, Plan, PlanService,
+    ExamType, ProductCategory, MyProducts, BundledPlan, PlanProduct,
     Order, UserSubscription, Coupon, CouponUsage
 )
 
@@ -23,8 +23,8 @@ class ExamTypeAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(ServiceCategory)
-class ServiceCategoryAdmin(admin.ModelAdmin):
+@admin.register(ProductCategory)
+class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'is_active', 'display_order', 'created_at']
     list_filter = ['is_active', 'created_at']
     search_fields = ['name', 'description']
@@ -32,20 +32,20 @@ class ServiceCategoryAdmin(admin.ModelAdmin):
     ordering = ['display_order', 'name']
 
 
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
+@admin.register(MyProducts)
+class MyProductsAdmin(admin.ModelAdmin):
     list_display = [
-        'name', 'category', 'service_type', 'exam_type',
+        'name', 'category', 'product_type', 'exam_type',
         'base_price', 'validity_days', 'is_active', 'is_featured'
     ]
-    list_filter = ['category', 'service_type', 'exam_type', 'is_active', 'is_featured']
+    list_filter = ['category', 'product_type', 'exam_type', 'is_active', 'is_featured']
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
     ordering = ['display_order', 'name']
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('name', 'slug', 'category', 'service_type', 'exam_type')
+            'fields': ('name', 'slug', 'category', 'product_type', 'exam_type')
         }),
         ('Description', {
             'fields': ('short_description', 'description', 'features')
@@ -62,14 +62,14 @@ class ServiceAdmin(admin.ModelAdmin):
     )
 
 
-class PlanServiceInline(admin.TabularInline):
-    model = PlanService
+class PlanProductInline(admin.TabularInline):
+    model = PlanProduct
     extra = 1
-    fields = ['service', 'custom_validity_days', 'display_order']
+    fields = ['product', 'custom_validity_days', 'display_order']
 
 
-@admin.register(Plan)
-class PlanAdmin(admin.ModelAdmin):
+@admin.register(BundledPlan)
+class BundledPlanAdmin(admin.ModelAdmin):
     list_display = [
         'name', 'plan_type', 'selling_price', 'original_price',
         'discount_percentage', 'is_active', 'is_popular', 'is_featured'
@@ -77,7 +77,7 @@ class PlanAdmin(admin.ModelAdmin):
     list_filter = ['plan_type', 'is_active', 'is_popular', 'is_featured']
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
-    inlines = [PlanServiceInline]
+    inlines = [PlanProductInline]
     ordering = ['display_order', 'name']
     
     fieldsets = (
@@ -111,12 +111,12 @@ class PlanAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         'order_id', 'user', 'get_product', 'final_price',
-        'status', 'payment_method', 'created_at'
+        'status', 'created_at'
     ]
-    list_filter = ['status', 'payment_method', 'created_at']
+    list_filter = ['status', 'created_at']
     search_fields = [
         'order_id', 'user__username', 'user__email',
-        'payment_gateway_order_id', 'payment_gateway_payment_id'
+        'razorpay_order_id', 'razorpay_payment_id'
     ]
     readonly_fields = [
         'order_id', 'created_at', 'updated_at', 'payment_completed_at'
@@ -125,7 +125,7 @@ class OrderAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Order Information', {
-            'fields': ('order_id', 'user', 'plan', 'service')
+            'fields': ('order_id', 'user', 'bundled_plan', 'product')
         }),
         ('Pricing Details', {
             'fields': (
@@ -133,10 +133,11 @@ class OrderAdmin(admin.ModelAdmin):
                 'coupon_discount', 'tax_amount', 'final_price'
             )
         }),
-        ('Payment Details', {
+        ('Razorpay Payment Details', {
             'fields': (
-                'payment_method', 'payment_gateway_order_id',
-                'payment_gateway_payment_id', 'payment_gateway_signature'
+                'razorpay_order_id',
+                'razorpay_payment_id',
+                'razorpay_signature'
             )
         }),
         ('Status', {
@@ -151,10 +152,10 @@ class OrderAdmin(admin.ModelAdmin):
     )
     
     def get_product(self, obj):
-        if obj.plan:
-            return format_html('<span style="color: blue;">📦 {}</span>', obj.plan.name)
-        elif obj.service:
-            return format_html('<span style="color: green;">🎯 {}</span>', obj.service.name)
+        if obj.bundled_plan:
+            return format_html('<span style="color: blue;">📦 {}</span>', obj.bundled_plan.name)
+        elif obj.product:
+            return format_html('<span style="color: green;">🎯 {}</span>', obj.product.name)
         return '-'
     get_product.short_description = 'Product'
     
@@ -180,26 +181,22 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(UserSubscription)
 class UserSubscriptionAdmin(admin.ModelAdmin):
     list_display = [
-        'user', 'service', 'get_plan', 'status',
-        'start_date', 'expiry_date', 'days_remaining_display', 'is_active'
+        'user', 'product', 'get_plan', 'status',
+        'start_date', 'expiry_date', 'is_active'
     ]
-    list_filter = ['status', 'is_active', 'service__category', 'created_at']
-    search_fields = ['user__username', 'user__email', 'service__name']
+    list_filter = ['status', 'is_active', 'product__category', 'created_at']
+    search_fields = ['user__username', 'user__email', 'product__name']
     readonly_fields = [
-        'created_at', 'updated_at', 'last_accessed',
-        'access_count', 'days_remaining_display'
+        'created_at', 'updated_at', 'last_accessed', 'access_count'
     ]
     ordering = ['-created_at']
     
     fieldsets = (
         ('User & Product', {
-            'fields': ('user', 'order', 'plan', 'service')
+            'fields': ('user', 'order', 'bundled_plan', 'product')
         }),
         ('Validity', {
-            'fields': (
-                'validity_days', 'start_date', 'expiry_date',
-                'days_remaining_display'
-            )
+            'fields': ('validity_days', 'start_date', 'expiry_date')
         }),
         ('Status', {
             'fields': ('status', 'is_active')
@@ -213,19 +210,8 @@ class UserSubscriptionAdmin(admin.ModelAdmin):
     )
     
     def get_plan(self, obj):
-        return obj.plan.name if obj.plan else '-'
-    get_plan.short_description = 'Plan'
-    
-    def days_remaining_display(self, obj):
-        days = obj.days_remaining()
-        if days > 0:
-            color = 'green' if days > 30 else 'orange' if days > 7 else 'red'
-            return format_html(
-                '<span style="color: {}; font-weight: bold;">{} days</span>',
-                color, days
-            )
-        return format_html('<span style="color: red;">Expired</span>')
-    days_remaining_display.short_description = 'Days Remaining'
+        return obj.bundled_plan.name if obj.bundled_plan else '-'
+    get_plan.short_description = 'Bundled Plan'
     
     actions = ['check_and_update_status', 'mark_as_cancelled']
     
@@ -251,7 +237,7 @@ class CouponAdmin(admin.ModelAdmin):
     ]
     list_filter = ['discount_type', 'is_active', 'valid_from', 'valid_until']
     search_fields = ['code', 'description']
-    filter_horizontal = ['applicable_plans', 'applicable_services']
+    filter_horizontal = ['applicable_plans', 'applicable_products']
     ordering = ['-created_at']
     
     fieldsets = (
@@ -270,7 +256,7 @@ class CouponAdmin(admin.ModelAdmin):
             )
         }),
         ('Applicability', {
-            'fields': ('applicable_plans', 'applicable_services')
+            'fields': ('applicable_plans', 'applicable_products')
         }),
         ('Validity', {
             'fields': ('valid_from', 'valid_until', 'is_active')
