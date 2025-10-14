@@ -1,0 +1,102 @@
+{% extends "user/base_user.html" %}
+{% load static %}
+
+{% block title %}Settings | EduCounsel{% endblock %}
+
+{% block breadcrumbs %}
+<div class="bg-white rounded-2xl shadow-sm px-6 py-4 flex items-center space-x-2 text-sm text-gray-600">
+    <a href="{% url 'dashboard:home:home' %}" class="flex items-center hover:text-primary transition-colors duration-300">
+        <i class="fas fa-home mr-1"></i>Home
+    </a>
+    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+    <a href="{% url 'user:overview' %}" class="hover:text-primary transition-colors duration-300">Profile</a>
+    <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+    <span class="text-primary font-semibold">Settings</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-dark">Account Settings</h1>
+            <p class="text-gray-600 mt-1">Manage your preferences, security options, and account visibility.</p>
+        </div>
+
+        <div class="space-y-6">
+            <section class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                <h2 class="text-lg font-semibold text-dark mb-4">Profile & Account</h2>
+                <div class="space-y-4">
+                    <a href="{% url 'user:user_profile' %}" class="flex items-center justify-between p-4 hover:bg-light rounded-lg transition-all duration-300 group">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-user text-primary group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-dark">Edit Profile</h3>
+                                <p class="text-sm text-gray-500">Update your personal details and profile picture.</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </a>
+                    <a href="{% url 'user:change_password' %}" class="flex items-center justify-between p-4 hover:bg-light rounded-lg transition-all duration-300 group">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-key text-primary group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-dark">Change Password</h3>
+                                <p class="text-sm text-gray-500">Secure your account with a new password.</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 transition-all duration-300">
+                <h2 class="text-lg font-semibold text-dark mb-4">Notification Preferences</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-dark">Email Notifications</h3>
+                            <p class="text-sm text-gray-500">Receive updates and important announcements.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-dark">Push Notifications</h3>
+                            <p class="text-sm text-gray-500">Stay informed with real-time updates.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border-2 border-danger/30 rounded-xl p-6 bg-danger/5 hover:border-danger/50 transition-all duration-300">
+                <h2 class="text-lg font-semibold text-danger mb-4">Danger Zone</h2>
+                <p class="text-sm text-gray-600 mb-6">Manage sensitive actions related to your account.</p>
+                <a href="{% url 'user:delete_account' %}" class="flex items-center justify-between p-4 bg-white hover:bg-danger/10 rounded-lg transition-all duration-300 border-2 border-danger/20 hover:border-danger group">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-danger/10 rounded-lg flex items-center justify-center group-hover:bg-danger group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-user-slash text-danger group-hover:text-white transition-colors duration-300"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-dark">Delete Account</h3>
+                            <p class="text-sm text-gray-500">Permanently remove your account and data.</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400 group-hover:text-danger transition-colors duration-300"></i>
+                </a>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

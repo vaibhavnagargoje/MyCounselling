@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 import random
-from .models import OTPVerification, PasswordResetToken
+from .models import OTPVerification, PasswordResetToken, Profile
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.urls import reverse
@@ -166,9 +167,9 @@ def custom_logout(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, "You have been logged out successfully.")
-        return redirect('user:login')
     else:
         messages.warning(request, "You are not logged in.")
+    return redirect('user:login')
 
 
 
@@ -288,24 +289,22 @@ def reset_password(request, token):
         messages.error(request, "Invalid password reset link.")
         return redirect('user:forgot_password')
 
+def _get_profile(user):
+    profile, _ = Profile.objects.get_or_create(user=user)
+    return profile
 
 
-
-
+@login_required
 def user_profile(request):
-    if not request.user.is_authenticated:
-        messages.error(request, "You need to be logged in to view your profile.")
-        return redirect('user:login')
-    
     user = request.user
-    profile = user.profile
-    
+    profile = _get_profile(user)
+
     if request.method == 'POST':
         # Update User model fields
         user.first_name = request.POST.get('first_name', '')
         user.last_name = request.POST.get('last_name', '')
         user.save()
-        
+
         # Update Profile model fields
         profile.phone_number = request.POST.get('phone_number', '')
         profile.address = request.POST.get('address', '')
@@ -316,20 +315,18 @@ def user_profile(request):
         profile.bio = request.POST.get('bio', '')
         profile.website = request.POST.get('website', '')
         profile.gender = request.POST.get('gender', '')
-        
-        # Handle date of birth
+
         dob = request.POST.get('date_of_birth')
         if dob:
             profile.date_of_birth = dob
-        
-        # Handle profile picture
+
         if 'profile_picture' in request.FILES:
             profile.profile_picture = request.FILES['profile_picture']
-        
+
         profile.save()
         messages.success(request, "Profile updated successfully!")
         return redirect('user:user_profile')
-    
+
     context = {
         'user': user,
         'profile': profile,
@@ -337,11 +334,8 @@ def user_profile(request):
     return render(request, 'user/user_profile.html', context)
 
 
+@login_required
 def change_password(request):
-    if not request.user.is_authenticated:
-        messages.error(request, "You need to be logged in to change your password.")
-        return redirect('user:login')
-    
     if request.method == 'POST':
         current_password = request.POST.get('current_password')
         new_password = request.POST.get('new_password')
@@ -383,7 +377,35 @@ def change_password(request):
         
         messages.success(request, "Password changed successfully!")
         return redirect('user:user_profile')
-    
+
     return render(request, 'user/change_password.html')
 
 
+@login_required
+def user_overview(request):
+    profile = _get_profile(request.user)
+    return render(request, 'user/overview.html', {'profile': profile})
+
+
+@login_required
+def academic_info(request):
+    profile = _get_profile(request.user)
+    return render(request, 'user/academic_info.html', {'profile': profile})
+
+
+@login_required
+def my_purchases(request):
+    profile = _get_profile(request.user)
+    return render(request, 'user/my_purchases.html', {'profile': profile})
+
+
+@login_required
+def account_settings(request):
+    profile = _get_profile(request.user)
+    return render(request, 'user/settings.html', {'profile': profile})
+
+
+@login_required
+def delete_account(request):
+    profile = _get_profile(request.user)
+    return render(request, 'user/delete_account.html', {'profile': profile})

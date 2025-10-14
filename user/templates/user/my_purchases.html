@@ -1,0 +1,46 @@
+{% extends "user/base_user.html" %}
+{% load static %}
+
+{% block title %}My Purchases | EduCounsel{% endblock %}
+
+{% block breadcrumbs %}
+<div class="bg-white rounded-2xl shadow-sm px-6 py-4 flex items-center space-x-2 text-sm text-gray-600">
+	<a href="{% url 'dashboard:home:home' %}" class="flex items-center hover:text-primary transition-colors duration-300">
+		<i class="fas fa-home mr-1"></i>Home
+	</a>
+	<i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+	<a href="{% url 'user:overview' %}" class="hover:text-primary transition-colors duration-300">Profile</a>
+	<i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+	<span class="text-primary font-semibold">My Purchases</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 animate-fade-in-up">
+	<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
+		<div>
+			<h1 class="text-2xl font-bold text-dark">My Purchases</h1>
+			<p class="text-gray-600 mt-1">View your course purchases and downloaded resources.</p>
+		</div>
+		<div class="flex flex-col sm:flex-row gap-3">
+			<button type="button" class="inline-flex items-center bg-white hover:bg-light text-primary border-2 border-primary px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+				<i class="fas fa-filter mr-2"></i>Filter
+			</button>
+			<button type="button" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+				<i class="fas fa-download mr-2"></i>Export
+			</button>
+		</div>
+	</div>
+
+	<div class="text-center py-16">
+		<div class="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+			<i class="fas fa-shopping-bag text-accent text-4xl"></i>
+		</div>
+		<h2 class="text-lg font-semibold text-dark mb-2">No purchases yet</h2>
+		<p class="text-gray-500 mb-6">Start your learning journey by browsing our courses and personalized counselling plans.</p>
+		<a href="#" class="inline-flex bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+			<i class="fas fa-search mr-2"></i>Browse Courses
+		</a>
+	</div>
+</div>
+{% endblock %}

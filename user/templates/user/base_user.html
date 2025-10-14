@@ -1,0 +1,262 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <title>{% block title %}Base User Template{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    {% block head %}{% endblock head %}
+</head>
+<body class="font-inter">
+    <div class="fixed inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 -z-10"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-dark">EduCounsel</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all duration-300">
+                        <i class="fas fa-bell text-xl"></i>
+                    </button>
+                    <a href="{% url 'dashboard:home:home' %}" class="text-gray-700 hover:text-primary font-medium flex items-center transition-colors duration-300">
+                        <i class="fas fa-home mr-2"></i>
+                        <span class="hidden sm:inline">Dashboard</span>
+                    </a>
+                    <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all duration-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Sidebar -->
+            <aside class="hidden lg:block w-72 shrink-0">
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <div class="mb-6">
+                        <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Navigation</h2>
+                    </div>
+                    {% with request.resolver_match.url_name as active %}
+                    <nav class="space-y-6">
+                        <div>
+                            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Dashboard</h3>
+                            <div class="mt-2 space-y-1">
+                                <a href="{% url 'user:overview' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'overview' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'overview' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-th-large"></i>
+                                        </span>
+                                        <span>Overview</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'overview' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                                <a href="{% url 'user:user_profile' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'user_profile' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'user_profile' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <span>Profile</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'user_profile' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                                <a href="{% url 'user:academic_info' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'academic_info' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'academic_info' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-book"></i>
+                                        </span>
+                                        <span>Academic Info</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'academic_info' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                                <a href="{% url 'user:my_purchases' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'my_purchases' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'my_purchases' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-shopping-bag"></i>
+                                        </span>
+                                        <span>My Purchases</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'my_purchases' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Account</h3>
+                            <div class="mt-2 space-y-1">
+                                <a href="{% url 'user:settings' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'settings' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'settings' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-cog"></i>
+                                        </span>
+                                        <span>Settings</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'settings' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                                <a href="{% url 'user:change_password' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'change_password' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'change_password' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
+                                            <i class="fas fa-key"></i>
+                                        </span>
+                                        <span>Change Password</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'change_password' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                                          <a href="{% url 'user:delete_account' %}"
+                                              class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'delete_account' %}bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'delete_account' %}bg-white/20 text-white{% else %}bg-danger/10 text-danger{% endif %}">
+                                            <i class="fas fa-user-slash"></i>
+                                        </span>
+                                        <span>Delete Account</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm {% if active == 'delete_account' %}text-white{% else %}text-gray-400{% endif %}"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Session</h3>
+                            <div class="mt-2 space-y-1">
+                                <a href="{% url 'user:custom_logout' %}"
+                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 text-danger hover:bg-red-50">
+                                    <span class="flex items-center space-x-3">
+                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-danger/10 text-danger">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                        </span>
+                                        <span>Logout</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right text-sm text-danger/70"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                    {% endwith %}
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+                {% block breadcrumbs %}{% endblock %}
+
+                {% if messages %}
+                <div class="mt-6 space-y-4">
+                    {% for message in messages %}
+                        <div class="p-4 rounded-lg border-l-4 flex items-center animate-fade-in-up {% if message.tags == 'error' %}bg-red-50 border-danger text-red-800{% elif message.tags == 'success' %}bg-green-50 border-success text-green-800{% else %}bg-blue-50 border-info text-blue-800{% endif %}">
+                            <i class="fas {% if message.tags == 'error' %}fa-exclamation-circle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %} mr-3 text-lg"></i>
+                            <p class="font-medium">{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="mt-6">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300">
+        <div class="absolute left-0 top-0 bottom-0 w-72 bg-white shadow-xl transform transition-transform duration-300">
+            <div class="bg-gradient-to-br from-primary via-secondary to-accent p-6 text-white">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-lg font-bold">Menu</h2>
+                    <button type="button" onclick="toggleMobileMenu()" class="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-300">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <nav class="p-4 space-y-4">
+                {% with request.resolver_match.url_name as active %}
+                <div>
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Dashboard</h3>
+                    <div class="mt-2 space-y-1">
+                        <a href="{% url 'user:overview' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'overview' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-th-large mr-3 w-5 text-center"></i>Overview
+                        </a>
+                        <a href="{% url 'user:user_profile' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'user_profile' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-user mr-3 w-5 text-center"></i>Profile
+                        </a>
+                        <a href="{% url 'user:academic_info' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'academic_info' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-book mr-3 w-5 text-center"></i>Academic Info
+                        </a>
+                        <a href="{% url 'user:my_purchases' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'my_purchases' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-shopping-bag mr-3 w-5 text-center"></i>My Purchases
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Account</h3>
+                    <div class="mt-2 space-y-1">
+                        <a href="{% url 'user:settings' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'settings' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-cog mr-3 w-5 text-center"></i>Settings
+                        </a>
+                        <a href="{% url 'user:change_password' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'change_password' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-key mr-3 w-5 text-center"></i>Change Password
+                        </a>
+                        <a href="{% url 'user:delete_account' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'delete_account' %}bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}" onclick="toggleMobileMenu()">
+                            <i class="fas fa-user-slash mr-3 w-5 text-center"></i>Delete Account
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Session</h3>
+                    <div class="mt-2 space-y-1">
+                        <a href="{% url 'user:custom_logout' %}" class="block px-4 py-3 rounded-xl font-medium transition-all duration-300 text-danger hover:bg-red-50" onclick="toggleMobileMenu()">
+                            <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>Logout
+                        </a>
+                    </div>
+                </div>
+                {% endwith %}
+            </nav>
+        </div>
+    </div>
+
+    <script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu) {
+            return;
+        }
+        const isHidden = menu.classList.toggle('hidden');
+        document.body.style.overflow = isHidden ? 'auto' : 'hidden';
+    }
+
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu || menu.classList.contains('hidden')) {
+            return;
+        }
+        const isClickInside = menu.contains(event.target);
+        const trigger = event.target.closest('button[onclick="toggleMobileMenu()"]');
+        if (!isClickInside && !trigger) {
+            toggleMobileMenu();
+        }
+    });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+    </body>
+    </html>
+

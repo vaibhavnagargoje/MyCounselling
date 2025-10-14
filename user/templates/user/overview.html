@@ -1,0 +1,167 @@
+{% extends "user/base_user.html" %}
+{% load static %}
+
+{% block title %}Overview | EduCounsel{% endblock %}
+
+{% block breadcrumbs %}
+<div class="bg-white rounded-2xl shadow-sm px-6 py-4 flex items-center space-x-2 text-sm text-gray-600">
+	<a href="{% url 'dashboard:home:home' %}" class="flex items-center hover:text-primary transition-colors duration-300">
+		<i class="fas fa-home mr-1"></i>Home
+	</a>
+	<i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+	<span class="text-primary font-semibold">Profile Overview</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+	<div class="bg-white rounded-2xl shadow-lg overflow-hidden animate-fade-in-up">
+		<div class="h-48 lg:h-56 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden">
+			<div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.4\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+			<button type="button" class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-300 shadow-lg">
+				<i class="fas fa-camera mr-2"></i>Change Cover
+			</button>
+		</div>
+		<div class="px-6 pb-6">
+			<div class="flex flex-col sm:flex-row items-start sm:items-end -mt-16 sm:-mt-20">
+				<div class="relative">
+					{% if profile.profile_picture %}
+						<img src="{{ profile.profile_picture.url }}" alt="Profile" class="w-32 h-32 rounded-2xl border-4 border-white object-cover shadow-xl">
+					{% else %}
+						<div class="w-32 h-32 rounded-2xl border-4 border-white bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-xl">
+							<i class="fas fa-user text-white text-4xl"></i>
+						</div>
+					{% endif %}
+					<a href="{% url 'user:user_profile' %}" class="absolute bottom-0 right-0 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-light hover:scale-110 transition-all duration-300">
+						<i class="fas fa-camera"></i>
+					</a>
+				</div>
+				<div class="mt-4 sm:mt-0 sm:ml-6 flex-1">
+					<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+						<div>
+							<h1 class="text-3xl font-bold text-dark">{{ user.first_name|default:user.username }} {{ user.last_name }}</h1>
+							<p class="text-gray-600 mt-1">{{ user.email }}</p>
+							<div class="flex items-center space-x-3 mt-2 flex-wrap gap-2">
+								{% if profile.is_verified %}
+									<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-success/10 text-success border border-success/20">
+										<i class="fas fa-check-circle mr-1"></i>Verified Student
+									</span>
+								{% endif %}
+								<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+									<i class="fas fa-calendar mr-1"></i>Member since {{ user.date_joined|date:"M Y" }}
+								</span>
+							</div>
+						</div>
+						<a href="{% url 'user:user_profile' %}" class="mt-4 sm:mt-0 inline-flex items-center bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+							<i class="fas fa-edit mr-2"></i>Edit Profile
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+		<div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.1s;">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-gray-600 text-sm font-medium">Total Courses</p>
+					<h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+					<p class="text-sm text-success mt-1">
+						<i class="fas fa-arrow-up mr-1"></i>0% this month
+					</p>
+				</div>
+				<div class="w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+					<i class="fas fa-book-open text-white text-xl"></i>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.2s;">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-gray-600 text-sm font-medium">Completed</p>
+					<h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+					<p class="text-sm text-gray-500 mt-1">0% completion rate</p>
+				</div>
+				<div class="w-14 h-14 bg-gradient-to-br from-success to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+					<i class="fas fa-check-double text-white text-xl"></i>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.3s;">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-gray-600 text-sm font-medium">In Progress</p>
+					<h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+					<p class="text-sm text-warning mt-1">Keep learning!</p>
+				</div>
+				<div class="w-14 h-14 bg-gradient-to-br from-warning to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+					<i class="fas fa-clock text-white text-xl"></i>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white rounded-xl shadow-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-fade-in-up" style="animation-delay: 0.4s;">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-gray-600 text-sm font-medium">Certificates</p>
+					<h3 class="text-3xl font-bold text-dark mt-2">0</h3>
+					<p class="text-sm text-accent mt-1">Achievements</p>
+				</div>
+				<div class="w-14 h-14 bg-gradient-to-br from-accent to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
+					<i class="fas fa-certificate text-white text-xl"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-white rounded-2xl shadow-lg p-6 animate-fade-in-up">
+		<h2 class="text-xl font-bold text-dark mb-6">Quick Actions</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+			<a href="#" class="group bg-white border-2 border-gray-200 hover:border-primary rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+				<div class="flex items-center space-x-4">
+					<div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+						<i class="fas fa-search text-white text-lg"></i>
+					</div>
+					<div>
+						<h3 class="font-semibold text-dark">Browse Courses</h3>
+						<p class="text-sm text-gray-500">Find new courses</p>
+					</div>
+				</div>
+			</a>
+			<a href="#" class="group bg-white border-2 border-gray-200 hover:border-success rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+				<div class="flex items-center space-x-4">
+					<div class="w-12 h-12 bg-gradient-to-br from-success to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+						<i class="fas fa-comments text-white text-lg"></i>
+					</div>
+					<div>
+						<h3 class="font-semibold text-dark">Book Counseling</h3>
+						<p class="text-sm text-gray-500">Talk to experts</p>
+					</div>
+				</div>
+			</a>
+			<a href="#" class="group bg-white border-2 border-gray-200 hover:border-accent rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+				<div class="flex items-center space-x-4">
+					<div class="w-12 h-12 bg-gradient-to-br from-accent to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+						<i class="fas fa-file-alt text-white text-lg"></i>
+					</div>
+					<div>
+						<h3 class="font-semibold text-dark">Resources</h3>
+						<p class="text-sm text-gray-500">Study materials</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="bg-white rounded-2xl shadow-lg p-6 animate-fade-in-up">
+		<h2 class="text-xl font-bold text-dark mb-6">Recent Activity</h2>
+		<div class="text-center py-12">
+			<div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+				<i class="fas fa-history text-gray-400 text-3xl"></i>
+			</div>
+			<p class="text-gray-500 font-medium">No recent activity</p>
+			<p class="text-sm text-gray-400 mt-2">Your learning activities will appear here</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
