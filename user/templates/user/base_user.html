@@ -111,27 +111,7 @@
                                         <span>Settings</span>
                                     </span>
                                     <i class="fas fa-chevron-right text-sm {% if active == 'settings' %}text-white{% else %}text-gray-400{% endif %}"></i>
-                                </a>
-                                <a href="{% url 'user:change_password' %}"
-                                   class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'change_password' %}bg-gradient-to-r from-primary to-secondary text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
-                                    <span class="flex items-center space-x-3">
-                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'change_password' %}bg-white/20 text-white{% else %}bg-primary/10 text-primary{% endif %}">
-                                            <i class="fas fa-key"></i>
-                                        </span>
-                                        <span>Change Password</span>
-                                    </span>
-                                    <i class="fas fa-chevron-right text-sm {% if active == 'change_password' %}text-white{% else %}text-gray-400{% endif %}"></i>
-                                </a>
-                                          <a href="{% url 'user:delete_account' %}"
-                                              class="flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 {% if active == 'delete_account' %}bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
-                                    <span class="flex items-center space-x-3">
-                                        <span class="w-9 h-9 flex items-center justify-center rounded-lg {% if active == 'delete_account' %}bg-white/20 text-white{% else %}bg-danger/10 text-danger{% endif %}">
-                                            <i class="fas fa-user-slash"></i>
-                                        </span>
-                                        <span>Delete Account</span>
-                                    </span>
-                                    <i class="fas fa-chevron-right text-sm {% if active == 'delete_account' %}text-white{% else %}text-gray-400{% endif %}"></i>
-                                </a>
+                                </a>                               
                             </div>
                         </div>
                         <div>
