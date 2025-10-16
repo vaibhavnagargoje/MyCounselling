@@ -26,23 +26,32 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,5dea8d3a149a.ngrok-free.app').split(',')
-
-# Add this for CSRF protection
-CORS_ALLOW_CREDENTIALS = True  
-CORS_ORIGIN_ALLOW_ALL = False if not DEBUG else True
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-]
-
-if not DEBUG:
-    # Add your production domain
-    CSRF_TRUSTED_ORIGINS.append(f"https://{os.getenv('DOMAIN_NAME')}")
-    CSRF_TRUSTED_ORIGINS.append(f"http://{os.getenv('DOMAIN_NAME')}")
+# Development vs Production Settings
+if DEBUG:
+    # Development Settings
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '5dea8d3a149a.ngrok-free.app']
+    
+    CORS_ALLOW_CREDENTIALS = True  
+    CORS_ORIGIN_ALLOW_ALL = True
+    
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+        'https://5dea8d3a149a.ngrok-free.app',
+    ]
+else:
+    # Production Settings
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+    
+    CORS_ALLOW_CREDENTIALS = True  
+    CORS_ORIGIN_ALLOW_ALL = False
+    
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{os.getenv('DOMAIN_NAME')}",
+        f"http://{os.getenv('DOMAIN_NAME')}",
+    ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -101,14 +110,8 @@ WSGI_APPLICATION = 'MyCounselling.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 if DEBUG:
-    
+    # Development Database
     DATABASES = {  
         'default': {  
             'ENGINE': 'django.db.backends.mysql',  
@@ -121,10 +124,9 @@ if DEBUG:
                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
             }          
         }  
-    }  
-
-
+    }
 else:
+    # Production Database
     DATABASES = {  
         'default': {  
             'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
@@ -174,27 +176,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # Where your source static assets live during development
-STATIC_ROOT = BASE_DIR / 'staticfiles'    # Where collectstatic will gather assets for production
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-if not DEBUG:
+if DEBUG:
+    # Development Static Files
+    STATICFILES_DIRS = [BASE_DIR / 'static']
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+else:
+    # Production Static Files
+    STATICFILES_DIRS = [BASE_DIR / 'static']
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    
+    # Security Settings for Production
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_SECONDS = 31536000
     SECURE_REDIRECT_EXEMPT = []
-    SECURE_SSL_REDIRECT = False  # Change this to False
-    SESSION_COOKIE_SECURE = False  # Change this to False
-    CSRF_COOKIE_SECURE = False  # Change this to False
-    SECURE_HSTS_PRELOAD = False 
+    SECURE_SSL_REDIRECT = True  # Enable SSL redirect in production
+    SESSION_COOKIE_SECURE = True  # Secure cookies in production
+    CSRF_COOKIE_SECURE = True  # Secure CSRF cookies in production
+    SECURE_HSTS_PRELOAD = True
+    X_FRAME_OPTIONS = 'DENY'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
 
 
 
