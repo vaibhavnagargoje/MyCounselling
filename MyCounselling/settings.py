@@ -22,20 +22,27 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c1!nz=*$oxh-g^mg5qho$e8tpaa3$vr#(bm2jdk%7td8j87qku'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['7d870e357739.ngrok-free.app','localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,5dea8d3a149a.ngrok-free.app').split(',')
 
 # Add this for CSRF protection
+CORS_ALLOW_CREDENTIALS = True  
+CORS_ORIGIN_ALLOW_ALL = False if not DEBUG else True
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://7d870e357739.ngrok-free.app',
-    'http://7d870e357739.ngrok-free.app',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
+
+if not DEBUG:
+    # Add your production domain
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.getenv('DOMAIN_NAME')}")
+    CSRF_TRUSTED_ORIGINS.append(f"http://{os.getenv('DOMAIN_NAME')}")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -94,12 +101,43 @@ WSGI_APPLICATION = 'MyCounselling.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+if DEBUG:
+    
+    DATABASES = {  
+        'default': {  
+            'ENGINE': 'django.db.backends.mysql',  
+            'NAME': 'ecounselling',  
+            'USER': 'root',  
+            'PASSWORD': '8806',  
+            'HOST': '127.0.0.1',  
+            'PORT': '3306',  
+            'OPTIONS': {  
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+            }          
+        }  
+    }  
+
+
+else:
+    DATABASES = {  
+        'default': {  
+            'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+            'PORT': os.getenv('DB_PORT', '3306'),
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            }           
+        }  
+    }  
 
 
 # Password validation
@@ -145,6 +183,19 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+if not DEBUG:
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_REDIRECT_EXEMPT = []
+    SECURE_SSL_REDIRECT = False  # Change this to False
+    SESSION_COOKIE_SECURE = False  # Change this to False
+    CSRF_COOKIE_SECURE = False  # Change this to False
+    SECURE_HSTS_PRELOAD = False 
+
 
 
 LOGIN_URL = 'users:login'
