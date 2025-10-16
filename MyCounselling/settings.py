@@ -29,29 +29,21 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Development vs Production Settings
-if DEBUG:
-    # Development Settings
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '5dea8d3a149a.ngrok-free.app']
-    
-    CORS_ALLOW_CREDENTIALS = True  
-    CORS_ORIGIN_ALLOW_ALL = True
-    
-    CSRF_TRUSTED_ORIGINS = [
-        'http://localhost:8000',
-        'http://127.0.0.1:8000',
-        'https://5dea8d3a149a.ngrok-free.app',
-    ]
-else:
-    # Production Settings
-    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-    
-    CORS_ALLOW_CREDENTIALS = True  
-    CORS_ORIGIN_ALLOW_ALL = False
-    
-    CSRF_TRUSTED_ORIGINS = [
-        f"https://{os.getenv('DOMAIN_NAME')}",
-        f"http://{os.getenv('DOMAIN_NAME')}",
-    ]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+print(ALLOWED_HOSTS)
+CORS_ALLOW_CREDENTIALS = True  
+CORS_ORIGIN_ALLOW_ALL = False if not DEBUG else True
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
+if not DEBUG:
+    # Add your production domain
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.getenv('DOMAIN_NAME')}")
+    CSRF_TRUSTED_ORIGINS.append(f"http://{os.getenv('DOMAIN_NAME')}")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
