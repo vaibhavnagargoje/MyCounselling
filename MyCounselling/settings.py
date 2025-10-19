@@ -30,10 +30,9 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 # Development vs Production Settings
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-print(ALLOWED_HOSTS)
 
-
-print(DEBUG)
+# csrf 
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost,http://127.0.0.1').split(',')
 
 
 
