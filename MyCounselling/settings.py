@@ -31,19 +31,12 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 # Development vs Production Settings
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 print(ALLOWED_HOSTS)
-CORS_ALLOW_CREDENTIALS = True  
-CORS_ORIGIN_ALLOW_ALL = False if not DEBUG else True
+
 
 print(DEBUG)
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-]
 
-if not DEBUG:
-    # Add your production domain
-    CSRF_TRUSTED_ORIGINS.append(f"https://{os.getenv('DOMAIN_NAME')}")
-    CSRF_TRUSTED_ORIGINS.append(f"http://{os.getenv('DOMAIN_NAME')}")
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -71,6 +64,7 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,9 +96,8 @@ WSGI_APPLICATION = 'MyCounselling.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if DEBUG:
     # Development Database
-    DATABASES = {  
+DATABASES = {  
         'default': {  
             'ENGINE': 'django.db.backends.mysql',  
             'NAME': 'ecounselling',  
@@ -117,21 +110,21 @@ if DEBUG:
             }          
         }  
     }
-else:
-    # Production Database
-    DATABASES = {  
-        'default': {  
-            'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST', '127.0.0.1'),
-            'PORT': os.getenv('DB_PORT', '3306'),
-            'OPTIONS': {
-                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-            }           
-        }  
-    }  
+
+#     # Production Database
+# DATABASES = {  
+#         'default': {  
+#             'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+#             'NAME': os.getenv('DB_NAME'),
+#             'USER': os.getenv('DB_USER'),
+#             'PASSWORD': os.getenv('DB_PASSWORD'),
+#             'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+#             'PORT': os.getenv('DB_PORT', '3306'),
+#             'OPTIONS': {
+#                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#             }           
+#         }  
+#     }  
 
 
 # Password validation
@@ -172,25 +165,22 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-if DEBUG:
-    # Development Static Files
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-else:
+
     # Production Static Files
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    
-    # Security Settings for Production
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_REDIRECT_EXEMPT = []
-    SSECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True  
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# Security Settings for Production
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REDIRECT_EXEMPT = []
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True  
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
