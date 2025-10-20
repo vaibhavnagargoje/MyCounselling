@@ -107,7 +107,7 @@ def register(request):
             send_mail(
                 'OTP Verification for Registration',
                 f'Your OTP is {otp}',
-                'from@example.com',
+                settings.DEFAULT_FROM_EMAIL,
                 [email],
                 fail_silently=False,
             )
@@ -207,7 +207,7 @@ def forgot_password(request):
                 
                 If you did not request this password reset, please ignore this email.
                 """
-                from_email = settings.EMAIL_HOST_USER
+                from_email = settings.DEFAULT_FROM_EMAIL
                 recipient_list = [email]
                 
                 success = send_mail(
@@ -226,6 +226,7 @@ def forgot_password(request):
                     return render(request, 'user/forgot_password.html')
             
             except Exception as e:
+                print(f"ERROR sending password reset email: {e}") 
                 messages.error(request, f"Failed to send password reset email. Please try again")
                 return render(request, 'user/forgot_password.html')
         except User.DoesNotExist:
