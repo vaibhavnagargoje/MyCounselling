@@ -1,4 +1,4 @@
- body {
+body {
             font-family: 'Inter', sans-serif;
         }
         
@@ -18,8 +18,12 @@
         }
         
         @keyframes slide {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .animate-slide {
+            animation: slide 15s linear infinite;
         }
         
         @keyframes slideshow {

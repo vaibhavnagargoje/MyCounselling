@@ -6,9 +6,31 @@
 {% block head %}
     <meta name="description" content="EduCounsel is a smart college counselling platform for NEET, CET & JEE aspirants. Get expert guidance, rank predictions, and college recommendations.">
     <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'landing_page/css/launch_popup.css' %}" rel="stylesheet">
 {% endblock head %}
 
 {% block content %}
+<!-- Launching Soon Popup -->
+<div id="launch-popup" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100] hidden transition-opacity duration-300">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center transform transition-all popup-card">
+        <div class="relative">
+            <button id="close-popup-btn" class="absolute -top-4 -right-4 w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-20 h-20 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-rocket text-white text-3xl"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Launching Soon!</h2>
+            <p class="text-gray-600 mb-6">
+                Our full platform is currently under development. We're working hard to bring you an amazing experience. Stay tuned!
+            </p>
+            <div class="bg-gray-100 p-4 rounded-lg">
+                <p class="text-sm text-gray-700">In the meantime, feel free to explore our current features.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="scroll-indicator" id="scrollIndicator"></div>
 
     <!-- Navigation -->
@@ -826,6 +848,7 @@
     </footer>
 
    <script src="{% static 'landing_page/js/script.js' %}"></script>
+   <script src="{% static 'landing_page/js/launch_popup.js' %}"></script>
 {% endblock content %}
 
 
