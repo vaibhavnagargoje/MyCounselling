@@ -88,16 +88,36 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-16 left-0 w-full h-screen bg-white z-40">
-            <div class="px-4 py-6 space-y-4">
-                <a href="#home" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Home</a>
-                <a href="#services" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Services</a>
-                <a href="#tools" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Free Tools</a>
-                <a href="#about" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">About</a>
-                <a href="#contact" class="block text-gray-700 hover:text-primary px-3 py-2 rounded-md text-base font-medium transition duration-300">Contact</a>
-                <div class="pt-4 space-y-2">
-                    <button class="w-full text-primary border border-primary px-4 py-2 rounded-md text-sm font-medium transition duration-300">Login</button>
-                    <button class="w-full bg-primary text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">Register</button>
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 w-80 h-screen bg-white z-50 shadow-2xl">
+            <div class="px-6 py-6 space-y-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">Menu</h2>
+                    <button id="mobile-menu-close" class="text-gray-700 hover:text-primary transition duration-300">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <a href="#home" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                    <i class="fas fa-home mr-3"></i>Home
+                </a>
+                <a href="#services" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                    <i class="fas fa-concierge-bell mr-3"></i>Services
+                </a>
+                <a href="#tools" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                    <i class="fas fa-tools mr-3"></i>Free Tools
+                </a>
+                <a href="#about" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                    <i class="fas fa-info-circle mr-3"></i>About
+                </a>
+                <a href="#contact" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                    <i class="fas fa-envelope mr-3"></i>Contact
+                </a>
+                <div class="pt-6 space-y-3 border-t border-gray-200">
+                    <a href="{% url 'user:login' %}" class="block w-full text-center text-primary border-2 border-primary px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:bg-primary hover:text-white">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </a>
+                    <a href="{% url 'user:register' %}" class="block w-full text-center bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
+                        <i class="fas fa-user-plus mr-2"></i>Register
+                    </a>
                 </div>
             </div>
         </div>
@@ -106,7 +126,7 @@
     <!-- Offer Banner with Enhanced Animation -->
     <div class="bg-gradient-to-r from-secondary via-orange-500 to-red-500 text-white py-3 mt-16 overflow-hidden relative">
         <div class="absolute inset-0 bg-black opacity-10"></div>
-        <div class="animate-slide whitespace-nowrap relative z-10">
+        <div class="animate-slide whitespace-nowrap relative z-10 text-sm md:text-base">
             <span class="mx-8 font-semibold">🎉 LIMITED OFFER: Get 50% OFF on Premium Counselling Packages!</span>
             <span class="mx-8 font-semibold">🎓 NEET/CET/JEE Counselling Started - Don't miss out on your dream college!</span>
             <span class="mx-8 font-semibold">🏆 Join 50,000+ students who found their perfect college with us!</span>
@@ -131,18 +151,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Side - Enhanced Branding Text -->
-                <div class="animate-fade-in-left">
-                    <div class="mb-6">
-                        <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-pulse-slow">
+                <div class="animate-fade-in-left px-4 lg:px-0">
+                    <div class="mb-4 md:mb-6">
+                        <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 animate-pulse-slow">
                             🏆 #1 Counselling Platform in India
                         </span>
                     </div>
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4 md:mb-6">
                         Your <span class="text-primary text-shadow">Smart Path</span> to the 
                         <span class="text-secondary text-shadow">Right College</span> 
                         <span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">After 12th</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                    <p class="text-base md:text-xl lg:text-2xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
                         Navigate the complexities of NEET, CET, and JEE counselling with ease. 
                         <span class="font-semibold text-primary">Expert guidance</span>, 
                         <span class="font-semibold text-accent">powerful tools</span>, and 
@@ -150,7 +170,7 @@
                     </p>
                     
                     <!-- Key Features -->
-                    <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
                         <div class="flex items-center">
                             <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
                                 <i class="fas fa-calculator text-green-600"></i>
@@ -177,19 +197,19 @@
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center">
+                    <div class="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
+                        <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center justify-center w-full">
                             <i class="fas fa-search-location mr-2"></i>
                             Find Your College
                         </button>
-                        <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 flex items-center justify-center">
+                        <button class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center justify-center w-full">
                             <i class="fas fa-calendar-check mr-2"></i>
                             Book a Free Session
                         </button>
                     </div>
                     
                     <!-- Trust Indicators -->
-                    <div class="flex items-center space-x-6 text-sm text-gray-600">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 text-xs md:text-sm text-gray-600">
                         <div class="flex items-center">
                             <div class="flex -space-x-2 mr-2">
                                 <img src="/placeholder.svg?height=32&width=32" alt="Student" class="w-8 h-8 rounded-full border-2 border-white">
@@ -212,8 +232,8 @@
                 </div>
                 
                 <!-- Right Side - Enhanced Image Slideshow -->
-                <div class="animate-fade-in-right relative">
-                    <div class="slideshow-container relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                <div class="animate-fade-in-right relative mt-10 lg:mt-0 px-4 lg:px-0">
+                    <div class="slideshow-container relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
                         <!-- Slide 1 -->
                         <div class="slide active">
                             <img src="/placeholder.svg?height=500&width=400" alt="Expert Counsellor Guiding Student" class="w-full h-full object-cover">
@@ -293,14 +313,14 @@
     </section>
     
  <!-- Features Section -->
-    <section id="features" class="py-16 bg-white">
+    <section id="features" class="py-12 md:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Why Choose EduCounsel?</h2>
-                <p class="mt-4 text-xl text-gray-600">We provide end-to-end guidance for your college admission journey</p>
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Why Choose EduCounsel?</h2>
+                <p class="mt-3 md:mt-4 text-lg md:text-xl text-gray-600">We provide end-to-end guidance for your college admission journey</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1 -->
                 <div class="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-primary">
@@ -332,26 +352,26 @@
     </section>
 
     <!-- Enhanced Exam Categories Section -->
-    <section id="services" class="py-20 bg-white relative overflow-hidden">
+    <section id="services" class="py-12 md:py-20 bg-white relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 animate-fade-in-up">
-                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+            <div class="text-center mb-12 md:mb-16 animate-fade-in-up">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4">
                     🎯 Choose Your Counselling
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
                     Specialized <span class="text-primary">Counselling Services</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     We cover all major national and state-level entrance exams, providing tailored guidance for each.
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- NEET Card -->
                 <div class="card-hover bg-gradient-to-br from-green-400 to-green-600 p-6 rounded-xl text-white text-center relative overflow-hidden group">
                     <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
@@ -416,21 +436,21 @@
     </section>
 
     <!-- Features Section -->
-    <section id="tools" class="py-20 bg-gray-50">
+    <section id="tools" class="py-12 md:py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4">
                     ✨ Our Key Features
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
                     What Makes Us <span class="text-primary">The Best Choice</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     A complete ecosystem of free tools and premium services to ensure your admission success.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1 -->
                 <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
                     <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -461,41 +481,13 @@
                     <div class="text-sm text-primary font-semibold">Free Tool</div>
                 </div>
 
-                <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
-                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-file-invoice text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Document Guidance</h3>
-                    <p class="text-gray-600 mb-4">Complete assistance with document verification and the admission process.</p>
-                    <div class="text-sm text-primary font-semibold">Premium Feature</div>
-                </div>
-
-                <!-- Feature 5 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
-                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-newspaper text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Latest News & Updates</h3>
-                    <p class="text-gray-600 mb-4">Stay informed with a step-by-step counselling timeline and news alerts.</p>
-                    <div class="text-sm text-primary font-semibold">Free Feature</div>
-                </div>
-
-                <!-- Feature 6 -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 text-center">
-                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-hand-holding-usd text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Scholarship & Loan Help</h3>
-                    <p class="text-gray-600 mb-4">We guide you through the process of applying for scholarships and education loans.</p>
-                    <div class="text-sm text-primary font-semibold">Premium Feature</div>
-                </div>
+                
             </div>
         </div>
     </section>
 
     <!-- Enhanced Platform Statistics -->
-    <section class="py-20 bg-gradient-to-r from-primary via-blue-600 to-purple-600 text-white relative overflow-hidden">
+    <section class="py-12 md:py-20 bg-gradient-to-r from-primary via-blue-600 to-purple-600 text-white relative overflow-hidden">
         Animated Background
         <div class="absolute inset-0">
             <div class="absolute top-10 left-10 w-32 h-32 bg-white opacity-5 rounded-full floating"></div>
@@ -504,56 +496,56 @@
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <span class="inline-block bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4">
                     🏆 Trusted Excellence
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Trusted by Aspirants Nationwide</h2>
-                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Trusted by Aspirants Nationwide</h2>
+                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
                     Our numbers speak for our commitment to helping students secure admission to their dream college.
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 <div class="text-center animate-fade-in-up group">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
-                        <i class="fas fa-users text-4xl mb-4"></i>
-                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="50000">0</div>
-                        <div class="text-lg text-blue-100">Students Counselled</div>
-                        <div class="text-sm text-blue-200 mt-2">Across India</div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-users text-3xl md:text-4xl mb-3 md:mb-4"></i>
+                        <div class="counter text-3xl md:text-4xl lg:text-6xl font-bold mb-2" data-target="50000">0</div>
+                        <div class="text-base md:text-lg text-blue-100">Students Counselled</div>
+                        <div class="text-xs md:text-sm text-blue-200 mt-2">Across India</div>
                     </div>
                 </div>
                 
                 <div class="text-center animate-fade-in-up group" style="animation-delay: 0.2s;">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
-                        <i class="fas fa-university text-4xl mb-4"></i>
-                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="2500">0</div>
-                        <div class="text-lg text-blue-100">Colleges in Database</div>
-                        <div class="text-sm text-blue-200 mt-2">Verified & Detailed</div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-university text-3xl md:text-4xl mb-3 md:mb-4"></i>
+                        <div class="counter text-3xl md:text-4xl lg:text-6xl font-bold mb-2" data-target="2500">0</div>
+                        <div class="text-base md:text-lg text-blue-100">Colleges in Database</div>
+                        <div class="text-xs md:text-sm text-blue-200 mt-2">Verified & Detailed</div>
                     </div>
                 </div>
                 
                 <div class="text-center animate-fade-in-up group" style="animation-delay: 0.4s;">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
-                        <i class="fas fa-user-tie text-4xl mb-4"></i>
-                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="500">0</div>
-                        <div class="text-lg text-blue-100">Expert Counsellors</div>
-                        <div class="text-sm text-blue-200 mt-2">From Top Institutes</div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-user-tie text-3xl md:text-4xl mb-3 md:mb-4"></i>
+                        <div class="counter text-3xl md:text-4xl lg:text-6xl font-bold mb-2" data-target="500">0</div>
+                        <div class="text-base md:text-lg text-blue-100">Expert Counsellors</div>
+                        <div class="text-xs md:text-sm text-blue-200 mt-2">From Top Institutes</div>
                     </div>
                 </div>
                 
                 <div class="text-center animate-fade-in-up group" style="animation-delay: 0.6s;">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition duration-300">
-                        <i class="fas fa-calendar-check text-4xl mb-4"></i>
-                        <div class="counter text-4xl md:text-6xl font-bold mb-2" data-target="10000">0</div>
-                        <div class="text-lg text-blue-100">Counselling Sessions</div>
-                        <div class="text-sm text-blue-200 mt-2">Successfully Completed</div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 md:p-6 mb-4 group-hover:bg-white/20 transition duration-300">
+                        <i class="fas fa-calendar-check text-3xl md:text-4xl mb-3 md:mb-4"></i>
+                        <div class="counter text-3xl md:text-4xl lg:text-6xl font-bold mb-2" data-target="10000">0</div>
+                        <div class="text-base md:text-lg text-blue-100">Counselling Sessions</div>
+                        <div class="text-xs md:text-sm text-blue-200 mt-2">Successfully Completed</div>
                     </div>
                 </div>
             </div>
             
             <!-- Success Rate Section -->
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <div class="text-center">
                     <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                         <div class="text-3xl font-bold mb-2">99.2%</div>
@@ -577,21 +569,21 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-12 md:py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4">
                     💬 Success Stories
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
                     What Our <span class="text-primary">Students Say</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     Real stories from students who achieved their dream college with our guidance.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card p-8 rounded-2xl shadow-lg">
                     <div class="flex items-center mb-6">
@@ -662,25 +654,25 @@
     </section>
 
     <!-- Enhanced Get Started Section -->
-    <section class="py-20 bg-gray-50 relative overflow-hidden">
+    <section class="py-12 md:py-20 bg-gray-50 relative overflow-hidden">
         <div class="absolute inset-0">
             <img src="/placeholder.svg?height=600&width=1200" alt="Students studying" class="w-full h-full object-cover opacity-10">
         </div>
         
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="animate-fade-in-up">
-                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
+                <span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-6">
                     🚀 Start Your Counselling Journey
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
                     Ready to Secure Your <span class="text-primary">Dream College</span>?
                 </h2>
-                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 max-w-2xl mx-auto">
                     Join thousands of successful students. Get expert guidance, use our smart tools, and receive personalized mentorship to make the right choice.
                 </p>
                 
                 <!-- Features Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-10">
                     <div class="bg-white p-6 rounded-xl shadow-lg">
                         <i class="fas fa-rocket text-primary text-2xl mb-3"></i>
                         <h3 class="font-semibold text-gray-800 mb-2">Free Tools</h3>
@@ -698,20 +690,20 @@
                     </div>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-12 py-4 rounded-xl text-xl font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center">
+                <div class="flex flex-col gap-3 md:gap-4 justify-center items-center">
+                    <button class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-8 md:px-12 py-3 md:py-4 rounded-xl text-lg md:text-xl font-semibold transition duration-300 transform hover:scale-105 shadow-xl flex items-center w-full sm:w-auto justify-center">
                         <i class="fas fa-play mr-3"></i>
                         Get Started Now
                         <i class="fas fa-arrow-right ml-3"></i>
                     </button>
-                    <button class="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl text-lg font-semibold transition duration-300 flex items-center">
+                    <button class="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center">
                         <i class="fas fa-phone mr-2"></i>
                         Call Us: +91-9876543210
                     </button>
                 </div>
                 
                 <!-- Trust Badges -->
-                <div class="mt-10 flex flex-wrap justify-center items-center gap-8 opacity-60">
+                <div class="mt-8 md:mt-10 flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-60 text-xs md:text-sm">
                     <div class="flex items-center">
                         <i class="fas fa-shield-alt text-green-500 mr-2"></i>
                         <span class="text-sm">SSL Secured</span>
@@ -734,7 +726,7 @@
     </section>
 
     <!-- Enhanced Footer -->
-    <footer class="bg-gray-900 text-white py-16 relative overflow-hidden">
+    <footer class="bg-gray-900 text-white py-12 md:py-16 relative overflow-hidden">
         <div class="absolute inset-0">
             <div class="absolute top-10 right-10 w-32 h-32 bg-primary opacity-5 rounded-full"></div>
             <div class="absolute bottom-20 left-20 w-24 h-24 bg-secondary opacity-5 rounded-full"></div>
