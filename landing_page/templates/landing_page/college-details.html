@@ -1,8 +1,145 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Colleges Details{% endblock %}
+{% block title %}{{ college.name }} – College Insights{% endblock %}
 
 {% block content %}
+<section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-primary text-xs font-semibold uppercase tracking-wide mb-4">
+            Institute Code: {{ college.code }}
+        </span>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{{ college.name }}</h1>
+        <p class="text-gray-600 text-sm md:text-base mb-4">{{ college.location }}</p>
+        <div class="flex flex-wrap justify-center gap-3 text-xs text-gray-700">
+            <span class="px-3 py-1 rounded-full bg-white/80 border border-gray-200">{{ college.accreditation }}</span>
+            <span class="px-3 py-1 rounded-full bg-white/80 border border-gray-200">{{ college.status }}</span>
+        </div>
+    </div>
+</section>
 
+<section class="py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Academic Year</p>
+                <p class="text-2xl font-semibold text-gray-900">{{ college.placement.academic_year }}</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Placement Percentage</p>
+                <p class="text-4xl font-bold text-primary">{{ college.placement.placement_percentage }}%</p>
+                <div class="mt-3 h-2 bg-white rounded-full">
+                    <div class="h-2 rounded-full bg-gradient-to-r from-primary to-blue-600" style="width: {{ college.placement.placement_percentage }}%"></div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Students Placed</p>
+                <p class="text-3xl font-bold text-gray-900">{{ college.placement.students_placed }}</p>
+                <p class="text-xs text-gray-500">{{ college.placement.total_students }} eligible students</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Highest Package</p>
+                <p class="text-3xl font-bold text-primary">{{ college.placement.highest_package }} LPA</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Average Package</p>
+                <p class="text-3xl font-bold text-primary">{{ college.placement.average_package }} LPA</p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <p class="text-xs uppercase text-gray-500">Top Specialisations</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    {% for branch in college.specialisations %}
+                    <span class="px-3 py-1 rounded-full bg-white text-sm text-gray-700 border border-primary/20">{{ branch }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Placement Snapshot</h3>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-building text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Top Recruiters</p>
+                            <div class="flex flex-wrap gap-2 mt-1">
+                                {% for company in college.placement.top_recruiters %}
+                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs">{{ company }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-project-diagram text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Notable Labs & Projects</p>
+                            <ul class="list-disc list-inside text-xs mt-1 space-y-1">
+                                {% for project in college.placement.notable_projects %}
+                                    <li>{{ project }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Rankings & Accolades</h3>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    {% for ranking in college.rankings %}
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-medal text-yellow-500"></i>
+                        <span>{{ ranking }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-gray-50 border border-gray-100 rounded-3xl p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Contact & Location</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                    <div class="flex gap-3">
+                        <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Address</p>
+                            <p>{{ college.contact.address }}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <i class="fas fa-phone text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Phone</p>
+                            <p>{{ college.contact.phone }}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <i class="fas fa-envelope text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Email</p>
+                            <p>{{ college.contact.email }}</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <i class="fas fa-globe text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Website</p>
+                            <a href="{{ college.contact.website }}" target="_blank" class="text-primary font-semibold hover:underline">
+                                {{ college.contact.website }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-primary to-blue-700 text-white rounded-3xl p-6 flex flex-col gap-4">
+                <p class="text-sm uppercase tracking-[0.3em] text-white/70">Need more data?</p>
+                <h3 class="text-2xl font-semibold">Get customised cut-off analytics for {{ college.name }}</h3>
+                <a href="{% url 'landing_page:contact' %}" class="px-4 py-3 bg-white text-primary rounded-2xl text-center font-semibold shadow">
+                    Talk to Counsellor
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block head %}
+    <meta name="description" content="Get in touch with the E-Counselling team for NEET, JEE & CET guidance.">
+    <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'landing_page/css/launch_popup.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+<section class="relative overflow-hidden pt-28 pb-16 bg-gradient-to-br from-[#eef4ff] via-white to-[#f3e8ff]">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="w-40 h-40 bg-primary/10 rounded-full blur-3xl absolute -top-10 -left-10"></div>
+        <div class="w-48 h-48 bg-purple-400/10 rounded-full blur-3xl absolute bottom-0 right-0"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10 grid gap-10 lg:grid-cols-[3fr_2fr] items-center">
+        <div>
+            <span class="inline-flex items-center gap-2 bg-white/80 border border-primary/10 px-4 py-1.5 rounded-full text-xs font-semibold text-primary shadow-sm">
+                <i class="fas fa-comments text-primary"></i> Dedicated Support Team
+            </span>
+            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Let’s Talk About Your Counselling Journey</h1>
+            <p class="mt-4 text-gray-600 text-lg max-w-2xl">Our experts respond within 24 hours to guide you on plans, partnerships, and student onboarding for NEET, JEE, CET, and more.</p>
+            <div class="mt-6 flex flex-wrap gap-4 text-sm text-gray-700">
+                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-semibold text-gray-900 text-lg mb-1">50K+</div>
+                    Students Counselled
+                </div>
+                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-semibold text-gray-900 text-lg mb-1">24x7</div>
+                    Support Availability
+                </div>
+                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-semibold text-gray-900 text-lg mb-1">4.9/5</div>
+                    Avg. Rating
+                </div>
+            </div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-xl">
+            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Reach Us Directly</h3>
+            <div class="space-y-4 text-sm text-gray-700">
+                <div class="flex items-start gap-3">
+                    <span class="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                        <i class="fas fa-phone-alt"></i>
+                    </span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Call / WhatsApp</p>
+                        <p>+91-9765660584</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-10 h-10 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Email Support</p>
+                        <p>support@ecounselling.in</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-10 h-10 rounded-2xl bg-accent/10 text-accent flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Office</p>
+                        <p>Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-[2fr_3fr]">
+        <div class="space-y-6">
+            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-900 mb-1">Connect with the Right Team</h2>
+                <p class="text-gray-600 text-sm">Choose a suitable option or fill the form—we’ll match you with the best counsellor.</p>
+                <div class="mt-5 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-user-tie text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Counselling Plans</p>
+                            <p class="text-sm text-gray-600">Discuss premium mentorship tiers and guarantees.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-handshake text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Institution Partnerships</p>
+                            <p class="text-sm text-gray-600">For colleges, coaching centers, or NGO collaborations.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-book text-primary mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Documentation Support</p>
+                            <p class="text-sm text-gray-600">Need help with CAP rounds or document verification?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-primary to-blue-700 rounded-3xl p-6 text-white flex flex-col gap-4">
+                <p class="text-lg font-semibold">Prefer a quick call?</p>
+                <p class="text-sm text-white/80">Schedule a 15-min discovery call with our senior counsellor.</p>
+                <button class="bg-white text-primary font-semibold rounded-2xl px-5 py-3 flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fas fa-calendar-check"></i> Book a Call Slot
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-100 shadow-xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-xl"><i class="fas fa-paper-plane"></i></span>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900">Send us a message</h3>
+                    <p class="text-sm text-gray-500">All fields required unless marked optional</p>
+                </div>
+            </div>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="flex flex-col">
+                    <label class="text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" placeholder="Enter your name" class="input-primary"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" placeholder="you@example.com" class="input-primary"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <input type="tel" placeholder="+91-98765 43210" class="input-primary"/>
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-sm font-medium text-gray-700 mb-1">Exam Category</label>
+                    <select class="input-primary">
+                        <option>NEET (UG)</option>
+                        <option>JEE (Main/Advanced)</option>
+                        <option>MHT-CET / KCET / State CET</option>
+                        <option>Other Competitive Exams</option>
+                    </select>
+                </div>
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea rows="5" placeholder="Tell us about your query, preferred plan, or exam details" class="input-primary resize-none"></textarea>
+                </div>
+                <div class="flex flex-col md:col-span-2">
+                    <label class="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+                        Supporting Documents <span class="text-gray-400 text-xs font-normal">(optional)</span>
+                    </label>
+                    <label class="input-primary flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer border-dashed border-2 border-gray-300 hover:border-primary/60 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-lg">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p class="font-medium text-gray-900">Upload scorecards / supporting docs</p>
+                            <p class="text-xs text-gray-500">PDF, JPG, PNG up to 5 MB</p>
+                        </div>
+                        <input type="file" class="hidden" accept=".pdf,.jpg,.jpeg,.png"/>
+                    </label>
+                </div>
+                <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <small class="text-gray-500 flex items-center gap-2">
+                        <i class="fas fa-lock text-green-500"></i> We never share your information.
+                    </small>
+                    <button type="button" class="bg-gradient-to-r from-primary to-blue-700 text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="py-14 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 grid gap-8 lg:grid-cols-2">
+        <div class="bg-white rounded-3xl border border-gray-100 shadow p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Visit Our Experience Center</h3>
+            <p class="text-sm text-gray-600 mb-6">Walk in for document checks, mock choice filling, and dedicated counsellor sessions.</p>
+            <div class="space-y-4 text-sm">
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-map-marked-alt text-primary mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-gray-900">Address</p>
+                        <p>Office 404, Balewadi High Street<br>Pune, Maharashtra 411045</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-clock text-primary mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-gray-900">Support Hours</p>
+                        <p>Mon–Sat: 9 AM – 8 PM<br>Sun: 10 AM – 4 PM</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fas fa-share-alt text-primary mt-1"></i>
+                    <div>
+                        <p class="font-semibold text-gray-900">Social Channels</p>
+                        <div class="flex gap-4 text-xl text-primary">
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-linkedin"></i>
+                            <i class="fab fa-youtube"></i>
+                            <i class="fab fa-telegram-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+            <iframe title="E-Counselling Location" class="w-full h-80 grayscale-[20%]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.612...placeholder..." allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'landing_page/js/script.js' %}"></script>
+<script src="{% static 'landing_page/js/launch_popup.js' %}"></script>
+{% endblock content %}

@@ -13,5 +13,6 @@ urlpatterns = [
     path('rank-predictor/',views.rank_predictor, name='rank_predictor'),
     path('about-us/',views.about_us, name='about_us'),
     path('careers/',views.careers, name='careers'),
-
+    path('tools-and-services/',views.tools_and_services, name='tools_and_services'),
+    path('contact/', views.contact, name='contact'),
 ]

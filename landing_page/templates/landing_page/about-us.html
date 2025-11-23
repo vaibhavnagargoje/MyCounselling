@@ -1,8 +1,195 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}About Us{% endblock %}
+{% block title %}About Us {% endblock %}
 
 {% block content %}
+	<section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden relative">
+		<div class="absolute inset-0 pointer-events-none">
+			<div class="absolute top-10 left-10 w-24 h-24 bg-blue-200 rounded-full opacity-10 floating"></div>
+			<div class="absolute top-40 right-20 w-20 h-20 bg-purple-200 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
+			<div class="absolute bottom-10 left-1/3 w-32 h-32 bg-green-200 rounded-full opacity-10 floating" style="animation-delay: 1.5s;"></div>
+		</div>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+			<span class="inline-flex items-center px-4 py-1 rounded-full bg-white/70 text-primary font-semibold text-xs tracking-wide uppercase mb-4">Who we are</span>
+			<h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">Powering confident counselling decisions for every aspirant</h1>
+			<p class="text-gray-600 max-w-3xl mx-auto text-base md:text-lg">E-Counselling brings together counsellors, data scientists, and alumni from top institutes to decode the complexity of NEET, JEE, and CET admissions. We combine verified data, predictive analytics, and real mentors to help students secure their dream colleges.</p>
+		</div>
+	</section>
 
+	<section class="py-16 bg-white relative overflow-hidden">
+		<div class="absolute inset-0 opacity-5">
+			<div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.08"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
+		</div>
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+			<div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
+				<p class="text-primary font-semibold uppercase tracking-wider mb-4">Our Mission</p>
+				<h2 class="text-2xl font-bold text-gray-900 mb-4">Simplify college admissions with trust, transparency, and technology.</h2>
+				<p class="text-gray-600 leading-relaxed">We are obsessed with answering the three questions every aspirant has: "Where do I stand?", "What can I get?", and "How do I get there?" Our platform blends real-time counselling data, historical cutoffs, mock allotments, and expert mentors to deliver accurate, personalized pathways.</p>
+				<div class="mt-6 grid grid-cols-2 gap-4 text-center">
+					<div class="bg-white rounded-2xl py-5 shadow-sm">
+						<p class="text-3xl font-bold text-primary">50K+</p>
+						<p class="text-xs uppercase tracking-wider text-gray-500">students mentored</p>
+					</div>
+					<div class="bg-white rounded-2xl py-5 shadow-sm">
+						<p class="text-3xl font-bold text-primary">270+</p>
+						<p class="text-xs uppercase tracking-wider text-gray-500">partner colleges</p>
+					</div>
+				</div>
+				<div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+					<div class="bg-white rounded-2xl p-4 shadow-sm">
+						<p class="text-xs font-semibold text-primary uppercase">01 — Insight</p>
+						<p class="mt-2 text-sm text-gray-600">Collect verified rank lists, mop-up data, and student intents daily.</p>
+					</div>
+					<div class="bg-white rounded-2xl p-4 shadow-sm">
+						<p class="text-xs font-semibold text-primary uppercase">02 — Prediction</p>
+						<p class="mt-2 text-sm text-gray-600">Blend ML forecasts with counsellor intelligence for accurate lists.</p>
+					</div>
+					<div class="bg-white rounded-2xl p-4 shadow-sm">
+						<p class="text-xs font-semibold text-primary uppercase">03 — Execution</p>
+						<p class="mt-2 text-sm text-gray-600">War-room support for documentation, choice locking, and seat freezes.</p>
+					</div>
+				</div>
+			</div>
+			<div class="bg-gradient-to-br from-primary to-purple-600 text-white rounded-3xl p-8 shadow-2xl">
+				<h3 class="text-xl font-semibold mb-4">What drives us</h3>
+				<ul class="space-y-4">
+					<li class="flex items-start gap-3">
+						<span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold">01</span>
+						<div>
+							<p class="font-semibold">Data Integrity</p>
+							<p class="text-white/80 text-sm">Every prediction is cross-verified with state & central counselling authorities.</p>
+						</div>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold">02</span>
+						<div>
+							<p class="font-semibold">Human Mentorship</p>
+							<p class="text-white/80 text-sm">Certified counsellors, alumni mentors, and psychologists onboard.</p>
+						</div>
+					</li>
+					<li class="flex items-start gap-3">
+						<span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold">03</span>
+						<div>
+							<p class="font-semibold">Outcome First</p>
+							<p class="text-white/80 text-sm">We stay with students till their seat is accepted and journey begins.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-gray-50">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<span class="inline-flex px-4 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs tracking-wide uppercase mb-3">Meet the Team</span>
+				<h2 class="text-3xl font-bold text-gray-900">People building E-Counselling</h2>
+				<p class="text-gray-600 max-w-2xl mx-auto mt-4">Product minds, admission strategists, and tech leaders with a shared goal of democratizing counselling access.</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+					<img src="{% static 'landing_page/img/team/rahul.png' %}" alt="Rahul Patil" class="w-24 h-24 rounded-full object-cover mb-4">
+					<h3 class="text-xl font-semibold text-gray-900">Vaibhav Nagargoje</h3>
+					<p class="text-primary text-sm font-medium mb-2">Founder & Product Lead</p>
+					<p class="text-gray-600 text-sm">Ex-JoSAA mentor, built the predictor engine powering 2M+ simulations.</p>
+				</div>
+				<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+					<img src="{% static 'landing_page/img/team/sarah.png' %}" alt="Sarah Fernandes" class="w-24 h-24 rounded-full object-cover mb-4">
+					<h3 class="text-xl font-semibold text-gray-900">Sujeet Jadhav</h3>
+					<p class="text-primary text-sm font-medium mb-2">Co-Founder</p>
+					<p class="text-gray-600 text-sm">12+ years guiding NEET aspirants; leads 80 counsellors across India.</p>
+				</div>
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+                    <img src="{% static 'landing_page/img/team/ananya.png' %}" alt="Ananya Rao" class="w-24 h-24 rounded-full object-cover mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900">Kailas Khade</h3>
+                    <p class="text-primary text-sm font-medium mb-2">Lead Marketing & Growth</p>
+                    <p class="text-gray-600 text-sm">Drives collaborations with 270+ institutes and 40 NGOs.</p>
+                </div>
+				<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+					<img src="{% static 'landing_page/img/team/amit.png' %}" alt="Amit Kulkarni" class="w-24 h-24 rounded-full object-cover mb-4">
+					<h3 class="text-xl font-semibold text-gray-900">Vaishnavi Yadav</h3>
+					<p class="text-primary text-sm font-medium mb-2">Data & AI Architect</p>
+					<p class="text-gray-600 text-sm">Previously @ Microsoft, designs rank prediction & seat forecasting models.</p>
+				</div>
+				<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+					<img src="{% static 'landing_page/img/team/zaid.png' %}" alt="Zaid Qureshi" class="w-24 h-24 rounded-full object-cover mb-4">
+					<h3 class="text-xl font-semibold text-gray-900">Zaid Qureshi</h3>
+					<p class="text-primary text-sm font-medium mb-2">Lead UX & Growth</p>
+					<p class="text-gray-600 text-sm">Crafts the modern UI language and onboarding journeys students love.</p>
+				</div>
+				<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col items-center text-center">
+					<img src="{% static 'landing_page/img/team/dr_meera.png' %}" alt="Dr. Meera Joshi" class="w-24 h-24 rounded-full object-cover mb-4">
+					<h3 class="text-xl font-semibold text-gray-900">Dr. Meera Joshi</h3>
+					<p class="text-primary text-sm font-medium mb-2">Chief Mentor – Medical</p>
+					<p class="text-gray-600 text-sm">Pediatrician & mentor ensuring every NEET plan is psychologically sound.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-white">
+		<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<span class="inline-flex px-4 py-1 rounded-full bg-secondary/10 text-secondary font-semibold text-xs tracking-wide uppercase mb-3">Our Journey</span>
+				<h2 class="text-3xl font-bold text-gray-900">Milestones so far</h2>
+			</div>
+			<div class="space-y-6">
+				<div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gray-50 border border-gray-100 rounded-2xl p-6 gap-4">
+					<div class="flex items-center gap-4">
+						<span class="w-16 h-16 rounded-2xl bg-primary/10 text-primary font-bold text-xl flex items-center justify-center">2018</span>
+						<div>
+							<p class="text-lg font-semibold text-gray-900">Started as a volunteer-led NEET helpline</p>
+							<p class="text-gray-600 text-sm">Helped 120 students with manual choice filling and document checks.</p>
+						</div>
+					</div>
+					<a href="#contact" class="text-primary font-semibold flex items-center gap-2">Learn more
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"></path>
+						</svg>
+					</a>
+				</div>
+				<div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gray-50 border border-gray-100 rounded-2xl p-6 gap-4">
+					<div class="flex items-center gap-4">
+						<span class="w-16 h-16 rounded-2xl bg-primary/10 text-primary font-bold text-xl flex items-center justify-center">2020</span>
+						<div>
+							<p class="text-lg font-semibold text-gray-900">Launched first AI-backed college predictor</p>
+							<p class="text-gray-600 text-sm">Scaled to 18k users, partnered with three state CET cells.</p>
+						</div>
+					</div>
+					<a href="#contact" class="text-primary font-semibold flex items-center gap-2">Learn more
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"></path>
+						</svg>
+					</a>
+				</div>
+				<div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gray-50 border border-gray-100 rounded-2xl p-6 gap-4">
+					<div class="flex items-center gap-4">
+						<span class="w-16 h-16 rounded-2xl bg-primary/10 text-primary font-bold text-xl flex items-center justify-center">2023</span>
+						<div>
+							<p class="text-lg font-semibold text-gray-900">Nationwide rollout & 50K+ success stories</p>
+							<p class="text-gray-600 text-sm">24/7 war-room, 270 partner colleges, ISO-certified counselling SOPs.</p>
+						</div>
+					</div>
+					<a href="#contact" class="text-primary font-semibold flex items-center gap-2">Learn more
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-gray-900 text-white relative overflow-hidden">
+		<div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="%23ffffff" fill-opacity="0.05"/></svg>');"></div>
+		<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+			<h2 class="text-3xl font-bold mb-4">Let’s craft your admission strategy</h2>
+			<p class="text-white/80 mb-8">Talk to our counsellors, get mock allotments, and enter counselling rounds with absolute clarity.</p>
+			<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+				<a href="#" class="px-8 py-3 rounded-full bg-white text-primary font-semibold shadow-lg hover:-translate-y-0.5 transition">Book a call</a>
+				<a href="{% url 'landing_page:college_predictor' %}" class="px-8 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition">Explore tools</a>
+			</div>
+		</div>
+	</section>
 {% endblock %}

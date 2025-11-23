@@ -4,5 +4,132 @@
 {% block title %}Careers{% endblock %}
 
 {% block content %}
+<section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute w-32 h-32 bg-primary/10 blur-3xl -top-10 left-10"></div>
+        <div class="absolute w-40 h-40 bg-purple-400/10 blur-3xl bottom-0 right-0"></div>
+    </div>
+    <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-primary text-xs font-semibold uppercase tracking-wide mb-4">
+            <i class="fas fa-briefcase"></i> We’re hiring
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">Build the future of counselling</h1>
+        <p class="text-gray-600 text-base md:text-lg mb-6">Join product thinkers, counsellors, and data scientists reimagining NEET, JEE & CET admissions for 50K+ aspirants.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="#open-roles" class="bg-gradient-to-r from-primary to-blue-700 text-white px-8 py-3 rounded-xl font-semibold shadow hover:opacity-90 transition w-full sm:w-auto text-center">View Open Roles</a>
+            <a href="mailto:talent@ecounselling.in" class="border border-primary text-primary px-8 py-3 rounded-xl font-semibold hover:bg-primary hover:text-white transition w-full sm:w-auto text-center">Email Resume</a>
+        </div>
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-600">
+            <div class="bg-white/80 rounded-2xl py-4 shadow-sm">
+                <p class="text-2xl font-bold text-primary">50K+</p>
+                <p>Students Served</p>
+            </div>
+            <div class="bg-white/80 rounded-2xl py-4 shadow-sm">
+                <p class="text-2xl font-bold text-primary">120+</p>
+                <p>Employees</p>
+            </div>
+            <div class="bg-white/80 rounded-2xl py-4 shadow-sm">
+                <p class="text-2xl font-bold text-primary">12</p>
+                <p>Cities</p>
+            </div>
+            <div class="bg-white/80 rounded-2xl py-4 shadow-sm">
+                <p class="text-2xl font-bold text-primary">4.8/5</p>
+                <p>Glassdoor Score</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <span class="inline-flex px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wide mb-3">Why E-Counselling</span>
+            <h2 class="text-3xl font-bold text-gray-900">Grow, learn, and make impact</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-lightbulb text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Mission-first culture</h3>
+                <p class="text-sm text-gray-600">We’re obsessed with helping students make confident admission decisions.</p>
+            </article>
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-user-graduate text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Learning stipend</h3>
+                <p class="text-sm text-gray-600">Dedicated budget for certifications, conferences, and mentorship.</p>
+            </article>
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-heart text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Wellness benefits</h3>
+                <p class="text-sm text-gray-600">Comprehensive health cover, counselling credits, remote-friendly policies.</p>
+            </article>
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-globe text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Hybrid work</h3>
+                <p class="text-sm text-gray-600">Choose Pune HQ, regional hubs, or remote roles with travel support.</p>
+            </article>
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-chart-line text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Stock options</h3>
+                <p class="text-sm text-gray-600">ESOPs for core team members across functions.</p>
+            </article>
+            <article class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <i class="fas fa-hands-helping text-primary text-2xl mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-2">Inclusive teams</h3>
+                <p class="text-sm text-gray-600">50% women leadership, mentors from Tier-2/3 cities, no degree bias.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="open-roles" class="py-14 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 space-y-8">
+        <div class="text-center">
+            <span class="inline-flex px-4 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-semibold uppercase tracking-wide mb-3">Open roles</span>
+            <h2 class="text-3xl font-bold text-gray-900">Find your squad</h2>
+            <p class="text-gray-600 text-sm md:text-base">Full-time · Hybrid/Remote options</p>
+        </div>
+        <div class="grid gap-6">
+            <article class="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between shadow-sm">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900">{{ role.title }}</h3>
+                    <p class="text-sm text-gray-500 mb-3">{{ role.team }}</p>
+                    <p class="text-sm text-gray-600 mb-3">{{ role.summary }}</p>
+                    <div class="flex flex-wrap gap-2">
+                        {% for tag in role.tags %}
+                            <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <button class="border border-gray-300 text-gray-800 px-5 py-2.5 rounded-xl font-semibold hover:border-primary hover:text-primary transition w-full">Job Description</button>
+                    <button class="bg-gradient-to-r from-primary to-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold shadow hover:opacity-90 transition w-full">Apply Now</button>
+                </div>
+            </article>
+           
+        </div>
+    </div>
+</section>
+
+<section class="py-14 bg-white">
+    <div class="max-w-5xl mx-auto px-4 bg-gradient-to-br from-primary to-blue-700 text-white rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1">
+            <p class="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">Don’t see your role?</p>
+            <h3 class="text-3xl font-semibold mb-3">Pitch yourself or refer someone</h3>
+            <p class="text-sm text-white/80 mb-4">Share portfolios, side projects, or referrals—we hire passionate builders year-round.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="mailto:talent@ecounselling.in" class="bg-white text-primary px-6 py-3 rounded-xl font-semibold text-center shadow">Send Resume</a>
+                <a href="mailto:referrals@ecounselling.in" class="border border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center hover:bg-white/10 transition">Refer a Friend</a>
+            </div>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-6 w-full md:w-64 text-sm">
+            <p class="font-semibold mb-3">Hiring Process</p>
+            <ul class="space-y-2 text-white/80">
+                <li>1. 30-min recruiter chat</li>
+                <li>2. Role-specific challenge</li>
+                <li>3. Founder / Panel interview</li>
+                <li>4. Offer + onboarding within 2 weeks</li>
+            </ul>
+        </div>
+    </div>
+</section>
 {% endblock %}

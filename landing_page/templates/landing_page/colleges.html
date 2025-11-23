@@ -4,5 +4,87 @@
 {% block title %}Colleges - E-Counselling{% endblock %}
 
 {% block content %}
+<section class="pt-24 pb-10 bg-gradient-to-br from-blue-50 to-indigo-100 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-primary text-xs font-semibold uppercase tracking-wide mb-4">
+            <i class="fas fa-database"></i> Verified Institute Database
+        </span>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Explore Accredited Colleges & Universities</h1>
+        <p class="text-gray-600 text-sm md:text-base">Real-time snapshots of accreditation, rankings, and placement health pulled directly from our counselling dashboard.</p>
+    </div>
+</section>
 
+<section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 space-y-6">
+        <div class="bg-gray-50 border border-gray-100 rounded-3xl p-4 flex flex-col md:flex-row md:items-center gap-4">
+            <div class="flex-1 flex items-center gap-3 bg-white rounded-2xl px-4 py-2 shadow-sm">
+                <i class="fas fa-search text-gray-400"></i>
+                <input type="text" placeholder="Search by college name or city" class="w-full bg-transparent text-sm focus:outline-none">
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <button class="px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-600 hover:border-primary hover:text-primary transition">NAAC A/A++</button>
+                <button class="px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-600 hover:border-primary hover:text-primary transition">Top 100 NIRF</button>
+                <button class="px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-600 hover:border-primary hover:text-primary transition">Autonomous</button>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-3xl shadow-xl overflow-hidden">
+            <div class="hidden lg:grid grid-cols-[140px_1fr_220px_220px_140px] bg-gray-100 text-xs font-semibold uppercase tracking-wide text-gray-500 px-6 py-3">
+                <span>Institute Code</span>
+                <span>College</span>
+                <span>Accreditation & Status</span>
+                <span>Rankings</span>
+                <span class="text-center">Actions</span>
+            </div>
+            <div class="divide-y divide-gray-100">
+                {% for college in colleges %}
+                <div class="grid lg:grid-cols-[140px_1fr_220px_220px_140px] gap-6 px-6 py-6 items-center">
+                    <div class="text-sm font-semibold text-primary uppercase tracking-wide">{{ college.code }}</div>
+
+                    <div>
+                        <p class="text-base font-semibold text-gray-900">{{ college.name }}</p>
+                        <p class="text-sm text-gray-500">{{ college.location }}</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            {% for branch in college.specialisations %}
+                                <span class="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">{{ branch }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-gray-600 space-y-1">
+                        <p class="font-semibold text-gray-900">{{ college.accreditation }}</p>
+                        <p>{{ college.status }}</p>
+                    </div>
+
+                    <div class="text-sm text-gray-600 space-y-1">
+                        {% for ranking in college.rankings %}
+                            <p class="flex items-start gap-2"><i class="fas fa-award text-yellow-500 mt-0.5"></i><span>{{ ranking }}</span></p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="flex flex-col items-center gap-3">
+                        <a href="{% url 'landing_page:college_details' college.id %}" class="px-5 py-2 rounded-xl bg-gradient-to-r from-primary to-blue-700 text-white text-xs font-semibold shadow hover:opacity-90 transition">
+                            View Details
+                        </a>
+                        <button class="text-xs text-primary font-semibold flex items-center gap-1">
+                            <i class="fas fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="px-6 py-10 text-center text-gray-500 text-sm">No institutes available right now.</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-primary to-purple-600 rounded-3xl text-white p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/70 mb-2">Need help?</p>
+                <h3 class="text-2xl font-bold">Get curated college lists & mock allotments</h3>
+                <p class="text-white/80 text-sm mt-2">Talk to our counsellors for personalised recommendations.</p>
+            </div>
+            <a href="{% url 'landing_page:contact' %}" class="px-6 py-3 bg-white text-primary rounded-2xl font-semibold shadow-lg text-center">Contact Team</a>
+        </div>
+    </div>
+</section>
 {% endblock %}
