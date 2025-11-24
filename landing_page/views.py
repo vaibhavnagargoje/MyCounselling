@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from django.urls import reverse
+from django.contrib import messages
+from .forms import ContactForm
+from .models import ContactSubmission
 
 COLLEGE_DATA = [
     {
@@ -220,11 +223,6 @@ WORKFLOW_STEPS = [
     {"title": "Seat Acceptance", "desc": "Post-seat onboarding, hostel help, and alumni connects."},
 ]
 
-FAQS = [
-    {"q": "How accurate are the predictors?", "a": "Powered by 6 years of counselling data, live exam-difficulty signals, and mentor overrides."},
-    {"q": "Can I upgrade plans mid-way?", "a": "Yes, pay the difference anytime to unlock Pro or Elite services instantly."},
-    {"q": "Do you support multiple exams?", "a": "Single dashboard handles NEET, JEE, CET, COMEDK, VITEEE, and state rounds together."},
-]
 
 # Create your views here.
 
@@ -234,15 +232,6 @@ def index(request):
     return render(request, 'landing_page/index.html')
 
 
-
-def colleges(request):
-    return render(request, 'landing_page/colleges.html', {"colleges": COLLEGE_DATA})
-
-def college_details(request, college_id):
-    college = next((c for c in COLLEGE_DATA if c["id"] == college_id), None)
-    if college is None:
-        raise Http404("College not found")
-    return render(request, 'landing_page/college-details.html', {"college": college})
 
 
 def about_us(request):
@@ -262,4 +251,43 @@ def tools_and_services(request):
     return render(request, 'landing_page/tools-and-services.html')
 
 def contact(request):
-    return render(request, 'landing_page/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST, request.FILES)
+        if form.is_valid():
+            contact_submission = form.save(commit=False)
+            
+            # Capture metadata
+            contact_submission.ip_address = get_client_ip(request)
+            contact_submission.user_agent = request.META.get('HTTP_USER_AGENT', '')[:500]
+            
+            contact_submission.save()
+            
+            messages.success(
+                request,
+                f'Thank you, {contact_submission.full_name}! Your message has been received. '
+                f'Our team will respond within 24 hours via email or phone.'
+            )
+            
+            return redirect('landing_page:contact')
+        else:
+            messages.error(
+                request,
+                'There was an error with your submission. Please check the form and try again.'
+            )
+    else:
+        form = ContactForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'landing_page/contact.html', context)
+
+
+def get_client_ip(request):
+    """Helper function to get client IP address"""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
