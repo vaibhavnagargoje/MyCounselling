@@ -6,6 +6,6 @@ app_name = 'colleges'
 
 urlpatterns = [
     # Define your URL patterns here
-    path('', views.colleges, name='colleges'),
+    path('', views.colleges_list, name='colleges_list'),
     path('<int:college_id>/', views.college_detail, name='college_detail'),
    ]

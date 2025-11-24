@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'dashboard',
     'counsellor',
     'colleges',
+    'collegepredictor',
+    'rankpredictor',
     
 
     'tailwind',

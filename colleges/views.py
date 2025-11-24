@@ -4,7 +4,7 @@ from .models import EngineeringCollege, PlacementRecord
 
 # Create your views here.
 
-def colleges(request):
+def colleges_list(request):
     """View to display list of colleges with search functionality"""
     search_query = request.GET.get('search', '')
     colleges_list = EngineeringCollege.objects.filter(is_active=True).select_related()
@@ -25,7 +25,7 @@ def colleges(request):
         'search_query': search_query,
         'total_colleges': colleges_list.count()
     }
-    return render(request, 'colleges/colleges.html', context)
+    return render(request, 'colleges/colleges_list.html', context)
 
 def college_detail(request, college_id):
     """View to display detailed information about a specific college"""

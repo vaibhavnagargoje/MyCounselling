@@ -159,7 +159,7 @@ FEATURED_TOOLS = [
         "badge": "Free Tool",
         "icon_class": "fas fa-calculator",
         "gradient": "bg-gradient-to-r from-purple-500 to-purple-600",
-        "url_name": "rank_predictor",
+        "url_name": "rankpredictor",
     },
     {
         "title": "College Database",
@@ -196,7 +196,7 @@ PRO_SERVICES = [
             "Upgrade-ready insights",
         ],
         "cta": "Launch Rank Predictor",
-        "url_name": "rank_predictor",
+        "url_name": "rankpredictor",
     },
     {
         "title": "College Research Desk",
@@ -244,10 +244,7 @@ def college_details(request, college_id):
         raise Http404("College not found")
     return render(request, 'landing_page/college-details.html', {"college": college})
 
-def college_predictor(request):
-    return render(request, 'landing_page/college-predictor.html')
-def rank_predictor(request):
-    return render(request, 'landing_page/rank-predictor.html')
+
 def about_us(request):
     return render(request, 'landing_page/about-us.html')
 
@@ -260,19 +257,9 @@ def careers(request):
     return render(request,'landing_page/careers.html', context)
 
 def tools_and_services(request):
-    featured_tools = [
-        {**tool, "url": reverse(f"landing_page:{tool['url_name']}")}
-        for tool in FEATURED_TOOLS
-    ]
-    pro_services = [
-        {**service, "url": reverse(f"landing_page:{service['url_name']}")}
-        for service in PRO_SERVICES
-    ]
-    context = {
-        "featured_tools": featured_tools,
-        "pro_services": pro_services,
-    }
-    return render(request, 'landing_page/tools-and-services.html', context)
+    
+    
+    return render(request, 'landing_page/tools-and-services.html')
 
 def contact(request):
     return render(request, 'landing_page/contact.html')

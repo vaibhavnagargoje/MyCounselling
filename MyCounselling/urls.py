@@ -23,6 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # add path and namespace also
     path('',include('landing_page.urls',namespace='landing_page')),
+    path('rankpredictor/',include('rankpredictor.urls', namespace='rank_predictor')),
+    path('collegepredictor/',include('collegepredictor.urls', namespace='college_predictor')),
+    path('colleges/', include(('colleges.urls', 'colleges'), namespace='colleges')),
+
     path('user/',include('user.urls', namespace='user')),
     path('dashboard/', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
 

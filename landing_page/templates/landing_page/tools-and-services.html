@@ -36,19 +36,42 @@
 			<p class="text-lg text-gray-600 max-w-2xl mx-auto">Mirroring the home-page cards so you can plug in real data sources soon.</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			{% for tool in featured_tools %}
+			
 			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
-				<div class="w-14 h-14 rounded-full {{ tool.gradient }} flex items-center justify-center mx-auto mb-4">
-					<i class="{{ tool.icon_class }} text-white text-xl"></i>
+				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+					<i class="fas fa-calculator text-white text-xl"></i>
 				</div>
-				<h3 class="text-lg font-bold text-gray-900 mb-2">{{ tool.title }}</h3>
-				<p class="text-gray-600 text-sm mb-3">{{ tool.desc }}</p>
-				<span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">{{ tool.badge }}</span>
-				<a href="{{ tool.url }}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+				<h3 class="text-lg font-bold text-gray-900 mb-2">Rank Predictor</h3>
+				<p class="text-gray-600 text-sm mb-3">Personalized college lists mapped to your rank, budget, and preferred states.</p>
+				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
+				<a href="{% url 'rank_predictor:rank_predictor_home' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
 					Open Tool <i class="fas fa-arrow-right text-xs"></i>
 				</a>
 			</div>
-			{% endfor %}
+			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
+				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+					<i class="fas fa-university text-white text-xl"></i>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">College Predictor</h3>
+				<p class="text-gray-600 text-sm mb-3">Personalized college lists mapped to your rank, budget, and preferred states.</p>
+				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
+				<a href="{% url 'college_predictor:college_predictor_home' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+					Open Tool <i class="fas fa-arrow-right text-xs"></i>
+				</a>
+			</div>
+			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
+				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+					<i class="fas fa-database text-white text-xl"></i>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">College Data</h3>
+				<p class="text-gray-600 text-sm mb-3">Curated repository of 2500+ institutes with fees, cut-offs, and placement stats.	</p>
+				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
+				<a href="{% url 'colleges:colleges_list' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+					Open Tool <i class="fas fa-arrow-right text-xs"></i>
+				</a>
+			</div>
+			
+			
 		</div>
 		<p class="text-center text-gray-500 text-xs mt-10">Placeholder dataset — replace with DB-driven services when ready.</p>
 	</div>
