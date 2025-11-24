@@ -5,7 +5,7 @@
 
 {% block content %}
 <!-- Main Content Area -->
-<div class="flex-1 ml-64 p-6">
+<div class="flex-1 ml-64 p-6 relative">
     <!-- Search Bar and Filters -->
     <div class="flex items-center justify-between mb-6">
         <div class="flex-1 max-w-md">
@@ -17,298 +17,505 @@
     </div>
 
     <!-- Hero Banner -->
-    <div class="bg-gradient-to-r from-dark via-slate-700 to-slate-600 rounded-xl p-8 mb-6 text-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-4 left-4 w-16 h-16 border-2 border-white rounded-full"></div>
-            <div class="absolute top-8 right-8 w-12 h-12 border-2 border-white rounded-full"></div>
-            <div class="absolute bottom-4 left-8 w-8 h-8 border-2 border-white rounded-full"></div>
-            <div class="absolute bottom-8 right-4 w-20 h-20 border-2 border-white rounded-full"></div>
-        </div>
-        
-        <div class="flex items-center justify-between relative z-10">
-            <div class="flex items-center">
-                <div class="w-20 h-20 bg-gradient-to-r from-warning to-danger rounded-full flex items-center justify-center mr-6 animate-float">
-                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Complete Engineering Counselling 2025</h2>
-                    <div class="bg-gradient-to-r from-warning to-danger px-4 py-2 rounded-lg inline-block">
-                        <span class="text-lg font-semibold">Expert Guidance for Your Dream College</span>
-                    </div>
-                    <p class="text-sm mt-2 opacity-90">#SecureYourFuture2025</p>
-                </div>
+    <div class="relative mb-6 rounded-xl overflow-hidden">
+        {% for item in featured_items %}
+        <div class="hero-slide bg-gradient-to-r from-dark via-slate-700 to-slate-600 p-8 text-white relative {% if not forloop.first %}hidden{% endif %}">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-4 w-16 h-16 border-2 border-white rounded-full"></div>
+                <div class="absolute top-8 right-8 w-12 h-12 border-2 border-white rounded-full"></div>
+                <div class="absolute bottom-4 left-8 w-8 h-8 border-2 border-white rounded-full"></div>
+                <div class="absolute bottom-8 right-4 w-20 h-20 border-2 border-white rounded-full"></div>
             </div>
             
-            <div class="text-right">
-                <div class="mb-4">
-                    <span class="text-sm opacity-75">Starting At</span>
-                    <div class="flex items-center justify-end space-x-2">
-                        <span class="text-lg line-through opacity-75">₹15,999/-</span>
-                        <span class="text-2xl font-bold text-warning">₹4,999/-</span>
+            <div class="flex items-center justify-between relative z-10">
+                <div class="flex items-center">
+                    <div class="w-20 h-20 bg-gradient-to-r from-warning to-danger rounded-full flex items-center justify-center mr-6 animate-float overflow-hidden">
+                        {% if item.obj.thumbnail %}
+                            <img src="{{ item.obj.thumbnail.url }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2">{{ item.obj.name }}</h2>
+                        <div class="bg-gradient-to-r from-warning to-danger px-4 py-2 rounded-lg inline-block">
+                            <span class="text-lg font-semibold">{{ item.obj.short_description|default:"Expert Guidance for Your Future" }}</span>
+                        </div>
+                        <p class="text-sm mt-2 opacity-90">#SecureYourFuture</p>
                     </div>
                 </div>
-                <button class="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                    <i class="fas fa-arrow-right mr-2"></i>
-                    Explore Plans
+                
+                <div class="text-right">
+                    <div class="mb-4">
+                        <span class="text-sm opacity-75">Starting At</span>
+                        <div class="flex items-center justify-end space-x-2">
+                            {% if item.original_price %}
+                            <span class="text-lg line-through opacity-75">₹{{ item.original_price }}</span>
+                            {% endif %}
+                            <span class="text-2xl font-bold text-warning">₹{{ item.price }}</span>
+                        </div>
+                    </div>
+                    <button class="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Explore {{ item.type }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <!-- Fallback Banner if no featured items -->
+        <div class="bg-gradient-to-r from-dark via-slate-700 to-slate-600 p-8 text-white relative">
+            <div class="flex items-center justify-between relative z-10">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Welcome to Counselling</h2>
+                    <p>Explore our plans below</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Carousel Dots -->
+        {% if featured_items|length > 1 %}
+        <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+            {% for item in featured_items %}
+            <button class="w-3 h-3 bg-white rounded-full transition-opacity duration-300 {% if forloop.first %}opacity-100{% else %}opacity-50{% endif %} carousel-dot" onclick="showSlide({{ forloop.counter0 }})"></button>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Filter Controls Section -->
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 relative z-30">
+        <div class="flex items-center space-x-4 w-full overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+            <!-- Filter Toggle Button -->
+            <button id="toggleFilterBtn" class="flex-shrink-0 flex items-center bg-white border border-gray-300 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-50 transition duration-300 shadow-sm">
+                <i class="fas fa-sliders-h mr-2"></i>
+                <span>Refine</span>
+                <span id="activeFilterCount" class="ml-2 bg-primary text-white text-xs px-2 py-0.5 rounded-full hidden">0</span>
+            </button>
+            
+            <!-- Main Type Tabs (Horizontal) including Exam Types -->
+            <div class="flex bg-gray-200 p-1 rounded-lg flex-nowrap whitespace-nowrap">
+                <button class="type-tab active px-4 py-1.5 rounded-md text-sm font-medium transition duration-300 shadow-sm bg-white text-gray-900" data-type="all">All</button>
+                <button class="type-tab px-4 py-1.5 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-300" data-type="bundle">Bundles</button>
+                <button class="type-tab px-4 py-1.5 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-300" data-type="product">Products</button>
+                
+                <!-- Exam Types moved here -->
+                {% for exam in exam_types %}
+                <button class="type-tab px-4 py-1.5 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-300" data-type="{{ exam.code|lower }}">{{ exam.name }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="relative min-h-[500px]">
+        <!-- Floating Filter Sidebar (Absolute Positioned) -->
+        <div id="filterSidebar" class="hidden absolute left-0 top-0 z-40 w-64 transition-all duration-300 ease-in-out">
+            <div class="bg-white rounded-xl shadow-2xl p-5 border border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-gray-900">Refine By</h3>
+                    <button id="clearFilters" class="text-xs text-primary hover:underline font-medium">Clear All</button>
+                </div>
+                
+                <!-- Sort By -->
+                <div class="mb-6 border-b border-gray-100 pb-4">
+                    <h4 class="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">Sort By</h4>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input type="radio" name="sort" class="sort-radio form-radio h-4 w-4 text-primary border-gray-300 focus:ring-primary" value="newest" checked>
+                            <span class="text-sm text-gray-600 group-hover:text-primary transition">Newest First</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input type="radio" name="sort" class="sort-radio form-radio h-4 w-4 text-primary border-gray-300 focus:ring-primary" value="price_low">
+                            <span class="text-sm text-gray-600 group-hover:text-primary transition">Price: Low to High</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input type="radio" name="sort" class="sort-radio form-radio h-4 w-4 text-primary border-gray-300 focus:ring-primary" value="price_high">
+                            <span class="text-sm text-gray-600 group-hover:text-primary transition">Price: High to Low</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div>
+                    <h4 class="text-xs font-bold text-gray-500 mb-3 uppercase tracking-wider">Category</h4>
+                    <div class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar">
+                        {% for cat in categories %}
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input type="checkbox" class="filter-checkbox form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary transition duration-150 ease-in-out" value="{{ cat.slug|lower }}">
+                            <span class="text-sm text-gray-600 group-hover:text-primary transition">{{ cat.name }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="w-full">
+            <!-- Products Count -->
+            <div class="flex justify-between items-center mb-4">
+                <p class="text-gray-600 font-medium"><span id="productCount">0</span> Plans Found</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="productsGrid">
+                
+                <!-- Bundled Plans -->
+                {% for plan in bundles %}
+                <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden" 
+                     data-category="all bundle {{ plan.plan_type }}"
+                     data-price="{{ plan.selling_price }}"
+                     data-date="{{ plan.created_at|date:'U' }}">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold text-gray-900 leading-tight">{{ plan.name }}</h3>
+                            <div class="flex items-center space-x-2">
+                                {% if plan.is_popular %}
+                                <span class="bg-warning text-black text-xs px-2 py-1 rounded-full font-semibold">Popular</span>
+                                {% endif %}
+                                <i class="fab fa-whatsapp text-success text-lg"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Image -->
+                        <div class="relative mb-4">
+                            {% if plan.thumbnail %}
+                                <img src="{{ plan.thumbnail.url }}" alt="{{ plan.name }}" class="w-full h-48 object-cover rounded-lg">
+                            {% else %}
+                                <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
+                                    <span class="text-gray-400">No Image</span>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
+                                {{ plan.get_plan_type_display }}
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-warning text-white px-2 py-1 rounded text-sm font-semibold">
+                                ₹ {{ plan.selling_price }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-sm text-gray-600 mb-2 line-clamp-2">
+                                <i class="fas fa-info-circle text-primary mr-1"></i>
+                                {{ plan.short_description }}
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                <i class="fas fa-calendar mr-1"></i>
+                                Validity: {{ plan.validity_days }} Days
+                            </p>
+                            <!-- Features Preview -->
+                            {% if plan.features %}
+                            <div class="mt-2 text-xs text-gray-500">
+                                {% for feature in plan.features|slice:":2" %}
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-check text-success mr-1"></i> {{ feature }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold text-gray-900">₹ {{ plan.selling_price }}</span>
+                                {% if plan.original_price > plan.selling_price %}
+                                <span class="text-sm text-gray-500 line-through">₹{{ plan.original_price }}</span>
+                                {% endif %}
+                            </div>
+                            {% if plan.discount_percentage > 0 %}
+                            <div class="bg-green-100 text-success px-2 py-1 rounded-full text-sm font-semibold">
+                                {{ plan.discount_percentage }}% OFF
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <a href="{% url 'dashboard:products:product_detail' type='bundle' slug=plan.slug %}" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
+                                View Details
+                            </a>
+                            <a href="{% url 'checkout:checkout_page'  %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Individual Products -->
+                {% for product in products %}
+                <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden" 
+                     data-category="all product {{ product.exam_type.code|lower }} {{ product.category.slug|lower }}"
+                     data-price="{{ product.base_price }}"
+                     data-date="{{ product.created_at|date:'U' }}">
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold text-gray-900 leading-tight">{{ product.name }}</h3>
+                            <div class="flex items-center space-x-2">
+                                {% if product.is_featured %}
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-semibold">Featured</span>
+                                {% endif %}
+                                <i class="fab fa-whatsapp text-success text-lg"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-4">
+                            {% if product.thumbnail %}
+                                <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded-lg">
+                            {% else %}
+                                <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
+                                    <span class="text-gray-400">No Image</span>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
+                                {{ product.exam_type.code|upper }}
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-warning text-white px-2 py-1 rounded text-sm font-semibold">
+                                ₹ {{ product.base_price }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-sm text-gray-600 mb-2 line-clamp-2">
+                                <i class="fas fa-info-circle text-primary mr-1"></i>
+                                {{ product.short_description }}
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                <i class="fas fa-calendar mr-1"></i>
+                                Validity: {{ product.validity_days }} Days
+                            </p>
+                            {% if product.features %}
+                            <div class="mt-2 text-xs text-gray-500">
+                                {% for feature in product.features|slice:":2" %}
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-check text-success mr-1"></i> {{ feature }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl font-bold text-gray-900">₹ {{ product.base_price }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <a href="{% url 'dashboard:products:product_detail' type='product' slug=product.slug %}" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
+                                View Details
+                            </a>
+                            <a href="{% url 'checkout:checkout_page' %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-8">
+                <button class="bg-gradient-to-r from-primary to-indigo-700 hover:from-secondary hover:to-indigo-800 text-white px-8 py-3 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Plans
                 </button>
             </div>
         </div>
-        
-        <!-- Carousel Dots -->
-        <div class="flex justify-center mt-6 space-x-2">
-            <div class="w-3 h-3 bg-white rounded-full"></div>
-            <div class="w-3 h-3 bg-white opacity-50 rounded-full"></div>
-            <div class="w-3 h-3 bg-white opacity-50 rounded-full"></div>
-        </div>
-    </div>
-
-    <!-- Filter Tabs -->
-    <div class="flex items-center space-x-4 mb-6">
-        <button class="flex items-center text-gray-600 hover:text-primary transition duration-300">
-            <i class="fas fa-filter mr-2"></i>
-            Filter
-        </button>
-        
-        <div class="flex space-x-2 flex-wrap">
-            <button class="filter-tab active px-4 py-2 rounded-lg font-medium transition duration-300" data-filter="all">All</button>
-            <button class="filter-tab px-4 py-2 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition duration-300" data-filter="cet">CET</button>
-            <button class="filter-tab px-4 py-2 rounded-lg font-medium text-gray-600 hover:bg-gray-100 transition duration-300" data-filter="neet">NEET</button>
-            
-        </div>
-    </div>
-
-    <!-- Products Count -->
-    <p class="text-gray-600 mb-6 font-medium"><span id="productCount">12</span> Counselling Plans Available</p>
-
-    <!-- Products Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
-        <!-- Product Card 1 -->
-        <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden" data-category="engineering premium">
-            <div class="p-4">
-                <div class="flex items-start justify-between mb-3">
-                    <h3 class="text-lg font-semibold text-gray-900 leading-tight">Complete Engineering Counselling Premium</h3>
-                    <div class="flex items-center space-x-2">
-                        <span class="bg-warning text-black text-xs px-2 py-1 rounded-full font-semibold">Popular</span>
-                        <i class="fab fa-whatsapp text-success text-lg"></i>
-                    </div>
-                </div>
-                
-                <!-- Product Image -->
-                <div class="relative mb-4">
-                    <img src="#" alt="Engineering Premium" class="w-full h-48 object-cover rounded-lg" >
-                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-                        All-Inclusive
-                    </div>
-                    <div class="absolute bottom-2 right-2 bg-warning text-white px-2 py-1 rounded text-sm font-semibold">
-                        ₹ 9,999/-
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <p class="text-sm text-gray-600 mb-2">
-                        <i class="fas fa-check-circle text-success mr-1"></i>
-                        Complete Counselling for All Engineering Exams
-                    </p>
-                    <p class="text-sm text-gray-600">
-                        <i class="fas fa-calendar mr-1"></i>
-                        Valid till 31 Dec 2025
-                    </p>
-                </div>
-                
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-2xl font-bold text-gray-900">₹ 9,999</span>
-                        <span class="text-sm text-gray-500 line-through">₹24,999</span>
-                    </div>
-                    <div class="bg-green-100 text-success px-2 py-1 rounded-full text-sm font-semibold">
-                        60% OFF
-                    </div>
-                </div>
-                
-                <p class="text-xs text-gray-500 mb-4">Includes: JEE Main, JEE Advanced, BITSAT, State CETs</p>
-                
-                <div class="flex space-x-2">
-                    <a href="#" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
-                        View Details
-                    </a>
-                    <button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product Card 2 -->
-        <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden" data-category="pharmacy premium">
-            <div class="p-4">
-                <div class="flex items-start justify-between mb-3">
-                    <h3 class="text-lg font-semibold text-gray-900 leading-tight">Pharmacy Counselling Complete Package</h3>
-                    <div class="flex items-center space-x-2">
-                        <span class="bg-warning text-black text-xs px-2 py-1 rounded-full font-semibold">New</span>
-                        <i class="fab fa-whatsapp text-success text-lg"></i>
-                    </div>
-                </div>
-                
-                <div class="relative mb-4">
-                    <img src="#" class="w-full h-48 object-cover rounded-lg" >
-                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-                        Full Support
-                    </div>
-                    <div class="absolute bottom-2 right-2 bg-warning text-white px-2 py-1 rounded text-sm font-semibold">
-                        ₹ 7,999/-
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <p class="text-sm text-gray-600 mb-2">
-                        <i class="fas fa-check-circle text-success mr-1"></i>
-                        MH-CET Pharmacy & Other State Exams
-                    </p>
-                    <p class="text-sm text-gray-600">
-                        <i class="fas fa-calendar mr-1"></i>
-                        Valid till 31 Dec 2025
-                    </p>
-                </div>
-                
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-2xl font-bold text-gray-900">₹ 7,999</span>
-                        <span class="text-sm text-gray-500 line-through">₹18,999</span>
-                    </div>
-                    <div class="bg-green-100 text-success px-2 py-1 rounded-full text-sm font-semibold">
-                        58% OFF
-                    </div>
-                </div>
-                
-                <p class="text-xs text-gray-500 mb-4">Includes: All rounds of counselling + Document verification</p>
-                
-                <div class="flex space-x-2">
-                    <a href="#" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
-                        View Details
-                    </a>
-                    <button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Product Card 3 -->
-        <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden" data-category="engineering basic">
-            <div class="course-card card-hover rounded-xl shadow-lg overflow-hidden">
-            <div class="p-4">
-                <div class="flex items-start justify-between mb-3">
-                    <h3 class="text-lg font-semibold text-gray-900 leading-tight">JEE Main Counselling Basic</h3>
-                    <div class="flex items-center space-x-2">
-                        <i class="fab fa-whatsapp text-success text-lg"></i>
-                    </div>
-                </div>
-                
-                <div class="relative mb-4">
-                    <img src="#" alt="JEE Basic" class="w-full h-48 object-cover rounded-lg" >
-                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-                        Essential
-                    </div>
-                    <div class="absolute bottom-2 right-2 bg-warning text-white px-2 py-1 rounded text-sm font-semibold">
-                        ₹ 4,999/-
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <p class="text-sm text-gray-600 mb-2">
-                        <i class="fas fa-check-circle text-success mr-1"></i>
-                        JoSAA Counselling Support
-                    </p>
-                    <p class="text-sm text-gray-600">
-                        <i class="fas fa-calendar mr-1"></i>
-                        Valid till counselling ends
-                    </p>
-                </div>
-                
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-2xl font-bold text-gray-900">₹ 4,999</span>
-                        <span class="text-sm text-gray-500 line-through">₹12,999</span>
-                    </div>
-                    <div class="bg-green-100 text-success px-2 py-1 rounded-full text-sm font-semibold">
-                        62% OFF
-                    </div>
-                </div>
-                
-                <p class="text-xs text-gray-500 mb-4">Includes: Choice filling + Seat allocation guidance</p>
-                
-                <div class="flex space-x-2">
-                    <a href="#" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
-                        View Details
-                    </a>
-                    <button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add more product cards as needed following the same pattern -->
-        
-    </div>
-
-    <!-- Load More Button -->
-    <div class="text-center mt-8">
-        <button class="bg-gradient-to-r from-primary to-indigo-700 hover:from-secondary hover:to-indigo-800 text-white px-8 py-3 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
-            <i class="fas fa-plus mr-2"></i>
-            Load More Plans
-        </button>
     </div>
 </div>
 {% endblock %}
 
 {% block script %}
 <script>
-    // Filter Tabs Functionality
-    const filterTabs = document.querySelectorAll('.filter-tab');
+    // Carousel Functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.add('hidden'));
+        dots.forEach(dot => dot.classList.replace('opacity-100', 'opacity-50'));
+        
+        if (slides[index]) {
+            slides[index].classList.remove('hidden');
+            if(dots[index]) dots[index].classList.replace('opacity-50', 'opacity-100');
+            currentSlide = index;
+        }
+    }
+
+    // Auto rotate carousel
+    if (slides.length > 1) {
+        setInterval(() => {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }, 5000);
+    }
+
+    // Advanced Filtering & Sorting Logic
+    const typeTabs = document.querySelectorAll('.type-tab');
+    const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+    const sortRadios = document.querySelectorAll('.sort-radio');
     const productCards = document.querySelectorAll('.course-card');
     const productCount = document.getElementById('productCount');
+    const searchInput = document.getElementById('searchInput');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+    const filterSidebar = document.getElementById('filterSidebar');
+    const activeFilterCount = document.getElementById('activeFilterCount');
+    const productsGrid = document.getElementById('productsGrid');
 
-    filterTabs.forEach(tab => {
+    let currentType = 'all';
+    let activeFilters = new Set();
+    let searchTerm = '';
+    let currentSort = 'newest';
+
+    // Toggle Sidebar (Floating)
+    toggleFilterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        filterSidebar.classList.toggle('hidden');
+        toggleFilterBtn.classList.toggle('bg-gray-50');
+        toggleFilterBtn.classList.toggle('bg-white');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!filterSidebar.contains(e.target) && !toggleFilterBtn.contains(e.target) && !filterSidebar.classList.contains('hidden')) {
+            filterSidebar.classList.add('hidden');
+            toggleFilterBtn.classList.remove('bg-gray-50');
+            toggleFilterBtn.classList.add('bg-white');
+        }
+    });
+
+    // Type Tabs
+    typeTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            filterTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            
-            const filter = tab.getAttribute('data-filter');
-            let visibleCount = 0;
-            
-            productCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
+            typeTabs.forEach(t => {
+                t.classList.remove('active', 'bg-white', 'text-gray-900', 'shadow-sm');
+                t.classList.add('text-gray-600');
             });
+            tab.classList.add('active', 'bg-white', 'text-gray-900', 'shadow-sm');
+            tab.classList.remove('text-gray-600');
             
-            productCount.textContent = visibleCount;
+            currentType = tab.getAttribute('data-type');
+            applyFilters();
         });
     });
 
-    // Search Functionality
-    const searchInput = document.getElementById('searchInput');
+    // Checkboxes (Categories)
+    filterCheckboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            if (cb.checked) {
+                activeFilters.add(cb.value);
+            } else {
+                activeFilters.delete(cb.value);
+            }
+            updateActiveCount();
+            applyFilters();
+        });
+    });
+
+    // Sort Radios
+    sortRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            currentSort = radio.value;
+            applyFilters();
+        });
+    });
+
+    // Search
     searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        let visibleCount = 0;
+        searchTerm = e.target.value.toLowerCase();
+        applyFilters();
+    });
+
+    // Clear All
+    clearFiltersBtn.addEventListener('click', () => {
+        activeFilters.clear();
+        filterCheckboxes.forEach(cb => cb.checked = false);
+        // Reset sort to newest
+        document.querySelector('input[value="newest"]').checked = true;
+        currentSort = 'newest';
+        updateActiveCount();
+        applyFilters();
+    });
+
+    function updateActiveCount() {
+        if (activeFilters.size > 0) {
+            activeFilterCount.textContent = activeFilters.size;
+            activeFilterCount.classList.remove('hidden');
+        } else {
+            activeFilterCount.classList.add('hidden');
+        }
+    }
+
+    function applyFilters() {
+        let visibleCards = [];
         
         productCards.forEach(card => {
+            const categories = card.getAttribute('data-category');
             const title = card.querySelector('h3').textContent.toLowerCase();
-            if (title.includes(searchTerm)) {
+            const desc = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+            
+            // 1. Check Type (All, Bundle, Product, or Exam Code)
+            const typeMatch = currentType === 'all' || categories.includes(currentType);
+            
+            // 2. Check Search
+            const searchMatch = title.includes(searchTerm) || desc.includes(searchTerm);
+            
+            // 3. Check Category Filters
+            let filterMatch = true;
+            if (activeFilters.size > 0) {
+                filterMatch = false;
+                for (let filter of activeFilters) {
+                    if (categories.includes(filter)) {
+                        filterMatch = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (typeMatch && searchMatch && filterMatch) {
                 card.style.display = 'block';
-                visibleCount++;
+                visibleCards.push(card);
             } else {
                 card.style.display = 'none';
             }
         });
         
-        productCount.textContent = visibleCount;
-    });
+        // 4. Sort Visible Cards
+        visibleCards.sort((a, b) => {
+            const priceA = parseFloat(a.getAttribute('data-price'));
+            const priceB = parseFloat(b.getAttribute('data-price'));
+            const dateA = parseInt(a.getAttribute('data-date'));
+            const dateB = parseInt(b.getAttribute('data-date'));
+
+            if (currentSort === 'price_low') return priceA - priceB;
+            if (currentSort === 'price_high') return priceB - priceA;
+            if (currentSort === 'newest') return dateB - dateA;
+            // Default fallback
+            return 0;
+        });
+
+        // Re-append sorted cards to grid
+        visibleCards.forEach(card => {
+            productsGrid.appendChild(card);
+            // Trigger animation
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
+        });
+        
+        productCount.textContent = visibleCards.length;
+    }
+
+    // Initialize
+    productCount.textContent = productCards.length;
 
     // Animation on Scroll
     const observerOptions = {

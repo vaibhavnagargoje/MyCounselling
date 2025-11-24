@@ -26,6 +26,7 @@ urlpatterns = [
     path('rankpredictor/',include('rankpredictor.urls', namespace='rank_predictor')),
     path('collegepredictor/',include('collegepredictor.urls', namespace='college_predictor')),
     path('colleges/', include(('colleges.urls', 'colleges'), namespace='colleges')),
+    path('checkout/', include(('checkout.urls', 'checkout'), namespace='checkout')),
 
     path('user/',include('user.urls', namespace='user')),
     path('dashboard/', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),

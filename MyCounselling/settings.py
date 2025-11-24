@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'colleges',
     'collegepredictor',
     'rankpredictor',
+    'checkout',
     
 
     'tailwind',
