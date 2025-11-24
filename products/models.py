@@ -58,18 +58,11 @@ class MyProducts(models.Model):
     Individual products that can be sold independently or bundled
     E.g., JEE Counselling, NEET Counselling, College Predictor, etc.
     """
-    PRODUCT_TYPE_CHOICES = [
-        ('counselling', 'Counselling'),
-        ('predictor', 'College Predictor'),
-        ('college_insights', 'College Insights'),
-        ('mentorship', 'Mentorship'),
-        ('other', 'Other'),
-    ]
+
     
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT, related_name='products',blank=True, null=True)
-    product_type = models.CharField(max_length=20, choices=PRODUCT_TYPE_CHOICES,blank=True, null=True)
     exam_type = models.ForeignKey(ExamType, on_delete=models.SET_NULL, null=True, blank=True, related_name='products')
     
     description = models.TextField(blank=True, null=True)
