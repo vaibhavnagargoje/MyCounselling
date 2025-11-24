@@ -53,6 +53,11 @@ class EngineeringCollege(models.Model):
         """Return formatted location"""
         return f"{self.city}, {self.state}"
     
+    @property
+    def latest_placement(self):
+        """Return the latest placement record"""
+        return self.placement_records.order_by('-academic_year').first()
+
     def get_fee_range(self):
         """Return formatted fee range"""
         if self.fees_range_min and self.fees_range_max:

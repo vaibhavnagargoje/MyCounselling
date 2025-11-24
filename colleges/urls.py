@@ -1,6 +1,6 @@
 # add pah and also give name for app 
-from django.urls import path,include
-from colleges import views
+from django.urls import path, include
+from . import views
 
 app_name = 'colleges'
 
