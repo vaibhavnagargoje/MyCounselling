@@ -35,17 +35,17 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 @admin.register(MyProducts)
 class MyProductsAdmin(admin.ModelAdmin):
     list_display = [
-        'name', 'category', 'product_type', 'exam_type',
+        'name', 'category', 'exam_type',
         'base_price', 'validity_days', 'is_active', 'is_featured'
     ]
-    list_filter = ['category', 'product_type', 'exam_type', 'is_active', 'is_featured']
+    list_filter = ['category', 'exam_type', 'is_active', 'is_featured']
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
     ordering = ['display_order', 'name']
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('name', 'slug', 'category', 'product_type', 'exam_type')
+            'fields': ('name', 'slug', 'category', 'exam_type')
         }),
         ('Description', {
             'fields': ('short_description', 'description', 'features')
