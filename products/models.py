@@ -104,7 +104,7 @@ class MyProducts(models.Model):
         ordering = ['display_order', 'name']
         indexes = [
             models.Index(fields=['slug']),
-            models.Index(fields=['product_type', 'is_active']),
+            models.Index(fields=['is_active']),
         ]
     
     def __str__(self):
