@@ -283,6 +283,13 @@ def contact(request):
     return render(request, 'landing_page/contact.html', context)
 
 
+def privacy_policy(request):
+    return render(request, 'landing_page/privacy_policy.html')
+
+def terms_of_service(request):
+    return render(request, 'landing_page/terms_of_service.html')
+
+
 def get_client_ip(request):
     """Helper function to get client IP address"""
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
