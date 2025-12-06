@@ -114,7 +114,7 @@
 
                 <!-- Action Buttons -->
                 <div class="flex space-x-4">
-                    <a href="{% url 'checkout:checkout_page'%}" class="flex-1 bg-primary hover:bg-secondary text-white font-bold py-4 px-6 rounded-xl transition duration-300 shadow-lg transform hover:-translate-y-1 text-center">
+                    <a href="{% url 'checkout:checkout_view' type=type slug=item.slug %}" class="flex-1 bg-primary hover:bg-secondary text-white font-bold py-4 px-6 rounded-xl transition duration-300 shadow-lg transform hover:-translate-y-1 text-center">
                         Buy Now
                     </a>
                     <button class="px-6 py-4 border-2 border-gray-200 rounded-xl hover:border-primary hover:text-primary transition duration-300">

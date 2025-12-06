@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 import random
 from .models import OTPVerification, PasswordResetToken, Profile
+from products.models import Order
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.urls import reverse
@@ -397,7 +398,8 @@ def academic_info(request):
 @login_required
 def my_purchases(request):
     profile = _get_profile(request.user)
-    return render(request, 'user/my_purchases.html', {'profile': profile})
+    orders = Order.objects.filter(user=request.user).select_related('product', 'bundled_plan').order_by('-created_at')
+    return render(request, 'user/my_purchases.html', {'profile': profile, 'orders': orders})
 
 
 @login_required

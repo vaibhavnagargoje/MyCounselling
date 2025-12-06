@@ -298,6 +298,11 @@ class Order(models.Model):
         """Generate unique order ID"""
         return f"ORD-{timezone.now().strftime('%Y%m%d')}-{uuid.uuid4().hex[:8].upper()}"
     
+    @property
+    def amount_in_paise(self):
+        """Returns final price in paise for Razorpay integration"""
+        return int(self.final_price * 100)
+
     def mark_completed(self):
         """Mark order as completed"""
         self.status = 'completed'

@@ -32,15 +32,92 @@
 		</div>
 	</div>
 
+	{% if orders %}
+    <div class="space-y-6">
+        {% for order in orders %}
+        <div class="bg-white border border-gray-100 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-gray-100 pb-4">
+                <div>
+                    <span class="text-sm text-gray-500">Order ID: <span class="font-mono font-medium text-gray-700">{{ order.order_id }}</span></span>
+                    <p class="text-xs text-gray-400 mt-1">{{ order.created_at|date:"F j, Y, g:i a" }}</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium 
+                        {% if order.status == 'completed' %}bg-green-100 text-green-700
+                        {% elif order.status == 'pending' %}bg-yellow-100 text-yellow-700
+                        {% elif order.status == 'failed' %}bg-red-100 text-red-700
+                        {% else %}bg-gray-100 text-gray-700{% endif %}">
+                        {{ order.get_status_display }}
+                    </span>
+                    <span class="font-bold text-lg text-gray-900">₹{{ order.final_price }}</span>
+                </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+                <div class="w-20 h-20 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
+                    {% if order.product %}
+                        {% if order.product.thumbnail %}
+                            <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-cube"></i></div>
+                        {% endif %}
+                    {% elif order.bundled_plan %}
+                        {% if order.bundled_plan.thumbnail %}
+                            <img src="{{ order.bundled_plan.thumbnail.url }}" alt="{{ order.bundled_plan.name }}" class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fas fa-layer-group"></i></div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                
+                <div class="flex-1">
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">
+                        {% if order.product %}
+                            {{ order.product.name }}
+                        {% elif order.bundled_plan %}
+                            {{ order.bundled_plan.name }}
+                        {% else %}
+                            Unknown Item
+                        {% endif %}
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-2">
+                        {% if order.product %}
+                            {{ order.product.short_description|truncatechars:100 }}
+                        {% elif order.bundled_plan %}
+                            {{ order.bundled_plan.short_description|truncatechars:100 }}
+                        {% endif %}
+                    </p>
+                    
+                    {% if order.status == 'completed' %}
+                    <div class="flex gap-3 mt-3">
+                        <a href="#" class="text-sm text-primary hover:text-primary/80 font-medium flex items-center">
+                            <i class="fas fa-play-circle mr-1"></i> Access Content
+                        </a>
+                        <a href="#" class="text-sm text-gray-500 hover:text-gray-700 flex items-center">
+                            <i class="fas fa-file-invoice mr-1"></i> Invoice
+                        </a>
+                    </div>
+                    {% elif order.status == 'pending' %}
+                     <a href="#" class="text-sm text-white bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 font-medium inline-flex items-center mt-2">
+                        Complete Payment
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
 	<div class="text-center py-16">
 		<div class="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
 			<i class="fas fa-shopping-bag text-accent text-4xl"></i>
 		</div>
 		<h2 class="text-lg font-semibold text-dark mb-2">No purchases yet</h2>
 		<p class="text-gray-500 mb-6">Start your learning journey by browsing our courses and personalized counselling plans.</p>
-		<a href="#" class="inline-flex bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+		<a href="{% url 'dashboard:products:products' %}" class="inline-flex bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-semibold items-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
 			<i class="fas fa-search mr-2"></i>Browse Courses
 		</a>
 	</div>
+    {% endif %}
 </div>
 {% endblock %}

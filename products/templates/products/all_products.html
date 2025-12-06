@@ -236,7 +236,7 @@
                             <a href="{% url 'dashboard:products:product_detail' type='bundle' slug=plan.slug %}" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
                                 View Details
                             </a>
-                            <a href="{% url 'checkout:checkout_page'  %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
+                            <a href="{% url 'checkout:checkout_view' type='bundle' slug=plan.slug %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
                                 Buy Now
                             </a>
                         </div>
@@ -308,7 +308,7 @@
                             <a href="{% url 'dashboard:products:product_detail' type='product' slug=product.slug %}" class="flex-1 border border-primary text-primary py-2 rounded-lg font-semibold hover:bg-primary hover:text-white transition duration-300 text-center">
                                 View Details
                             </a>
-                            <a href="{% url 'checkout:checkout_page' %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
+                            <a href="{% url 'checkout:checkout_view' type='product' slug=product.slug %}" class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold hover:bg-secondary transition duration-300 text-center">
                                 Buy Now
                             </a>
                         </div>
