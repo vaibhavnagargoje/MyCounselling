@@ -11,7 +11,7 @@ Login - EduCounsel
 
 {% block content %}
 <!-- Animated Background Elements -->
-<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
+<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden -z-10">
     <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
     <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
     <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
@@ -22,15 +22,13 @@ Login - EduCounsel
     <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
 </div>
 
-<!-- Centered Split Screen Layout -->
-<div class="min-h-screen flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-5xl w-full bg-white/20 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white/30 animate-fade-in-up auth-container">
-        <div class="flex flex-col lg:flex-row min-h-[550px] lg:min-h-[600px]">
-            <!-- Left Side - Form Area -->
-            <div class="flex-1 flex items-center justify-center px-6 lg:px-8 py-8 lg:py-12">
-                <div class="max-w-md w-full space-y-8">
+<!-- Centered Layout Wrapper -->
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+
+   
+        <div class="p-8">
             <!-- Logo and Branding -->
-            <div class="text-center animate-fade-in-up">
+            <div class="text-center animate-fade-in-up mb-8">
                 <div class="flex justify-center mb-4">
                     <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                         <i class="fas fa-graduation-cap text-white text-2xl"></i>
@@ -43,9 +41,9 @@ Login - EduCounsel
             <!-- Modern Alert Messages -->
             {% if messages %}
                 {% for message in messages %}
-                    <div class="animate-fade-in-up">
+                    <div class="animate-fade-in-up mb-4">
                         {% if message.tags == 'error' %}
-                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         <i class="fas fa-exclamation-circle text-red-400"></i>
@@ -56,7 +54,7 @@ Login - EduCounsel
                                 </div>
                             </div>
                         {% elif message.tags == 'success' %}
-                            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         <i class="fas fa-check-circle text-green-400"></i>
@@ -72,7 +70,7 @@ Login - EduCounsel
             {% endif %}
 
             <!-- Modern Login Form -->
-            <div class="bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-8 border border-white/30 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
                 <form id="loginForm" class="space-y-6" method="post">
                     {% csrf_token %}
                     <div class="space-y-5">
@@ -119,7 +117,7 @@ Login - EduCounsel
                         <div class="text-center pt-4 border-t border-gray-200">
                             <p class="text-sm text-gray-600">
                                 Don't have an account? 
-                                <button onclick="switchToRegister()" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline cursor-pointer">
+                                <button type="button" onclick="switchToRegister()" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline cursor-pointer bg-transparent border-none p-0">
                                     Create one now <i class="fas fa-arrow-right ml-1"></i>
                                 </button>
                             </p>
@@ -128,80 +126,8 @@ Login - EduCounsel
                 </form>
             </div>
         </div>
-    </div>
     
-            <!-- Right Side - Information Panel -->
-            <div class="flex-1 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center px-6 lg:px-8 py-8 lg:py-12 text-white relative overflow-hidden">
-                <!-- Background Pattern -->
-                <div class="absolute inset-0 opacity-10">
-                    <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full animate-pulse"></div>
-                    <div class="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 1s;"></div>
-                    <div class="absolute bottom-20 left-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
-                    <div class="absolute bottom-32 right-10 w-12 h-12 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 3s;"></div>
-                </div>
-        
-        <!-- Content -->
-        <div class="max-w-md w-full text-center relative z-10 animate-fade-in-up" style="animation-delay: 0.4s;" id="infoPanel">
-            <div class="mb-8">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                    <i class="fas fa-graduation-cap text-4xl"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4">Welcome to EduCounsel</h3>
-                <p class="text-white/90 mb-8 leading-relaxed">Your trusted partner in academic and career guidance. Join thousands of students who have found their perfect path with our expert counselling services.</p>
-            </div>
-            
-            <!-- Features -->
-            <div class="space-y-6">
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-user-graduate text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Expert Career Guidance</h4>
-                        <p class="text-white/80 text-sm">Get personalized advice from industry professionals</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-chart-line text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Progress Tracking</h4>
-                        <p class="text-white/80 text-sm">Monitor your academic and career development</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-users text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Community Support</h4>
-                        <p class="text-white/80 text-sm">Connect with peers and mentors in your field</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Statistics -->
-            <div class="mt-8 pt-8 border-t border-white/20">
-                <div class="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                        <div class="text-2xl font-bold">10K+</div>
-                        <div class="text-white/80 text-sm">Students Guided</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold">95%</div>
-                        <div class="text-white/80 text-sm">Success Rate</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold">500+</div>
-                        <div class="text-white/80 text-sm">Partner Colleges</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 </div>
 
 <script>
@@ -256,28 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-}
-
-/* Mobile responsive adjustments */
-@media (max-width: 1023px) {
-    .auth-container {
-        border-radius: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .auth-container .flex {
-        flex-direction: column;
-    }
-    
-    .auth-container .flex > div:first-child {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    
-    .auth-container .flex > div:last-child {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
 }
 
 /* Enhanced form styling */

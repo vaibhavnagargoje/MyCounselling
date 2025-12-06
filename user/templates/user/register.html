@@ -11,7 +11,7 @@ Register - EduCounsel
 
 {% block content %}
 <!-- Animated Background Elements -->
-<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
+<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden -z-10">
     <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
     <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
     <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
@@ -22,15 +22,11 @@ Register - EduCounsel
     <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
 </div>
 
-<!-- Centered Split Screen Layout -->
+<!-- Centered Layout Wrapper -->
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-6xl w-full bg-white/10 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-        <div class="flex min-h-[700px]">
-            <!-- Left Side - Form Area -->
-            <div class="flex-1 flex items-center justify-center px-8 py-12">
-                <div class="max-w-lg w-full space-y-8">
+        <div class="p-8">
             <!-- Logo and Branding -->
-            <div class="text-center animate-fade-in-up">
+            <div class="text-center animate-fade-in-up mb-8">
                 <div class="flex justify-center mb-4">
                     <div class="w-16 h-16 bg-gradient-to-r from-primary to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                         <i class="fas fa-graduation-cap text-white text-2xl"></i>
@@ -44,9 +40,9 @@ Register - EduCounsel
             <!-- Modern Alert Messages -->
             {% if messages %}
                 {% for message in messages %}
-                    <div class="animate-fade-in-up">
+                    <div class="animate-fade-in-up mb-4">
                         {% if message.tags == 'error' or message.tags == 'danger' %}
-                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg shadow-sm">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         <i class="fas fa-exclamation-circle text-red-400"></i>
@@ -57,7 +53,7 @@ Register - EduCounsel
                                 </div>
                             </div>
                         {% elif message.tags == 'success' %}
-                            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         <i class="fas fa-check-circle text-green-400"></i>
@@ -68,7 +64,7 @@ Register - EduCounsel
                                 </div>
                             </div>
                         {% elif message.tags == 'warning' %}
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm mb-4">
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         <i class="fas fa-exclamation-triangle text-yellow-400"></i>
@@ -83,189 +79,113 @@ Register - EduCounsel
                 {% endfor %}
             {% endif %}
             
-        <!-- Modern Registration Form -->
-        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <form id="registerForm" class="space-y-6" method="post">
-                {% csrf_token %}
-                <div class="space-y-5">
-                    <div class="group">
-                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
-                            <i class="fas fa-envelope mr-2 text-primary"></i>Email Address
-                        </label>
-                        <input id="email" name="email" type="email" required 
-                               class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
-                               placeholder="Enter your email address">
-                        <p class="mt-2 text-xs text-gray-500 flex items-center">
-                            <i class="fas fa-info-circle mr-1"></i>Your email will be used as your username
-                        </p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Modern Registration Form -->
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <form id="registerForm" class="space-y-6" method="post">
+                    {% csrf_token %}
+                    <div class="space-y-5">
                         <div class="group">
-                            <label for="first_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-user mr-2 text-primary"></i>First Name
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-envelope mr-2 text-primary"></i>Email Address
                             </label>
-                            <input id="first_name" name="first_name" type="text" 
+                            <input id="email" name="email" type="email" required 
                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
-                                   placeholder="Enter first name">
+                                   placeholder="Enter your email address">
+                            <p class="mt-2 text-xs text-gray-500 flex items-center">
+                                <i class="fas fa-info-circle mr-1"></i>Your email will be used as your username
+                            </p>
                         </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="group">
+                                <label for="first_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-user mr-2 text-primary"></i>First Name
+                                </label>
+                                <input id="first_name" name="first_name" type="text" 
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                                       placeholder="Enter first name">
+                            </div>
+                            <div class="group">
+                                <label for="last_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-user mr-2 text-primary"></i>Last Name
+                                </label>
+                                <input id="last_name" name="last_name" type="text" 
+                                       class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                                       placeholder="Enter last name">
+                            </div>
+                        </div>
+                        
                         <div class="group">
-                            <label for="last_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                <i class="fas fa-user mr-2 text-primary"></i>Last Name
+                            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-lock mr-2 text-primary"></i>Password
                             </label>
-                            <input id="last_name" name="last_name" type="text" 
-                                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
-                                   placeholder="Enter last name">
+                            <div class="relative">
+                                <input id="password" name="password" type="password" required 
+                                       class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                                       placeholder="Create a strong password">
+                                <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center transition-colors duration-300" onclick="togglePassword('password', 'password-toggle-icon')">
+                                    <i id="password-toggle-icon" class="fas fa-eye text-gray-400 hover:text-primary cursor-pointer"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2 text-xs text-gray-500">
+                                <i class="fas fa-shield-alt mr-1"></i>Use at least 8 characters with mix of letters and numbers
+                            </div>
+                            <div id="password-strength" class="mt-1"></div>
                         </div>
-                    </div>
-                    
-                    <div class="group">
-                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
-                            <i class="fas fa-lock mr-2 text-primary"></i>Password
-                        </label>
-                        <div class="relative">
-                            <input id="password" name="password" type="password" required 
-                                   class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
-                                   placeholder="Create a strong password">
-                            <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center transition-colors duration-300" onclick="togglePassword('password', 'password-toggle-icon')">
-                                <i id="password-toggle-icon" class="fas fa-eye text-gray-400 hover:text-primary cursor-pointer"></i>
-                            </button>
+                        
+                        <div class="group">
+                            <label for="confirm_password" class="block text-sm font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-lock mr-2 text-primary"></i>Confirm Password
+                            </label>
+                            <div class="relative">
+                                <input id="confirm_password" name="confirm_password" type="password" required 
+                                       class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
+                                       placeholder="Confirm your password">
+                                <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center transition-colors duration-300" onclick="togglePassword('confirm_password', 'confirm-toggle-icon')">
+                                    <i id="confirm-toggle-icon" class="fas fa-eye text-gray-400 hover:text-primary cursor-pointer"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="mt-2 text-xs text-gray-500">
-                            <i class="fas fa-shield-alt mr-1"></i>Use at least 8 characters with mix of letters and numbers
-                        </div>
-                    </div>
-                    
-                    <div class="group">
-                        <label for="confirm_password" class="block text-sm font-semibold text-gray-700 mb-2">
-                            <i class="fas fa-lock mr-2 text-primary"></i>Confirm Password
-                        </label>
-                        <div class="relative">
-                            <input id="confirm_password" name="confirm_password" type="password" required 
-                                   class="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/50 backdrop-blur-sm group-hover:border-primary/50" 
-                                   placeholder="Confirm your password">
-                            <button type="button" class="absolute inset-y-0 right-0 pr-4 flex items-center transition-colors duration-300" onclick="togglePassword('confirm_password', 'confirm-toggle-icon')">
-                                <i id="confirm-toggle-icon" class="fas fa-eye text-gray-400 hover:text-primary cursor-pointer"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <button id="registerBtn" type="submit" 
-                            class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center">
-                        <span id="registerButtonText">
-                            <i class="fas fa-user-plus mr-2"></i>Create Account
-                        </span>
-                        <i id="registerLoadingIcon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-                    </button>
-
-                    <div class="text-center pt-4 border-t border-gray-200">
-                        <p class="text-sm text-gray-600">
-                            Already have an account? 
-                            <button onclick="switchToLogin()" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline cursor-pointer">
-                                Sign in here <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </p>
                     </div>
 
-                    <!-- Trust Indicators -->
-                    <div class="flex items-center justify-center space-x-6 pt-4 text-xs text-gray-500">
-                        <div class="flex items-center">
-                            <i class="fas fa-shield-alt text-green-500 mr-1"></i>
-                            <span>Secure Registration</span>
+                    <div class="space-y-4">
+                        <button id="registerBtn" type="submit" 
+                                class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center">
+                            <span id="registerButtonText">
+                                <i class="fas fa-user-plus mr-2"></i>Create Account
+                            </span>
+                            <i id="registerLoadingIcon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+
+                        <div class="text-center pt-4 border-t border-gray-200">
+                            <p class="text-sm text-gray-600">
+                                Already have an account? 
+                                <button type="button" onclick="switchToLogin()" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline cursor-pointer bg-transparent border-none p-0">
+                                    Sign in here <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </p>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-users text-blue-500 mr-1"></i>
-                            <span>50,000+ Students</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-star text-yellow-500 mr-1"></i>
-                            <span>Trusted Platform</span>
+
+                        <!-- Trust Indicators -->
+                        <div class="flex items-center justify-center space-x-6 pt-4 text-xs text-gray-500">
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-green-500 mr-1"></i>
+                                <span>Secure Registration</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-users text-blue-500 mr-1"></i>
+                                <span>50,000+ Students</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <span>Trusted Platform</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
     
-            <!-- Right Side - Information Panel -->
-            <div class="flex-1 bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center px-8 py-12 text-white relative overflow-hidden">
-                <!-- Background Pattern -->
-                <div class="absolute inset-0 opacity-10">
-                    <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full animate-pulse"></div>
-                    <div class="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 1s;"></div>
-                    <div class="absolute bottom-20 left-20 w-24 h-24 border-2 border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
-                    <div class="absolute bottom-32 right-10 w-12 h-12 border-2 border-white rounded-lg animate-bounce" style="animation-delay: 3s;"></div>
-                </div>
-        
-        <!-- Content -->
-        <div class="max-w-md w-full text-center relative z-10 animate-fade-in-up" style="animation-delay: 0.4s;" id="infoPanel">
-            <div class="mb-8">
-                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                    <i class="fas fa-user-plus text-4xl"></i>
-                </div>
-                <h3 class="text-3xl font-bold mb-4">Start Your Journey</h3>
-                <p class="text-white/90 mb-8 leading-relaxed">Join our community of successful students and get personalized guidance for your academic and career goals. Your future starts here!</p>
-            </div>
-            
-            <!-- Registration Benefits -->
-            <div class="space-y-6">
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-graduation-cap text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Personalized Counselling</h4>
-                        <p class="text-white/80 text-sm">Get tailored advice based on your interests and goals</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-university text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">College Recommendations</h4>
-                        <p class="text-white/80 text-sm">Discover the best colleges for your chosen field</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center text-left">
-                    <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                        <i class="fas fa-handshake text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-1">Career Support</h4>
-                        <p class="text-white/80 text-sm">Access career resources and networking opportunities</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quick Steps -->
-            <div class="mt-8 pt-8 border-t border-white/20">
-                <h4 class="font-semibold mb-4">Registration Steps</h4>
-                <div class="space-y-3 text-left">
-                    <div class="flex items-center">
-                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">1</div>
-                        <span class="text-white/90 text-sm">Fill out the registration form</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">2</div>
-                        <span class="text-white/90 text-sm">Verify your email address</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">3</div>
-                        <span class="text-white/90 text-sm">Complete your profile</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3 text-xs font-bold">4</div>
-                        <span class="text-white/90 text-sm">Start your counselling journey</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -297,7 +217,12 @@ function checkPasswordStrength() {
     const password = document.getElementById('password').value;
     const strengthIndicator = document.getElementById('password-strength');
     
-    if (password.length < 6) {
+    if (!strengthIndicator) return;
+
+    if (password.length === 0) {
+        strengthIndicator.textContent = '';
+        strengthIndicator.className = '';
+    } else if (password.length < 6) {
         strengthIndicator.textContent = 'Weak';
         strengthIndicator.className = 'text-red-500 text-xs';
     } else if (password.length < 10) {
