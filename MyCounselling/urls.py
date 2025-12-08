@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('my-secure-admin-panel/', admin.site.urls),
     # add path and namespace also
     path('',include('landing_page.urls',namespace='landing_page')),
     path('rankpredictor/',include('rankpredictor.urls', namespace='rank_predictor')),

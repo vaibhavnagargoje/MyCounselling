@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from .forms import ContactForm
 from .models import ContactSubmission
+from products.models import MyProducts, BundledPlan
 
 COLLEGE_DATA = [
     {
@@ -227,9 +228,51 @@ WORKFLOW_STEPS = [
 # Create your views here.
 
 def index(request):
-    # if request.user.is_authenticated:
-    #     return render(request, 'home/home.html')
-    return render(request, 'landing_page/index.html')
+    # Fetch featured bundles and products
+    bundles = BundledPlan.objects.filter(is_active=True, is_featured=True).order_by('display_order')
+    products = MyProducts.objects.filter(is_active=True, is_featured=True).select_related('exam_type').order_by('display_order')
+    
+    featured_services = []
+    
+    # Normalize bundle data
+    for b in bundles:
+        featured_services.append({
+            'name': b.name,
+            'thumbnail': b.thumbnail,
+            'short_description': b.short_description,
+            'validity_days': b.validity_days,
+            'features': b.features,
+            'price': b.selling_price,
+            'original_price': b.original_price,
+            'discount_percentage': b.discount_percentage,
+            'slug': b.slug,
+            'type': 'bundle',
+            'tag': b.get_plan_type_display() if hasattr(b, 'get_plan_type_display') else 'Bundle',
+            'is_popular': getattr(b, 'is_popular', False)
+        })
+
+    # Normalize product data
+    for p in products:
+        featured_services.append({
+            'name': p.name,
+            'thumbnail': p.thumbnail,
+            'short_description': p.short_description,
+            'validity_days': p.validity_days,
+            'features': p.features,
+            'price': p.base_price,
+            'original_price': None,
+            'discount_percentage': 0,
+            'slug': p.slug,
+            'type': 'product',
+            'tag': p.exam_type.code.upper() if p.exam_type else 'Product',
+            'is_popular': getattr(p, 'is_featured', False)
+        })
+    
+    # Limit to 3 items for the homepage
+    context = {
+        'featured_services': featured_services[:3]
+    }
+    return render(request, 'landing_page/index.html', context)
 
 
 
