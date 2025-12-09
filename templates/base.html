@@ -14,6 +14,15 @@
 
     <!-- Global CSS -->
     <link href="{% static 'css/core_base/style.css' %}" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK07F51VL3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GK07F51VL3');
+    </script>
 
     {% block head %}
     {% endblock head %}
