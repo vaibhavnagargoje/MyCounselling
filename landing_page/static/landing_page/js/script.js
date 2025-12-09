@@ -1,31 +1,4 @@
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
-
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-
-        // Close mobile menu when clicking on links
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Slideshow Functionality
+// Slideshow Functionality
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.slideshow-dot');

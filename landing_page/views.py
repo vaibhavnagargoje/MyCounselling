@@ -239,7 +239,9 @@ def index(request):
         featured_services.append({
             'name': b.name,
             'thumbnail': b.thumbnail,
+            'image': b.image if hasattr(b, 'image') else None,
             'short_description': b.short_description,
+            'description': b.description,
             'validity_days': b.validity_days,
             'features': b.features,
             'price': b.selling_price,
@@ -256,7 +258,9 @@ def index(request):
         featured_services.append({
             'name': p.name,
             'thumbnail': p.thumbnail,
+            'image': p.image if hasattr(p, 'image') else None,
             'short_description': p.short_description,
+            'description': p.description,
             'validity_days': p.validity_days,
             'features': p.features,
             'price': p.base_price,
