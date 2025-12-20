@@ -5,7 +5,6 @@ app_name = 'dashboard'
 
 urlpatterns = [
     path("", views.dashboard, name="dashboard"),
-    path('home/', include(('home.urls', 'home'), namespace='home')),
     path('products/', include(('products.urls', 'products'), namespace='products')),
     # path('colleges/', include(('colleges.urls', 'colleges'), namespace='colleges')),
     # path('doubts/', include(('doubts.urls', 'doubts'), namespace='doubts')),

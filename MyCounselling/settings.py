@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+
     'products',
     'user',
     'landing_page',
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'collegepredictor',
     'rankpredictor',
     'checkout',
-    
+    'course_delivery',
 
     'tailwind',
     'theme',

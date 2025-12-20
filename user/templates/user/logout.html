@@ -81,9 +81,9 @@
                        class="group bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center">
                         <i class="fas fa-sign-in-alt mr-2 group-hover:animate-bounce"></i>Sign In Again
                     </a>
-                    <a href="{% url 'dashboard:home:home' %}" 
+                    <a href="{% url 'dashboard:dashboard' %}" 
                        class="group bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center">
-                        <i class="fas fa-home mr-2 group-hover:animate-bounce"></i>Go to Home
+                        <i class="fas fa-home mr-2 group-hover:animate-bounce"></i>Go To Dashboard
                     </a>
                 </div>
                 
@@ -135,7 +135,7 @@ const timer = setInterval(function() {
     
     if (countdown <= 0) {
         clearInterval(timer);
-    window.location.href = "{% url 'dashboard:home:home' %}";
+    window.location.href = "{% url 'dashboard:dashboard' %}";
     }
 }, 1000);
 

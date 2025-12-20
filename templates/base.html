@@ -87,7 +87,7 @@
                 </div>
                 <div class="hidden md:block">
                     {% if request.user.is_authenticated %}
-                        <a href="{% url 'dashboard:home:home' %}" class="bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 transform hover:scale-105 shadow-lg">
+                        <a href="{% url 'dashboard:dashboard' %}" class="bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 transform hover:scale-105 shadow-lg">
                             <i class="fas fa-chart-line mr-2"></i>Dashboard
                         </a>
                     {% else %}
@@ -131,7 +131,7 @@
                 </a>
                 <div class="pt-6 space-y-3 border-t border-gray-200">
                     {% if request.user.is_authenticated %}
-                        <a href="{% url 'dashboard:home:home' %}" class="block w-full text-center bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
+                        <a href="{% url 'dashboard:dashboard' %}" class="block w-full text-center bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
                             <i class="fas fa-chart-line mr-2"></i>Dashboard
                         </a>
                     {% else %}
