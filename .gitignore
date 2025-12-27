@@ -5,3 +5,6 @@ __pycache__/
 migrations/
 venv/
 .env
+staticfiles
+db.sqlite3
+.DS_Store
