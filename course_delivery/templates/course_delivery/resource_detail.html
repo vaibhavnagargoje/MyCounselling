@@ -1,0 +1,149 @@
+{% extends "dashboard/core_base.html" %}
+{% load static %}
+
+{% block title %}{{ resource.title }} | EduCounsel{% endblock title %}
+
+{% block head %}
+<meta name="description" content="{{ resource.content|truncatewords:20 }}">
+<link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+<div class="flex-1 ml-64 p-6">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 text-sm">
+        <ol class="flex items-center space-x-2">
+            <li><a href="{% url 'dashboard:dashboard' %}" class="text-blue-600 hover:text-blue-800">Dashboard</a></li>
+            <li><span class="text-gray-400">/</span></li>
+            <li><span class="text-gray-600">{{ resource.product.name }}</span></li>
+            <li><span class="text-gray-400">/</span></li>
+            <li><span class="text-gray-800 font-medium">{{ resource.title }}</span></li>
+        </ol>
+    </nav>
+
+    <!-- Resource Details Card -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r {% if resource.resource_type == 'video' %}from-red-500 to-red-600{% elif resource.resource_type == 'document' %}from-blue-500 to-blue-600{% else %}from-green-500 to-green-600{% endif %} text-white p-6">
+            <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                    {% if resource.resource_type == 'video' %}
+                    <i class="fas fa-video text-3xl"></i>
+                    {% elif resource.resource_type == 'document' %}
+                    <i class="fas fa-file-pdf text-3xl"></i>
+                    {% else %}
+                    <i class="fas fa-sticky-note text-3xl"></i>
+                    {% endif %}
+                </div>
+                <div>
+                    <span class="text-sm opacity-80">{{ resource.get_resource_type_display }}</span>
+                    <h1 class="text-3xl font-bold">{{ resource.title }}</h1>
+                    <p class="text-white/80 mt-1">{{ resource.product.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Video Content -->
+                    {% if resource.resource_type == 'video' and resource.video_url %}
+                    <div class="mb-6">
+                        <div class="aspect-video bg-black rounded-lg overflow-hidden">
+                            {% if 'youtube' in resource.video_url %}
+                            <iframe 
+                                class="w-full h-full"
+                                src="{{ resource.video_url|cut:'watch?v='|cut:'youtu.be/' }}{% if 'embed' not in resource.video_url %}?{% endif %}"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                            {% elif 'vimeo' in resource.video_url %}
+                            <iframe 
+                                class="w-full h-full"
+                                src="{{ resource.video_url }}" 
+                                frameborder="0" 
+                                allow="autoplay; fullscreen; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                            {% else %}
+                            <video controls class="w-full h-full">
+                                <source src="{{ resource.video_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Text Content -->
+                    {% if resource.content %}
+                    <div class="mb-6">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-3">
+                            {% if resource.resource_type == 'instruction' %}Instructions{% else %}Description{% endif %}
+                        </h2>
+                        <div class="prose prose-blue max-w-none text-gray-600 leading-relaxed bg-gray-50 p-6 rounded-lg">
+                            {{ resource.content|linebreaks }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- File Download -->
+                    {% if resource.file_upload %}
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-900 mb-4">
+                            <i class="fas fa-download mr-2"></i>Download File
+                        </h3>
+                        <p class="text-gray-600 mb-4">Click below to download the resource file.</p>
+                        <a href="{{ resource.file_upload.url }}" download 
+                           class="inline-flex items-center justify-center w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300">
+                            <i class="fas fa-file-download mr-2"></i>Download {{ resource.title }}
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Resource Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-folder text-blue-600 w-8"></i>
+                                <div>
+                                    <span class="text-sm text-gray-500 block">Type</span>
+                                    <span class="font-medium">{{ resource.get_resource_type_display }}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-blue-600 w-8"></i>
+                                <div>
+                                    <span class="text-sm text-gray-500 block">Course</span>
+                                    <span class="font-medium">{{ resource.product.name }}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar text-blue-600 w-8"></i>
+                                <div>
+                                    <span class="text-sm text-gray-500 block">Added On</span>
+                                    <span class="font-medium">{{ resource.created_at|date:"M d, Y" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="mt-6">
+                        <a href="{% url 'dashboard:dashboard' %}?course={{ resource.product.id }}" 
+                           class="block w-full text-center py-3 px-6 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg transition duration-300">
+                            <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
