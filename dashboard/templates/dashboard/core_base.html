@@ -14,58 +14,8 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/core_base/style.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
 
-    <style>
-        .sidebar-item {
-            transition: all 0.3s ease;
-        }
-        
-        .sidebar-item:hover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transform: translateX(5px);
-        }
-        
-        .sidebar-item.active {
-            background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
-            color: white;
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .filter-tab {
-            transition: all 0.3s ease;
-        }
-        
-        .filter-tab.active {
-            background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
-            color: white;
-        }
-
-        .course-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-    </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK07F51VL3"></script>
     <script>
@@ -84,14 +34,15 @@
 <main>
     <!-- Top Navigation Bar -->
     <nav class="bg-white shadow-lg fixed w-full top-0 z-50 border-b border-gray-200">
-        <div class="flex items-center justify-between px-6 py-3">
-            <!-- Logo -->
+        <div class="flex items-center justify-between px-4 lg:px-6 py-3">
+            <!-- Logo & Mobile Menu Button -->
             <div class="flex-shrink-0 flex items-center">
+                
                 <a href="{% url 'landing_page:index' %}" class="flex items-center">
-                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    <div class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center mr-2 lg:mr-3">
+                        <i class="fas fa-graduation-cap text-white text-sm lg:text-lg"></i>
                     </div>
-                    <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">E-Counselling</h1>
+                    <h1 class="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">E-Counselling</h1>
                 </a>
             </div>
             
@@ -106,21 +57,33 @@
                 </button>
                 
                 <!-- Profile -->
-                <a href="{% url 'user:user_profile' %}" class="flex items-center space-x-3 hover:opacity-80 transition duration-300">
-                    <div class="text-right">
-                        <p class="text-sm font-medium text-gray-700">Hi, {{ request.user.get_full_name|default:request.user.username }}</p>
+                <a href="{% url 'user:user_profile' %}" class="hidden lg:flex items-center space-x-3 hover:opacity-80 transition duration-300">
+                    <div class="text-right hidden lg:block">
+                        <p class="text-sm font-medium text-gray-700">Hi, {{ request.user.first_name|default:request.user.username }}</p>
                         <p class="text-xs text-gray-500">{{ request.user.user_type|default:'Student' }}</p>
                     </div>
-                    <img src="{% if request.user.profile.profile_picture %}{{ request.user.profile.profile_picture.url }}{% else %}/placeholder.svg?height=40&width=40{% endif %}" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer hover:border-indigo-700 transition duration-300">
+                    {% if request.user.profile.profile_picture %}
+                        <img src="{{ request.user.profile.profile_picture.url }}" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer hover:border-indigo-700 transition duration-300">
+                    {% else %}
+                        <div class="w-10 h-10 rounded-full border-2 border-primary bg-indigo-600 text-white flex items-center justify-center font-bold text-lg cursor-pointer hover:border-indigo-700 transition duration-300">
+                            {{ request.user.first_name|first|default:request.user.username|first|upper }}
+                        </div>
+                    {% endif %}
                 </a>
+                <button id="mobile-menu-btn" class="lg:hidden mr-3 text-gray-600 hover:text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="flex pt-16">
+    <div class="flex pt-16 relative">
+        <!-- Mobile Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
+
         <!-- Left Sidebar -->
-        <div class="w-64 bg-white shadow-lg h-screen fixed left-0 top-16 overflow-y-auto">
-            <div class="p-4">
+        <div id="sidebar" class="w-64 bg-white shadow-lg h-[calc(100vh-4rem)] fixed left-0 top-16 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-[100]">
+            <div class="p-4 h-full flex flex-col">
                 <nav class="space-y-2">
                     <a href="{% url 'dashboard:dashboard' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg text-gray-700 hover:text-white {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
                         <i class="fas fa-book-open mr-3"></i>
@@ -130,8 +93,24 @@
                         <i class="fas fa-shopping-bag mr-3"></i>
                         <span class="font-medium">Products & Plans</span>
                     </a>
-                    
                 </nav>
+
+                <div class="mt-auto lg:hidden">
+                    <div class="border-t border-gray-200 my-4"></div>
+                    <a href="{% url 'user:user_profile' %}" class="flex items-center px-4 py-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition space-x-3">
+                        {% if request.user.profile.profile_picture %}
+                            <img src="{{ request.user.profile.profile_picture.url }}" alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary cursor-pointer hover:border-indigo-700 transition duration-300">
+                        {% else %}
+                            <div class="w-10 h-10 rounded-full border-2 border-primary bg-indigo-600 text-white flex items-center justify-center font-bold text-lg cursor-pointer hover:border-indigo-700 transition duration-300">
+                                {{ request.user.first_name|first|default:request.user.username|first|upper }}
+                            </div>
+                        {% endif %}
+                        <div class="text-left">
+                            <p class="text-sm font-medium text-gray-700">Hi, {{ request.user.first_name|default:request.user.username }}</p>
+                            <p class="text-xs text-gray-500">{{ request.user.user_type|default:'Student' }}</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -142,38 +121,7 @@
 
 <!-- Load JavaScript files before closing body tag -->
 <script src="{% static 'js/core_base/script.js' %}"></script>
-
-<script>
-    // Batch Dropdown Functionality
-    const batchDropdown = document.getElementById('batchDropdown');
-    const batchMenu = document.getElementById('batchMenu');
-    const dropdownIcon = document.getElementById('dropdownIcon');
-    const selectedBatch = document.getElementById('selectedBatch');
-    const batchOptions = document.querySelectorAll('.batch-option');
-
-    batchDropdown.addEventListener('click', () => {
-        batchMenu.classList.toggle('active');
-        dropdownIcon.classList.toggle('rotate-180');
-    });
-
-    batchOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-            e.preventDefault();
-            const batchName = option.getAttribute('data-batch');
-            selectedBatch.textContent = batchName;
-            batchMenu.classList.remove('active');
-            dropdownIcon.classList.remove('rotate-180');
-        });
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!batchDropdown.contains(e.target)) {
-            batchMenu.classList.remove('active');
-            dropdownIcon.classList.remove('rotate-180');
-        }
-    });
-</script>
+<script src="{% static 'dashboard/js/script.js' %}"></script>
 
 {% block script %}
 {% endblock script %}

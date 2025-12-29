@@ -4,10 +4,10 @@
 {% block title %}{{ item.name }} | Details{% endblock %}
 
 {% block content %}
-<div class="flex-1 ml-64 p-6">
+<div class="flex-1 lg:ml-64 p-4 lg:p-6 w-full">
     <!-- Breadcrumb -->
-    <nav class="flex mb-6 text-gray-500 text-sm" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <nav class="flex mb-6 text-gray-500 text-sm overflow-x-auto" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3 whitespace-nowrap">
             <li class="inline-flex items-center">
                 <a href="{% url 'dashboard:products:products' %}" class="inline-flex items-center hover:text-primary">
                     <i class="fas fa-home mr-2"></i>
