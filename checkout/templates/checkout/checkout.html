@@ -4,53 +4,59 @@
 {% block title %}Checkout | Order Summary{% endblock %}
 
 {% block content %}
-<div class="flex-1 ml-64 p-6">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-2xl font-bold text-gray-900 mb-6">Order Summary</h1>
+<!-- Added pt-20 for fixed navbar, removed lg:ml-64 -->
+<div class="min-h-screen bg-gray-50 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+        <!-- Go Back Button -->
+        <a href="javascript:history.back()" class="inline-flex items-center text-gray-500 hover:text-gray-800 mb-6 text-sm md:text-base transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i> Back
+        </a>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <h1 class="text-xl md:text-3xl font-bold text-gray-900 mb-6">Order Summary</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             <!-- Left Column: Order Details -->
             <div class="lg:col-span-2 space-y-6">
                 <!-- Item Card -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-lg font-semibold mb-4">Product Details</h2>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 md:p-6">
+                    <h2 class="text-base md:text-xl font-semibold mb-4 text-gray-800">Product Details</h2>
                     <div class="flex items-start space-x-4">
-                        <div class="w-24 h-24 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
+                        <div class="w-20 h-20 md:w-32 md:h-32 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
                             {% if item.thumbnail %}
                                 <img src="{{ item.thumbnail.url }}" class="w-full h-full object-cover">
                             {% else %}
                                 <div class="w-full h-full flex items-center justify-center text-gray-400">
-                                    <i class="fas fa-cube text-2xl"></i>
+                                    <i class="fas fa-cube text-2xl md:text-4xl"></i>
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-gray-900 text-lg">{{ item.name }}</h3>
-                            <p class="text-sm text-gray-500 mb-2">{{ item.short_description|truncatechars:80 }}</p>
-                            <div class="flex items-center text-sm text-gray-600">
-                                <i class="fas fa-clock mr-2"></i> Validity: {{ item.validity_days }} Days
+                        <div class="flex-1 min-w-0">
+                            <h3 class="font-bold text-gray-900 text-base md:text-xl truncate">{{ item.name }}</h3>
+                            <p class="text-xs md:text-sm text-gray-500 mb-2 md:mb-3 line-clamp-2">{{ item.short_description }}</p>
+                            <div class="flex items-center text-xs md:text-sm text-gray-600">
+                                <i class="fas fa-clock mr-1.5"></i> Validity: {{ item.validity_days }} Days
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="block text-xl font-bold text-gray-900">₹{{ price }}</span>
+                        <div class="text-right flex-shrink-0">
+                            <span class="block text-lg md:text-2xl font-bold text-gray-900">₹{{ price }}</span>
                             {% if original_price > price %}
-                                <span class="block text-sm text-gray-500 line-through">₹{{ original_price }}</span>
+                                <span class="block text-xs md:text-sm text-gray-500 line-through">₹{{ original_price }}</span>
                             {% endif %}
                         </div>
                     </div>
                 </div>
 
                 <!-- User Details (Read Only) -->
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <h2 class="text-lg font-semibold mb-4">Billing Details</h2>
-                    <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 md:p-6">
+                    <h2 class="text-base md:text-xl font-semibold mb-4 text-gray-800">Billing Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div>
-                            <p class="text-gray-500">Name</p>
-                            <p class="font-medium">{{ request.user.get_full_name|default:request.user.username }}</p>
+                            <p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-semibold">Name</p>
+                            <p class="text-sm md:text-base font-medium text-gray-900 truncate mt-1">{{ request.user.get_full_name|default:request.user.username }}</p>
                         </div>
                         <div>
-                            <p class="text-gray-500">Email</p>
-                            <p class="font-medium">{{ request.user.email }}</p>
+                            <p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide font-semibold">Email</p>
+                            <p class="text-sm md:text-base font-medium text-gray-900 truncate mt-1">{{ request.user.email }}</p>
                         </div>
                     </div>
                 </div>
@@ -58,37 +64,35 @@
 
             <!-- Right Column: Payment Summary -->
             <div class="lg:col-span-1">
-                <div class="bg-white rounded-xl shadow-md p-6 sticky top-6">
-                    <h2 class="text-lg font-semibold mb-4">Payment Summary</h2>
-                    
-
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-5 md:p-6 sticky top-24">
+                    <h2 class="text-base md:text-xl font-semibold mb-4 text-gray-800">Payment Summary</h2>
                     
                     <!-- Promo Code -->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Promo Code</label>
+                        <label class="block text-xs md:text-sm font-medium text-gray-700 mb-2">Promo Code</label>
                         {% if coupon %}
                             <div class="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg px-3 py-2">
-                                <div class="flex items-center">
-                                    <i class="fas fa-tag text-green-600 mr-2"></i>
-                                    <span class="text-green-700 font-medium">{{ coupon.code }}</span>
+                                <div class="flex items-center overflow-hidden">
+                                    <i class="fas fa-tag text-green-600 mr-2 text-xs md:text-sm"></i>
+                                    <span class="text-green-700 font-medium text-xs md:text-sm truncate">{{ coupon.code }}</span>
                                 </div>
-                                <a href="{% url 'checkout:remove_coupon' type=type slug=item.slug %}" class="text-red-500 hover:text-red-700 text-sm font-medium">Remove</a>
+                                <a href="{% url 'checkout:remove_coupon' type=type slug=item.slug %}" class="text-red-500 hover:text-red-700 text-xs md:text-sm font-medium ml-2">Remove</a>
                             </div>
             
                         {% else %}
-                            <form action="{% url 'checkout:apply_coupon' %}" method="POST" class="flex flex-col sm:flex-row gap-2">
+                            <form action="{% url 'checkout:apply_coupon' %}" method="POST" class="flex gap-2">
                                 {% csrf_token %}
                                 <input type="hidden" name="type" value="{{ type }}">
                                 <input type="hidden" name="slug" value="{{ item.slug }}">
-                                <input type="text" name="promo_code" placeholder="Enter code" class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary w-full">
-                                <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 w-full sm:w-auto whitespace-nowrap">Apply</button>
+                                <input type="text" name="promo_code" placeholder="Enter code" class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-primary w-full transition-shadow">
+                                <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-gray-700 whitespace-nowrap transition-colors">Apply</button>
                             </form>
                         {% endif %}
                     </div>
                     {% if messages %}
                         <div class="mb-4 space-y-2">
                             {% for message in messages %}
-                                <div class="p-3 rounded-lg text-xs flex items-start {% if message.tags == 'error' %}bg-red-50 text-red-600{% else %}bg-green-50 text-green-600 {% endif %}">
+                                <div class="p-3 rounded-lg text-xs md:text-sm flex items-start {% if message.tags == 'error' %}bg-red-50 text-red-600{% else %}bg-green-50 text-green-600 {% endif %}">
                                     <i class="fas {% if message.tags == 'error' %}fa-exclamation-circle{% else %}fa-check-circle{% endif %} mt-0.5 mr-2"></i>
                                     <span>{{ message }}</span>
                                 </div>
@@ -97,21 +101,21 @@
                     {% endif %}
 
                     <div class="border-t border-gray-100 pt-4 space-y-3 mb-6">
-                        <div class="flex justify-between text-gray-600">
+                        <div class="flex justify-between text-xs md:text-sm text-gray-600">
                             <span>Subtotal</span>
                             <span>₹{{ price }}</span>
                         </div>
-                        <div class="flex justify-between text-gray-600">
+                        <div class="flex justify-between text-xs md:text-sm text-gray-600">
                             <span>Tax</span>
                             <span>₹0.00</span>
                         </div>
                         {% if discount_amount > 0 %}
-                        <div class="flex justify-between text-success font-medium" id="discountRow">
+                        <div class="flex justify-between text-xs md:text-sm text-success font-medium" id="discountRow">
                             <span>Discount</span>
                             <span>-₹{{ discount_amount }}</span>
                         </div>
                         {% endif %}
-                        <div class="border-t border-gray-100 pt-3 flex justify-between text-lg font-bold text-gray-900">
+                        <div class="border-t border-gray-100 pt-3 flex justify-between text-lg md:text-xl font-bold text-gray-900">
                             <span>Total</span>
                             <span>₹{{ final_price }}</span>
                         </div>
@@ -125,21 +129,21 @@
                         <!-- Terms Checkbox -->
                         <div class="mb-6">
                             <label class="flex items-start space-x-3 cursor-pointer">
-                                <input type="checkbox" required class="form-checkbox h-5 w-5 text-primary rounded border-gray-300 focus:ring-primary mt-0.5">
-                                <span class="text-sm text-gray-600">
-                                    I agree to the <a href="#" class="text-primary hover:underline">Terms and Conditions</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>.
+                                <input type="checkbox" required class="form-checkbox h-4 w-4 text-primary rounded border-gray-300 focus:ring-primary mt-0.5">
+                                <span class="text-xs md:text-sm text-gray-600 leading-tight">
+                                    I agree to the <a href="#" class="text-primary hover:underline">Terms</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>.
                                 </span>
                             </label>
                         </div>
 
-                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-indigo-700 text-white font-bold py-3 rounded-lg shadow-lg hover:from-secondary hover:to-indigo-800 transition duration-300 transform hover:-translate-y-0.5">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-indigo-700 text-white font-bold py-3 rounded-lg shadow-lg hover:from-secondary hover:to-indigo-800 transition duration-300 transform hover:-translate-y-0.5 text-sm md:text-base">
                             Proceed to Pay
                         </button>
                     </form>
                     
                     <div class="mt-4 text-center">
-                        <p class="text-xs text-gray-500">
-                            <i class="fas fa-lock mr-1"></i> Secure Payment Gateway
+                        <p class="text-xs text-gray-400 flex items-center justify-center">
+                            <i class="fas fa-lock mr-1.5"></i> Secure Payment Gateway
                         </p>
                     </div>
                 </div>
