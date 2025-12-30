@@ -188,7 +188,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGIN_URL = 'users:login'
+LOGIN_URL = 'user:login'
 
 # # Email Configuration
 # EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')

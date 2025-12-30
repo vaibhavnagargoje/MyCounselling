@@ -4,7 +4,7 @@ from django.contrib import messages
 from .models import MyProducts, BundledPlan, ExamType, ProductCategory, Order
 
 # Create your views here.
-
+@login_required
 def products_plans(request):
     # Fetch active filters
     exam_types = ExamType.objects.filter(is_active=True).order_by('display_order')
@@ -43,6 +43,7 @@ def products_plans(request):
     }
     return render(request, 'products/all_products.html', context)
 
+@login_required
 def product_detail(request, type, slug):
     context = {}
     

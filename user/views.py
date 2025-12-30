@@ -296,7 +296,7 @@ def _get_profile(user):
     return profile
 
 
-@login_required
+@login_required(login_url='user:login')
 def user_profile(request):
     user = request.user
     profile = _get_profile(user)
@@ -336,7 +336,7 @@ def user_profile(request):
     return render(request, 'user/user_profile.html', context)
 
 
-@login_required
+@login_required(login_url='user:login')
 def change_password(request):
     if request.method == 'POST':
         current_password = request.POST.get('current_password')
@@ -383,32 +383,32 @@ def change_password(request):
     return render(request, 'user/change_password.html')
 
 
-@login_required
+@login_required(login_url='user:login')
 def user_overview(request):
     profile = _get_profile(request.user)
     return render(request, 'user/overview.html', {'profile': profile})
 
 
-@login_required
+@login_required(login_url='user:login')
 def academic_info(request):
     profile = _get_profile(request.user)
     return render(request, 'user/academic_info.html', {'profile': profile})
 
 
-@login_required
+@login_required(login_url='user:login')
 def my_purchases(request):
     profile = _get_profile(request.user)
     orders = Order.objects.filter(user=request.user).select_related('product', 'bundled_plan').order_by('-created_at')
     return render(request, 'user/my_purchases.html', {'profile': profile, 'orders': orders})
 
 
-@login_required
+@login_required(login_url='user:login')
 def account_settings(request):
     profile = _get_profile(request.user)
     return render(request, 'user/settings.html', {'profile': profile})
 
 
-@login_required
+@login_required(login_url='user:login')
 def delete_account(request):
     profile = _get_profile(request.user)
     return render(request, 'user/delete_account.html', {'profile': profile})

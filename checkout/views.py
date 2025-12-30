@@ -8,7 +8,7 @@ from django.utils import timezone
 from decimal import Decimal
 import razorpay
 
-@login_required
+@login_required(login_url='user:login')
 def checkout(request, type, slug):
     # Get the item
     if type == 'bundle':
@@ -186,7 +186,7 @@ def payment_success(request):
 def payment_failed(request):
     return render(request, 'checkout/failed.html')
 
-@login_required
+@login_required(login_url='user:login')
 def apply_coupon(request):
     if request.method == "POST":
         code = request.POST.get('promo_code')
@@ -234,7 +234,7 @@ def apply_coupon(request):
     
     return redirect('dashboard:home')
 
-@login_required
+@login_required(login_url='user:login')
 def remove_coupon(request, type, slug):
     if 'coupon_code' in request.session:
         del request.session['coupon_code']

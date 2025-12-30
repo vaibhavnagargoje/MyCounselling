@@ -11,7 +11,7 @@ from course_delivery.views import (
 from products.models import MyProducts
 
 
-@login_required
+@login_required(login_url='user:login')
 def dashboard(request):
     """
     Main dashboard view that shows course content based on user's enrollments.
