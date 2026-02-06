@@ -465,6 +465,10 @@ class Coupon(models.Model):
     current_uses = models.IntegerField(default=0)
     
     # Applicable to
+    apply_to_all = models.BooleanField(
+        default=False,
+        help_text="If checked, this coupon applies to ALL products and plans. If unchecked, it only applies to the selected items below."
+    )
     applicable_plans = models.ManyToManyField(BundledPlan, blank=True, related_name='coupons')
     applicable_products = models.ManyToManyField(MyProducts, blank=True, related_name='coupons')
     

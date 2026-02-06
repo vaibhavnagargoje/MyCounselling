@@ -37,13 +37,15 @@ def checkout(request, type, slug):
                     coupon = None
                 else:
                     # Check applicability again
-                    is_applicable = True
-                    if type == 'bundle':
-                        if coupon.applicable_plans.exists() and item not in coupon.applicable_plans.all():
-                            is_applicable = False
+                    is_applicable = False
+                    if coupon.apply_to_all:
+                        is_applicable = True
+                    elif type == 'bundle':
+                        if item in coupon.applicable_plans.all():
+                            is_applicable = True
                     else:
-                        if coupon.applicable_products.exists() and item not in coupon.applicable_products.all():
-                            is_applicable = False
+                        if item in coupon.applicable_products.all():
+                            is_applicable = True
                     
                     if is_applicable:
                         discount_amount = coupon.calculate_discount(price)
@@ -212,16 +214,21 @@ def apply_coupon(request):
                 return redirect('checkout:checkout_view', type=type, slug=slug)
             
             # Check applicability
-            if type == 'bundle':
+            is_applicable = False
+            if coupon.apply_to_all:
+                is_applicable = True
+            elif type == 'bundle':
                 item = get_object_or_404(BundledPlan, slug=slug)
-                if coupon.applicable_plans.exists() and item not in coupon.applicable_plans.all():
-                    messages.error(request, "This coupon is not applicable to this plan")
-                    return redirect('checkout:checkout_view', type=type, slug=slug)
+                if item in coupon.applicable_plans.all():
+                    is_applicable = True
             else:
                 item = get_object_or_404(MyProducts, slug=slug)
-                if coupon.applicable_products.exists() and item not in coupon.applicable_products.all():
-                    messages.error(request, "This coupon is not applicable to this product")
-                    return redirect('checkout:checkout_view', type=type, slug=slug)
+                if item in coupon.applicable_products.all():
+                    is_applicable = True
+            
+            if not is_applicable:
+                messages.error(request, "This coupon is not applicable to this product")
+                return redirect('checkout:checkout_view', type=type, slug=slug)
             
             # If all checks pass
             request.session['coupon_code'] = code

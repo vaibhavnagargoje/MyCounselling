@@ -256,7 +256,8 @@ class CouponAdmin(admin.ModelAdmin):
             )
         }),
         ('Applicability', {
-            'fields': ('applicable_plans', 'applicable_products')
+            'fields': ('apply_to_all', 'applicable_plans', 'applicable_products'),
+            'description': 'If "Apply to all" is unchecked, the coupon will ONLY work on the selected products/plans below.'
         }),
         ('Validity', {
             'fields': ('valid_from', 'valid_until', 'is_active')
