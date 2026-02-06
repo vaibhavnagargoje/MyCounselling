@@ -1,7 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Colleges - E-Counselling{% endblock %}
+{% block title %}Top Engineering & Medical Colleges India 2026 – Placements, Rankings, Fees | E-Counselling{% endblock %}
+
+{% block meta_description %}Explore 2500+ verified engineering & medical colleges in India. Compare NIRF rankings, placement records, fee structure, cutoffs for NEET, JEE, MHT-CET 2026. Free college database with real placement data.{% endblock %}
+
+{% block meta_keywords %}engineering colleges India, medical colleges India, college placement records, NIRF ranking colleges 2026, top engineering colleges, best medical colleges India, college fees structure, college cutoff, MHT-CET colleges list, JEE colleges, NEET colleges, college comparison India, college database, placement statistics India, autonomous colleges{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/colleges/{% endblock %}
+
+{% block og_title %}2500+ Colleges – Placements, Rankings & Fees | E-Counselling{% endblock %}
+{% block og_description %}Explore India's largest verified college database. NIRF rankings, placement records, fees, cutoffs for engineering & medical colleges. Updated for 2026.{% endblock %}
+{% block og_url %}https://ecounselling.live/colleges/{% endblock %}
+
+{% block twitter_title %}Top Engineering & Medical Colleges India 2026 | E-Counselling{% endblock %}
+{% block twitter_description %}2500+ verified colleges. Compare placements, rankings, fees. NEET, JEE, MHT-CET colleges. Free database!{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Engineering & Medical Colleges India - E-Counselling",
+    "description": "Comprehensive database of 2500+ verified engineering and medical colleges with placement records, NIRF rankings, and fee structure",
+    "url": "https://ecounselling.live/colleges/",
+    "provider": {
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling",
+        "url": "https://ecounselling.live"
+    },
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ecounselling.live/"},
+            {"@type": "ListItem", "position": 2, "name": "Colleges", "item": "https://ecounselling.live/colleges/"}
+        ]
+    },
+    "mainEntity": {
+        "@type": "ItemList",
+        "name": "Indian Engineering & Medical Colleges",
+        "numberOfItems": "{{ total_colleges }}",
+        "itemListOrder": "https://schema.org/ItemListOrderDescending"
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 <section class="pt-24 pb-10 bg-gradient-to-br from-blue-50 to-indigo-100 text-center">
@@ -10,7 +53,7 @@
             <i class="fas fa-database"></i> Verified Institute Database
         </span>
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Explore Accredited Colleges & Universities</h1>
-        <p class="text-gray-600 text-sm md:text-base">Real-time snapshots of accreditation, rankings, and placement health pulled directly from our counselling dashboard.</p>
+        <p class="text-gray-600 text-sm md:text-base">Browse {{ total_colleges }}+ verified engineering and medical colleges with real placement data, rankings, fee structure, and cutoffs across India.</p>
     </div>
 </section>
 
@@ -19,7 +62,7 @@
         <div class="bg-gray-50 border border-gray-100 rounded-3xl p-4 flex flex-col md:flex-row md:items-center gap-4">
             <div class="flex-1 flex items-center gap-3 bg-white rounded-2xl px-4 py-2 shadow-sm">
                 <i class="fas fa-search text-gray-400"></i>
-                <input type="text" placeholder="Search by college name or city" class="w-full bg-transparent text-sm focus:outline-none">
+                <input type="text" name="search" placeholder="Search by college name or city" value="{{ search_query }}" aria-label="Search colleges by name, city or code" class="w-full bg-transparent text-sm focus:outline-none">
             </div>
             <div class="flex flex-wrap gap-3">
                 <button class="px-4 py-2 rounded-full border border-gray-200 text-sm text-gray-600 hover:border-primary hover:text-primary transition">NAAC A/A++</button>
@@ -72,7 +115,7 @@
                     </div>
 
                     <div class="flex flex-col items-center gap-3">
-                        <a href="{% url 'colleges:college_detail' college.id %}" class="px-5 py-2 rounded-xl bg-gradient-to-r from-primary to-blue-700 text-white text-xs font-semibold shadow hover:opacity-90 transition">
+                        <a href="{% url 'colleges:college_detail' college.id %}" class="px-5 py-2 rounded-xl bg-gradient-to-r from-primary to-blue-700 text-white text-xs font-semibold shadow hover:opacity-90 transition" title="View {{ college.college_name }} placements, rankings & fees">
                             View Details
                         </a>
                         <button class="text-xs text-primary font-semibold flex items-center gap-1">

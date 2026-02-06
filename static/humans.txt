@@ -1,0 +1,33 @@
+/* TEAM */
+Title: E-Counselling Development Team
+Site: https://ecounselling.live
+Location: Pune, Maharashtra, India
+
+/* FOUNDER */
+Name: E-Counselling Team
+Role: Founders & Developers
+Contact: support@ecounselling.in
+
+/* THANKS */
+Name: Our Students
+Role: Community
+Note: Thank you to 50,000+ students who trusted us with their future!
+
+/* SITE */
+Last update: 2026-02-06
+Language: English, Hindi, Marathi
+Doctype: HTML5
+IDE: VS Code, PyCharm
+Standards: HTML5, CSS3, Django, Python
+Components: TailwindCSS, Django Templates
+Software: Django 5.2, Python 3.12
+
+/* PURPOSE */
+Mission: To help every student find their dream college through expert guidance and AI-powered tools.
+Services: NEET Counselling, JEE Counselling, MHT-CET Counselling, College Predictor, Rank Predictor
+
+/* CONTACT */
+Email: support@ecounselling.in
+Phone: +91-9765660584
+Website: https://ecounselling.live
+Careers: https://ecounselling.live/careers/

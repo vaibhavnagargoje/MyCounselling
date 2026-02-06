@@ -1,7 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ college.college_name }} – College Insights{% endblock %}
+{% block title %}{{ college.college_name }} – Placements, Rankings, Fees & Cutoff | E-Counselling{% endblock %}
+
+{% block meta_description %}{{ college.college_name }} {% if college.city %}{{ college.city }}{% endif %} – {% with placement=college.latest_placement %}{% if placement %}{{ placement.placement_percentage }}% placement rate, highest package ₹{{ placement.highest_package }} LPA, avg ₹{{ placement.average_package }} LPA ({{ placement.academic_year }}).{% endif %}{% endwith %} NIRF ranking{% if college.nirf_ranking %}: {{ college.nirf_ranking }}{% endif %}, courses, fees, cutoff, reviews. Est. {{ college.established_year|default:"N/A" }}.{% endblock %}
+
+{% block meta_keywords %}{{ college.college_name }}, {{ college.college_name }} placement, {{ college.college_name }} ranking, {{ college.college_name }} fees, {{ college.college_name }} cutoff, {{ college.college_name }} reviews, {% if college.city %}{{ college.city }} college{% endif %}, {% if college.college_code %}{{ college.college_code }}{% endif %}, {{ college.college_name }} admission, {{ college.college_name }} placement record{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/colleges/{{ college.id }}/{% endblock %}
+
+{% block og_title %}{{ college.college_name }} – Placements, Rankings & Fees | E-Counselling{% endblock %}
+{% block og_description %}{{ college.college_name }} {% if college.city %}{{ college.city }}{% endif %}: {% with placement=college.latest_placement %}{% if placement %}{{ placement.placement_percentage }}% placements, ₹{{ placement.average_package }} LPA avg package.{% endif %}{% endwith %} Complete college profile with rankings, fees, cutoff.{% endblock %}
+{% block og_url %}https://ecounselling.live/colleges/{{ college.id }}/{% endblock %}
+
+{% block twitter_title %}{{ college.college_name }} – Placements & Rankings{% endblock %}
+{% block twitter_description %}{{ college.college_name }}: {% with placement=college.latest_placement %}{% if placement %}{{ placement.placement_percentage }}% placement, ₹{{ placement.highest_package }} LPA highest package.{% endif %}{% endwith %} Full details on E-Counselling.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollegeOrUniversity",
+    "name": "{{ college.college_name }}",
+    "description": "{{ college.description|default:college.college_name }}",
+    "url": "https://ecounselling.live/colleges/{{ college.id }}/",
+    {% if college.website %}"sameAs": "{{ college.website }}",{% endif %}
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ college.city|default:'' }}",
+        "addressRegion": "{{ college.state|default:'' }}",
+        "postalCode": "{{ college.pincode|default:'' }}",
+        "addressCountry": "IN"
+    },
+    {% if college.established_year %}"foundingDate": "{{ college.established_year }}",{% endif %}
+    {% if college.phone %}"telephone": "{{ college.phone }}",{% endif %}
+    {% if college.email %}"email": "{{ college.email }}",{% endif %}
+    {% if college.nirf_ranking %}"ranking": "NIRF {{ college.nirf_ranking }}",{% endif %}
+    "isAcceptingApplications": true,
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ecounselling.live/"},
+            {"@type": "ListItem", "position": 2, "name": "Colleges", "item": "https://ecounselling.live/colleges/"},
+            {"@type": "ListItem", "position": 3, "name": "{{ college.college_name }}", "item": "https://ecounselling.live/colleges/{{ college.id }}/"}
+        ]
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 <section class="pt-24 pb-12 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -10,7 +56,8 @@
             Institute Code: {{ college.college_code|default:"N/A" }}
         </span>
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{{ college.college_name }}</h1>
-        <p class="text-gray-600 text-sm md:text-base mb-4">{{ college.location }}</p>
+        <p class="text-gray-600 text-sm md:text-base mb-1">{{ college.location }}</p>
+        <p class="text-gray-500 text-xs mb-4">Placement records, NIRF rankings, fees & cutoff for {{ college.college_name }}{% if college.city %}, {{ college.city }}{% endif %}</p>
         <div class="flex flex-wrap justify-center gap-3 text-xs text-gray-700">
             <span class="px-3 py-1 rounded-full bg-white/80 border border-gray-200">
                 {% if college.is_approved %}Approved{% else %}Pending Approval{% endif %}

@@ -1,0 +1,32 @@
+# Security.txt for E-Counselling
+# https://ecounselling.live/.well-known/security.txt
+# This file follows the security.txt standard (RFC 9116)
+
+# Contact information for security researchers
+Contact: mailto:security@ecounselling.in
+Contact: mailto:support@ecounselling.in
+Contact: tel:+91-9765660584
+
+# Our security policy
+Policy: https://ecounselling.live/security-policy/
+
+# PGP Key for encrypted communications (optional)
+# Encryption: https://ecounselling.live/.well-known/pgp-key.txt
+
+# Preferred languages for security reports
+Preferred-Languages: en, hi
+
+# Acknowledgments page for security researchers
+Acknowledgments: https://ecounselling.live/security-acknowledgments/
+
+# When this file expires
+Expires: 2027-02-06T00:00:00.000Z
+
+# Canonical URL for this file
+Canonical: https://ecounselling.live/.well-known/security.txt
+
+# Hiring security researchers
+Hiring: https://ecounselling.live/careers/
+
+# CSAF (Common Security Advisory Framework) - Optional
+# CSAF: https://ecounselling.live/.well-known/csaf/provider-metadata.json

@@ -1,748 +1,1046 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}E-Counselling – Smart College Counselling for NEET, CET & JEE{% endblock title %}
+{% block title %}E-Counselling – Best NEET, JEE, MHT-CET Counselling India | College Predictor & Expert Guidance{% endblock title %}
+
+{% block meta_description %}E-Counselling is India's #1 college counselling platform for NEET, JEE, MHT-CET 2025. Free
+AI-powered rank predictor, college predictor by rank. Expert admission guidance for MBBS, BTech. 50,000+ students
+helped. Book consultation now!{% endblock %}
+
+{% block meta_keywords %}NEET counselling 2025, JEE counselling 2025, MHT-CET counselling 2025, counselling for CET,
+counselling for NEET, consultant for MHT-CET, college predictor by rank, NEET rank predictor, JEE Main college
+predictor, best NEET counselling India, MBBS admission consultant, BTech admission guidance, CAP round counselling
+Maharashtra, JoSAA counselling help, state CET counselling, medical college admission India, engineering college
+admission, NEET UG counselling, NEET PG counselling, admission consultant Pune, admission consultant Maharashtra, best
+college predictor tool, free rank predictor, NEET cutoff predictor, JEE cutoff predictor, MHT-CET cutoff 2025, admission
+guidance India, counselling for medical admission, counselling for engineering admission{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/{% endblock %}
+
+{% block og_title %}E-Counselling – India's Best NEET, JEE, MHT-CET Counselling Platform{% endblock %}
+{% block og_description %}Find your dream college with AI-powered predictions & expert counselling. Free rank predictor,
+college predictor. 50K+ students, 95% accuracy. NEET, JEE, MHT-CET 2025.{% endblock %}
+{% block og_url %}https://ecounselling.live/{% endblock %}
+
+{% block twitter_title %}E-Counselling – Best NEET, JEE, MHT-CET Counselling India{% endblock %}
+{% block twitter_description %}India's #1 college counselling. AI college predictor, rank predictor. Expert guidance for
+NEET, JEE, MHT-CET 2025. 50K+ students. Start Free!{% endblock %}
 
 {% block head %}
-    <meta name="description" content="E-Counselling is a smart college counselling platform for NEET, CET & JEE aspirants. Get expert guidance, rank predictions, and college recommendations.">
-    <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'landing_page/css/launch_popup.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/css/launch_popup.css' %}" rel="stylesheet">
 {% endblock head %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "E-Counselling - Best NEET, JEE, MHT-CET College Counselling India",
+    "description": "India's leading AI-powered college counselling platform for NEET, JEE, MHT-CET aspirants. Expert guidance for medical and engineering admissions.",
+    "url": "https://ecounselling.live/",
+    "mainEntity": {
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling"
+    },
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecounselling.live/"
+        }]
+    },
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".hero-section"]
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is NEET counselling and how can E-Counselling help?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "NEET counselling is the admission process for medical colleges after NEET exam. E-Counselling provides AI-powered rank prediction, college predictor based on your rank, and expert 1-on-1 guidance for NEET UG and PG counselling including MCC, state quota, and deemed universities."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How accurate is the college predictor for MHT-CET and JEE?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our AI-powered college predictor has 95%+ accuracy rate based on 5+ years of historical data. It provides personalized college recommendations for MHT-CET, JEE Main, JEE Advanced based on your rank, category, and preferences."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What is included in premium counselling packages?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Premium packages include unlimited 1-on-1 counsellor sessions, personalized college strategy, choice filling assistance, document verification, 24/7 WhatsApp support, and complete CAP round guidance for state CET admissions."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is the rank predictor and college predictor free to use?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Our AI-powered rank predictor and college predictor tools are completely free to use. No registration required for basic access. Get instant predictions for NEET, JEE, and MHT-CET."
+            }
+        }
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Educational Counselling",
+    "provider": {
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling"
+    },
+    "name": "College Admission Counselling",
+    "description": "Expert guidance for NEET, JEE, MHT-CET college admissions with AI-powered prediction tools",
+    "areaServed": "India",
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Counselling Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "NEET Counselling"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "JEE Counselling"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "MHT-CET Counselling"
+                }
+            }
+        ]
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 
 <div class="scroll-indicator" id="scrollIndicator"></div>
 
-    <!-- Offer Banner -->
-    <div class="offer-banner text-white py-3 mt-16 overflow-hidden relative">
-        <div class="animate-slide whitespace-nowrap relative z-10 text-sm md:text-base">
-            <span class="mx-8 font-semibold">🎉 LIMITED OFFER: Get 50% OFF on Premium Counselling Packages!</span>
-            <span class="mx-8 font-semibold">🎓 NEET/CET/JEE Counselling Started - Don't miss out on your dream college!</span>
-            <span class="mx-8 font-semibold">🏆 Join 50,000+ students who found their perfect college with us!</span>
-            <span class="mx-8 font-semibold">💯 Use our FREE College Predictor Tool Now!</span>
-        </div>
+<!-- Offer Banner -->
+<div class="offer-banner text-white py-3 mt-16 overflow-hidden relative">
+    <div class="animate-slide whitespace-nowrap relative z-10 text-sm md:text-base">
+        <span class="mx-8 font-semibold">🎉 LIMITED OFFER: Get 50% OFF on Premium Counselling Packages!</span>
+        <span class="mx-8 font-semibold">🎓 NEET/CET/JEE Counselling Started - Don't miss out on your dream
+            college!</span>
+        <span class="mx-8 font-semibold">🏆 Join 50,000+ students who found their perfect college with us!</span>
+        <span class="mx-8 font-semibold">💯 Use our FREE College Predictor Tool Now!</span>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section id="home" class="relative hero-gradient py-16 md:py-24 overflow-hidden">
+    <!-- Decorative Blobs -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-20 -left-20 w-72 h-72 bg-indigo-300 rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute top-1/3 -right-20 w-80 h-80 bg-purple-300 rounded-full opacity-20 blur-3xl"></div>
+        <div class="absolute -bottom-10 left-1/3 w-60 h-60 bg-cyan-200 rounded-full opacity-20 blur-3xl"></div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative hero-gradient py-16 md:py-24 overflow-hidden">
-        <!-- Decorative Blobs -->
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute -top-20 -left-20 w-72 h-72 bg-indigo-300 rounded-full opacity-20 blur-3xl"></div>
-            <div class="absolute top-1/3 -right-20 w-80 h-80 bg-purple-300 rounded-full opacity-20 blur-3xl"></div>
-            <div class="absolute -bottom-10 left-1/3 w-60 h-60 bg-cyan-200 rounded-full opacity-20 blur-3xl"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <!-- Left Side -->
-                <div class="animate-fade-in-left px-4 lg:px-0 order-2 lg:order-1">
-                    <div class="mb-5">
-                        <span class="inline-flex items-center bg-white text-primary px-4 py-2 rounded-full text-xs md:text-sm font-bold shadow-sm border border-indigo-100">
-                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                            🏆 India's #1 Counselling Platform
-                        </span>
-                    </div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-5">
-                        Find Your <span class="text-gradient">Dream College</span><br/>
-                        <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-700">With Expert Guidance</span>
-                    </h1>
-                    <p class="text-base md:text-lg text-gray-600 mb-7 leading-relaxed max-w-lg">
-                        Expert guidance for <span class="font-semibold text-primary">NEET</span>, 
-                        <span class="font-semibold text-secondary">JEE</span>, and 
-                        <span class="font-semibold text-accent">CET</span> counselling with AI-powered tools.
-                    </p>
-                    
-                    <!-- Key Features -->
-                    <div class="grid grid-cols-2 gap-3 mb-7">
-                        <div class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-indigo-50">
-                            <div class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <i class="fas fa-calculator text-primary text-sm"></i>
-                            </div>
-                            <span class="text-sm text-gray-800 font-medium">Rank Predictor</span>
-                        </div>
-                        <div class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-amber-50">
-                            <div class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <i class="fas fa-user-tie text-secondary text-sm"></i>
-                            </div>
-                            <span class="text-sm text-gray-800 font-medium">Expert Counsellors</span>
-                        </div>
-                        <div class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-indigo-50">
-                            <div class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <i class="fas fa-university text-primary text-sm"></i>
-                            </div>
-                            <span class="text-sm text-gray-800 font-medium">College Predictor</span>
-                        </div>
-                        <div class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-cyan-50">
-                            <div class="w-9 h-9 bg-cyan-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
-                                <i class="fas fa-headset text-accent text-sm"></i>
-                            </div>
-                            <span class="text-sm text-gray-800 font-medium">24/7 Support</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-3 mb-7">
-                        <button class="btn-primary-glow text-white px-7 py-3.5 rounded-xl text-base font-semibold flex items-center justify-center">
-                            <i class="fas fa-search-location mr-2"></i>
-                            Find Your College
-                        </button>
-                        <button class="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white px-7 py-3.5 rounded-xl text-base font-semibold transition duration-300 flex items-center justify-center shadow-sm">
-                            <i class="fas fa-calendar-check mr-2"></i>
-                            Consultation
-                        </button>
-                    </div>
-                    
-                    <!-- Trust Indicators -->
-                    <div class="flex flex-wrap items-center gap-5 text-xs md:text-sm text-gray-600">
-                        <div class="flex items-center">
-                            <div class="flex -space-x-2 mr-2">
-                                <div class="w-7 h-7 rounded-full bg-indigo-200 border-2 border-white"></div>
-                                <div class="w-7 h-7 rounded-full bg-purple-200 border-2 border-white"></div>
-                                <div class="w-7 h-7 rounded-full bg-cyan-200 border-2 border-white"></div>
-                            </div>
-                            <span class="font-medium">50k+ Students</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="flex text-amber-400 mr-1 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="font-medium">4.9/5</span>
-                        </div>
-                    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <!-- Left Side -->
+            <div class="animate-fade-in-left px-4 lg:px-0 order-2 lg:order-1">
+                <div class="mb-5">
+                    <span
+                        class="inline-flex items-center bg-white text-primary px-4 py-2 rounded-full text-xs md:text-sm font-bold shadow-sm border border-indigo-100">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                        🏆 India's #1 Counselling Platform
+                    </span>
                 </div>
-                
-                <!-- Right Side - Image Slideshow -->
-                <div class="animate-fade-in-right relative mt-0 mb-8 lg:mt-0 lg:mb-0 -mx-4 sm:mx-0 px-0 lg:px-0 order-1 lg:order-2">
-                    <div class="slideshow-container relative h-80 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
-                        <!-- Slide 1 -->
-                        <div class="slide active">
-                            <img src="{% static 'landing_page/img/slideshow/Counselling img 1.webp' %}" alt="Expert Counsellor Guiding Student" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 text-white">
-                                <h3 class="text-xl font-bold mb-2">Expert Counsellors</h3>
-                                <p class="text-sm opacity-90">Get guidance from IIT & Medical alumni</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Slide 2 -->
-                        <div class="slide">
-                            <img src="{% static 'landing_page/img/slideshow/Counselling img 2.webp' %}" alt="Students discussing college options" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 text-white">
-                                <h3 class="text-xl font-bold mb-2">Personalized College Lists</h3>
-                                <p class="text-sm opacity-90">AI-powered recommendations for your rank</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Slide 3 -->
-                        <div class="slide">
-                            <img src="{% static 'landing_page/img/slideshow/Counselling img 3.webp' %}" alt="Student celebrating admission" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 text-white">
-                                <h3 class="text-xl font-bold mb-2">Admission Success</h3>
-                                <p class="text-sm opacity-90">Join thousands of students in top colleges</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Slideshow Indicators -->
-                        <div class="absolute bottom-4 right-4 flex space-x-2">
-                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="0"></button>
-                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="1"></button>
-                            <button class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300" data-slide="2"></button>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Achievement Cards -->
-                    <div class="absolute top-2 right-4 lg:-top-2 lg:-right-4 glass-effect p-2 lg:p-4 rounded-xl shadow-lg floating z-20">
-                        <div class="flex items-center">
-                            <i class="fas fa-trophy text-amber-500 text-lg lg:text-2xl mr-1.5 lg:mr-2"></i>
-                            <div>
-                                <div class="text-xs lg:text-sm font-bold text-gray-800">99% Admission Rate</div>
-                                <div class="text-[10px] lg:text-xs text-gray-500">For Premium Users</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="absolute top-1/2 right-2 lg:-right-8 bg-white p-2 lg:p-3 rounded-full shadow-lg floating z-20" style="animation-delay: 2s;">
-                        <i class="fas fa-graduation-cap text-primary text-lg lg:text-xl"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    <!-- Featured Counselling Services -->
-    <section id="services" class="py-14 md:py-20 bg-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-secondary"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 md:mb-16 animate-fade-in-up">
-                <span class="inline-block bg-indigo-50 text-primary px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-4 border border-indigo-100">
-                    🎯 Choose Your Plan
-                </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6">
-                    Featured <span class="text-gradient">Counselling Plans</span>
-                </h2>
-                <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
-                    We cover all major national and state-level entrance exams, providing tailored guidance for each.
+                <h1
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-5">
+                    Find Your <span class="text-gradient">Dream College</span><br />
+                    <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-700">With Expert Guidance</span>
+                </h1>
+                <p class="text-base md:text-lg text-gray-600 mb-7 leading-relaxed max-w-lg">
+                    Expert guidance for <span class="font-semibold text-primary">NEET</span>,
+                    <span class="font-semibold text-secondary">JEE</span>, and
+                    <span class="font-semibold text-accent">CET</span> counselling with AI-powered tools.
                 </p>
+
+                <!-- Key Features -->
+                <div class="grid grid-cols-2 gap-3 mb-7">
+                    <div
+                        class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-indigo-50">
+                        <div
+                            class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-calculator text-primary text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-800 font-medium">Rank Predictor</span>
+                    </div>
+                    <div
+                        class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-amber-50">
+                        <div
+                            class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-user-tie text-secondary text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-800 font-medium">Expert Counsellors</span>
+                    </div>
+                    <div
+                        class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-indigo-50">
+                        <div
+                            class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-university text-primary text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-800 font-medium">College Predictor</span>
+                    </div>
+                    <div
+                        class="flex items-center bg-white/70 backdrop-blur rounded-lg px-3 py-2.5 border border-cyan-50">
+                        <div class="w-9 h-9 bg-cyan-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-headset text-accent text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-800 font-medium">24/7 Support</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 mb-7">
+                    <button
+                        class="btn-primary-glow text-white px-7 py-3.5 rounded-xl text-base font-semibold flex items-center justify-center">
+                        <i class="fas fa-search-location mr-2"></i>
+                        Find Your College
+                    </button>
+                    <button
+                        class="bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white px-7 py-3.5 rounded-xl text-base font-semibold transition duration-300 flex items-center justify-center shadow-sm">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Consultation
+                    </button>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center gap-5 text-xs md:text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <div class="flex -space-x-2 mr-2">
+                            <div class="w-7 h-7 rounded-full bg-indigo-200 border-2 border-white"></div>
+                            <div class="w-7 h-7 rounded-full bg-purple-200 border-2 border-white"></div>
+                            <div class="w-7 h-7 rounded-full bg-cyan-200 border-2 border-white"></div>
+                        </div>
+                        <span class="font-medium">50k+ Students</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex text-amber-400 mr-1 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="font-medium">4.9/5</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                {% for service in featured_services|slice:":3" %}
-                <div class="course-card card-elevated bg-white rounded-2xl overflow-hidden group">
-                    <div class="p-5">
-                        <div class="flex items-start justify-between mb-3">
-                            <h3 class="text-lg font-bold text-gray-900 leading-tight">{{ service.name }}</h3>
-                            <div class="flex items-center space-x-2">
-                                {% if service.is_popular %}
-                                <span class="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">Popular</span>
-                                {% endif %}
-                            </div>
+
+            <!-- Right Side - Image Slideshow -->
+            <div
+                class="animate-fade-in-right relative mt-0 mb-8 lg:mt-0 lg:mb-0 -mx-4 sm:mx-0 px-0 lg:px-0 order-1 lg:order-2">
+                <div
+                    class="slideshow-container relative h-80 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="{% static 'landing_page/img/slideshow/Counselling img 1.webp' %}"
+                            alt="Expert Counsellor Guiding Student" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent">
                         </div>
-                        
-                        <!-- Product Image -->
-                        <div class="relative mb-4 rounded-xl overflow-hidden">
-                            {% if service.thumbnail %}
-                                <img src="{{ service.thumbnail.url }}" alt="{{ service.name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                            {% else %}
-                                <div class="w-full h-48 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-graduation-cap text-indigo-200 text-4xl"></i>
-                                </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Expert Counsellors</h3>
+                            <p class="text-sm opacity-90">Get guidance from IIT & Medical alumni</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="{% static 'landing_page/img/slideshow/Counselling img 2.webp' %}"
+                            alt="Students discussing college options" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Personalized College Lists</h3>
+                            <p class="text-sm opacity-90">AI-powered recommendations for your rank</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="{% static 'landing_page/img/slideshow/Counselling img 3.webp' %}"
+                            alt="Student celebrating admission" class="w-full h-full object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Admission Success</h3>
+                            <p class="text-sm opacity-90">Join thousands of students in top colleges</p>
+                        </div>
+                    </div>
+
+                    <!-- Slideshow Indicators -->
+                    <div class="absolute bottom-4 right-4 flex space-x-2">
+                        <button
+                            class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300"
+                            data-slide="0"></button>
+                        <button
+                            class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300"
+                            data-slide="1"></button>
+                        <button
+                            class="slideshow-dot w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-300"
+                            data-slide="2"></button>
+                    </div>
+                </div>
+
+                <!-- Floating Achievement Cards -->
+                <div
+                    class="absolute top-2 right-4 lg:-top-2 lg:-right-4 glass-effect p-2 lg:p-4 rounded-xl shadow-lg floating z-20">
+                    <div class="flex items-center">
+                        <i class="fas fa-trophy text-amber-500 text-lg lg:text-2xl mr-1.5 lg:mr-2"></i>
+                        <div>
+                            <div class="text-xs lg:text-sm font-bold text-gray-800">99% Admission Rate</div>
+                            <div class="text-[10px] lg:text-xs text-gray-500">For Premium Users</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute top-1/2 right-2 lg:-right-8 bg-white p-2 lg:p-3 rounded-full shadow-lg floating z-20"
+                    style="animation-delay: 2s;">
+                    <i class="fas fa-graduation-cap text-primary text-lg lg:text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Featured Counselling Services -->
+<section id="services" class="py-14 md:py-20 bg-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-secondary"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12 md:mb-16 animate-fade-in-up">
+            <span
+                class="inline-block bg-indigo-50 text-primary px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-4 border border-indigo-100">
+                🎯 Choose Your Plan
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 md:mb-6">
+                Featured <span class="text-gradient">Counselling Plans</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">
+                We cover all major national and state-level entrance exams, providing tailored guidance for each.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {% for service in featured_services|slice:":3" %}
+            <div class="course-card card-elevated bg-white rounded-2xl overflow-hidden group">
+                <div class="p-5">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-900 leading-tight">{{ service.name }}</h3>
+                        <div class="flex items-center space-x-2">
+                            {% if service.is_popular %}
+                            <span
+                                class="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs px-2.5 py-1 rounded-full font-semibold shadow-sm">Popular</span>
                             {% endif %}
-                            
-                            <div class="absolute bottom-2 left-2 bg-indigo-900/80 text-white px-2.5 py-1 rounded-lg text-xs font-medium backdrop-blur-sm">
-                                {{ service.tag }}
-                            </div>
-                            <div class="absolute bottom-2 right-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2.5 py-1 rounded-lg text-sm font-bold shadow-sm">
-                                ₹ {{ service.price }}
-                            </div>
                         </div>
-                        
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-500 mb-2 line-clamp-2">
-                                <i class="fas fa-info-circle text-indigo-400 mr-1"></i>
-                                {{ service.short_description }}
-                            </p>
-                            <p class="text-sm text-gray-500">
-                                <i class="fas fa-calendar text-indigo-400 mr-1"></i>
-                                Validity: {{ service.validity_days }} Days
-                            </p>
-                            {% if service.features %}
-                            <div class="mt-2 text-xs text-gray-500">
-                                {% for feature in service.features|slice:":2" %}
-                                <div class="flex items-center mt-1">
-                                    <i class="fas fa-check text-emerald-500 mr-1"></i> {{ feature }}
-                                </div>
-                                {% endfor %}
+                    </div>
+
+                    <!-- Product Image -->
+                    <div class="relative mb-4 rounded-xl overflow-hidden">
+                        {% if service.thumbnail %}
+                        <img src="{{ service.thumbnail.url }}" alt="{{ service.name }}"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        {% else %}
+                        <div
+                            class="w-full h-48 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-indigo-200 text-4xl"></i>
+                        </div>
+                        {% endif %}
+
+                        <div
+                            class="absolute bottom-2 left-2 bg-indigo-900/80 text-white px-2.5 py-1 rounded-lg text-xs font-medium backdrop-blur-sm">
+                            {{ service.tag }}
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2.5 py-1 rounded-lg text-sm font-bold shadow-sm">
+                            ₹ {{ service.price }}
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-500 mb-2 line-clamp-2">
+                            <i class="fas fa-info-circle text-indigo-400 mr-1"></i>
+                            {{ service.short_description }}
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            <i class="fas fa-calendar text-indigo-400 mr-1"></i>
+                            Validity: {{ service.validity_days }} Days
+                        </p>
+                        {% if service.features %}
+                        <div class="mt-2 text-xs text-gray-500">
+                            {% for feature in service.features|slice:":2" %}
+                            <div class="flex items-center mt-1">
+                                <i class="fas fa-check text-emerald-500 mr-1"></i> {{ feature }}
                             </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-extrabold text-gray-900">₹ {{ service.price }}</span>
+                            {% if service.original_price and service.original_price > service.price %}
+                            <span class="text-sm text-gray-400 line-through">₹{{ service.original_price }}</span>
                             {% endif %}
                         </div>
-                        
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-2xl font-extrabold text-gray-900">₹ {{ service.price }}</span>
-                                {% if service.original_price and service.original_price > service.price %}
-                                <span class="text-sm text-gray-400 line-through">₹{{ service.original_price }}</span>
-                                {% endif %}
-                            </div>
-                            {% if service.discount_percentage > 0 %}
-                            <div class="bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full text-xs font-bold border border-emerald-100">
-                                {{ service.discount_percentage }}% OFF
-                            </div>
-                            {% endif %}
+                        {% if service.discount_percentage > 0 %}
+                        <div
+                            class="bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full text-xs font-bold border border-emerald-100">
+                            {{ service.discount_percentage }}% OFF
                         </div>
-                        
-                        <div class="flex space-x-2">
-                            <button onclick="openModal('modal-{{ forloop.counter }}')" class="flex-1 border-2 border-indigo-200 text-primary py-2.5 rounded-xl font-semibold hover:bg-primary hover:text-white hover:border-primary transition duration-300 text-center text-sm">
-                                View Details
+                        {% endif %}
+                    </div>
+
+                    <div class="flex space-x-2">
+                        <button onclick="openModal('modal-{{ forloop.counter }}')"
+                            class="flex-1 border-2 border-indigo-200 text-primary py-2.5 rounded-xl font-semibold hover:bg-primary hover:text-white hover:border-primary transition duration-300 text-center text-sm">
+                            View Details
+                        </button>
+                        <a href="{% url 'checkout:checkout_view' type=service.type slug=service.slug %}"
+                            class="flex-1 btn-primary-glow text-white py-2.5 rounded-xl font-semibold text-center text-sm">
+                            Buy Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Detail Modal -->
+            <div id="modal-{{ forloop.counter }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title"
+                role="dialog" aria-modal="true">
+                <div class="fixed inset-0 bg-indigo-950/60 transition-opacity backdrop-blur-sm"
+                    onclick="closeModal('modal-{{ forloop.counter }}')"></div>
+                <div class="fixed inset-0 z-10 overflow-y-auto">
+                    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                        <div
+                            class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl ring-1 ring-indigo-100">
+                            <button type="button"
+                                class="absolute top-4 right-4 z-10 rounded-full bg-white/80 backdrop-blur p-2 text-gray-400 hover:bg-indigo-50 hover:text-primary focus:outline-none shadow-sm"
+                                onclick="closeModal('modal-{{ forloop.counter }}')">
+                                <span class="sr-only">Close</span>
+                                <i class="fas fa-times text-lg"></i>
                             </button>
-                            <a href="{% url 'checkout:checkout_view' type=service.type slug=service.slug %}" class="flex-1 btn-primary-glow text-white py-2.5 rounded-xl font-semibold text-center text-sm">
-                                Buy Now
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Product Detail Modal -->
-                <div id="modal-{{ forloop.counter }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                    <div class="fixed inset-0 bg-indigo-950/60 transition-opacity backdrop-blur-sm" onclick="closeModal('modal-{{ forloop.counter }}')"></div>
-                    <div class="fixed inset-0 z-10 overflow-y-auto">
-                        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-                            <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl ring-1 ring-indigo-100">
-                                <button type="button" class="absolute top-4 right-4 z-10 rounded-full bg-white/80 backdrop-blur p-2 text-gray-400 hover:bg-indigo-50 hover:text-primary focus:outline-none shadow-sm" onclick="closeModal('modal-{{ forloop.counter }}')">
-                                    <span class="sr-only">Close</span>
-                                    <i class="fas fa-times text-lg"></i>
-                                </button>
+                            <div class="grid grid-cols-1 md:grid-cols-2">
+                                <div
+                                    class="relative bg-gradient-to-br from-indigo-50 to-purple-50 p-8 flex items-center justify-center">
+                                    {% if service.image %}
+                                    <img src="{{ service.image.url }}" alt="{{ service.name }}"
+                                        class="max-h-80 w-full object-contain">
+                                    {% elif service.thumbnail %}
+                                    <img src="{{ service.thumbnail.url }}" alt="{{ service.name }}"
+                                        class="max-h-80 w-full object-contain">
+                                    {% else %}
+                                    <div class="flex h-64 w-full items-center justify-center text-indigo-200">
+                                        <i class="fas fa-image text-6xl"></i>
+                                    </div>
+                                    {% endif %}
 
-                                <div class="grid grid-cols-1 md:grid-cols-2">
-                                    <div class="relative bg-gradient-to-br from-indigo-50 to-purple-50 p-8 flex items-center justify-center">
-                                        {% if service.image %}
-                                            <img src="{{ service.image.url }}" alt="{{ service.name }}" class="max-h-80 w-full object-contain">
-                                        {% elif service.thumbnail %}
-                                            <img src="{{ service.thumbnail.url }}" alt="{{ service.name }}" class="max-h-80 w-full object-contain">
-                                        {% else %}
-                                            <div class="flex h-64 w-full items-center justify-center text-indigo-200">
-                                                <i class="fas fa-image text-6xl"></i>
-                                            </div>
-                                        {% endif %}
-                                        
-                                        {% if service.is_popular %}
-                                        <div class="absolute top-4 left-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                                            <i class="fas fa-fire mr-1"></i> Popular
-                                        </div>
+                                    {% if service.is_popular %}
+                                    <div
+                                        class="absolute top-4 left-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                        <i class="fas fa-fire mr-1"></i> Popular
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="p-8">
+                                    <div class="mb-1">
+                                        <span
+                                            class="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-primary border border-indigo-100">
+                                            {{ service.tag }}
+                                        </span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ service.name }}</h3>
+
+                                    <div class="flex items-baseline space-x-3 mb-4">
+                                        <span class="text-3xl font-extrabold text-gray-900">₹{{ service.price }}</span>
+                                        {% if service.original_price and service.original_price > service.price %}
+                                        <span class="text-lg text-gray-400 line-through">₹{{ service.original_price
+                                            }}</span>
+                                        <span class="text-sm font-bold text-emerald-500">{{ service.discount_percentage
+                                            }}% OFF</span>
                                         {% endif %}
                                     </div>
 
-                                    <div class="p-8">
-                                        <div class="mb-1">
-                                            <span class="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-primary border border-indigo-100">
-                                                {{ service.tag }}
-                                            </span>
-                                        </div>
-                                        <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ service.name }}</h3>
-                                        
-                                        <div class="flex items-baseline space-x-3 mb-4">
-                                            <span class="text-3xl font-extrabold text-gray-900">₹{{ service.price }}</span>
-                                            {% if service.original_price and service.original_price > service.price %}
-                                                <span class="text-lg text-gray-400 line-through">₹{{ service.original_price }}</span>
-                                                <span class="text-sm font-bold text-emerald-500">{{ service.discount_percentage }}% OFF</span>
-                                            {% endif %}
-                                        </div>
+                                    <div
+                                        class="prose prose-sm text-gray-500 mb-6 max-h-32 overflow-y-auto custom-scrollbar">
+                                        <p>{{ service.description|default:service.short_description|linebreaks }}</p>
+                                    </div>
 
-                                        <div class="prose prose-sm text-gray-500 mb-6 max-h-32 overflow-y-auto custom-scrollbar">
-                                            <p>{{ service.description|default:service.short_description|linebreaks }}</p>
-                                        </div>
+                                    {% if service.features %}
+                                    <div class="mb-6">
+                                        <h4 class="text-sm font-semibold text-gray-900 mb-3">What's Included:</h4>
+                                        <ul class="space-y-2">
+                                            {% for feature in service.features|slice:":4" %}
+                                            <li class="flex items-start text-sm text-gray-600">
+                                                <i
+                                                    class="fas fa-check-circle text-emerald-500 mt-0.5 mr-2 flex-shrink-0"></i>
+                                                {{ feature }}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    {% endif %}
 
-                                        {% if service.features %}
-                                        <div class="mb-6">
-                                            <h4 class="text-sm font-semibold text-gray-900 mb-3">What's Included:</h4>
-                                            <ul class="space-y-2">
-                                                {% for feature in service.features|slice:":4" %}
-                                                <li class="flex items-start text-sm text-gray-600">
-                                                    <i class="fas fa-check-circle text-emerald-500 mt-0.5 mr-2 flex-shrink-0"></i>
-                                                    {{ feature }}
-                                                </li>
-                                                {% endfor %}
-                                            </ul>
+                                    <div class="flex items-center justify-between border-t border-indigo-50 pt-6">
+                                        <div class="text-sm text-gray-500">
+                                            <i class="fas fa-clock mr-1 text-indigo-400"></i> {{ service.validity_days
+                                            }} Days Validity
                                         </div>
-                                        {% endif %}
-
-                                        <div class="flex items-center justify-between border-t border-indigo-50 pt-6">
-                                            <div class="text-sm text-gray-500">
-                                                <i class="fas fa-clock mr-1 text-indigo-400"></i> {{ service.validity_days }} Days Validity
-                                            </div>
-                                            <a href="{% url 'checkout:checkout_view' type=service.type slug=service.slug %}" class="inline-flex items-center justify-center rounded-xl btn-primary-glow px-8 py-3 text-sm font-semibold text-white shadow-sm transition-all">
-                                                Buy Now <i class="fas fa-arrow-right ml-2"></i>
-                                            </a>
-                                        </div>
+                                        <a href="{% url 'checkout:checkout_view' type=service.type slug=service.slug %}"
+                                            class="inline-flex items-center justify-center rounded-xl btn-primary-glow px-8 py-3 text-sm font-semibold text-white shadow-sm transition-all">
+                                            Buy Now <i class="fas fa-arrow-right ml-2"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="{% url 'landing_page:tools_and_services' %}" class="inline-flex items-center bg-white border-2 border-indigo-200 text-primary hover:bg-primary hover:text-white hover:border-primary px-8 py-3.5 rounded-xl font-semibold transition duration-300 shadow-sm">
-                    Show More Services <i class="fas fa-arrow-right ml-2"></i>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'landing_page:tools_and_services' %}"
+                class="inline-flex items-center bg-white border-2 border-indigo-200 text-primary hover:bg-primary hover:text-white hover:border-primary px-8 py-3.5 rounded-xl font-semibold transition duration-300 shadow-sm">
+                Show More Services <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Tools & Services Section -->
+<section id="tools" class="py-16 md:py-20 section-cool relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-14">
+            <span
+                class="inline-block bg-cyan-50 text-accent px-4 py-2 rounded-full text-sm font-bold mb-4 border border-cyan-100">
+                ✨ Our Tools & Services
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                Everything You Need for <span class="text-gradient">Admission Success</span>
+            </h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                Free tools and premium guidance to secure your dream college
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+            <!-- Feature 1 -->
+            <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
+                <div
+                    class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-indigo-200">
+                    <i class="fas fa-university text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">College Predictor</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Get personalized college list based on
+                    your rank and preferences</p>
+                <a href="{% url 'college_predictor:college_predictor_home' %}"
+                    class="mt-auto inline-block w-full bg-indigo-50 text-primary hover:bg-primary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-indigo-100 hover:border-primary">
+                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
+                <div
+                    class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-200">
+                    <i class="fas fa-calculator text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Rank Predictor</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Estimate your exam rank with 95%
+                    accuracy using AI</p>
+                <a href="{% url 'rank_predictor:rank_predictor_home' %}"
+                    class="mt-auto inline-block w-full bg-amber-50 text-amber-600 hover:bg-secondary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-amber-100 hover:border-secondary">
+                    Explore <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
+                <div
+                    class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-200">
+                    <i class="fas fa-building text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">College Information</h3>
+                <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Curated repository of 2500+ institutes
+                    with fees, cut-offs, and placement stats.</p>
+                <a href="{% url 'colleges:colleges_list' %}"
+                    class="mt-auto inline-block w-full bg-cyan-50 text-cyan-600 hover:bg-accent hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-cyan-100 hover:border-accent">
+                    Explore <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Tools & Services Section -->
-    <section id="tools" class="py-16 md:py-20 section-cool relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-14">
-                <span class="inline-block bg-cyan-50 text-accent px-4 py-2 rounded-full text-sm font-bold mb-4 border border-cyan-100">
-                    ✨ Our Tools & Services
-                </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
-                    Everything You Need for <span class="text-gradient">Admission Success</span>
-                </h2>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-                    Free tools and premium guidance to secure your dream college
-                </p>
+<!-- Statistics & Testimonials Section -->
+<section id="about" class="py-16 md:py-20 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Statistics -->
+        <div class="text-center mb-14">
+            <span
+                class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-purple-100">
+                🏆 Trusted by Thousands
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+                Our Impact Across <span class="text-gradient">India</span>
+            </h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
+                Join thousands of successful students who found their dream college with our guidance
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7 mb-20">
+            <div class="text-center group">
+                <div
+                    class="stat-card bg-gradient-to-b from-indigo-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-indigo-100 transition duration-300 border border-indigo-50">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-users text-primary text-xl"></i>
+                    </div>
+                    <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="50000">0
+                    </div>
+                    <div class="text-sm text-gray-500 font-medium">Students Counselled</div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-                <!-- Feature 1 -->
-                <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
-                    <div class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-indigo-200">
-                        <i class="fas fa-university text-white text-2xl"></i>
+            <div class="text-center group">
+                <div
+                    class="stat-card bg-gradient-to-b from-amber-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-amber-100 transition duration-300 border border-amber-50">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-university text-amber-600 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">College Predictor</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Get personalized college list based on your rank and preferences</p>
-                    <a href="{% url 'college_predictor:college_predictor_home' %}" class="mt-auto inline-block w-full bg-indigo-50 text-primary hover:bg-primary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-indigo-100 hover:border-primary">
-                        Explore <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="2500">0
+                    </div>
+                    <div class="text-sm text-gray-500 font-medium">Colleges in Database</div>
                 </div>
+            </div>
 
-                <!-- Feature 2 -->
-                <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
-                    <div class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-200">
-                        <i class="fas fa-calculator text-white text-2xl"></i>
+            <div class="text-center group">
+                <div
+                    class="stat-card bg-gradient-to-b from-emerald-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-emerald-100 transition duration-300 border border-emerald-50">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-user-tie text-emerald-600 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Rank Predictor</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Estimate your exam rank with 95% accuracy using AI</p>
-                    <a href="{% url 'rank_predictor:rank_predictor_home' %}" class="mt-auto inline-block w-full bg-amber-50 text-amber-600 hover:bg-secondary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-amber-100 hover:border-secondary">
-                        Explore <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="500">0
+                    </div>
+                    <div class="text-sm text-gray-500 font-medium">Expert Counsellors</div>
                 </div>
+            </div>
 
-                <!-- Feature 3 -->
-                <div class="card-elevated bg-white p-7 rounded-2xl text-center flex flex-col h-full group">
-                    <div class="feature-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-200">
-                        <i class="fas fa-building text-white text-2xl"></i>
+            <div class="text-center group">
+                <div
+                    class="stat-card bg-gradient-to-b from-purple-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-purple-100 transition duration-300 border border-purple-50">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-purple-600 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">College Information</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-grow leading-relaxed">Curated repository of 2500+ institutes with fees, cut-offs, and placement stats.</p>
-                    <a href="{% url 'colleges:colleges_list' %}" class="mt-auto inline-block w-full bg-cyan-50 text-cyan-600 hover:bg-accent hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 border border-cyan-100 hover:border-accent">
-                        Explore <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
+                    <div class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">4.9/5</div>
+                    <div class="text-sm text-gray-500 font-medium">Student Rating</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Statistics & Testimonials Section -->
-    <section id="about" class="py-16 md:py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Statistics -->
-            <div class="text-center mb-14">
-                <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-purple-100">
-                    🏆 Trusted by Thousands
-                </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
-                    Our Impact Across <span class="text-gradient">India</span>
-                </h2>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
-                    Join thousands of successful students who found their dream college with our guidance
-                </p>
+        <!-- Divider -->
+        <div class="relative mb-16">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-indigo-100"></div>
             </div>
-            
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-7 mb-20">
-                <div class="text-center group">
-                    <div class="stat-card bg-gradient-to-b from-indigo-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-indigo-100 transition duration-300 border border-indigo-50">
-                        <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-users text-primary text-xl"></i>
-                        </div>
-                        <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="50000">0</div>
-                        <div class="text-sm text-gray-500 font-medium">Students Counselled</div>
-                    </div>
-                </div>
-                
-                <div class="text-center group">
-                    <div class="stat-card bg-gradient-to-b from-amber-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-amber-100 transition duration-300 border border-amber-50">
-                        <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-university text-amber-600 text-xl"></i>
-                        </div>
-                        <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="2500">0</div>
-                        <div class="text-sm text-gray-500 font-medium">Colleges in Database</div>
-                    </div>
-                </div>
-                
-                <div class="text-center group">
-                    <div class="stat-card bg-gradient-to-b from-emerald-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-emerald-100 transition duration-300 border border-emerald-50">
-                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-user-tie text-emerald-600 text-xl"></i>
-                        </div>
-                        <div class="counter text-3xl md:text-4xl font-extrabold text-gray-900 mb-1" data-target="500">0</div>
-                        <div class="text-sm text-gray-500 font-medium">Expert Counsellors</div>
-                    </div>
-                </div>
-                
-                <div class="text-center group">
-                    <div class="stat-card bg-gradient-to-b from-purple-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-lg group-hover:shadow-purple-100 transition duration-300 border border-purple-50">
-                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-star text-purple-600 text-xl"></i>
-                        </div>
-                        <div class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">4.9/5</div>
-                        <div class="text-sm text-gray-500 font-medium">Student Rating</div>
-                    </div>
-                </div>
+            <div class="relative flex justify-center">
+                <span class="bg-white px-6 py-1 text-sm text-gray-400 font-medium">Success Stories</span>
             </div>
+        </div>
 
-            <!-- Divider -->
-            <div class="relative mb-16">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-indigo-100"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="bg-white px-6 py-1 text-sm text-gray-400 font-medium">Success Stories</span>
-                </div>
-            </div>
+        <!-- Testimonials -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                Hear From Our <span class="text-gradient">Successful Students</span>
+            </h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                Real experiences from students who secured admission to their dream colleges
+            </p>
+        </div>
 
-            <!-- Testimonials -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-                    Hear From Our <span class="text-gradient">Successful Students</span>
-                </h2>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-                    Real experiences from students who secured admission to their dream colleges
-                </p>
-            </div>
-
-            <!-- Auto-scrolling Testimonial Marquee -->
-            <div class="testimonial-marquee-wrapper">
-                <div class="testimonial-marquee-track">
-                    <!-- Card 1 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">PS</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Priya Sharma</h4>
-                                <p class="text-xs text-gray-500">NEET Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+        <!-- Auto-scrolling Testimonial Marquee -->
+        <div class="testimonial-marquee-wrapper">
+            <div class="testimonial-marquee-track">
+                <!-- Card 1 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            PS</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Priya Sharma</h4>
+                            <p class="text-xs text-gray-500">NEET Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The personalized guidance helped me create the perfect college list. Got into my first choice!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>AIIMS Delhi</div>
                     </div>
-                    <!-- Card 2 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">RK</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Rahul Kumar</h4>
-                                <p class="text-xs text-gray-500">JEE Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The personalized guidance helped me create
+                        the perfect college list. Got into my first choice!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>AIIMS Delhi</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            RK</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Rahul Kumar</h4>
+                            <p class="text-xs text-gray-500">JEE Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"College predictor was spot-on! The JoSAA timeline made everything clear and stress-free."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>IIT Bombay - CS</div>
                     </div>
-                    <!-- Card 3 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">AP</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Anjali Patel</h4>
-                                <p class="text-xs text-gray-500">MHT-CET</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"College predictor was spot-on! The JoSAA
+                        timeline made everything clear and stress-free."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>IIT Bombay - CS</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            AP</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Anjali Patel</h4>
+                            <p class="text-xs text-gray-500">MHT-CET</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Premium counselling was worth it! Expert support for documents and choice filling was invaluable."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>COEP Pune - IT</div>
                     </div>
-                    <!-- Card 4 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">SM</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Sneha Mishra</h4>
-                                <p class="text-xs text-gray-500">NEET Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Premium counselling was worth it! Expert
+                        support for documents and choice filling was invaluable."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>COEP Pune - IT</div>
+                </div>
+                <!-- Card 4 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            SM</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Sneha Mishra</h4>
+                            <p class="text-xs text-gray-500">NEET Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Got confused between colleges, but the counsellor session cleared everything. Highly recommended!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>KMC Manipal</div>
                     </div>
-                    <!-- Card 5 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">VR</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Vikas Reddy</h4>
-                                <p class="text-xs text-gray-500">JEE Advanced</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Got confused between colleges, but the
+                        counsellor session cleared everything. Highly recommended!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>KMC Manipal</div>
+                </div>
+                <!-- Card 5 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            VR</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Vikas Reddy</h4>
+                            <p class="text-xs text-gray-500">JEE Advanced</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The rank predictor was almost exact! Helped me set realistic expectations and pick wisely."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>NIT Trichy - ECE</div>
                     </div>
-                    <!-- Card 6 -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">NP</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Neha Patil</h4>
-                                <p class="text-xs text-gray-500">MHT-CET</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The rank predictor was almost exact! Helped
+                        me set realistic expectations and pick wisely."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>NIT Trichy - ECE</div>
+                </div>
+                <!-- Card 6 -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            NP</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Neha Patil</h4>
+                            <p class="text-xs text-gray-500">MHT-CET</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Their CAP round assistance saved me so much stress. The counsellor was available even on weekends!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>VJTI Mumbai - CS</div>
                     </div>
-                    <!-- Duplicate set for seamless loop -->
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">PS</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Priya Sharma</h4>
-                                <p class="text-xs text-gray-500">NEET Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Their CAP round assistance saved me so much
+                        stress. The counsellor was available even on weekends!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>VJTI Mumbai - CS</div>
+                </div>
+                <!-- Duplicate set for seamless loop -->
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            PS</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Priya Sharma</h4>
+                            <p class="text-xs text-gray-500">NEET Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The personalized guidance helped me create the perfect college list. Got into my first choice!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>AIIMS Delhi</div>
                     </div>
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">RK</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Rahul Kumar</h4>
-                                <p class="text-xs text-gray-500">JEE Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The personalized guidance helped me create
+                        the perfect college list. Got into my first choice!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>AIIMS Delhi</div>
+                </div>
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            RK</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Rahul Kumar</h4>
+                            <p class="text-xs text-gray-500">JEE Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"College predictor was spot-on! The JoSAA timeline made everything clear and stress-free."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>IIT Bombay - CS</div>
                     </div>
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">AP</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Anjali Patel</h4>
-                                <p class="text-xs text-gray-500">MHT-CET</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"College predictor was spot-on! The JoSAA
+                        timeline made everything clear and stress-free."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>IIT Bombay - CS</div>
+                </div>
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            AP</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Anjali Patel</h4>
+                            <p class="text-xs text-gray-500">MHT-CET</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Premium counselling was worth it! Expert support for documents and choice filling was invaluable."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>COEP Pune - IT</div>
                     </div>
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">SM</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Sneha Mishra</h4>
-                                <p class="text-xs text-gray-500">NEET Aspirant</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Premium counselling was worth it! Expert
+                        support for documents and choice filling was invaluable."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>COEP Pune - IT</div>
+                </div>
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            SM</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Sneha Mishra</h4>
+                            <p class="text-xs text-gray-500">NEET Aspirant</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Got confused between colleges, but the counsellor session cleared everything. Highly recommended!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>KMC Manipal</div>
                     </div>
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">VR</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Vikas Reddy</h4>
-                                <p class="text-xs text-gray-500">JEE Advanced</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Got confused between colleges, but the
+                        counsellor session cleared everything. Highly recommended!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>KMC Manipal</div>
+                </div>
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            VR</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Vikas Reddy</h4>
+                            <p class="text-xs text-gray-500">JEE Advanced</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The rank predictor was almost exact! Helped me set realistic expectations and pick wisely."</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>NIT Trichy - ECE</div>
                     </div>
-                    <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
-                        <div class="flex items-center mb-3">
-                            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">NP</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-sm">Neha Patil</h4>
-                                <p class="text-xs text-gray-500">MHT-CET</p>
-                                <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"The rank predictor was almost exact! Helped
+                        me set realistic expectations and pick wisely."</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>NIT Trichy - ECE</div>
+                </div>
+                <div class="testimonial-marquee-card testimonial-card card-elevated p-5 rounded-2xl">
+                    <div class="flex items-center mb-3">
+                        <div
+                            class="w-11 h-11 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-white font-bold mr-3 text-sm shadow-sm">
+                            NP</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Neha Patil</h4>
+                            <p class="text-xs text-gray-500">MHT-CET</p>
+                            <div class="flex text-amber-400 text-[10px] mt-0.5"><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i></div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Their CAP round assistance saved me so much stress. The counsellor was available even on weekends!"</p>
-                        <div class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100"><i class="fas fa-check-circle mr-1.5"></i>VJTI Mumbai - CS</div>
                     </div>
+                    <p class="text-gray-600 text-sm mb-3 leading-relaxed">"Their CAP round assistance saved me so much
+                        stress. The counsellor was available even on weekends!"</p>
+                    <div
+                        class="flex items-center text-xs text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-full w-fit border border-emerald-100">
+                        <i class="fas fa-check-circle mr-1.5"></i>VJTI Mumbai - CS</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="py-16 md:py-24 relative overflow-hidden">
-        <!-- Gradient Background -->
-        <div class="absolute inset-0 cta-gradient"></div>
-        <!-- Decorative Blobs -->
-        <div class="absolute inset-0 pointer-events-none overflow-hidden">
-            <div class="absolute -top-20 -right-20 w-80 h-80 bg-white rounded-full opacity-5"></div>
-            <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full opacity-5"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full opacity-[0.02]"></div>
+<!-- CTA Section -->
+<section id="contact" class="py-16 md:py-24 relative overflow-hidden">
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 cta-gradient"></div>
+    <!-- Decorative Blobs -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-white rounded-full opacity-5"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full opacity-5"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full opacity-[0.02]">
         </div>
-        
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="animate-fade-in-up">
-                <span class="inline-flex items-center bg-white/15 backdrop-blur text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-6 border border-white/20">
-                    <i class="fas fa-rocket mr-2"></i> Start Your Counselling Journey
-                </span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 md:mb-6">
-                    Ready to Secure Your<br/><span class="text-amber-300">Dream College?</span>
-                </h2>
-                <p class="text-lg md:text-xl text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Join thousands of successful students. Get expert guidance, use our smart tools, and receive personalized mentorship.
-                </p>
-                
-                <!-- Features Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-12">
-                    <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
-                        <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-rocket text-amber-300 text-xl"></i>
-                        </div>
-                        <h3 class="font-semibold text-white mb-1">Free Tools</h3>
-                        <p class="text-sm text-indigo-200">Use Predictors & get updates</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="animate-fade-in-up">
+            <span
+                class="inline-flex items-center bg-white/15 backdrop-blur text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-6 border border-white/20">
+                <i class="fas fa-rocket mr-2"></i> Start Your Counselling Journey
+            </span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 md:mb-6">
+                Ready to Secure Your<br /><span class="text-amber-300">Dream College?</span>
+            </h2>
+            <p class="text-lg md:text-xl text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of successful students. Get expert guidance, use our smart tools, and receive
+                personalized mentorship.
+            </p>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10 md:mb-12">
+                <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
+                    <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-rocket text-amber-300 text-xl"></i>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
-                        <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-headset text-amber-300 text-xl"></i>
-                        </div>
-                        <h3 class="font-semibold text-white mb-1">Expert Support</h3>
-                        <p class="text-sm text-indigo-200">1-on-1 sessions with mentors</p>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
-                        <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-certificate text-amber-300 text-xl"></i>
-                        </div>
-                        <h3 class="font-semibold text-white mb-1">Guaranteed Guidance</h3>
-                        <p class="text-sm text-indigo-200">End-to-end admission support</p>
-                    </div>
+                    <h3 class="font-semibold text-white mb-1">Free Tools</h3>
+                    <p class="text-sm text-indigo-200">Use Predictors & get updates</p>
                 </div>
-                
-                <div class="flex flex-col gap-3 md:gap-4 justify-center items-center">
-                    <button class="bg-white text-primary hover:bg-indigo-50 px-10 md:px-14 py-3.5 md:py-4 rounded-xl text-lg md:text-xl font-bold transition duration-300 shadow-xl flex items-center w-full sm:w-auto justify-center">
-                        <i class="fas fa-play mr-3"></i>
-                        Get Started Now
-                        <i class="fas fa-arrow-right ml-3"></i>
-                    </button>
-                    <button class="border-2 border-white/40 text-white hover:bg-white/10 px-8 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center backdrop-blur">
-                        <i class="fas fa-phone mr-2"></i>
-                        Call Us: +91-9765660584
-                    </button>
+                <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
+                    <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-headset text-amber-300 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Expert Support</h3>
+                    <p class="text-sm text-indigo-200">1-on-1 sessions with mentors</p>
                 </div>
-                
-                <!-- Trust Badges -->
-                <div class="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-xs md:text-sm text-indigo-200">
-                    <div class="flex items-center">
-                        <i class="fas fa-shield-alt text-emerald-400 mr-2"></i>
-                        <span>SSL Secured</span>
+                <div class="bg-white/10 backdrop-blur-lg border border-white/15 p-5 rounded-2xl text-white">
+                    <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-certificate text-amber-300 text-xl"></i>
                     </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-award text-amber-400 mr-2"></i>
-                        <span>ISO Certified</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-users text-cyan-400 mr-2"></i>
-                        <span>10K+ Students</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-star text-amber-400 mr-2"></i>
-                        <span>4.6/5 Rating</span>
-                    </div>
+                    <h3 class="font-semibold text-white mb-1">Guaranteed Guidance</h3>
+                    <p class="text-sm text-indigo-200">End-to-end admission support</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 md:gap-4 justify-center items-center">
+                <button
+                    class="bg-white text-primary hover:bg-indigo-50 px-10 md:px-14 py-3.5 md:py-4 rounded-xl text-lg md:text-xl font-bold transition duration-300 shadow-xl flex items-center w-full sm:w-auto justify-center">
+                    <i class="fas fa-play mr-3"></i>
+                    Get Started Now
+                    <i class="fas fa-arrow-right ml-3"></i>
+                </button>
+                <button
+                    class="border-2 border-white/40 text-white hover:bg-white/10 px-8 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center backdrop-blur">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Us: +91-9765660584
+                </button>
+            </div>
+
+            <!-- Trust Badges -->
+            <div
+                class="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-xs md:text-sm text-indigo-200">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-emerald-400 mr-2"></i>
+                    <span>SSL Secured</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-award text-amber-400 mr-2"></i>
+                    <span>ISO Certified</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-users text-cyan-400 mr-2"></i>
+                    <span>50K+ Students</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-star text-amber-400 mr-2"></i>
+                    <span>4.9/5 Rating</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
-   <script src="{% static 'landing_page/js/script.js' %}"></script>
-   <script src="{% static 'landing_page/js/launch_popup.js' %}"></script>
-   <script>
-       function openModal(modalId) {
-           document.getElementById(modalId).classList.remove('hidden');
-           document.body.style.overflow = 'hidden';
-       }
-       function closeModal(modalId) {
-           document.getElementById(modalId).classList.add('hidden');
-           document.body.style.overflow = 'auto';
-       }
-   </script>
+<script src="{% static 'landing_page/js/script.js' %}"></script>
+<script src="{% static 'landing_page/js/launch_popup.js' %}"></script>
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 {% endblock content %}

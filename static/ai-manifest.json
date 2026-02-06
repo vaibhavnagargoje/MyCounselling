@@ -1,0 +1,68 @@
+{
+    "name": "E-Counselling",
+    "description": "India's leading AI-powered college counselling platform for NEET, JEE, MHT-CET aspirants",
+    "url": "https://ecounselling.live",
+    "logo": "https://ecounselling.live/static/landing_page/img/logo.png",
+    "founded": "2024",
+    "location": {
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India"
+    },
+    "contact": {
+        "phone": "+91-9765660584",
+        "email": "support@ecounselling.in"
+    },
+    "services": [
+        {
+            "name": "NEET Counselling",
+            "description": "Complete guidance for NEET UG and PG medical admissions",
+            "keywords": ["NEET counselling", "medical admission", "MBBS admission", "MCC counselling"]
+        },
+        {
+            "name": "JEE Counselling",
+            "description": "Expert support for JEE Main and Advanced admissions",
+            "keywords": ["JEE counselling", "IIT admission", "JoSAA counselling", "engineering admission"]
+        },
+        {
+            "name": "MHT-CET Counselling",
+            "description": "Maharashtra CET counselling for engineering and pharmacy",
+            "keywords": ["MHT-CET counselling", "CAP round", "Maharashtra engineering admission"]
+        }
+    ],
+    "free_tools": [
+        {
+            "name": "Rank Predictor",
+            "url": "https://ecounselling.live/rank-predictor/",
+            "description": "AI-powered rank prediction for NEET, JEE, MHT-CET",
+            "accuracy": "95%+"
+        },
+        {
+            "name": "College Predictor",
+            "url": "https://ecounselling.live/college-predictor/",
+            "description": "Personalized college recommendations based on rank"
+        },
+        {
+            "name": "College Database",
+            "url": "https://ecounselling.live/colleges/",
+            "description": "2500+ colleges with detailed information"
+        }
+    ],
+    "statistics": {
+        "students_counselled": "50000+",
+        "counsellors": "500+",
+        "colleges_database": "2500+",
+        "rating": "4.9/5",
+        "accuracy": "95%"
+    },
+    "social_media": {
+        "facebook": "https://facebook.com/ecounselling",
+        "twitter": "https://twitter.com/ecounselling",
+        "instagram": "https://instagram.com/ecounselling",
+        "linkedin": "https://linkedin.com/company/ecounselling",
+        "youtube": "https://youtube.com/@ecounselling"
+    },
+    "ai_friendly": true,
+    "allows_ai_crawling": true,
+    "last_updated": "2026-02-06"
+}

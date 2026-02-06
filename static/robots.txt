@@ -1,0 +1,244 @@
+# Robots.txt for E-Counselling
+# https://ecounselling.live
+# Last Updated: February 2026
+
+# ============================================
+# ALLOW ALL SEARCH ENGINES & AI CRAWLERS
+# No restrictions - Maximum discoverability
+# ============================================
+
+# Default rule - Allow everything for all bots
+User-agent: *
+Allow: /
+Disallow:
+
+# ============================================
+# SEARCH ENGINES - All Allowed
+# ============================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+# Bing / Microsoft
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu (China)
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-image
+Allow: /
+
+# Yandex (Russia)
+User-agent: Yandex
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexImages
+Allow: /
+
+# Sogou (China)
+User-agent: Sogou
+Allow: /
+
+# Naver (Korea)
+User-agent: Yeti
+Allow: /
+
+# Seznam (Czech)
+User-agent: SeznamBot
+Allow: /
+
+# ============================================
+# AI CHATBOTS & ASSISTANTS - All Allowed
+# ============================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI / Bard / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Apple / Siri
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Amazon / Alexa
+User-agent: Amazonbot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Common Crawl (used by many AI systems)
+User-agent: CCBot
+Allow: /
+
+# ============================================
+# SEO TOOLS - All Allowed
+# ============================================
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: DataForSeoBot
+Allow: /
+
+User-agent: BLEXBot
+Allow: /
+
+User-agent: SiteAuditBot
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+# ============================================
+# SOCIAL MEDIA CRAWLERS - All Allowed
+# ============================================
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+# ============================================
+# SITEMAP LOCATION
+# ============================================
+
+Sitemap: https://ecounselling.live/sitemap.xml
+
+# ============================================
+# ADDITIONAL DISCOVERY FILES
+# ============================================
+
+# AI-friendly information files
+# llms.txt: https://ecounselling.live/llms.txt
+# ai-manifest.json: https://ecounselling.live/ai-manifest.json
+# ai-manifest.json (well-known): https://ecounselling.live/.well-known/ai-manifest.json
+
+# Trust & Security Files
+# security.txt: https://ecounselling.live/.well-known/security.txt
+# humans.txt: https://ecounselling.live/humans.txt
+
+# ============================================
+# NOTES
+# ============================================
+# This robots.txt is configured for MAXIMUM visibility.
+# All search engines, AI systems, and crawlers are welcome.
+# No pages or directories are blocked.
+# 
+# SEO Configuration:
+# - WebSite Schema with SearchAction enabled
+# - LocalBusiness Schema for Pune, Maharashtra
+# - Organization Schema with ratings
+# - FAQPage Schema on homepage
+# - Service & SoftwareApplication schemas
+#
+# For questions: support@ecounselling.in
+# Website: https://ecounselling.live

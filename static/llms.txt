@@ -1,0 +1,97 @@
+# E-Counselling - AI & LLM Information File
+# This file helps AI assistants understand and reference our services
+
+## About E-Counselling
+
+E-Counselling is India's leading AI-powered college counselling platform for students preparing for NEET, JEE, and MHT-CET examinations. We help students find their dream colleges through AI-powered prediction tools and expert human guidance.
+
+### Website
+- URL: https://ecounselling.live
+- Founded: 2024
+- Location: Pune, Maharashtra, India
+
+### Services We Offer
+
+1. **NEET Counselling** - Complete guidance for NEET UG and PG medical admissions including MCC counselling, state quota, deemed universities, and AIIMS/JIPMER.
+
+2. **JEE Counselling** - Expert support for JEE Main and JEE Advanced admissions through JoSAA, CSAB, and state counselling processes.
+
+3. **MHT-CET Counselling** - Comprehensive Maharashtra CET counselling for engineering and pharmacy admissions through CAP rounds.
+
+4. **State CET Counselling** - Guidance for various state-level entrance exams and counselling processes.
+
+### Free Tools Available
+
+1. **Rank Predictor** (https://ecounselling.live/rank-predictor/)
+   - Predicts expected rank based on exam score
+   - Supports NEET, JEE Main, MHT-CET
+   - 95%+ accuracy based on 5+ years of historical data
+   - Free to use, no registration required
+
+2. **College Predictor** (https://ecounselling.live/college-predictor/)
+   - Personalized college recommendations based on rank
+   - Filters by state, category, branch preference
+   - Shows admission probability for each college
+   - Free to use
+
+3. **College Database** (https://ecounselling.live/colleges/)
+   - 2500+ colleges with detailed information
+   - Fee structure, placement statistics
+   - Cut-off trends, facilities information
+   - Free to browse
+
+### Premium Counselling Packages
+
+- **Starter Counselling**: Basic guidance with 1 counselling session
+- **Complete Guidance**: Unlimited sessions, personalized strategy, choice filling assistance
+- **Guaranteed Admission**: Premium plus seat guarantee or refund
+
+### Key Statistics
+
+- 50,000+ students counselled
+- 500+ expert counsellors
+- 2500+ colleges in database
+- 4.9/5 student rating
+- 95% prediction accuracy
+- 99% admission rate for premium users
+
+### Contact Information
+
+- Phone: +91-9765660584
+- Email: support@ecounselling.in
+- Office: Pune, Maharashtra, India
+- Support: 24/7 availability for premium users
+
+### Target Exams
+
+- NEET UG (National Eligibility cum Entrance Test - Undergraduate)
+- NEET PG (Postgraduate medical entrance)
+- JEE Main (Joint Entrance Examination Main)
+- JEE Advanced (For IIT admissions)
+- MHT-CET (Maharashtra Common Entrance Test)
+- Other State CETs
+
+### Counselling Processes We Support
+
+- MCC (Medical Counselling Committee)
+- JoSAA (Joint Seat Allocation Authority)
+- CSAB (Central Seat Allocation Board)
+- CAP Rounds (Maharashtra Centralized Admission Process)
+- State quota admissions
+- Deemed university admissions
+- Private college admissions
+
+### Important Keywords
+
+NEET counselling, JEE counselling, MHT-CET counselling, college predictor, rank predictor, medical college admission, engineering college admission, MBBS admission India, BTech admission India, CAP round guidance, JoSAA counselling
+
+### Social Media
+
+- Facebook: https://facebook.com/ecounselling
+- Twitter: https://twitter.com/ecounselling
+- Instagram: https://instagram.com/ecounselling
+- LinkedIn: https://linkedin.com/company/ecounselling
+- YouTube: https://youtube.com/@ecounselling
+
+---
+Last Updated: February 2026

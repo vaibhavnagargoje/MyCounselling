@@ -1,115 +1,638 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Tools & Services - E-Counselling{% endblock %}
+{% block title %}Free College Predictor & Rank Predictor Tools | NEET, JEE, MHT-CET - E-Counselling{% endblock %}
+
+{% block meta_description %}Use E-Counselling's FREE AI-powered tools: College Predictor by rank, Rank Predictor for
+NEET/JEE/MHT-CET. 95% accuracy. Premium counselling packages with expert guidance. 2500+ college database.{% endblock %}
+
+{% block meta_keywords %}free college predictor, rank predictor NEET, college predictor by rank, JEE college predictor
+2025, MHT-CET college predictor, NEET rank predictor online, free admission tools, college prediction tool India,
+engineering college predictor, medical college predictor, CAP round predictor, JoSAA college predictor, cutoff
+predictor, counselling services India{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/tools-and-services/{% endblock %}
+
+{% block og_title %}Free College & Rank Predictor Tools - E-Counselling{% endblock %}
+{% block og_description %}FREE AI tools: College predictor, rank predictor for NEET, JEE, MHT-CET. 95% accuracy. Premium
+counselling with expert guidance. Try now!{% endblock %}
+{% block og_url %}https://ecounselling.live/tools-and-services/{% endblock %}
+
+{% block twitter_title %}Free College Predictor & Rank Predictor - E-Counselling{% endblock %}
+{% block twitter_description %}Get instant predictions for NEET, JEE, MHT-CET. Free college predictor, rank predictor.
+Premium counselling available. 95% accuracy!{% endblock %}
+
+{% block head %}
+<link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Tools & Services - E-Counselling",
+    "description": "Free AI-powered prediction tools and premium counselling services for NEET, JEE, MHT-CET admissions",
+    "url": "https://ecounselling.live/tools-and-services/",
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ecounselling.live/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Tools & Services",
+                "item": "https://ecounselling.live/tools-and-services/"
+            }
+        ]
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "E-Counselling College Predictor",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+    },
+    "description": "AI-powered college predictor tool for NEET, JEE, MHT-CET. Get personalized college recommendations based on your rank.",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "50000"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "E-Counselling Rank Predictor",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+    },
+    "description": "AI-powered rank predictor tool for NEET, JEE, MHT-CET with 95%+ accuracy based on historical data.",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "45000"
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-gradient pt-28 pb-20 relative overflow-hidden">
-	<div class="absolute top-16 left-10 w-72 h-72 bg-purple-400/20 rounded-full blur-3xl"></div>
-	<div class="absolute bottom-10 right-20 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl"></div>
-	<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-		<span class="inline-block bg-white/80 backdrop-blur text-indigo-700 px-5 py-2 rounded-full text-xs font-bold mb-5 border border-indigo-100 shadow-sm">
-			<i class="fas fa-tools mr-1.5"></i> Tools & Services
-		</span>
-		<h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-			Smart Tools for <span class="text-gradient">Admission Success</span>
-		</h1>
-		<p class="text-gray-600 max-w-3xl mx-auto mb-8">Surface the same Rank Predictor, College Predictor, and College Database blocks you trust on the home page—data-driven tools for confident decisions.</p>
-		<div class="flex flex-col sm:flex-row gap-3 justify-center">
-			<a href="#tools" class="btn-primary-glow bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-7 py-3.5 rounded-full text-base font-bold transition shadow-lg flex items-center justify-center gap-2">
-				<i class="fas fa-rocket text-sm"></i> Try Free Tools
-			</a>
-			<a href="{% url 'landing_page:contact' %}" class="border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 px-7 py-3.5 rounded-full text-base font-bold transition flex items-center justify-center gap-2">
-				<i class="fas fa-headset text-sm"></i> Talk to Mentor
-			</a>
+<section class="hero-gradient relative overflow-hidden pt-28 pb-20">
+	<div class="absolute top-20 right-10 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl"></div>
+	<div class="absolute bottom-10 left-10 w-64 h-64 bg-indigo-400/15 rounded-full blur-3xl"></div>
+	<div
+		class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-200/10 rounded-full blur-3xl">
+	</div>
+
+	<div class="max-w-6xl mx-auto px-4 relative z-10 grid gap-10 lg:grid-cols-[3fr_2fr] items-center">
+		<div class="animate-fade-in-left">
+			<span
+				class="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-700 shadow-sm mb-5">
+				<i class="fas fa-tools text-indigo-500"></i> Tools & Services
+			</span>
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+				Smart Tools for <span class="text-gradient">Admission Success</span>
+			</h1>
+			<p class="text-gray-600 text-lg max-w-2xl mb-8 leading-relaxed">
+				Data-driven predictors, comprehensive college database, and expert counselling packages — everything you
+				need to secure your dream college with confidence.
+			</p>
+			<div class="flex flex-wrap gap-4 text-sm text-gray-700">
+				<div class="bg-white/90 backdrop-blur border border-indigo-100/50 rounded-2xl px-5 py-3 shadow-sm">
+					<div class="font-extrabold text-gradient text-2xl mb-1">3+</div>
+					Free Tools
+				</div>
+				<div class="bg-white/90 backdrop-blur border border-amber-100/50 rounded-2xl px-5 py-3 shadow-sm">
+					<div class="font-extrabold text-amber-600 text-2xl mb-1">95%</div>
+					Prediction Accuracy
+				</div>
+				<div class="bg-white/90 backdrop-blur border border-cyan-100/50 rounded-2xl px-5 py-3 shadow-sm">
+					<div class="font-extrabold text-cyan-600 text-2xl mb-1">2500+</div>
+					Colleges Listed
+				</div>
+			</div>
+		</div>
+
+		<div class="card-elevated bg-white rounded-3xl p-6 shadow-xl animate-fade-in-right">
+			<h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-5">Quick Access</h3>
+			<div class="space-y-4">
+				<a href="#free-tools"
+					class="flex items-center gap-3 group p-3 rounded-xl hover:bg-indigo-50 transition-colors">
+					<span
+						class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+						<i class="fas fa-rocket"></i>
+					</span>
+					<div>
+						<p class="font-bold text-gray-900">Free Tools</p>
+						<p class="text-sm text-gray-500">Predictors & College Database</p>
+					</div>
+					<i
+						class="fas fa-arrow-right text-indigo-400 ml-auto group-hover:translate-x-1 transition-transform"></i>
+				</a>
+				<a href="#premium-services"
+					class="flex items-center gap-3 group p-3 rounded-xl hover:bg-amber-50 transition-colors">
+					<span
+						class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+						<i class="fas fa-crown"></i>
+					</span>
+					<div>
+						<p class="font-bold text-gray-900">Premium Services</p>
+						<p class="text-sm text-gray-500">Expert Counselling Packages</p>
+					</div>
+					<i
+						class="fas fa-arrow-right text-amber-400 ml-auto group-hover:translate-x-1 transition-transform"></i>
+				</a>
+				<a href="#how-it-works"
+					class="flex items-center gap-3 group p-3 rounded-xl hover:bg-cyan-50 transition-colors">
+					<span
+						class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+						<i class="fas fa-question-circle"></i>
+					</span>
+					<div>
+						<p class="font-bold text-gray-900">How It Works</p>
+						<p class="text-sm text-gray-500">Step-by-Step Guide</p>
+					</div>
+					<i
+						class="fas fa-arrow-right text-cyan-400 ml-auto group-hover:translate-x-1 transition-transform"></i>
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
 
 <!-- Free Tools Section -->
-<section id="tools" class="section-cool py-20 relative overflow-hidden">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-		<div class="text-center mb-12">
-			<span class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold mb-4 border border-indigo-100">
-				✨ Our Free Tools
+<section id="free-tools" class="py-16 md:py-24 bg-white relative overflow-hidden">
+	<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-secondary"></div>
+
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="text-center mb-14">
+			<span
+				class="inline-block bg-indigo-50 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4 border border-indigo-100">
+				✨ Free Tools
 			</span>
-			<h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Everything You Need for <span class="text-gradient">Admission Success</span></h2>
-			<p class="text-lg text-gray-500 max-w-2xl mx-auto">Data-driven tools powered by verified cutoffs, historical trends, and ML predictions.</p>
+			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+				Powerful Tools, <span class="text-gradient">Zero Cost</span>
+			</h2>
+			<p class="text-lg text-gray-500 max-w-3xl mx-auto">
+				Access our suite of AI-powered prediction tools completely free. No hidden charges, no registration
+				required for basic access.
+			</p>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
-				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
-					<i class="fas fa-calculator text-white text-xl"></i>
+
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<!-- Rank Predictor Card -->
+			<div class="card-elevated bg-white rounded-3xl overflow-hidden group">
+				<div class="h-3 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+				<div class="p-7">
+					<div class="flex items-start justify-between mb-5">
+						<div
+							class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+							<i class="fas fa-calculator text-white text-2xl"></i>
+						</div>
+						<span
+							class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold border border-emerald-100">FREE</span>
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Rank Predictor</h3>
+					<p class="text-gray-600 text-sm mb-5 leading-relaxed">
+						Predict your expected rank based on your exam score using our AI algorithm trained on 5+ years
+						of historical data.
+					</p>
+					<ul class="space-y-3 mb-6">
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> 95%+ Accuracy Rate
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> NEET, JEE, CET Supported
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Instant Results
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Category-wise Analysis
+						</li>
+					</ul>
+					<a href="{% url 'rank_predictor:rank_predictor_home' %}"
+						class="block w-full btn-primary-glow text-white py-3 rounded-xl font-bold text-center">
+						<i class="fas fa-calculator mr-2"></i> Open Rank Predictor
+					</a>
 				</div>
-				<h3 class="text-lg font-bold text-gray-900 mb-2">Rank Predictor</h3>
-				<p class="text-gray-600 text-sm mb-4">Personalized college lists mapped to your rank, budget, and preferred states.</p>
-				<a href="{% url 'rank_predictor:rank_predictor_home' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
-					Open Tool <i class="fas fa-arrow-right text-xs"></i>
-				</a>
 			</div>
-			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
-				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
-					<i class="fas fa-university text-white text-xl"></i>
+
+			<!-- College Predictor Card -->
+			<div class="card-elevated bg-white rounded-3xl overflow-hidden group">
+				<div class="h-3 bg-gradient-to-r from-amber-400 to-orange-500"></div>
+				<div class="p-7">
+					<div class="flex items-start justify-between mb-5">
+						<div
+							class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-200 group-hover:scale-110 transition-transform">
+							<i class="fas fa-university text-white text-2xl"></i>
+						</div>
+						<span
+							class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold border border-emerald-100">FREE</span>
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">College Predictor</h3>
+					<p class="text-gray-600 text-sm mb-5 leading-relaxed">
+						Get personalized college recommendations based on your rank, category, preferred location, and
+						budget preferences.
+					</p>
+					<ul class="space-y-3 mb-6">
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Personalized Match
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> State & Branch Filters
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Cutoff Comparison
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Probability Scores
+						</li>
+					</ul>
+					<a href="{% url 'college_predictor:college_predictor_home' %}"
+						class="block w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white py-3 rounded-xl font-bold text-center transition shadow-lg hover:shadow-amber-200">
+						<i class="fas fa-university mr-2"></i> Open College Predictor
+					</a>
 				</div>
-				<h3 class="text-lg font-bold text-gray-900 mb-2">College Predictor</h3>
-				<p class="text-gray-600 text-sm mb-4">Personalized college lists mapped to your rank, budget, and preferred states.</p>
-				<a href="{% url 'college_predictor:college_predictor_home' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
-					Open Tool <i class="fas fa-arrow-right text-xs"></i>
-				</a>
 			</div>
-			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
-				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
-					<i class="fas fa-database text-white text-xl"></i>
+
+			<!-- College Database Card -->
+			<div class="card-elevated bg-white rounded-3xl overflow-hidden group">
+				<div class="h-3 bg-gradient-to-r from-cyan-400 to-teal-500"></div>
+				<div class="p-7">
+					<div class="flex items-start justify-between mb-5">
+						<div
+							class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center shadow-lg shadow-cyan-200 group-hover:scale-110 transition-transform">
+							<i class="fas fa-database text-white text-2xl"></i>
+						</div>
+						<span
+							class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold border border-emerald-100">FREE</span>
+					</div>
+					<h3 class="text-xl font-bold text-gray-900 mb-3">College Database</h3>
+					<p class="text-gray-600 text-sm mb-5 leading-relaxed">
+						Browse our comprehensive database of 2500+ colleges with detailed information on fees,
+						placements, and facilities.
+					</p>
+					<ul class="space-y-3 mb-6">
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> 2500+ Colleges
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Verified Fee Structure
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Placement Statistics
+						</li>
+						<li class="flex items-center text-sm text-gray-600">
+							<i class="fas fa-check-circle text-emerald-500 mr-2"></i> Advanced Filters
+						</li>
+					</ul>
+					<a href="{% url 'colleges:colleges_list' %}"
+						class="block w-full bg-gradient-to-r from-cyan-400 to-teal-500 hover:from-cyan-500 hover:to-teal-600 text-white py-3 rounded-xl font-bold text-center transition shadow-lg hover:shadow-cyan-200">
+						<i class="fas fa-database mr-2"></i> Explore Colleges
+					</a>
 				</div>
-				<h3 class="text-lg font-bold text-gray-900 mb-2">College Information</h3>
-				<p class="text-gray-600 text-sm mb-4">Curated repository of 2500+ institutes with fees, cut-offs, and placement stats.</p>
-				<a href="{% url 'colleges:colleges_list' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
-					Open Tool <i class="fas fa-arrow-right text-xs"></i>
-				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- How It Works Section -->
+<section id="how-it-works" class="section-cool py-16 md:py-24 relative overflow-hidden">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="text-center mb-14">
+			<span
+				class="inline-block bg-cyan-50 text-cyan-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-cyan-100">
+				🎯 How It Works
+			</span>
+			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+				Your Path to <span class="text-gradient">Dream College</span>
+			</h2>
+			<p class="text-lg text-gray-500 max-w-2xl mx-auto">
+				Follow these simple steps to maximize your admission chances
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+			<div class="text-center group">
+				<div class="relative mb-6">
+					<div
+						class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform">
+						<span class="text-3xl font-extrabold text-white">1</span>
+					</div>
+					<div
+						class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-indigo-300 to-transparent -translate-y-1/2">
+					</div>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">Predict Your Rank</h3>
+				<p class="text-sm text-gray-500">Enter your expected score to get an accurate rank prediction</p>
+			</div>
+
+			<div class="text-center group">
+				<div class="relative mb-6">
+					<div
+						class="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform">
+						<span class="text-3xl font-extrabold text-white">2</span>
+					</div>
+					<div
+						class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-amber-300 to-transparent -translate-y-1/2">
+					</div>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">Get College List</h3>
+				<p class="text-sm text-gray-500">Receive personalized college recommendations matching your profile</p>
+			</div>
+
+			<div class="text-center group">
+				<div class="relative mb-6">
+					<div
+						class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform">
+						<span class="text-3xl font-extrabold text-white">3</span>
+					</div>
+					<div
+						class="hidden lg:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-cyan-300 to-transparent -translate-y-1/2">
+					</div>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">Research Colleges</h3>
+				<p class="text-sm text-gray-500">Compare fees, placements, and facilities in our database</p>
+			</div>
+
+			<div class="text-center group">
+				<div class="relative mb-6">
+					<div
+						class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-green-600 rounded-3xl flex items-center justify-center mx-auto shadow-xl group-hover:scale-110 transition-transform">
+						<span class="text-3xl font-extrabold text-white">4</span>
+					</div>
+				</div>
+				<h3 class="text-lg font-bold text-gray-900 mb-2">Get Expert Help</h3>
+				<p class="text-sm text-gray-500">Upgrade to premium for personalized counsellor guidance</p>
 			</div>
 		</div>
 	</div>
 </section>
 
 <!-- Premium Services Section -->
-<section class="cta-gradient py-20 relative overflow-hidden">
-	<div class="absolute top-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-		<div class="text-center mb-12">
-			<span class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-xs font-bold mb-4 border border-white/20">
+<section id="premium-services" class="py-16 md:py-24 bg-white relative overflow-hidden">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="text-center mb-14">
+			<span
+				class="inline-block bg-amber-50 text-amber-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-amber-100">
 				<i class="fas fa-crown mr-1.5"></i> Premium Services
 			</span>
-			<h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Counselling Built for <span class="text-amber-300">Decisive Outcomes</span></h2>
-			<p class="text-white/70 max-w-3xl mx-auto">Expert-led service tiers designed to guide you from exam results to seat confirmation.</p>
+			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
+				Expert Counselling <span class="text-gradient">Packages</span>
+			</h2>
+			<p class="text-lg text-gray-500 max-w-3xl mx-auto">
+				Get personalized 1-on-1 guidance from certified counsellors who have helped thousands secure their dream
+				seats
+			</p>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{% for service in pro_services %}
-			<div class="bg-white/10 backdrop-blur rounded-2xl border border-white/15 p-6 flex flex-col h-full hover:-translate-y-1 transition-all duration-300">
-				<div class="flex items-center gap-3 mb-4">
-					<div class="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center">
-						<i class="{{ service.icon }} text-white text-lg"></i>
+			<div
+				class="card-elevated bg-white rounded-3xl p-7 flex flex-col h-full border-2 border-transparent hover:border-indigo-200 transition-all duration-300">
+				<div class="flex items-center gap-4 mb-5">
+					<div
+						class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+						<i class="{{ service.icon }} text-white text-xl"></i>
 					</div>
 					<div>
-						<p class="text-xs uppercase tracking-wide text-white/60 font-semibold">{{ service.tier }}</p>
-						<h3 class="text-xl font-bold">{{ service.title }}</h3>
+						<span class="text-xs uppercase tracking-wide text-gray-500 font-semibold">{{ service.tier
+							}}</span>
+						<h3 class="text-xl font-bold text-gray-900">{{ service.title }}</h3>
 					</div>
 				</div>
-				<p class="text-white/80 text-sm mb-4">{{ service.desc }}</p>
-				<ul class="space-y-2 text-sm text-white/80 mb-6 flex-1">
+
+				<p class="text-gray-600 text-sm mb-5 leading-relaxed">{{ service.desc }}</p>
+
+				<ul class="space-y-3 mb-6 flex-1">
 					{% for point in service.highlights %}
-					<li class="flex items-start gap-2">
-						<i class="fas fa-check-circle text-amber-300 mt-0.5"></i>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
 						<span>{{ point }}</span>
 					</li>
 					{% endfor %}
 				</ul>
-				<a href="{{ service.url }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-indigo-700 font-bold hover:-translate-y-0.5 transition shadow-lg">
-					{{ service.cta }} <i class="fas fa-arrow-right text-xs"></i>
+
+				<a href="{{ service.url }}"
+					class="block w-full btn-primary-glow text-white py-3 rounded-xl font-bold text-center">
+					{{ service.cta }} <i class="fas fa-arrow-right ml-2"></i>
+				</a>
+			</div>
+			{% empty %}
+			<!-- Fallback cards when no services from backend -->
+			<div
+				class="card-elevated bg-white rounded-3xl p-7 flex flex-col h-full border-2 border-transparent hover:border-indigo-200 transition-all duration-300">
+				<div class="flex items-center gap-4 mb-5">
+					<div
+						class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+						<i class="fas fa-user-tie text-white text-xl"></i>
+					</div>
+					<div>
+						<span class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Basic</span>
+						<h3 class="text-xl font-bold text-gray-900">Starter Counselling</h3>
+					</div>
+				</div>
+
+				<p class="text-gray-600 text-sm mb-5 leading-relaxed">Essential guidance for students who need basic
+					counselling support during admissions.</p>
+
+				<ul class="space-y-3 mb-6 flex-1">
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>1 Counselling Session (30 mins)</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Basic College List</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Email Support</span>
+					</li>
+				</ul>
+
+				<a href="{% url 'landing_page:contact' %}"
+					class="block w-full btn-primary-glow text-white py-3 rounded-xl font-bold text-center">
+					Get Started <i class="fas fa-arrow-right ml-2"></i>
+				</a>
+			</div>
+
+			<div
+				class="card-elevated bg-white rounded-3xl p-7 flex flex-col h-full border-2 border-indigo-300 relative overflow-hidden">
+				<div class="absolute top-4 right-4">
+					<span
+						class="bg-gradient-to-r from-amber-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">POPULAR</span>
+				</div>
+				<div class="flex items-center gap-4 mb-5">
+					<div
+						class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
+						<i class="fas fa-star text-white text-xl"></i>
+					</div>
+					<div>
+						<span class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Premium</span>
+						<h3 class="text-xl font-bold text-gray-900">Complete Guidance</h3>
+					</div>
+				</div>
+
+				<p class="text-gray-600 text-sm mb-5 leading-relaxed">Comprehensive end-to-end support from result to
+					seat confirmation with dedicated mentor.</p>
+
+				<ul class="space-y-3 mb-6 flex-1">
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Unlimited Counselling Sessions</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Personalized College Strategy</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Choice Filling Assistance</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Document Verification</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>24/7 WhatsApp Support</span>
+					</li>
+				</ul>
+
+				<a href="{% url 'landing_page:contact' %}"
+					class="block w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white py-3 rounded-xl font-bold text-center transition shadow-lg">
+					Get Premium <i class="fas fa-arrow-right ml-2"></i>
+				</a>
+			</div>
+
+			<div
+				class="card-elevated bg-white rounded-3xl p-7 flex flex-col h-full border-2 border-transparent hover:border-indigo-200 transition-all duration-300">
+				<div class="flex items-center gap-4 mb-5">
+					<div
+						class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-lg">
+						<i class="fas fa-shield-alt text-white text-xl"></i>
+					</div>
+					<div>
+						<span class="text-xs uppercase tracking-wide text-gray-500 font-semibold">Elite</span>
+						<h3 class="text-xl font-bold text-gray-900">Guaranteed Admission</h3>
+					</div>
+				</div>
+
+				<p class="text-gray-600 text-sm mb-5 leading-relaxed">Premium plus guaranteed seat in top-tier college
+					or complete refund. Maximum peace of mind.</p>
+
+				<ul class="space-y-3 mb-6 flex-1">
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Everything in Premium</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Seat Guarantee or Refund</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>College Visit Coordination</span>
+					</li>
+					<li class="flex items-start gap-2 text-sm text-gray-600">
+						<i class="fas fa-check-circle text-emerald-500 mt-0.5"></i>
+						<span>Post-Admission Support</span>
+					</li>
+				</ul>
+
+				<a href="{% url 'landing_page:contact' %}"
+					class="block w-full bg-gradient-to-r from-emerald-400 to-green-600 hover:from-emerald-500 hover:to-green-700 text-white py-3 rounded-xl font-bold text-center transition shadow-lg">
+					Contact for Elite <i class="fas fa-arrow-right ml-2"></i>
 				</a>
 			</div>
 			{% endfor %}
 		</div>
 	</div>
 </section>
+
+<!-- CTA Section -->
+<section class="py-16 md:py-24 relative overflow-hidden">
+	<!-- Gradient Background -->
+	<div class="absolute inset-0 cta-gradient"></div>
+	<!-- Decorative Blobs -->
+	<div class="absolute inset-0 pointer-events-none overflow-hidden">
+		<div class="absolute -top-20 -right-20 w-80 h-80 bg-white rounded-full opacity-5"></div>
+		<div class="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full opacity-5"></div>
+	</div>
+
+	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+		<div class="animate-fade-in-up">
+			<span
+				class="inline-flex items-center bg-white/15 backdrop-blur text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-6 border border-white/20">
+				<i class="fas fa-rocket mr-2"></i> Get Started Today
+			</span>
+			<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 md:mb-6">
+				Ready to Find Your<br /><span class="text-amber-300">Dream College?</span>
+			</h2>
+			<p class="text-lg md:text-xl text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
+				Start with our free tools or upgrade to premium for expert guidance. Join 50,000+ students who found
+				success with E-Counselling.
+			</p>
+
+			<div class="flex flex-col gap-3 md:gap-4 justify-center items-center">
+				<a href="#free-tools"
+					class="bg-white text-primary hover:bg-indigo-50 px-10 md:px-14 py-3.5 md:py-4 rounded-xl text-lg md:text-xl font-bold transition duration-300 shadow-xl flex items-center w-full sm:w-auto justify-center">
+					<i class="fas fa-rocket mr-3"></i>
+					Try Free Tools
+					<i class="fas fa-arrow-right ml-3"></i>
+				</a>
+				<a href="{% url 'landing_page:contact' %}"
+					class="border-2 border-white/40 text-white hover:bg-white/10 px-8 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center backdrop-blur">
+					<i class="fas fa-comments mr-2"></i>
+					Talk to a Counsellor
+				</a>
+			</div>
+
+			<!-- Trust Badges -->
+			<div
+				class="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-xs md:text-sm text-indigo-200">
+				<div class="flex items-center">
+					<i class="fas fa-shield-alt text-emerald-400 mr-2"></i>
+					<span>100% Free Tools</span>
+				</div>
+				<div class="flex items-center">
+					<i class="fas fa-award text-amber-400 mr-2"></i>
+					<span>95% Accuracy</span>
+				</div>
+				<div class="flex items-center">
+					<i class="fas fa-users text-cyan-400 mr-2"></i>
+					<span>50K+ Students</span>
+				</div>
+				<div class="flex items-center">
+					<i class="fas fa-star text-amber-400 mr-2"></i>
+					<span>4.9/5 Rating</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="{% static 'landing_page/js/script.js' %}"></script>
 {% endblock %}

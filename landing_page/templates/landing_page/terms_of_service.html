@@ -1,13 +1,60 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Terms of Service - E-Counselling{% endblock title %}
+{% block title %}Terms of Service - E-Counselling | User Agreement & Policies{% endblock title %}
+
+{% block meta_description %}E-Counselling Terms of Service. User agreement for NEET, JEE, MHT-CET counselling services,
+payment terms, refund policy. Read before using our services.{% endblock %}
+
+{% block meta_keywords %}E-Counselling terms of service, counselling terms and conditions, refund policy, user
+agreement{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/terms-of-service/{% endblock %}
+
+{% block og_title %}Terms of Service - E-Counselling{% endblock %}
+{% block og_description %}E-Counselling Terms of Service. User agreement, payment terms, and refund policy for
+counselling services.{% endblock %}
+{% block og_url %}https://ecounselling.live/terms-of-service/{% endblock %}
+
+{% block twitter_title %}Terms of Service - E-Counselling{% endblock %}
+{% block twitter_description %}E-Counselling Terms of Service. User agreement, payment terms & refund policy for counselling services.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms of Service - E-Counselling",
+    "description": "E-Counselling Terms of Service - User agreement and policies",
+    "url": "https://ecounselling.live/terms-of-service/",
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ecounselling.live/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Terms of Service",
+                "item": "https://ecounselling.live/terms-of-service/"
+            }
+        ]
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 <div class="hero-gradient py-16 md:py-20 pt-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="card-elevated bg-white rounded-2xl shadow-xl p-8 md:p-16">
             <div class="border-b border-indigo-100 pb-8 mb-8">
-                <span class="inline-block bg-indigo-50 text-indigo-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-4 border border-indigo-100">
+                <span
+                    class="inline-block bg-indigo-50 text-indigo-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-4 border border-indigo-100">
                     <i class="fas fa-file-contract mr-1.5"></i> Legal
                 </span>
                 <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Terms of Service</h1>
@@ -18,69 +65,104 @@
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
                     <p>
-                        By accessing or using the E-Counselling website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
+                        By accessing or using the E-Counselling website and services, you agree to be bound by these
+                        Terms of Service and all applicable laws and regulations. If you do not agree with any of these
+                        terms, you are prohibited from using or accessing this site. The materials contained in this
+                        website are protected by applicable copyright and trademark law.
                     </p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Description of Services</h2>
                     <p>
-                        E-Counselling provides an online platform offering college prediction tools, rank analysis, and counselling mentorship for various entrance examinations (including but not limited to NEET, JEE Main, JEE Advanced, and State CETs).
+                        E-Counselling provides an online platform offering college prediction tools, rank analysis, and
+                        counselling mentorship for various entrance examinations (including but not limited to NEET, JEE
+                        Main, JEE Advanced, and State CETs).
                     </p>
                     <p class="mt-2">
-                        <strong>Advisory Nature:</strong> You acknowledge that the information provided by our tools and counsellors is advisory in nature. Admission decisions are made solely by the respective colleges and government authorities. We do not guarantee admission to any specific institution.
+                        <strong>Advisory Nature:</strong> You acknowledge that the information provided by our tools and
+                        counsellors is advisory in nature. Admission decisions are made solely by the respective
+                        colleges and government authorities. We do not guarantee admission to any specific institution.
                     </p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">3. User Accounts</h2>
                     <p>
-                        To access certain features of the Service, you may be required to create an account. You agree to provide accurate, current, and complete information during the registration process. You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password. You agree not to disclose your password to any third party.
+                        To access certain features of the Service, you may be required to create an account. You agree
+                        to provide accurate, current, and complete information during the registration process. You are
+                        responsible for safeguarding the password that you use to access the Service and for any
+                        activities or actions under your password. You agree not to disclose your password to any third
+                        party.
                     </p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Payments and Billing</h2>
                     <ul class="list-disc pl-6 space-y-2">
-                        <li><strong>Pricing:</strong> We offer both free and paid services. Prices for Premium Counselling Packages are described on our website and are subject to change without notice.</li>
-                        <li><strong>Taxes:</strong> All fees are exclusive of applicable taxes (such as GST) unless stated otherwise.</li>
-                        <li><strong>Payment Gateways:</strong> We use third-party payment processors. By making a purchase, you agree to their terms and conditions. We are not responsible for any errors or delays caused by these payment processors.</li>
+                        <li><strong>Pricing:</strong> We offer both free and paid services. Prices for Premium
+                            Counselling Packages are described on our website and are subject to change without notice.
+                        </li>
+                        <li><strong>Taxes:</strong> All fees are exclusive of applicable taxes (such as GST) unless
+                            stated otherwise.</li>
+                        <li><strong>Payment Gateways:</strong> We use third-party payment processors. By making a
+                            purchase, you agree to their terms and conditions. We are not responsible for any errors or
+                            delays caused by these payment processors.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Refund and Cancellation Policy</h2>
                     <p>
-                        We strive for customer satisfaction, but due to the digital nature of our products and the time-intensive nature of our counselling services, we maintain a strict refund policy:
+                        We strive for customer satisfaction, but due to the digital nature of our products and the
+                        time-intensive nature of our counselling services, we maintain a strict refund policy:
                     </p>
                     <ul class="list-disc pl-6 space-y-2 mt-2">
-                        <li><strong>Digital Products:</strong> Purchases of instant-access digital content (e.g., College Predictor Reports, E-books, Data Sheets) are <strong>non-refundable</strong> once the content has been accessed or downloaded.</li>
-                        <li><strong>Counselling Services:</strong> You may request a refund for 1-on-1 counselling packages within 24 hours of purchase, provided that no counselling session has been conducted and no personalized report has been generated. After this period, or once services have commenced, no refunds will be issued.</li>
-                        <li><strong>Processing:</strong> Approved refunds will be processed to the original method of payment within 7-10 business days.</li>
+                        <li><strong>Digital Products:</strong> Purchases of instant-access digital content (e.g.,
+                            College Predictor Reports, E-books, Data Sheets) are <strong>non-refundable</strong> once
+                            the content has been accessed or downloaded.</li>
+                        <li><strong>Counselling Services:</strong> You may request a refund for 1-on-1 counselling
+                            packages within 24 hours of purchase, provided that no counselling session has been
+                            conducted and no personalized report has been generated. After this period, or once services
+                            have commenced, no refunds will be issued.</li>
+                        <li><strong>Processing:</strong> Approved refunds will be processed to the original method of
+                            payment within 7-10 business days.</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Disclaimer of Warranties</h2>
                     <p>
-                        The materials on E-Counselling's website are provided on an 'as is' basis. E-Counselling makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                        The materials on E-Counselling's website are provided on an 'as is' basis. E-Counselling makes
+                        no warranties, expressed or implied, and hereby disclaims and negates all other warranties
+                        including, without limitation, implied warranties or conditions of merchantability, fitness for
+                        a particular purpose, or non-infringement of intellectual property or other violation of rights.
                     </p>
                     <p class="mt-2">
-                        Further, E-Counselling does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site. <strong>Prediction tools are based on historical data and trends, which may not accurately predict future outcomes due to changes in seat matrix, reservation policies, or candidate performance.</strong>
+                        Further, E-Counselling does not warrant or make any representations concerning the accuracy,
+                        likely results, or reliability of the use of the materials on its website or otherwise relating
+                        to such materials or on any sites linked to this site. <strong>Prediction tools are based on
+                            historical data and trends, which may not accurately predict future outcomes due to changes
+                            in seat matrix, reservation policies, or candidate performance.</strong>
                     </p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Limitation of Liability</h2>
                     <p>
-                        In no event shall E-Counselling or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on E-Counselling's website, even if E-Counselling or an E-Counselling authorized representative has been notified orally or in writing of the possibility of such damage.
+                        In no event shall E-Counselling or its suppliers be liable for any damages (including, without
+                        limitation, damages for loss of data or profit, or due to business interruption) arising out of
+                        the use or inability to use the materials on E-Counselling's website, even if E-Counselling or
+                        an E-Counselling authorized representative has been notified orally or in writing of the
+                        possibility of such damage.
                     </p>
                 </section>
 
                 <section>
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Governing Law</h2>
                     <p>
-                        These terms and conditions are governed by and construed in accordance with the laws of India and you irrevocably submit to the exclusive jurisdiction of the courts in Pune, Maharashtra.
+                        These terms and conditions are governed by and construed in accordance with the laws of India
+                        and you irrevocably submit to the exclusive jurisdiction of the courts in Pune, Maharashtra.
                     </p>
                 </section>
 
@@ -89,9 +171,11 @@
                     <p>
                         If you have any questions about these Terms, please contact us at:
                     </p>
-                    <div class="mt-4 p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
+                    <div
+                        class="mt-4 p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
                         <p class="font-bold text-gray-900">E-Counselling Legal Team</p>
-                        <p>Email: <a href="mailto:support@ecounselling.live" class="text-indigo-600 hover:underline font-semibold">support@ecounselling.live</a></p>
+                        <p>Email: <a href="mailto:support@ecounselling.live"
+                                class="text-indigo-600 hover:underline font-semibold">support@ecounselling.live</a></p>
                     </div>
                 </section>
             </div>

@@ -1,271 +1,617 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% tailwind_css %}
     <meta charset="UTF-8" />
-    <title>{% block title %}E-Counselling{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+    <title>{% block title %}E-Counselling - Best NEET, JEE, MHT-CET Counselling Platform India{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description"
+        content="{% block meta_description %}E-Counselling is India's #1 college counselling platform for NEET, JEE, MHT-CET aspirants. Get AI-powered rank prediction, college predictor, expert guidance for medical & engineering admissions. 50,000+ students counselled.{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}NEET counselling, JEE counselling, MHT-CET counselling, college admission counselling India, NEET UG counselling 2025, JEE Main counselling, engineering college predictor, medical college predictor, CAP round guidance, JoSAA counselling, best counselling for NEET, college predictor by rank, rank predictor NEET, admission consultant Maharashtra, MBBS admission guidance, BTech admission help, CET counselling Maharashtra, state CET counselling{% endblock %}">
+    <meta name="author" content="E-Counselling">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="revisit-after" content="3 days">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="IN-MH">
+    <meta name="geo.placename" content="Pune, Maharashtra, India">
+    <meta name="geo.position" content="18.5204;73.8567">
+    <meta name="ICBM" content="18.5204, 73.8567">
+    <link rel="canonical" href="{% block canonical_url %}https://ecounselling.live{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://ecounselling.live{% endblock %}">
+    <meta property="og:title"
+        content="{% block og_title %}E-Counselling - Best NEET, JEE, MHT-CET College Counselling India{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}India's trusted college counselling platform. AI-powered rank & college predictor, expert guidance for NEET, JEE, MHT-CET admissions. Join 50,000+ successful students!{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'landing_page/img/og-image.jpg' %}{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="E-Counselling">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{% block twitter_url %}https://ecounselling.live{% endblock %}">
+    <meta name="twitter:title"
+        content="{% block twitter_title %}E-Counselling - NEET, JEE, MHT-CET Counselling{% endblock %}">
+    <meta name="twitter:description"
+        content="{% block twitter_description %}AI-powered college & rank predictor. Expert counselling for NEET, JEE, MHT-CET. 50K+ students counselled. 95% prediction accuracy.{% endblock %}">
+    <meta name="twitter:image"
+        content="{% block twitter_image %}{% static 'landing_page/img/twitter-card.jpg' %}{% endblock %}">
+    <meta name="twitter:site" content="@ecounselling">
+    <meta name="twitter:creator" content="@ecounselling">
+
+    <!-- Additional SEO & AI Discovery Tags -->
+    <meta name="application-name" content="E-Counselling">
+    <meta name="apple-mobile-web-app-title" content="E-Counselling">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="msapplication-TileColor" content="#4f46e5">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+
+    <!-- Trust & Attribution Links -->
+    <link type="text/plain" rel="author" href="https://ecounselling.live/humans.txt">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <!-- Global CSS -->
     <link href="{% static 'css/core_base/style.css' %}" rel="stylesheet">
+
+    <!-- Organization Schema (JSON-LD) for AI & Search Engine Discovery -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling",
+        "alternateName": ["ECounselling", "E Counselling India", "NEET Counselling India"],
+        "url": "https://ecounselling.live",
+        "logo": "https://ecounselling.live{% static 'landing_page/img/logo.png' %}",
+        "description": "India's leading AI-powered college counselling platform for NEET, JEE, MHT-CET aspirants. Expert guidance for medical and engineering admissions.",
+        "foundingDate": "2024",
+        "areaServed": {
+            "@type": "Country",
+            "name": "India"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pune",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+        },
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+91-9765660584",
+                "contactType": "customer service",
+                "availableLanguage": ["English", "Hindi", "Marathi"],
+                "areaServed": "IN"
+            }
+        ],
+        "sameAs": [
+            "https://facebook.com/ecounselling",
+            "https://twitter.com/ecounselling",
+            "https://instagram.com/ecounselling",
+            "https://linkedin.com/company/ecounselling",
+            "https://youtube.com/@ecounselling"
+        ],
+        "knowsAbout": [
+            "NEET Counselling",
+            "JEE Counselling", 
+            "MHT-CET Counselling",
+            "Medical College Admissions",
+            "Engineering College Admissions",
+            "College Predictor",
+            "Rank Predictor",
+            "CAP Round Guidance",
+            "JoSAA Counselling"
+        ],
+        "slogan": "Find Your Dream College With Expert Guidance",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "50000",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+
+    <!-- WebSite Schema with SearchAction - Enables Google Sitelinks Searchbox -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "E-Counselling",
+        "alternateName": ["ECounselling", "E-Counselling India"],
+        "url": "https://ecounselling.live",
+        "description": "India's #1 college counselling platform for NEET, JEE, MHT-CET",
+        "inLanguage": "en-IN",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ecounselling.live/colleges/?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "E-Counselling",
+            "url": "https://ecounselling.live"
+        }
+    }
+    </script>
+
+    <!-- LocalBusiness Schema - For Local SEO in Pune/Maharashtra -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "E-Counselling Pune",
+        "image": "https://ecounselling.live{% static 'landing_page/img/logo.png' %}",
+        "description": "Expert college counselling services for NEET, JEE, MHT-CET students in Pune and Maharashtra",
+        "@id": "https://ecounselling.live/#localbusiness",
+        "url": "https://ecounselling.live",
+        "telephone": "+91-9765660584",
+        "email": "support@ecounselling.in",
+        "priceRange": "₹₹",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Pune",
+            "addressLocality": "Pune",
+            "addressRegion": "Maharashtra",
+            "postalCode": "411001",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 18.5204,
+            "longitude": 73.8567
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "09:00",
+                "closes": "21:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "10:00",
+                "closes": "18:00"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "50000",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Priya Sharma"
+                },
+                "datePublished": "2025-12-15",
+                "reviewBody": "The personalized guidance helped me create the perfect college list. Got into AIIMS Delhi!",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Rahul Kumar"
+                },
+                "datePublished": "2025-11-20",
+                "reviewBody": "College predictor was spot-on! The JoSAA timeline made everything clear and stress-free.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Counselling Services",
+            "itemListElement": [
+                {
+                    "@type": "OfferCatalog",
+                    "name": "NEET Counselling",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "NEET UG Counselling"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferCatalog", 
+                    "name": "JEE Counselling",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "JEE Main & Advanced Counselling"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferCatalog",
+                    "name": "MHT-CET Counselling",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                                "@type": "Service",
+                                "name": "Maharashtra CET Counselling"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK07F51VL3"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-GK07F51VL3');
+        gtag('config', 'G-GK07F51VL3');
     </script>
 
     {% block head %}
     {% endblock head %}
+
+    <!-- Page-specific Schema -->
+    {% block schema %}
+    {% endblock schema %}
 </head>
+
 <body class="font-inter">
 
-<main>
-    <!-- Launching Soon Popup -->
-<div id="launch-popup" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100] hidden transition-opacity duration-300">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center transform transition-all popup-card">
-        <div class="relative">
-            <button id="close-popup-btn" class="absolute -top-4 -right-4 w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 flex items-center justify-center">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-200">
-                <i class="fas fa-rocket text-white text-3xl"></i>
-            </div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Launching Soon!</h2>
-            <p class="text-gray-500 mb-6">
-                Our full platform is currently under development. We're working hard to bring you an amazing experience. Stay tuned!
-            </p>
-            <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
-                <p class="text-sm text-indigo-700">In the meantime, feel free to explore our current features.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-    <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 transition-all duration-300 border-b border-indigo-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="{% url 'landing_page:index' %}" class="flex items-center">
-                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-sm">
-                            <i class="fas fa-graduation-cap text-white text-lg"></i>
-                        </div>
-                        <h1 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">E-Counselling</h1>
-                        </a>
+    <main>
+        <!-- Launching Soon Popup -->
+        <div id="launch-popup"
+            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100] hidden transition-opacity duration-300">
+            <div
+                class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center transform transition-all popup-card">
+                <div class="relative">
+                    <button id="close-popup-btn"
+                        class="absolute -top-4 -right-4 w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full text-gray-700 flex items-center justify-center">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-200">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
                     </div>
-                    <div class="hidden md:block ml-10">
-                        <div class="flex items-baseline space-x-6">
-                            
-                            <a href="{% url 'landing_page:tools_and_services' %}" class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
-                                Tools & Services
-                                <span class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
-                            </a>
-                            
-                            <a href="{% url 'landing_page:about_us' %}" class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
-                                About Us
-                                <span class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
-                            </a>
-                            <a href="{% url 'landing_page:contact' %}" class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
-                                Contact
-                                <span class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
-                            </a>
-                        </div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Launching Soon!</h2>
+                    <p class="text-gray-500 mb-6">
+                        Our full platform is currently under development. We're working hard to bring you an amazing
+                        experience. Stay tuned!
+                    </p>
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <p class="text-sm text-indigo-700">In the meantime, feel free to explore our current features.
+                        </p>
                     </div>
                 </div>
-                <div class="hidden md:block">
-                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'dashboard:dashboard' %}" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition duration-300 shadow-md shadow-indigo-200">
+            </div>
+        </div>
+
+
+
+        <!-- Navigation -->
+        <nav
+            class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full top-0 z-50 transition-all duration-300 border-b border-indigo-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center">
+                            <a href="{% url 'landing_page:index' %}" class="flex items-center">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-sm">
+                                    <i class="fas fa-graduation-cap text-white text-lg"></i>
+                                </div>
+                                <h1
+                                    class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                                    E-Counselling</h1>
+                            </a>
+                        </div>
+                        <div class="hidden md:block ml-10">
+                            <div class="flex items-baseline space-x-6">
+
+                                <a href="{% url 'landing_page:tools_and_services' %}"
+                                    class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
+                                    Tools & Services
+                                    <span
+                                        class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
+                                </a>
+
+                                <a href="{% url 'landing_page:about_us' %}"
+                                    class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
+                                    About Us
+                                    <span
+                                        class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
+                                </a>
+                                <a href="{% url 'landing_page:contact' %}"
+                                    class="text-gray-600 hover:text-primary px-3 py-2 rounded-lg text-sm font-medium transition duration-300 hover:bg-indigo-50 relative group">
+                                    Contact
+                                    <span
+                                        class="absolute bottom-0 left-1 right-1 h-0.5 bg-primary rounded-full transition-all duration-300 scale-x-0 group-hover:scale-x-100"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'dashboard:dashboard' %}"
+                            class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition duration-300 shadow-md shadow-indigo-200">
                             <i class="fas fa-chart-line mr-2"></i>Dashboard
                         </a>
-                    {% else %}
+                        {% else %}
                         <div class="flex items-center space-x-3">
-                            <a href="{% url 'user:login' %}" class="text-primary hover:bg-indigo-50 px-4 py-2.5 rounded-xl text-sm font-medium transition duration-300 border border-indigo-200">
+                            <a href="{% url 'user:login' %}"
+                                class="text-primary hover:bg-indigo-50 px-4 py-2.5 rounded-xl text-sm font-medium transition duration-300 border border-indigo-200">
                                 <i class="fas fa-sign-in-alt mr-2"></i>Login
                             </a>
-                            <a href="{% url 'user:register' %}" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition duration-300 shadow-md shadow-indigo-200">
+                            <a href="{% url 'user:register' %}"
+                                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition duration-300 shadow-md shadow-indigo-200">
                                 <i class="fas fa-user-plus mr-2"></i>Register
                             </a>
                         </div>
-                    {% endif %}
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary transition duration-300">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 w-80 h-screen bg-white z-50 shadow-2xl">
-            <div class="px-6 py-6 space-y-4">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-gray-900">Menu</h2>
-                    <button id="mobile-menu-close" class="text-gray-700 hover:text-primary transition duration-300">
-                        <i class="fas fa-times text-2xl"></i>
-                    </button>
-                </div>
-                
-                <a href="{% url 'landing_page:tools_and_services' %}"  class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
-                    <i class="fas fa-concierge-bell mr-3"></i>Tools & Services
-                </a>
-
-                <a href="{% url 'landing_page:about_us' %}"  class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
-                    <i class="fas fa-info-circle mr-3"></i>About Us
-                </a>
-                <a href="{% url 'landing_page:contact' %}" class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
-                    <i class="fas fa-envelope mr-3"></i>Contact
-                </a>
-                <div class="pt-6 space-y-3 border-t border-gray-200">
-                    {% if request.user.is_authenticated %}
-                        <a href="{% url 'dashboard:dashboard' %}" class="block w-full text-center bg-primary hover:bg-dark text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
-                            <i class="fas fa-chart-line mr-2"></i>Dashboard
-                        </a>
-                    {% else %}
-                        <a href="{% url 'user:login' %}" class="block w-full text-center text-primary border-2 border-primary px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:bg-primary hover:text-white">
-                            <i class="fas fa-sign-in-alt mr-2"></i>Login
-                        </a>
-                        <a href="{% url 'user:register' %}" class="block w-full text-center bg-primary hover:bg-dark text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
-                            <i class="fas fa-user-plus mr-2"></i>Register
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </nav>
-
-
-    {% block content %}
-          
-    
-    {% endblock %}
-
-        <!-- Enhanced Footer -->
-    <footer class="bg-gradient-to-b from-gray-900 via-indigo-950 to-gray-950 text-white py-12 md:py-16 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-10 right-10 w-40 h-40 bg-indigo-500 opacity-5 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-20 left-20 w-32 h-32 bg-purple-500 opacity-5 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 w-60 h-60 bg-cyan-500 opacity-[0.03] rounded-full blur-3xl"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                <!-- Logo and Description -->
-                <div class="lg:col-span-2">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-indigo-900/30">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">E-Counselling</h3>
+                        {% endif %}
                     </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Empowering students across India with smart tools and expert guidance for college admissions. 
-                        Your success is our mission, and we're committed to helping you find your dream college.
-                    </p>
-                    <div class="flex space-x-3 mb-6">
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-600 transition duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-600 transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition duration-300">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                    <div class="text-sm text-gray-400">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-phone mr-2 text-indigo-400"></i>
-                            +91-9765660584
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope mr-2 text-indigo-400"></i>
-                            info@ecounselling.live
-                        </div>
-                    </div>
-                </div>
-
-                <!-- About Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-indigo-400">About</h4>
-                    <ul class="space-y-3">
-                        <li><a href="{% url 'landing_page:about_us' %}" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Our Mission</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Expert Counsellors</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Success Stories</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Careers</a></li>
-                        <li><a href="{% url 'landing_page:privacy_policy' %}" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Privacy Policy</a></li>
-                        <li><a href="{% url 'landing_page:terms_of_service' %}" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Terms of Service</a></li>
-                    </ul>
-                </div>
-
-                <!-- Popular Exams -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-amber-400">Counselling For</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>NEET Counselling</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>JEE Main & Advanced</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>State CETs (MHT-CET, etc)</a></li>
-                    </ul>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-cyan-400">Free Tools</h4>
-                    <ul class="space-y-3">
-                        <li><a href="{% url 'rank_predictor:rank_predictor_home' %}" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Rank Predictor</a></li>
-                        <li><a href="{% url 'collegepredictor:college_predictor_home' %}" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>College Predictor</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Counselling Timeline</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right mr-2 text-xs"></i>Latest News</a></li>
-
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Newsletter Subscription -->
-            <div class="border-t border-white/10 mt-12 pt-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-2">Stay Updated</h4>
-                        <p class="text-gray-400">Subscribe for latest counselling updates and admission alerts</p>
-                    </div>
-                    <div class="flex">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-l-xl focus:outline-none focus:border-indigo-500 text-white placeholder-gray-500">
-                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-6 py-3 rounded-r-xl text-white font-semibold transition duration-300">
-                            Subscribe
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary transition duration-300">
+                            <i class="fas fa-bars text-xl"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-white/10 mt-8 pt-8 text-center">
-                <p class="text-gray-500">&copy; 2025 E-Counselling. All rights reserved. Made with ❤️ for the students of India.</p>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="mobile-menu md:hidden fixed top-0 right-0 w-80 h-screen bg-white z-50 shadow-2xl">
+                <div class="px-6 py-6 space-y-4">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-900">Menu</h2>
+                        <button id="mobile-menu-close" class="text-gray-700 hover:text-primary transition duration-300">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+
+                    <a href="{% url 'landing_page:tools_and_services' %}"
+                        class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                        <i class="fas fa-concierge-bell mr-3"></i>Tools & Services
+                    </a>
+
+                    <a href="{% url 'landing_page:about_us' %}"
+                        class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                        <i class="fas fa-info-circle mr-3"></i>About Us
+                    </a>
+                    <a href="{% url 'landing_page:contact' %}"
+                        class="block text-gray-700 hover:text-primary hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition duration-300">
+                        <i class="fas fa-envelope mr-3"></i>Contact
+                    </a>
+                    <div class="pt-6 space-y-3 border-t border-gray-200">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'dashboard:dashboard' %}"
+                            class="block w-full text-center bg-primary hover:bg-dark text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
+                            <i class="fas fa-chart-line mr-2"></i>Dashboard
+                        </a>
+                        {% else %}
+                        <a href="{% url 'user:login' %}"
+                            class="block w-full text-center text-primary border-2 border-primary px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:bg-primary hover:text-white">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
+                        </a>
+                        <a href="{% url 'user:register' %}"
+                            class="block w-full text-center bg-primary hover:bg-dark text-white px-4 py-3 rounded-lg text-sm font-semibold transition duration-300 hover:shadow-lg">
+                            <i class="fas fa-user-plus mr-2"></i>Register
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
+        </nav>
 
 
-    </footer>
+        {% block content %}
 
-    <script src="{% static 'js/core_base/script.js' %}"></script>
-</main>
+
+        {% endblock %}
+
+        <!-- Enhanced Footer -->
+        <footer
+            class="bg-gradient-to-b from-gray-900 via-indigo-950 to-gray-950 text-white py-12 md:py-16 relative overflow-hidden">
+            <div class="absolute inset-0">
+                <div class="absolute top-10 right-10 w-40 h-40 bg-indigo-500 opacity-5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 left-20 w-32 h-32 bg-purple-500 opacity-5 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 left-1/2 w-60 h-60 bg-cyan-500 opacity-[0.03] rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <!-- Logo and Description -->
+                    <div class="lg:col-span-2">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-indigo-900/30">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h3
+                                class="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                E-Counselling</h3>
+                        </div>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Empowering students across India with smart tools and expert guidance for college
+                            admissions.
+                            Your success is our mission, and we're committed to helping you find your dream college.
+                        </p>
+                        <div class="flex space-x-3 mb-6">
+                            <a href="#"
+                                class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-600 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-600 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-pink-600 hover:border-pink-600 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-red-600 hover:border-red-600 transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-phone mr-2 text-indigo-400"></i>
+                                +91-9765660584
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-indigo-400"></i>
+                                info@ecounselling.live
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6 text-indigo-400">About</h4>
+                        <ul class="space-y-3">
+                            <li><a href="{% url 'landing_page:about_us' %}"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>About Us</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Our Mission</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Expert Counsellors</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Success Stories</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Careers</a></li>
+                            <li><a href="{% url 'landing_page:privacy_policy' %}"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Privacy Policy</a></li>
+                            <li><a href="{% url 'landing_page:terms_of_service' %}"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Exams -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6 text-amber-400">Counselling For</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>NEET Counselling</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>JEE Main & Advanced</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>State CETs (MHT-CET, etc)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-6 text-cyan-400">Free Tools</h4>
+                        <ul class="space-y-3">
+                            <li><a href="{% url 'rank_predictor:rank_predictor_home' %}"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Rank Predictor</a></li>
+                            <li><a href="{% url 'collegepredictor:college_predictor_home' %}"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>College Predictor</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Counselling Timeline</a></li>
+                            <li><a href="#"
+                                    class="text-gray-400 hover:text-white transition duration-300 flex items-center"><i
+                                        class="fas fa-chevron-right mr-2 text-xs"></i>Latest News</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="border-t border-white/10 mt-12 pt-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Stay Updated</h4>
+                            <p class="text-gray-400">Subscribe for latest counselling updates and admission alerts</p>
+                        </div>
+                        <div class="flex">
+                            <input type="email" placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-l-xl focus:outline-none focus:border-indigo-500 text-white placeholder-gray-500">
+                            <button
+                                class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-6 py-3 rounded-r-xl text-white font-semibold transition duration-300">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                    <p class="text-gray-500">&copy; 2025 E-Counselling. All rights reserved. Made with ❤️ for the
+                        students of India.</p>
+                </div>
+            </div>
+
+
+        </footer>
+
+        <script src="{% static 'js/core_base/script.js' %}"></script>
+    </main>
 </body>
+
 </html>

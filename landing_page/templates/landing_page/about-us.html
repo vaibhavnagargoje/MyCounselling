@@ -1,30 +1,93 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}About Us - E-Counselling{% endblock %}
+{% block title %}About Us - E-Counselling | India's Leading NEET, JEE, MHT-CET Counselling Platform{% endblock %}
+
+{% block meta_description %}Learn about E-Counselling - India's trusted counselling platform with 50,000+ students
+helped. Expert NEET, JEE, MHT-CET guidance, 500+ certified counsellors, AI-powered tools. Our mission, vision &
+journey.{% endblock %}
+
+{% block meta_keywords %}about E-Counselling, best NEET counselling company India, JEE counselling experts, MHT-CET
+admission consultants, college counselling platform India, admission guidance company, NEET counselling reviews, trusted
+education consultants, career counselling India, study abroad counselling{% endblock %}
+
+{% block canonical_url %}https://ecounselling.live/about-us/{% endblock %}
+
+{% block og_title %}About E-Counselling - India's #1 College Counselling Platform{% endblock %}
+{% block og_description %}50,000+ students counselled. 500+ expert counsellors. AI-powered tools. Learn about
+E-Counselling's mission to help every student find their dream college.{% endblock %}
+{% block og_url %}https://ecounselling.live/about-us/{% endblock %}
+
+{% block twitter_title %}About E-Counselling - India's Top Counselling Platform{% endblock %}
+{% block twitter_description %}Discover E-Counselling's journey. 50K+ students, 500+ counsellors, 4.9/5 rating. NEET,
+JEE, MHT-CET experts since 2024.{% endblock %}
 
 {% block head %}
-    <meta name="description" content="Learn about E-Counselling - India's leading counselling platform for NEET, JEE, CET admissions, personal counselling, and career guidance.">
-    <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
 {% endblock head %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About E-Counselling",
+    "description": "Learn about E-Counselling - India's leading counselling platform for NEET, JEE, MHT-CET admissions",
+    "url": "https://ecounselling.live/about-us/",
+    "mainEntity": {
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling",
+        "description": "India's leading AI-powered college counselling platform",
+        "foundingDate": "2024",
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "value": 500,
+            "unitText": "counsellors"
+        }
+    },
+    "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://ecounselling.live/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://ecounselling.live/about-us/"
+            }
+        ]
+    }
+}
+</script>
+{% endblock schema %}
 
 {% block content %}
 <!-- Hero Section -->
 <section class="hero-gradient relative overflow-hidden pt-28 pb-20">
     <div class="absolute top-20 right-10 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl"></div>
     <div class="absolute bottom-10 left-10 w-64 h-64 bg-indigo-400/15 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-200/10 rounded-full blur-3xl"></div>
-    
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-200/10 rounded-full blur-3xl">
+    </div>
+
     <div class="max-w-6xl mx-auto px-4 relative z-10 grid gap-10 lg:grid-cols-[3fr_2fr] items-center">
         <div class="animate-fade-in-left">
-            <span class="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-700 shadow-sm mb-5">
+            <span
+                class="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-700 shadow-sm mb-5">
                 <i class="fas fa-heart text-pink-500"></i> Empowering Dreams Since 2024
             </span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
                 Your Partner in <span class="text-gradient">Life's Important Decisions</span>
             </h1>
             <p class="text-gray-600 text-lg max-w-2xl mb-8 leading-relaxed">
-                From college admissions to career pivots, from personal growth to life transitions — we provide expert guidance across every stage of your journey. Our certified counsellors combine data-driven insights with empathetic mentorship.
+                From college admissions to career pivots, from personal growth to life transitions — we provide expert
+                guidance across every stage of your journey. Our certified counsellors combine data-driven insights with
+                empathetic mentorship.
             </p>
             <div class="flex flex-wrap gap-4 text-sm text-gray-700">
                 <div class="bg-white/90 backdrop-blur border border-indigo-100/50 rounded-2xl px-5 py-3 shadow-sm">
@@ -41,12 +104,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="card-elevated bg-white rounded-3xl p-6 shadow-xl animate-fade-in-right">
             <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-5">Our Expertise Areas</h3>
             <div class="space-y-4">
                 <div class="flex items-start gap-3 group">
-                    <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <span
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fas fa-graduation-cap"></i>
                     </span>
                     <div>
@@ -55,7 +119,8 @@
                     </div>
                 </div>
                 <div class="flex items-start gap-3 group">
-                    <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <span
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fas fa-briefcase"></i>
                     </span>
                     <div>
@@ -64,7 +129,8 @@
                     </div>
                 </div>
                 <div class="flex items-start gap-3 group">
-                    <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <span
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fas fa-user-friends"></i>
                     </span>
                     <div>
@@ -73,7 +139,8 @@
                     </div>
                 </div>
                 <div class="flex items-start gap-3 group">
-                    <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+                    <span
+                        class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
                         <i class="fas fa-globe"></i>
                     </span>
                     <div>
@@ -89,10 +156,11 @@
 <!-- Counselling Categories Section -->
 <section class="py-16 md:py-24 bg-white relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-purple-500 to-secondary"></div>
-    
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-14">
-            <span class="inline-block bg-indigo-50 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4 border border-indigo-100">
+            <span
+                class="inline-block bg-indigo-50 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4 border border-indigo-100">
                 🎯 Our Services
             </span>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
@@ -102,15 +170,18 @@
                 We're expanding across all categories to be your one-stop destination for guidance and mentorship
             </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Educational Counselling Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-indigo-50 hover:border-indigo-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-indigo-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-indigo-50 hover:border-indigo-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-indigo-200">
                     <i class="fas fa-university text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Educational Counselling</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Expert guidance for competitive exam aspirants seeking admission to top institutions across India.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Expert guidance for competitive exam aspirants
+                    seeking admission to top institutions across India.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> NEET UG/PG Counselling
@@ -125,18 +196,22 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> MBA & CAT Guidance
                     </li>
                 </ul>
-                <div class="bg-indigo-50 text-primary px-4 py-2 rounded-xl text-sm font-semibold text-center border border-indigo-100">
+                <div
+                    class="bg-indigo-50 text-primary px-4 py-2 rounded-xl text-sm font-semibold text-center border border-indigo-100">
                     Most Popular Choice
                 </div>
             </div>
-            
+
             <!-- Career Counselling Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-amber-50 hover:border-amber-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-amber-50 hover:border-amber-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-amber-200">
                     <i class="fas fa-chart-line text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Career Counselling</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Navigate your professional journey with expert career coaches and industry mentors.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Navigate your professional journey with expert
+                    career coaches and industry mentors.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Career Path Planning
@@ -151,18 +226,22 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Industry Insights
                     </li>
                 </ul>
-                <div class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-amber-100">
+                <div
+                    class="bg-amber-50 text-amber-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-amber-100">
                     Growing Fast
                 </div>
             </div>
-            
+
             <!-- Personal Counselling Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-cyan-50 hover:border-cyan-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-cyan-50 hover:border-cyan-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-200">
                     <i class="fas fa-heart text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Personal Counselling</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Holistic support for personal growth, mental wellness, and life's challenging moments.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Holistic support for personal growth, mental
+                    wellness, and life's challenging moments.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Stress & Anxiety Management
@@ -177,18 +256,22 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Confidence Building
                     </li>
                 </ul>
-                <div class="bg-cyan-50 text-cyan-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-cyan-100">
+                <div
+                    class="bg-cyan-50 text-cyan-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-cyan-100">
                     Coming Soon
                 </div>
             </div>
-            
+
             <!-- Study Abroad Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-rose-50 hover:border-rose-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-rose-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-rose-50 hover:border-rose-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-rose-200">
                     <i class="fas fa-plane text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Study Abroad</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Complete guidance for international education from application to visa to settling abroad.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Complete guidance for international education from
+                    application to visa to settling abroad.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> University Selection
@@ -203,18 +286,22 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Scholarship Support
                     </li>
                 </ul>
-                <div class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-rose-100">
+                <div
+                    class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-rose-100">
                     Coming Soon
                 </div>
             </div>
-            
+
             <!-- Psychometric Testing Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-emerald-50 hover:border-emerald-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-emerald-50 hover:border-emerald-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-200">
                     <i class="fas fa-brain text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Psychometric Testing</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Scientific assessments to discover your strengths, interests, and ideal career paths.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Scientific assessments to discover your strengths,
+                    interests, and ideal career paths.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Aptitude Assessment
@@ -229,18 +316,22 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Career Fitment Analysis
                     </li>
                 </ul>
-                <div class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-emerald-100">
+                <div
+                    class="bg-emerald-50 text-emerald-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-emerald-100">
                     Coming Soon
                 </div>
             </div>
-            
+
             <!-- Parent Counselling Card -->
-            <div class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-violet-50 hover:border-violet-200">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-200">
+            <div
+                class="card-elevated bg-white p-7 rounded-2xl group hover:shadow-2xl transition-all duration-300 border border-violet-50 hover:border-violet-200">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-violet-200">
                     <i class="fas fa-users text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Parent Counselling</h3>
-                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Support for parents to guide their children through academic and life decisions.</p>
+                <p class="text-gray-500 text-sm mb-5 leading-relaxed">Support for parents to guide their children
+                    through academic and life decisions.</p>
                 <ul class="space-y-2 mb-6">
                     <li class="flex items-center text-sm text-gray-600">
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Understanding Child's Potential
@@ -255,7 +346,8 @@
                         <i class="fas fa-check-circle text-emerald-500 mr-2"></i> Emotional Support
                     </li>
                 </ul>
-                <div class="bg-violet-50 text-violet-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-violet-100">
+                <div
+                    class="bg-violet-50 text-violet-600 px-4 py-2 rounded-xl text-sm font-semibold text-center border border-violet-100">
                     Coming Soon
                 </div>
             </div>
@@ -270,60 +362,79 @@
             <!-- Mission Card -->
             <div class="card-elevated bg-white rounded-3xl p-8 md:p-10">
                 <div class="flex items-center gap-4 mb-6">
-                    <span class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center text-2xl shadow-lg">
+                    <span
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center text-2xl shadow-lg">
                         <i class="fas fa-bullseye"></i>
                     </span>
                     <div>
-                        <span class="inline-block bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-indigo-100">Our Mission</span>
+                        <span
+                            class="inline-block bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-indigo-100">Our
+                            Mission</span>
                     </div>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">Democratizing Expert Guidance for Everyone</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">Democratizing Expert Guidance for
+                    Everyone</h2>
                 <p class="text-gray-600 leading-relaxed mb-6">
-                    We believe every student and professional deserves access to world-class counselling. Our mission is to eliminate the information gap that prevents talented individuals from reaching their full potential.
+                    We believe every student and professional deserves access to world-class counselling. Our mission is
+                    to eliminate the information gap that prevents talented individuals from reaching their full
+                    potential.
                 </p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-4 border border-indigo-100 text-center">
+                    <div
+                        class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-4 border border-indigo-100 text-center">
                         <p class="text-2xl font-extrabold text-gradient mb-1">100%</p>
                         <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Data Verified</p>
                     </div>
-                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 border border-amber-100 text-center">
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-4 border border-amber-100 text-center">
                         <p class="text-2xl font-extrabold text-amber-600 mb-1">24/7</p>
                         <p class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Support Available</p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Vision Card -->
-            <div class="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white rounded-3xl p-8 md:p-10 shadow-2xl">
+            <div
+                class="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 text-white rounded-3xl p-8 md:p-10 shadow-2xl">
                 <div class="flex items-center gap-4 mb-6">
-                    <span class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur text-white flex items-center justify-center text-2xl">
+                    <span
+                        class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur text-white flex items-center justify-center text-2xl">
                         <i class="fas fa-eye"></i>
                     </span>
                     <div>
-                        <span class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Our Vision</span>
+                        <span
+                            class="inline-block bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Our
+                            Vision</span>
                     </div>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Becoming India's Most Trusted Guidance Platform</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Becoming India's Most Trusted Guidance Platform
+                </h2>
                 <p class="text-white/80 leading-relaxed mb-8">
-                    By 2030, we aim to guide over 1 million students and professionals annually, making quality counselling accessible across every district of India through technology and human expertise.
+                    By 2030, we aim to guide over 1 million students and professionals annually, making quality
+                    counselling accessible across every district of India through technology and human expertise.
                 </p>
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3">
-                        <span class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">01</span>
+                        <span
+                            class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">01</span>
                         <div>
                             <p class="font-bold">Pan-India Reach</p>
-                            <p class="text-white/70 text-sm mt-1">Serving students in every state through regional language support</p>
+                            <p class="text-white/70 text-sm mt-1">Serving students in every state through regional
+                                language support</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">02</span>
+                        <span
+                            class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">02</span>
                         <div>
                             <p class="font-bold">AI + Human Expertise</p>
-                            <p class="text-white/70 text-sm mt-1">Leveraging technology while preserving personal touch</p>
+                            <p class="text-white/70 text-sm mt-1">Leveraging technology while preserving personal touch
+                            </p>
                         </div>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">03</span>
+                        <span
+                            class="w-10 h-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center font-bold text-sm shrink-0">03</span>
                         <div>
                             <p class="font-bold">Outcome Guarantee</p>
                             <p class="text-white/70 text-sm mt-1">Committed to measurable results for every student</p>
@@ -339,7 +450,8 @@
 <section class="py-16 md:py-24 bg-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-14">
-            <span class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-purple-100">
+            <span
+                class="inline-block bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-purple-100">
                 ✨ Why E-Counselling?
             </span>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
@@ -349,45 +461,57 @@
                 We combine technology, expertise, and empathy to deliver unmatched counselling experiences
             </p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="text-center group">
-                <div class="stat-card bg-gradient-to-b from-indigo-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-indigo-100 transition duration-300 border border-indigo-50">
-                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-200">
+                <div
+                    class="stat-card bg-gradient-to-b from-indigo-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-indigo-100 transition duration-300 border border-indigo-50">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-indigo-200">
                         <i class="fas fa-database text-white text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Verified Data</h3>
-                    <p class="text-sm text-gray-500">Every prediction backed by authentic counselling data from official sources</p>
+                    <p class="text-sm text-gray-500">Every prediction backed by authentic counselling data from official
+                        sources</p>
                 </div>
             </div>
-            
+
             <div class="text-center group">
-                <div class="stat-card bg-gradient-to-b from-amber-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-amber-100 transition duration-300 border border-amber-50">
-                    <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-amber-200">
+                <div
+                    class="stat-card bg-gradient-to-b from-amber-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-amber-100 transition duration-300 border border-amber-50">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-amber-200">
                         <i class="fas fa-user-graduate text-white text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Mentors</h3>
-                    <p class="text-sm text-gray-500">Counsellors from IITs, AIIMS, and top B-schools with real admission experience</p>
+                    <p class="text-sm text-gray-500">Counsellors from IITs, AIIMS, and top B-schools with real admission
+                        experience</p>
                 </div>
             </div>
-            
+
             <div class="text-center group">
-                <div class="stat-card bg-gradient-to-b from-emerald-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-emerald-100 transition duration-300 border border-emerald-50">
-                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-200">
+                <div
+                    class="stat-card bg-gradient-to-b from-emerald-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-emerald-100 transition duration-300 border border-emerald-50">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-200">
                         <i class="fas fa-robot text-white text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">AI-Powered Tools</h3>
-                    <p class="text-sm text-gray-500">Smart predictors with 95%+ accuracy using machine learning algorithms</p>
+                    <p class="text-sm text-gray-500">Smart predictors with 95%+ accuracy using machine learning
+                        algorithms</p>
                 </div>
             </div>
-            
+
             <div class="text-center group">
-                <div class="stat-card bg-gradient-to-b from-cyan-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-cyan-100 transition duration-300 border border-cyan-50">
-                    <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-cyan-200">
+                <div
+                    class="stat-card bg-gradient-to-b from-cyan-50 to-white rounded-2xl p-6 mb-4 group-hover:shadow-xl group-hover:shadow-cyan-100 transition duration-300 border border-cyan-50">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-cyan-200">
                         <i class="fas fa-headset text-white text-xl"></i>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">End-to-End Support</h3>
-                    <p class="text-sm text-gray-500">From rank prediction to seat acceptance — we're with you every step</p>
+                    <p class="text-sm text-gray-500">From rank prediction to seat acceptance — we're with you every step
+                    </p>
                 </div>
             </div>
         </div>
@@ -398,67 +522,83 @@
 <section class="section-cool py-16 md:py-24 relative overflow-hidden">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12">
-            <span class="inline-block bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-3 border border-amber-100">
+            <span
+                class="inline-block bg-amber-50 text-amber-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide mb-3 border border-amber-100">
                 <i class="fas fa-flag mr-1.5"></i> Our Journey
             </span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Building Trust <span class="text-gradient">Step by Step</span></h2>
-            <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">From a simple idea to becoming one of India's fastest-growing counselling platforms</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Building Trust <span
+                    class="text-gradient">Step by Step</span></h2>
+            <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">From a simple idea to becoming one of India's
+                fastest-growing counselling platforms</p>
         </div>
-        
+
         <div class="relative">
             <!-- Timeline Line -->
-            <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-amber-500"></div>
-            
+            <div
+                class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-amber-500">
+            </div>
+
             <!-- Timeline Items -->
             <div class="space-y-12">
                 <!-- 2024 -->
                 <div class="relative flex items-center md:justify-center">
                     <div class="flex items-center w-full md:w-auto">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
                             2024
                         </div>
                         <div class="ml-6 md:ml-8 card-elevated bg-white rounded-2xl p-6 flex-1 md:max-w-md">
                             <h3 class="text-lg font-bold text-gray-900 mb-2">The Idea Takes Shape</h3>
-                            <p class="text-gray-600 text-sm">Conceptualized the platform after witnessing thousands of students struggle with college counselling decisions. Started building core prediction algorithms.</p>
+                            <p class="text-gray-600 text-sm">Conceptualized the platform after witnessing thousands of
+                                students struggle with college counselling decisions. Started building core prediction
+                                algorithms.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 2025 -->
                 <div class="relative flex items-center md:justify-center">
                     <div class="flex items-center w-full md:w-auto">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
                             2025
                         </div>
                         <div class="ml-6 md:ml-8 card-elevated bg-white rounded-2xl p-6 flex-1 md:max-w-md">
                             <h3 class="text-lg font-bold text-gray-900 mb-2">Platform Launch</h3>
-                            <p class="text-gray-600 text-sm">Released AI-powered College and Rank Predictors. Onboarded expert counsellors from top institutions. Served our first 10,000 students.</p>
+                            <p class="text-gray-600 text-sm">Released AI-powered College and Rank Predictors. Onboarded
+                                expert counsellors from top institutions. Served our first 10,000 students.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 2026 -->
                 <div class="relative flex items-center md:justify-center">
                     <div class="flex items-center w-full md:w-auto">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
                             2026
                         </div>
                         <div class="ml-6 md:ml-8 card-elevated bg-white rounded-2xl p-6 flex-1 md:max-w-md">
                             <h3 class="text-lg font-bold text-gray-900 mb-2">Scaling New Heights</h3>
-                            <p class="text-gray-600 text-sm">Crossed 50,000+ students counselled and 1 Lakh+ monthly visitors. Expanding into career counselling, personal guidance, and study abroad services.</p>
+                            <p class="text-gray-600 text-sm">Crossed 50,000+ students counselled and 1 Lakh+ monthly
+                                visitors. Expanding into career counselling, personal guidance, and study abroad
+                                services.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Future -->
                 <div class="relative flex items-center md:justify-center">
                     <div class="flex items-center w-full md:w-auto">
-                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 text-white font-bold text-xl flex items-center justify-center shadow-lg z-10 shrink-0">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <div class="ml-6 md:ml-8 card-elevated bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 flex-1 md:max-w-md text-white">
+                        <div
+                            class="ml-6 md:ml-8 card-elevated bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 flex-1 md:max-w-md text-white">
                             <h3 class="text-lg font-bold mb-2">The Road Ahead</h3>
-                            <p class="text-white/80 text-sm">Launching personal counselling, psychometric testing, and parent guidance. Building India's most comprehensive counselling ecosystem.</p>
+                            <p class="text-white/80 text-sm">Launching personal counselling, psychometric testing, and
+                                parent guidance. Building India's most comprehensive counselling ecosystem.</p>
                         </div>
                     </div>
                 </div>
@@ -471,37 +611,44 @@
 <section class="py-16 md:py-24 bg-white relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-14">
-            <span class="inline-block bg-cyan-50 text-cyan-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-cyan-100">
+            <span
+                class="inline-block bg-cyan-50 text-cyan-600 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-cyan-100">
                 💫 Our Values
             </span>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
                 Principles That <span class="text-gradient">Drive Us</span>
             </h2>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-indigo-200">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-indigo-200">
                     <i class="fas fa-shield-alt text-indigo-600 text-3xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Trust & Transparency</h3>
-                <p class="text-gray-500 leading-relaxed">We never make false promises. Every recommendation is backed by data and explained clearly.</p>
+                <p class="text-gray-500 leading-relaxed">We never make false promises. Every recommendation is backed by
+                    data and explained clearly.</p>
             </div>
-            
+
             <div class="text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-amber-200">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-amber-200">
                     <i class="fas fa-hand-holding-heart text-amber-600 text-3xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Student-First Approach</h3>
-                <p class="text-gray-500 leading-relaxed">Your success is our success. We prioritize what's best for you, not what's most profitable for us.</p>
+                <p class="text-gray-500 leading-relaxed">Your success is our success. We prioritize what's best for you,
+                    not what's most profitable for us.</p>
             </div>
-            
+
             <div class="text-center">
-                <div class="w-20 h-20 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-emerald-200">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-3xl flex items-center justify-center mx-auto mb-5 border border-emerald-200">
                     <i class="fas fa-infinity text-emerald-600 text-3xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Continuous Innovation</h3>
-                <p class="text-gray-500 leading-relaxed">We constantly upgrade our tools, data, and methods to serve you better every single day.</p>
+                <p class="text-gray-500 leading-relaxed">We constantly upgrade our tools, data, and methods to serve you
+                    better every single day.</p>
             </div>
         </div>
     </div>
@@ -515,35 +662,42 @@
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute -top-20 -right-20 w-80 h-80 bg-white rounded-full opacity-5"></div>
         <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full opacity-5"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full opacity-[0.02]"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full opacity-[0.02]">
+        </div>
     </div>
-    
+
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div class="animate-fade-in-up">
-            <span class="inline-flex items-center bg-white/15 backdrop-blur text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-6 border border-white/20">
+            <span
+                class="inline-flex items-center bg-white/15 backdrop-blur text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold mb-6 border border-white/20">
                 <i class="fas fa-handshake mr-2"></i> Let's Connect
             </span>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5 md:mb-6">
-                Ready to Begin Your<br/><span class="text-amber-300">Transformation Journey?</span>
+                Ready to Begin Your<br /><span class="text-amber-300">Transformation Journey?</span>
             </h2>
             <p class="text-lg md:text-xl text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
-                Whether you're a student seeking the perfect college, a professional planning a career switch, or someone looking for personal guidance — we're here for you.
+                Whether you're a student seeking the perfect college, a professional planning a career switch, or
+                someone looking for personal guidance — we're here for you.
             </p>
-            
+
             <div class="flex flex-col gap-3 md:gap-4 justify-center items-center">
-                <a href="{% url 'landing_page:contact' %}" class="bg-white text-primary hover:bg-indigo-50 px-10 md:px-14 py-3.5 md:py-4 rounded-xl text-lg md:text-xl font-bold transition duration-300 shadow-xl flex items-center w-full sm:w-auto justify-center">
+                <a href="{% url 'landing_page:contact' %}"
+                    class="bg-white text-primary hover:bg-indigo-50 px-10 md:px-14 py-3.5 md:py-4 rounded-xl text-lg md:text-xl font-bold transition duration-300 shadow-xl flex items-center w-full sm:w-auto justify-center">
                     <i class="fas fa-comments mr-3"></i>
                     Talk to a Counsellor
                     <i class="fas fa-arrow-right ml-3"></i>
                 </a>
-                <a href="{% url 'landing_page:tools_and_services' %}" class="border-2 border-white/40 text-white hover:bg-white/10 px-8 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center backdrop-blur">
+                <a href="{% url 'landing_page:tools_and_services' %}"
+                    class="border-2 border-white/40 text-white hover:bg-white/10 px-8 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold transition duration-300 flex items-center w-full sm:w-auto justify-center backdrop-blur">
                     <i class="fas fa-tools mr-2"></i>
                     Explore Our Tools
                 </a>
             </div>
-            
+
             <!-- Trust Badges -->
-            <div class="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-xs md:text-sm text-indigo-200">
+            <div
+                class="mt-10 md:mt-12 flex flex-wrap justify-center items-center gap-6 md:gap-10 text-xs md:text-sm text-indigo-200">
                 <div class="flex items-center">
                     <i class="fas fa-shield-alt text-emerald-400 mr-2"></i>
                     <span>100% Confidential</span>
