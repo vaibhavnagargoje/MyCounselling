@@ -7,12 +7,12 @@ body {
 }
 
 .sidebar-item:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   transform: translateX(5px);
 }
 
 .sidebar-item.active {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
   color: white !important;
 }
 

@@ -10,60 +10,61 @@
 {% endblock head %}
 
 {% block content %}
-<section class="relative overflow-hidden pt-28 pb-16 bg-gradient-to-br from-[#eef4ff] via-white to-[#f3e8ff]">
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="w-40 h-40 bg-primary/10 rounded-full blur-3xl absolute -top-10 -left-10"></div>
-        <div class="w-48 h-48 bg-purple-400/10 rounded-full blur-3xl absolute bottom-0 right-0"></div>
-    </div>
+<!-- Hero Section -->
+<section class="hero-gradient relative overflow-hidden pt-28 pb-20">
+    <div class="absolute top-20 right-10 w-80 h-80 bg-purple-400/15 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-64 h-64 bg-indigo-400/15 rounded-full blur-3xl"></div>
     <div class="max-w-6xl mx-auto px-4 relative z-10 grid gap-10 lg:grid-cols-[3fr_2fr] items-center">
         <div>
-            <span class="inline-flex items-center gap-2 bg-white/80 border border-primary/10 px-4 py-1.5 rounded-full text-xs font-semibold text-primary shadow-sm">
-                <i class="fas fa-comments text-primary"></i> Dedicated Support Team
+            <span class="inline-flex items-center gap-2 bg-white/80 backdrop-blur border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-700 shadow-sm">
+                <i class="fas fa-comments text-indigo-500"></i> Dedicated Support Team
             </span>
-            <h1 class="mt-4 text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Let’s Talk About Your Counselling Journey</h1>
+            <h1 class="mt-5 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                Let's Talk About Your <span class="text-gradient">Counselling Journey</span>
+            </h1>
             <p class="mt-4 text-gray-600 text-lg max-w-2xl">Our experts respond within 24 hours to guide you on plans, partnerships, and student onboarding for NEET, JEE, CET, and more.</p>
             <div class="mt-6 flex flex-wrap gap-4 text-sm text-gray-700">
-                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
-                    <div class="font-semibold text-gray-900 text-lg mb-1">50K+</div>
+                <div class="bg-white/90 backdrop-blur border border-indigo-100/50 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-extrabold text-gradient text-lg mb-1">50K+</div>
                     Students Counselled
                 </div>
-                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
-                    <div class="font-semibold text-gray-900 text-lg mb-1">24x7</div>
+                <div class="bg-white/90 backdrop-blur border border-amber-100/50 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-extrabold text-amber-600 text-lg mb-1">24x7</div>
                     Support Availability
                 </div>
-                <div class="bg-white/90 border border-gray-100 rounded-2xl px-5 py-3 shadow-sm">
-                    <div class="font-semibold text-gray-900 text-lg mb-1">4.9/5</div>
+                <div class="bg-white/90 backdrop-blur border border-cyan-100/50 rounded-2xl px-5 py-3 shadow-sm">
+                    <div class="font-extrabold text-cyan-600 text-lg mb-1">4.9/5</div>
                     Avg. Rating
                 </div>
             </div>
         </div>
-        <div class="bg-white border border-gray-100 rounded-3xl p-6 shadow-xl">
-            <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Reach Us Directly</h3>
+        <div class="card-elevated bg-white rounded-3xl p-6 shadow-xl">
+            <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Reach Us Directly</h3>
             <div class="space-y-4 text-sm text-gray-700">
                 <div class="flex items-start gap-3">
-                    <span class="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shadow-sm">
                         <i class="fas fa-phone-alt"></i>
                     </span>
                     <div>
-                        <p class="font-semibold text-gray-900">Call / WhatsApp</p>
+                        <p class="font-bold text-gray-900">Call / WhatsApp</p>
                         <p>+91-9765660584</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="w-10 h-10 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-sm">
                         <i class="fas fa-envelope"></i>
                     </span>
                     <div>
-                        <p class="font-semibold text-gray-900">Email Support</p>
+                        <p class="font-bold text-gray-900">Email Support</p>
                         <p>support@ecounselling.in</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="w-10 h-10 rounded-2xl bg-accent/10 text-accent flex items-center justify-center">
+                    <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 text-white flex items-center justify-center shadow-sm">
                         <i class="fas fa-map-marker-alt"></i>
                     </span>
                     <div>
-                        <p class="font-semibold text-gray-900">Office</p>
+                        <p class="font-bold text-gray-900">Office</p>
                         <p>Pune, Maharashtra, India</p>
                     </div>
                 </div>
@@ -72,51 +73,58 @@
     </div>
 </section>
 
-<section class="py-14 bg-white">
-    <div class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-[2fr_3fr]">
+<!-- Contact Form Section -->
+<section class="section-cool py-16 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 grid gap-10 lg:grid-cols-[2fr_3fr] relative z-10">
         <div class="space-y-6">
-            <div class="bg-gray-50 rounded-3xl p-6 border border-gray-100">
-                <h2 class="text-2xl font-bold text-gray-900 mb-1">Connect with the Right Team</h2>
-                <p class="text-gray-600 text-sm">Choose a suitable option or fill the form—we’ll match you with the best counsellor.</p>
+            <div class="card-elevated bg-white rounded-3xl p-6">
+                <h2 class="text-2xl font-extrabold text-gray-900 mb-1">Connect with the Right Team</h2>
+                <p class="text-gray-600 text-sm">Choose a suitable option or fill the form—we'll match you with the best counsellor.</p>
                 <div class="mt-5 space-y-4">
                     <div class="flex items-start gap-3">
-                        <i class="fas fa-user-tie text-primary mt-1"></i>
+                        <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
                         <div>
-                            <p class="font-semibold text-gray-900">Counselling Plans</p>
+                            <p class="font-bold text-gray-900">Counselling Plans</p>
                             <p class="text-sm text-gray-600">Discuss premium mentorship tiers and guarantees.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
-                        <i class="fas fa-handshake text-primary mt-1"></i>
+                        <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-handshake"></i>
+                        </div>
                         <div>
-                            <p class="font-semibold text-gray-900">Institution Partnerships</p>
+                            <p class="font-bold text-gray-900">Institution Partnerships</p>
                             <p class="text-sm text-gray-600">For colleges, coaching centers, or NGO collaborations.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
-                        <i class="fas fa-book text-primary mt-1"></i>
+                        <div class="w-9 h-9 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-book"></i>
+                        </div>
                         <div>
-                            <p class="font-semibold text-gray-900">Documentation Support</p>
+                            <p class="font-bold text-gray-900">Documentation Support</p>
                             <p class="text-sm text-gray-600">Need help with CAP rounds or document verification?</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-r from-primary to-blue-700 rounded-3xl p-6 text-white flex flex-col gap-4">
-                <p class="text-lg font-semibold">Prefer a quick call?</p>
+            <div class="bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 rounded-3xl p-6 text-white flex flex-col gap-4 shadow-xl">
+                <p class="text-lg font-bold">Prefer a quick call?</p>
                 <p class="text-sm text-white/80">Schedule a 15-min discovery call with our senior counsellor.</p>
-                <button class="bg-white text-primary font-semibold rounded-2xl px-5 py-3 flex items-center justify-center gap-2 shadow-lg">
+                <button class="bg-white text-indigo-700 font-bold rounded-2xl px-5 py-3 flex items-center justify-center gap-2 shadow-lg hover:-translate-y-0.5 transition">
                     <i class="fas fa-calendar-check"></i> Book a Call Slot
                 </button>
             </div>
         </div>
 
-        <div class="bg-white rounded-3xl border border-gray-100 shadow-xl p-6 md:p-8">
+        <div class="card-elevated bg-white rounded-3xl p-6 md:p-8">
             <div class="flex items-center gap-3 mb-6">
-                <span class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-xl"><i class="fas fa-paper-plane"></i></span>
+                <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center text-xl shadow-sm"><i class="fas fa-paper-plane"></i></span>
                 <div>
-                    <h3 class="text-2xl font-bold text-gray-900">Send us a message</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-900">Send us a message</h3>
                     <p class="text-sm text-gray-500">All fields required unless marked optional</p>
                 </div>
             </div>
@@ -124,8 +132,8 @@
             {% if messages %}
                 <div class="mb-6 space-y-3">
                     {% for message in messages %}
-                        <div class="{% if message.tags == 'success' %}bg-green-50 border-green-200 text-green-800{% elif message.tags == 'error' %}bg-red-50 border-red-200 text-red-800{% else %}bg-blue-50 border-blue-200 text-blue-800{% endif %} border rounded-2xl p-4 flex items-start gap-3">
-                            <i class="{% if message.tags == 'success' %}fas fa-check-circle text-green-500{% elif message.tags == 'error' %}fas fa-exclamation-circle text-red-500{% else %}fas fa-info-circle text-blue-500{% endif %} mt-0.5"></i>
+                        <div class="{% if message.tags == 'success' %}bg-emerald-50 border-emerald-200 text-emerald-800{% elif message.tags == 'error' %}bg-red-50 border-red-200 text-red-800{% else %}bg-indigo-50 border-indigo-200 text-indigo-800{% endif %} border rounded-2xl p-4 flex items-start gap-3">
+                            <i class="{% if message.tags == 'success' %}fas fa-check-circle text-emerald-500{% elif message.tags == 'error' %}fas fa-exclamation-circle text-red-500{% else %}fas fa-info-circle text-indigo-500{% endif %} mt-0.5"></i>
                             <div class="flex-1 text-sm">{{ message }}</div>
                         </div>
                     {% endfor %}
@@ -136,7 +144,7 @@
                 {% csrf_token %}
                 
                 <div class="flex flex-col">
-                    <label class="text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <label class="text-sm font-semibold text-gray-700 mb-1">Full Name</label>
                     {{ form.full_name }}
                     {% if form.full_name.errors %}
                         <span class="text-xs text-red-500 mt-1">{{ form.full_name.errors.0 }}</span>
@@ -144,7 +152,7 @@
                 </div>
                 
                 <div class="flex flex-col">
-                    <label class="text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <label class="text-sm font-semibold text-gray-700 mb-1">Email</label>
                     {{ form.email }}
                     {% if form.email.errors %}
                         <span class="text-xs text-red-500 mt-1">{{ form.email.errors.0 }}</span>
@@ -152,7 +160,7 @@
                 </div>
                 
                 <div class="flex flex-col">
-                    <label class="text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <label class="text-sm font-semibold text-gray-700 mb-1">Phone</label>
                     {{ form.phone }}
                     {% if form.phone.errors %}
                         <span class="text-xs text-red-500 mt-1">{{ form.phone.errors.0 }}</span>
@@ -160,7 +168,7 @@
                 </div>
                 
                 <div class="flex flex-col">
-                    <label class="text-sm font-medium text-gray-700 mb-1">Inquiry Type</label>
+                    <label class="text-sm font-semibold text-gray-700 mb-1">Inquiry Type</label>
                     {{ form.inquiry_type }}
                     {% if form.inquiry_type.errors %}
                         <span class="text-xs text-red-500 mt-1">{{ form.inquiry_type.errors.0 }}</span>
@@ -168,7 +176,7 @@
                 </div>
                 
                 <div class="flex flex-col md:col-span-2">
-                    <label class="text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <label class="text-sm font-semibold text-gray-700 mb-1">Message</label>
                     {{ form.message }}
                     {% if form.message.errors %}
                         <span class="text-xs text-red-500 mt-1">{{ form.message.errors.0 }}</span>
@@ -176,15 +184,15 @@
                 </div>
                 
                 <div class="flex flex-col md:col-span-2">
-                    <label class="text-sm font-medium text-gray-700 mb-1 flex items-center gap-2">
+                    <label class="text-sm font-semibold text-gray-700 mb-1 flex items-center gap-2">
                         Supporting Documents <span class="text-gray-400 text-xs font-normal">(optional)</span>
                     </label>
-                    <label class="input-primary flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer border-dashed border-2 border-gray-300 hover:border-primary/60 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-lg">
+                    <label class="input-primary flex flex-col sm:flex-row items-start sm:items-center gap-3 cursor-pointer border-dashed border-2 border-indigo-200 hover:border-indigo-400 transition rounded-2xl p-3">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 text-indigo-600 flex items-center justify-center text-lg border border-indigo-100">
                             <i class="fas fa-upload"></i>
                         </div>
                         <div class="text-sm text-gray-600">
-                            <p class="font-medium text-gray-900">Upload scorecards / supporting docs</p>
+                            <p class="font-semibold text-gray-900">Upload scorecards / supporting docs</p>
                             <p class="text-xs text-gray-500">PDF, JPG, PNG up to 5 MB</p>
                         </div>
                         {{ form.supporting_document }}
@@ -196,53 +204,13 @@
                 
                 <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <small class="text-gray-500 flex items-center gap-2">
-                        <i class="fas fa-lock text-green-500"></i> We never share your information.
+                        <i class="fas fa-lock text-emerald-500"></i> We never share your information.
                     </small>
-                    <button type="submit" class="bg-gradient-to-r from-primary to-blue-700 text-white px-8 py-3 rounded-2xl font-semibold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
+                    <button type="submit" class="btn-primary-glow bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-3 rounded-2xl font-bold shadow-lg transition flex items-center justify-center gap-2">
                         <i class="fas fa-paper-plane"></i> Submit Request
                     </button>
                 </div>
             </form>
-        </div>
-    </div>
-</section>
-
-<section class="py-14 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4 grid gap-8 lg:grid-cols-2">
-        <div class="bg-white rounded-3xl border border-gray-100 shadow p-6">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">Visit Our Experience Center</h3>
-            <p class="text-sm text-gray-600 mb-6">Walk in for document checks, mock choice filling, and dedicated counsellor sessions.</p>
-            <div class="space-y-4 text-sm">
-                <div class="flex items-start gap-3">
-                    <i class="fas fa-map-marked-alt text-primary mt-1"></i>
-                    <div>
-                        <p class="font-semibold text-gray-900">Address</p>
-                        <p>Office 404, Balewadi High Street<br>Pune, Maharashtra 411045</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <i class="fas fa-clock text-primary mt-1"></i>
-                    <div>
-                        <p class="font-semibold text-gray-900">Support Hours</p>
-                        <p>Mon–Sat: 9 AM – 8 PM<br>Sun: 10 AM – 4 PM</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <i class="fas fa-share-alt text-primary mt-1"></i>
-                    <div>
-                        <p class="font-semibold text-gray-900">Social Channels</p>
-                        <div class="flex gap-4 text-xl text-primary">
-                            <i class="fab fa-instagram"></i>
-                            <i class="fab fa-linkedin"></i>
-                            <i class="fab fa-youtube"></i>
-                            <i class="fab fa-telegram-plane"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
-            <iframe title="E-Counselling Location" class="w-full h-80 grayscale-[20%]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.612...placeholder..." allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 </section>

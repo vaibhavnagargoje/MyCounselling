@@ -4,111 +4,107 @@
 {% block title %}Tools & Services - E-Counselling{% endblock %}
 
 {% block content %}
-<section class="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
-	<div class="absolute inset-0 pointer-events-none">
-		<div class="absolute top-16 left-10 w-24 h-24 bg-blue-200 rounded-full opacity-10 floating"></div>
-		<div class="absolute top-32 right-20 w-20 h-20 bg-purple-200 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
-		<div class="absolute bottom-10 left-1/4 w-32 h-32 bg-green-200 rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
-	</div>
+<!-- Hero Section -->
+<section class="hero-gradient pt-28 pb-20 relative overflow-hidden">
+	<div class="absolute top-16 left-10 w-72 h-72 bg-purple-400/20 rounded-full blur-3xl"></div>
+	<div class="absolute bottom-10 right-20 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl"></div>
 	<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-		<span class="inline-flex items-center px-4 py-1 rounded-full bg-white/80 text-primary font-semibold text-xs tracking-wide uppercase mb-4">Tools & Services</span>
-		<h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Index-grade utility cards, now on a dedicated page</h1>
-		<p class="text-gray-600 max-w-3xl mx-auto mb-6">Surface the same Rank Predictor, College Predictor, and College Database blocks you trust on the home page—kept static for now, ready for a DB feed later.</p>
+		<span class="inline-block bg-white/80 backdrop-blur text-indigo-700 px-5 py-2 rounded-full text-xs font-bold mb-5 border border-indigo-100 shadow-sm">
+			<i class="fas fa-tools mr-1.5"></i> Tools & Services
+		</span>
+		<h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+			Smart Tools for <span class="text-gradient">Admission Success</span>
+		</h1>
+		<p class="text-gray-600 max-w-3xl mx-auto mb-8">Surface the same Rank Predictor, College Predictor, and College Database blocks you trust on the home page—data-driven tools for confident decisions.</p>
 		<div class="flex flex-col sm:flex-row gap-3 justify-center">
-			<a href="#" class="bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-primary text-white px-6 py-3 rounded-lg text-base font-semibold transition duration-300 shadow-lg flex items-center justify-center gap-2">
+			<a href="#tools" class="btn-primary-glow bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-7 py-3.5 rounded-full text-base font-bold transition shadow-lg flex items-center justify-center gap-2">
 				<i class="fas fa-rocket text-sm"></i> Try Free Tools
 			</a>
-			<a href="#" class="border-2 border-white/60 text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg text-base font-semibold transition duration-300 flex items-center justify-center gap-2">
+			<a href="{% url 'landing_page:contact' %}" class="border-2 border-indigo-200 text-indigo-700 hover:bg-indigo-50 px-7 py-3.5 rounded-full text-base font-bold transition flex items-center justify-center gap-2">
 				<i class="fas fa-headset text-sm"></i> Talk to Mentor
 			</a>
 		</div>
 	</div>
 </section>
 
-<section class="py-16 bg-white relative overflow-hidden">
-	<div class="absolute inset-0 opacity-5">
-		<div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.1"><circle cx="30" cy="30" r="2"/></g></svg>');"></div>
-	</div>
+<!-- Free Tools Section -->
+<section id="tools" class="section-cool py-20 relative overflow-hidden">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 		<div class="text-center mb-12">
-			<span class="inline-block bg-gradient-to-r from-primary to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">✨ Our Tools & Services</span>
-			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything you need for admission success</h2>
-			<p class="text-lg text-gray-600 max-w-2xl mx-auto">Mirroring the home-page cards so you can plug in real data sources soon.</p>
+			<span class="inline-block bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold mb-4 border border-indigo-100">
+				✨ Our Free Tools
+			</span>
+			<h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Everything You Need for <span class="text-gradient">Admission Success</span></h2>
+			<p class="text-lg text-gray-500 max-w-2xl mx-auto">Data-driven tools powered by verified cutoffs, historical trends, and ML predictions.</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			
-			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
-				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
+				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
 					<i class="fas fa-calculator text-white text-xl"></i>
 				</div>
 				<h3 class="text-lg font-bold text-gray-900 mb-2">Rank Predictor</h3>
-				<p class="text-gray-600 text-sm mb-3">Personalized college lists mapped to your rank, budget, and preferred states.</p>
-				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
-				<a href="{% url 'rank_predictor:rank_predictor_home' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+				<p class="text-gray-600 text-sm mb-4">Personalized college lists mapped to your rank, budget, and preferred states.</p>
+				<a href="{% url 'rank_predictor:rank_predictor_home' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
 					Open Tool <i class="fas fa-arrow-right text-xs"></i>
 				</a>
 			</div>
-			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
-				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
+				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
 					<i class="fas fa-university text-white text-xl"></i>
 				</div>
 				<h3 class="text-lg font-bold text-gray-900 mb-2">College Predictor</h3>
-				<p class="text-gray-600 text-sm mb-3">Personalized college lists mapped to your rank, budget, and preferred states.</p>
-				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
-				<a href="{% url 'college_predictor:college_predictor_home' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+				<p class="text-gray-600 text-sm mb-4">Personalized college lists mapped to your rank, budget, and preferred states.</p>
+				<a href="{% url 'college_predictor:college_predictor_home' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
 					Open Tool <i class="fas fa-arrow-right text-xs"></i>
 				</a>
 			</div>
-			<div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 text-center border border-gray-100">
-				<div class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
+			<div class="card-elevated bg-white p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
+				<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
 					<i class="fas fa-database text-white text-xl"></i>
 				</div>
 				<h3 class="text-lg font-bold text-gray-900 mb-2">College Information</h3>
-				<p class="text-gray-600 text-sm mb-3">Curated repository of 2500+ institutes with fees, cut-offs, and placement stats.	</p>
-				{% comment %} <span class="inline-block bg-gray-50 text-primary text-xs font-semibold px-3 py-1 rounded-full">Free tool </span> {% endcomment %}
-				<a href="{% url 'colleges:colleges_list' %}" class="mt-4 inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary">
+				<p class="text-gray-600 text-sm mb-4">Curated repository of 2500+ institutes with fees, cut-offs, and placement stats.</p>
+				<a href="{% url 'colleges:colleges_list' %}" class="inline-flex items-center justify-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition">
 					Open Tool <i class="fas fa-arrow-right text-xs"></i>
 				</a>
 			</div>
-			
-			
 		</div>
-		<p class="text-center text-gray-500 text-xs mt-10">Placeholder dataset — replace with DB-driven services when ready.</p>
 	</div>
 </section>
 
-<section class="py-16 bg-gray-900 text-white relative overflow-hidden">
-	<div class="absolute inset-0 opacity-5">
-		<div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="%23ffffff" fill-opacity="0.05"/></svg>');"></div>
-	</div>
+<!-- Premium Services Section -->
+<section class="cta-gradient py-20 relative overflow-hidden">
+	<div class="absolute top-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 		<div class="text-center mb-12">
-			<span class="inline-flex items-center px-4 py-1 rounded-full bg-white/10 text-white font-semibold text-xs tracking-wide uppercase mb-4">Premium Services</span>
-			<h2 class="text-3xl md:text-4xl font-bold mb-3">Counselling built for decisive outcomes</h2>
-			<p class="text-white/70 max-w-3xl mx-auto">Ported directly from our home-page services grid, upgraded with action-ready links.</p>
+			<span class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-xs font-bold mb-4 border border-white/20">
+				<i class="fas fa-crown mr-1.5"></i> Premium Services
+			</span>
+			<h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Counselling Built for <span class="text-amber-300">Decisive Outcomes</span></h2>
+			<p class="text-white/70 max-w-3xl mx-auto">Expert-led service tiers designed to guide you from exam results to seat confirmation.</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			{% for service in pro_services %}
-			<div class="bg-white/10 rounded-2xl border border-white/10 p-6 flex flex-col h-full">
+			<div class="bg-white/10 backdrop-blur rounded-2xl border border-white/15 p-6 flex flex-col h-full hover:-translate-y-1 transition-all duration-300">
 				<div class="flex items-center gap-3 mb-4">
-					<div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+					<div class="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center">
 						<i class="{{ service.icon }} text-white text-lg"></i>
 					</div>
 					<div>
-						<p class="text-xs uppercase tracking-wide text-white/60">{{ service.tier }}</p>
-						<h3 class="text-xl font-semibold">{{ service.title }}</h3>
+						<p class="text-xs uppercase tracking-wide text-white/60 font-semibold">{{ service.tier }}</p>
+						<h3 class="text-xl font-bold">{{ service.title }}</h3>
 					</div>
 				</div>
 				<p class="text-white/80 text-sm mb-4">{{ service.desc }}</p>
 				<ul class="space-y-2 text-sm text-white/80 mb-6 flex-1">
 					{% for point in service.highlights %}
 					<li class="flex items-start gap-2">
-						<i class="fas fa-check-circle text-primary mt-0.5"></i>
+						<i class="fas fa-check-circle text-amber-300 mt-0.5"></i>
 						<span>{{ point }}</span>
 					</li>
 					{% endfor %}
 				</ul>
-				<a href="{{ service.url }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white text-primary font-semibold hover:-translate-y-0.5 transition">
+				<a href="{{ service.url }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white text-indigo-700 font-bold hover:-translate-y-0.5 transition shadow-lg">
 					{{ service.cta }} <i class="fas fa-arrow-right text-xs"></i>
 				</a>
 			</div>

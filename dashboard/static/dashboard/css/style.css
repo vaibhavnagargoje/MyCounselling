@@ -3,12 +3,12 @@
 }
 
 .sidebar-item:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a4570 0%, #123150 100%);
     transform: translateX(5px);
 }
 
 .sidebar-item.active {
-    background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1a4570 0%, #123150 100%);
     color: white;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .filter-tab.active {
-    background: linear-gradient(135deg, #6366F1 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1a4570 0%, #123150 100%);
     color: white;
 }
 
