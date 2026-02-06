@@ -1,152 +1,80 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Logout - EduCounsel{% endblock %}
+{% block title %}Logged Out - E-Counselling{% endblock %}
 
 {% block head %}
-    <link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'landing_page/css/style.css' %}" rel="stylesheet">
+<style>
+    html,
+    body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .auth-page {
+        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
+    }
+</style>
 {% endblock head %}
 
 {% block content %}
-<!-- Animated Background Elements -->
-<div class="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
-    <div class="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 floating"></div>
-    <div class="absolute top-40 right-20 w-24 h-24 bg-purple-200 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-green-200 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/3 w-16 h-16 bg-yellow-200 rounded-full opacity-20 floating" style="animation-delay: 3s;"></div>
-    
-    <!-- Rotating Elements -->
-    <div class="absolute top-32 right-10 w-20 h-20 border-4 border-primary opacity-10 animate-rotate"></div>
-    <div class="absolute bottom-32 left-20 w-16 h-16 border-4 border-secondary opacity-10 animate-rotate" style="animation-delay: 2s;"></div>
-</div>
+<div
+    class="auth-page flex items-center justify-center px-4 py-6 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative">
+    <div class="absolute top-10 right-10 w-32 h-32 bg-indigo-200 rounded-full opacity-30 blur-2xl"></div>
+    <div class="absolute bottom-10 left-10 w-40 h-40 bg-purple-200 rounded-full opacity-20 blur-3xl"></div>
 
-<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-md w-full space-y-8">
-        <!-- Success Animation & Logo -->
-        <div class="text-center animate-fade-in-up">
-            <div class="flex justify-center mb-4">
-                <div class="relative">
-                    <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg animate-bounce-slow">
-                        <i class="fas fa-check text-white text-3xl"></i>
-                    </div>
-                    <!-- Success Ring Animation -->
-                    <div class="absolute inset-0 border-4 border-green-400 rounded-full animate-ping opacity-30"></div>
+    <div class="w-full max-w-md relative z-10">
+        <div class="text-center mb-6">
+            <div class="relative inline-block mb-4">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-200">
+                    <i class="fas fa-check text-white text-3xl"></i>
                 </div>
             </div>
-            
-            <div class="flex justify-center mb-4">
-                <div class="w-12 h-12 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-                    <i class="fas fa-graduation-cap text-white text-lg"></i>
-                </div>
-            </div>
-            
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">EduCounsel</h1>
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">Successfully Logged Out!</h2>
-            <p class="text-gray-600 mb-6">Thank you for using EduCounsel. We hope to see you again soon on your counselling journey!</p>
-            
-            <!-- Auto-redirect countdown -->
-            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-                <div class="flex items-center justify-center">
-                    <i class="fas fa-clock text-blue-500 mr-2"></i>
-                    <span class="text-sm text-blue-700">Redirecting to home page in <span id="countdown" class="font-bold">5</span> seconds...</span>
-                </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">Successfully Logged Out!</h2>
+            <p class="text-gray-500 text-sm">Thank you for using E-Counselling.</p>
+        </div>
+
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-3 mb-6 text-center">
+            <div class="flex items-center justify-center gap-2">
+                <i class="fas fa-clock text-indigo-500"></i>
+                <span class="text-sm text-indigo-700">Redirecting in <span id="countdown"
+                        class="font-bold">5</span>s</span>
             </div>
         </div>
 
-
-        <!-- Modern Alert Messages -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="animate-fade-in-up">
-                    <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-lg shadow-sm mb-4">
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-check-circle text-green-400"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm text-green-700 font-medium">{{ message }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-
-        <!-- Modern Action Card -->
-        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/20 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <div class="space-y-6">
-                <!-- Quick Actions -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="{% url 'user:login' %}" 
-                       class="group bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center">
-                        <i class="fas fa-sign-in-alt mr-2 group-hover:animate-bounce"></i>Sign In Again
-                    </a>
-                    <a href="{% url 'dashboard:dashboard' %}" 
-                       class="group bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center">
-                        <i class="fas fa-home mr-2 group-hover:animate-bounce"></i>Go To Dashboard
-                    </a>
-                </div>
-                
-                <!-- Registration Link -->
-                <div class="text-center pt-4 border-t border-gray-200">
-                    <p class="text-sm text-gray-600 mb-2">New to EduCounsel?</p>
-                    <a href="{% url 'user:register' %}" class="font-semibold text-primary hover:text-purple-600 transition-colors duration-300 hover:underline">
-                        Create your account and start your counselling journey <i class="fas fa-arrow-right ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Features Highlight -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-calculator text-blue-600"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800 text-sm">Rank Predictor</h4>
-                        <p class="text-xs text-gray-600">Predict your rank</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-university text-purple-600"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800 text-sm">College Finder</h4>
-                        <p class="text-xs text-gray-600">Find your college</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                            <i class="fas fa-user-tie text-green-600"></i>
-                        </div>
-                        <h4 class="font-semibold text-gray-800 text-sm">Expert Help</h4>
-                        <p class="text-xs text-gray-600">Get guidance</p>
-                    </div>
-                </div>
+        <div class="card-elevated bg-white/90 backdrop-blur rounded-2xl p-6 shadow-xl border border-white/50">
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <a href="{% url 'user:login' %}"
+                    class="btn-primary-glow text-white py-3 rounded-xl font-semibold flex items-center justify-center text-sm">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </a>
+                <a href="{% url 'dashboard:dashboard' %}"
+                    class="bg-white border-2 border-indigo-200 text-indigo-600 hover:bg-indigo-50 py-3 rounded-xl font-semibold flex items-center justify-center text-sm">
+                    <i class="fas fa-home mr-2"></i>Dashboard
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="{% url 'user:register' %}" class="text-sm text-indigo-600 hover:text-purple-600">Create account
+                    <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// Countdown timer for auto-redirect
-let countdown = 5;
-const countdownElement = document.getElementById('countdown');
-
-const timer = setInterval(function() {
-    countdown--;
-    countdownElement.textContent = countdown;
-    
-    if (countdown <= 0) {
-        clearInterval(timer);
-    window.location.href = "{% url 'dashboard:dashboard' %}";
-    }
-}, 1000);
-
-// Add smooth animations on page load
-document.addEventListener('DOMContentLoaded', function() {
-    // Add entrance animations with staggered delays
-    const elements = document.querySelectorAll('.animate-fade-in-up');
-    elements.forEach((el, index) => {
-        el.style.animationDelay = `${index * 0.1}s`;
-    });
-});
+    let countdown = 5;
+    const countdownEl = document.getElementById('countdown');
+    const timer = setInterval(() => {
+        countdown--;
+        countdownEl.textContent = countdown;
+        if (countdown <= 0) {
+            clearInterval(timer);
+            window.location.href = "{% url 'dashboard:dashboard' %}";
+        }
+    }, 1000);
 </script>
-
 {% endblock %}

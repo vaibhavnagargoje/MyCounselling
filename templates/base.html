@@ -56,9 +56,13 @@
     <meta name="theme-color" content="#4f46e5">
     <meta name="msapplication-TileColor" content="#4f46e5">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <!-- Favicon - Modern approach with SVG primary, ICO fallback -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'favicon-16x16.png' %}" sizes="16x16">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
 
     <!-- Trust & Attribution Links -->
     <link type="text/plain" rel="author" href="https://ecounselling.live/humans.txt">
