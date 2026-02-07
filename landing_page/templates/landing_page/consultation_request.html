@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Free Expert Consultation – Get Personalised Admission Guidance | E-Counselling{% endblock %}
+{% block meta_description %}Have special admission requirements? Get free 1-on-1 expert consultation for NEET, JEE, MHT-CET counselling. Lateral entry, NRI quota, management seat — we help with everything.{% endblock %}
+{% block canonical_url %}{% url 'landing_page:consultation_request' %}{% endblock %}
+
+{% block extra_head %}
+<meta property="og:title" content="Free Expert Consultation – Personalised Admission Guidance">
+<meta property="og:description" content="Special requirements? Our expert counsellors provide free personalised guidance for NEET, JEE, MHT-CET admissions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{% url 'landing_page:consultation_request' %}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Expert Consultation | E-Counselling">
+<meta name="twitter:description" content="Get personalised admission guidance from experts. Lateral entry, NRI quota, management seats & more.">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Expert Admission Consultation",
+    "provider": {
+        "@type": "EducationalOrganization",
+        "name": "E-Counselling"
+    },
+    "description": "Free personalised consultation for students with special admission requirements — lateral entry, NRI quota, management seats, domicile issues, and more.",
+    "serviceType": "Education Consulting",
+    "areaServed": "India",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR",
+        "description": "Free initial consultation"
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 py-10 md:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center mb-8 md:mb-12">
+            <span class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
+                <i class="fas fa-headset"></i> Free Expert Consultation
+            </span>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                Have a <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Special Requirement?</span>
+            </h1>
+            <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Not every admission journey fits a standard plan. Tell us your specific needs — lateral entry, NRI quota,
+                management seats, domicile queries, category-based reservations — and our expert counsellors will guide you personally.
+            </p>
+        </div>
+
+        <!-- Trust Bar -->
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-8 mb-8 md:mb-12">
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-green-600 text-xs"></i>
+                </div>
+                <span>100% Confidential</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-clock text-blue-600 text-xs"></i>
+                </div>
+                <span>Response within 24 hrs</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
+                <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user-tie text-purple-600 text-xs"></i>
+                </div>
+                <span>Expert Counsellors</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
+                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-rupee-sign text-amber-600 text-xs"></i>
+                </div>
+                <span>No Hidden Charges</span>
+            </div>
+        </div>
+
+        <!-- Success/Error Messages -->
+        {% if messages %}
+        <div class="mb-6">
+            {% for message in messages %}
+            <div class="rounded-xl p-4 mb-3 flex items-start gap-3
+                {% if message.tags == 'success' %} bg-green-50 border border-green-200 text-green-800
+                {% elif message.tags == 'error' %} bg-red-50 border border-red-200 text-red-800
+                {% else %} bg-blue-50 border border-blue-200 text-blue-800 {% endif %}">
+                <i class="fas {% if message.tags == 'success' %}fa-check-circle text-green-500{% elif message.tags == 'error' %}fa-exclamation-circle text-red-500{% else %}fa-info-circle text-blue-500{% endif %} mt-0.5"></i>
+                <p class="text-sm">{{ message }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Form Card -->
+        <form method="POST" enctype="multipart/form-data" novalidate
+              class="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
+
+            <!-- Form Sections -->
+            <div class="p-5 sm:p-8 space-y-8">
+
+                <!-- Section 1: Personal Info -->
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-indigo-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Personal Information</h2>
+                            <p class="text-xs text-gray-500">So we can reach out to you</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                        <div>
+                            <label for="{{ form.full_name.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.full_name }}
+                            {% if form.full_name.errors %}
+                            <p class="mt-1 text-xs text-red-600"><i class="fas fa-exclamation-circle mr-1"></i>{{ form.full_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Email Address <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <p class="mt-1 text-xs text-red-600"><i class="fas fa-exclamation-circle mr-1"></i>{{ form.email.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Phone Number <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                            <p class="mt-1 text-xs text-red-600"><i class="fas fa-exclamation-circle mr-1"></i>{{ form.phone.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label for="{{ form.city.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                    City <span class="text-red-500">*</span>
+                                </label>
+                                {{ form.city }}
+                                {% if form.city.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ form.city.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <label for="{{ form.state.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                    State <span class="text-red-500">*</span>
+                                </label>
+                                {{ form.state }}
+                                {% if form.state.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ form.state.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-gray-100"></div>
+
+                <!-- Section 2: Academic Details -->
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Academic Details</h2>
+                            <p class="text-xs text-gray-500">Helps us understand your profile better</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                        <div>
+                            <label for="{{ form.exam_appeared.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Exam Appeared For <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.exam_appeared }}
+                            {% if form.exam_appeared.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.exam_appeared.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.rank_or_score.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Rank / Score / Percentile <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.rank_or_score }}
+                            {% if form.rank_or_score.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.rank_or_score.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.preferred_stream.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Preferred Stream <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.preferred_stream }}
+                            {% if form.preferred_stream.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.preferred_stream.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.budget_range.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Budget Range <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.budget_range }}
+                            {% if form.budget_range.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.budget_range.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="{{ form.preferred_colleges.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Preferred Colleges <span class="text-gray-400 font-normal">(optional)</span>
+                            </label>
+                            {{ form.preferred_colleges }}
+                            {% if form.preferred_colleges.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.preferred_colleges.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-gray-100"></div>
+
+                <!-- Section 3: Your Requirement -->
+                <div>
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clipboard-list text-amber-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Your Requirement</h2>
+                            <p class="text-xs text-gray-500">The more details, the better we can help</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 sm:space-y-5">
+                        <div>
+                            <label for="{{ form.special_requirements.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                Describe Your Specific Requirement <span class="text-red-500">*</span>
+                            </label>
+                            {{ form.special_requirements }}
+                            {% if form.special_requirements.errors %}
+                            <p class="mt-1 text-xs text-red-600">{{ form.special_requirements.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                            <div>
+                                <label for="{{ form.urgency.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                    How Urgent Is This? <span class="text-red-500">*</span>
+                                </label>
+                                {{ form.urgency }}
+                                {% if form.urgency.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ form.urgency.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <label for="{{ form.supporting_document.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                    Upload Document <span class="text-gray-400 font-normal">(optional)</span>
+                                </label>
+                                {{ form.supporting_document }}
+                                <p class="mt-1.5 text-xs text-gray-400">
+                                    <i class="fas fa-paperclip mr-1"></i>
+                                    Scorecard, admit card, certificate, etc. Max 10 MB
+                                </p>
+                                {% if form.supporting_document.errors %}
+                                <p class="mt-1 text-xs text-red-600">{{ form.supporting_document.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="bg-gray-50/80 border-t border-gray-100 px-5 sm:px-8 py-5 sm:py-6">
+                {% csrf_token %}
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-xs text-gray-500 text-center sm:text-left">
+                        <i class="fas fa-lock mr-1 text-green-500"></i>
+                        Your information is secure and will only be used to assist you.
+                    </p>
+                    <button type="submit"
+                        class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-indigo-200 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Consultation Request
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Help Section -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-gray-500">
+                Prefer talking directly?
+                <a href="{% url 'landing_page:contact' %}" class="text-indigo-600 hover:text-indigo-700 font-medium">
+                    Contact us <i class="fas fa-arrow-right text-xs ml-0.5"></i>
+                </a>
+            </p>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

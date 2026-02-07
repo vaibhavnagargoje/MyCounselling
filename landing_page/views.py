@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 from django.urls import reverse
 from django.contrib import messages
-from .forms import ContactForm
-from .models import ContactSubmission
+from .forms import ContactForm, ConsultationForm
+from .models import ContactSubmission, ConsultationRequest
 from products.models import MyProducts, BundledPlan
 
 COLLEGE_DATA = [
@@ -328,6 +328,31 @@ def contact(request):
         'form': form
     }
     return render(request, 'landing_page/contact.html', context)
+
+
+def consultation_request(request):
+    if request.method == 'POST':
+        form = ConsultationForm(request.POST, request.FILES)
+        if form.is_valid():
+            submission = form.save(commit=False)
+            submission.ip_address = get_client_ip(request)
+            submission.user_agent = request.META.get('HTTP_USER_AGENT', '')[:500]
+            submission.save()
+            messages.success(
+                request,
+                f'Thank you, {submission.full_name}! Your consultation request has been submitted. '
+                f'Our expert counsellor will reach out to you within 24 hours.'
+            )
+            return redirect('landing_page:consultation_request')
+        else:
+            messages.error(
+                request,
+                'There was an error with your submission. Please check the form and try again.'
+            )
+    else:
+        form = ConsultationForm()
+    
+    return render(request, 'landing_page/consultation_request.html', {'form': form})
 
 
 def privacy_policy(request):
